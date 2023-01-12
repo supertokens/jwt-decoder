@@ -38,8 +38,13 @@ const JwtDecoder = () => {
           <h3 className="title">JWT Decoder</h3>
           <section className="decoder-main-container">
             <aside className="decoded common-container">
-              <div className="title-band bt-inherit header">
-                JWT
+              <div className="title-band bt-inherit header flex-center-y">
+                <span>
+                  JWT
+                </span>
+                <span>
+                  <Image src={"images/help.svg"} alt="help" width={10} height={10} />
+                </span>
               </div>
               <div className="content inner-content">
                 <div>

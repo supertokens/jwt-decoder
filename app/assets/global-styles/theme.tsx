@@ -5,6 +5,8 @@ export const theme = {
   colors: {
     // synonymous with black
     dark: {
+      900: '#141414',
+      950: '#1c1c1c',
       1000: '#1a1a1a',
     },
     // synonymous with white
@@ -22,7 +24,9 @@ export const theme = {
       600: '#F8F9FC',
       700: "#ADB4C1",
       800: '#5e5e5e',
-      900: "#6c6f76"
+      900: "#6c6f76",
+      950: '#323232',
+      1000: "#333333"
     },
   },
   fontSizes: {
@@ -32,6 +36,7 @@ export const theme = {
     large: "2.5rem",
   },
   borderRadius: {
+    small: ".6rem",
     medium: "1.4rem",
   },
   paddingMargins: {
