@@ -26,7 +26,8 @@ jobs:
               git pull && \
               git checkout `git describe --match "dev*" --abbrev=0 --tags $(git tag --sort=-creatordate | head -n 1)` && \
               cd app && \
-              npm run update'
+              npm run update && \
+              docker restart jwt-decoder'
       - slack/status
   production:
     circleci_ip_ranges: true
@@ -52,7 +53,8 @@ jobs:
               git pull && \
               git checkout `git describe --match "*" --abbrev=0 --tags $(git tag --sort=-creatordate | head -n 1)` && \
               cd app && \
-              npm run update'
+              npm run update && \
+              docker restart jwt-decoder'
       - slack/status
 workflows:
   version: 2
