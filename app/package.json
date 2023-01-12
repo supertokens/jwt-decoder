@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "update": "npm i -D && next build"
   },
   "dependencies": {
     "@next/font": "^13.1.1",
