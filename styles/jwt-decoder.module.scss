@@ -1,0 +1,121 @@
+$bg-color-primary: rgba(26, 26, 26);
+$text-color: rgba(245, 246, 247);
+$bg-color-secondary: rgba(42, 42, 42);
+$text-color-secondary: rgba(102, 188, 122);
+$text-color-secondary-alternate: rgba(102, 188, 122);
+$text-border-secondary: rgba(12, 110, 35);
+$left-content-width: 315px;
+$orange-primary: rgb(255, 153, 51);
+$divider-color: rgba(96, 96, 96);
+$bg-dark-secondary: rgba(40, 40, 40);
+
+.jwt-decoder-container {
+    font-family: Roboto, sans-serif;
+    background-color: $bg-color-primary;
+
+    .inner-container {
+        padding-block: 165px 180px;
+        width: 1076px;
+        margin-inline: auto;
+        color: $text-color;
+    }
+}
+
+.common-container {
+    border-radius: 14px;
+    border: 1px solid rgba(51, 51, 51);
+}
+
+.inner-content {
+    padding: 25px;
+}
+
+.title-band {
+    padding: 9px 16px;
+    background-color: $bg-color-secondary;
+    &.bt-inherit {
+        border-top-right-radius: inherit;
+        border-top-left-radius: inherit;
+    }
+}
+
+.decoder-main-container {
+    display: flex;
+    aside.decoded {
+        width: $left-content-width;
+        margin-right: 20px;
+    }
+
+    .decoded {
+        display: flex;
+        flex-direction: column;
+        .content {
+            word-break: break-word;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .copy-btn {
+                border: 1px solid $text-border-secondary;
+                padding-block: 10px;
+                text-align: center;
+                width: 100%;
+                font-variation-settings: "wght" 500;
+                border-radius: 10px;
+                color: $text-color-secondary-alternate;
+                background-color: transparent;
+            }
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .input-container {
+        flex: 1;
+
+        .inner-content.payload {
+            min-height: 150px;
+        }
+    }
+}
+
+.note-container-outer {
+    margin-left: calc($left-content-width + 20px);
+    margin-block: 11px 60px;
+    text-align: center;
+    border-color: $orange-primary;
+
+    .note {
+        padding-block: 11px;
+        b {
+            color: $orange-primary;
+        }
+    }
+}
+
+hr {
+    border-color: $divider-color;
+    margin-block-end: 0;
+}
+
+.read-more-container {
+    display: flex;
+    justify-content: center;
+    span {
+        padding: 12px 30px;
+        background-color: $bg-dark-secondary;
+        border-radius: 0 0 25px 25px;
+    }
+}
+
+
+.explanation-content-container{
+  section{
+    margin-block-start: 60px;
+  }
+}

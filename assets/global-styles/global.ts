@@ -1,4 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
 
+const GlobalStyle = createGlobalStyle`
 @font-face {
   font-family: Roboto, sans-serif;
   src: url("../assets/fonts/Roboto/Roboto-Medium.ttf");
@@ -15,3 +17,7 @@ body {
   font-size: 2rem;
   margin: 0;
 }
+
+`;
+
+export default GlobalStyle;
