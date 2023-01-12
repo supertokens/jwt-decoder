@@ -4,7 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "update": "npm i -D && next build"
+    "update": "npm i -D && npm run build"
   },
   "dependencies": {
     "@next/font": "^13.1.1",
