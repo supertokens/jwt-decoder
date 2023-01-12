@@ -1,0 +1,78 @@
+version: 2.1
+orbs:
+  slack: circleci/slack@3.4.2
+jobs:
+  development:
+    circleci_ip_ranges: true
+    docker:
+      - image: ubuntu:20.04
+    steps:
+      - run:
+          name: Install SSH and curl
+          command: |
+            apt update
+            apt-get install openssh-client curl -y
+      - run:
+          name: updating code on test server
+          command: |
+            echo "-----BEGIN RSA PRIVATE KEY-----" > /tmp/dev_ssh
+            echo $DEV_SERVER_SSH_KEY | sed 's/\s\+/\n/g' >> /tmp/dev_ssh
+            echo "-----END RSA PRIVATE KEY-----" >> /tmp/dev_ssh
+            chmod 400 /tmp/dev_ssh
+            ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i /tmp/dev_ssh ubuntu@dev.supertokens.io '\
+              cd jwt-decoder && \
+              git checkout master && \
+              git reset --hard && \
+              git pull && \
+              git checkout `git describe --match "dev*" --abbrev=0 --tags $(git tag --sort=-creatordate | head -n 1)` && \
+              cd app && \
+              npm run update'
+      - slack/status
+  production:
+    circleci_ip_ranges: true
+    docker:
+      - image: ubuntu:20.04
+    steps:
+      - run:
+          name: Install SSH and curl
+          command: |
+            apt update
+            apt-get install openssh-client curl -y
+      - run:
+          name: Upgrade image on production server
+          command: |
+            echo "-----BEGIN RSA PRIVATE KEY-----" > /tmp/prod_ssh
+            echo $PROD_SERVER_SSH_KEY | sed 's/\s\+/\n/g' >> /tmp/prod_ssh
+            echo "-----END RSA PRIVATE KEY-----" >> /tmp/prod_ssh
+            chmod 400 /tmp/prod_ssh
+            ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i /tmp/prod_ssh ubuntu@ssh.supertokens.io '\
+              cd ~/website/jwt-decoder && \
+              git checkout master && \
+              git reset --hard && \
+              git pull && \
+              git checkout `git describe --match "*" --abbrev=0 --tags $(git tag --sort=-creatordate | head -n 1)` && \
+              cd app && \
+              npm run update'
+      - slack/status
+workflows:
+  version: 2
+  tagged-build:
+    jobs:
+      - development:
+          context:
+            - slack-notification
+            - backend-saas-develpment
+          filters:
+            tags:
+              only: /(dev\-\d\d\-\d\d\-\d\d\d\d\-\-\d\d\-\d\d\-\d\d)/
+            branches:
+              ignore: /.*/
+      - production:
+          context:
+            - slack-notification
+            - saas-backend-production
+          filters:
+            tags:
+              only: /(\d\d\-\d\d\-\d\d\d\d\-\-\d\d\-\d\d\-\d\d)/
+            branches:
+              ignore: /.*/
