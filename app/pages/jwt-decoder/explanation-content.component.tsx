@@ -7,7 +7,7 @@ const ExplanationContent = () => {
         <h3 className="title">What are JWTs</h3>
         <div>
           <p>
-            JSON Web Token is an open industry standard used to share information between two entities.
+            JSO Web Token is an open industry standard used to share information between two entities.
           </p>
           <p>
             They contain JSON objects which have the information that needs to be shared. Each JWT is also signed using cryptography to ensure that the client or a malicious party cannot alter the JSON contents.
