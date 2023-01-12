@@ -1,11 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-@font-face {
-  font-family: Roboto, sans-serif;
-  src: url("../assets/fonts/Roboto/Roboto-Medium.ttf");
-  font-weight: 100 1000;
-}
 * {
   box-sizing: border-box;
   font-family: Roboto, sans-serif;
@@ -14,8 +9,18 @@ html {
   font-size: 10px;
 }
 body {
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin: 0;
+}
+
+.flex-center-y {
+  display: flex;
+  align-items: center;
+}
+
+.flex-center-x{
+  display: flex;
+  justify-content: center;
 }
 
 `;

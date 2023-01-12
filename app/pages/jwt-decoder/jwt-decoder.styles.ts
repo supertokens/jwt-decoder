@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const leftContentWidth = '315px'
+const leftContentWidth = '31.5rem'
 
 export const JwtContainerStyled = styled.div`
 &.jwt-decoder-container {
@@ -8,24 +8,24 @@ export const JwtContainerStyled = styled.div`
     background-color: rgba(26, 26, 26);
 
     .inner-container {
-        padding-block: 165px 180px;
-        width: 1076px;
+        padding-block: 16.5rem 18rem;
+        width: 107.5rem;
         margin-inline: auto;
         color: rgb(245, 246, 247);
     }
 }
 
 .common-container {
-    border-radius: 14px;
+    border-radius: ${props=>props.theme.borderRadius.medium};
     border: 1px solid rgb(51, 51, 51);
 }
 
 .inner-content {
-    padding: 25px;
+    padding: 2.5rem;
 }
 
 .title-band {
-    padding: 9px 16px;
+    padding: .9rem 1.6rem;
     background-color: rgb(42, 42, 42);
     &.bt-inherit {
         border-top-right-radius: inherit;
@@ -33,11 +33,17 @@ export const JwtContainerStyled = styled.div`
     }
 }
 
+#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .decoder-main-container {
     display: flex;
     aside.decoded {
         width: ${leftContentWidth};
-        margin-right: 20px;
+        margin-right: 2rem;
     }
 
     .decoded {
@@ -52,11 +58,11 @@ export const JwtContainerStyled = styled.div`
 
             .copy-btn {
                 border: 1px solid rgba(12, 110, 35);
-                padding-block: 10px;
+                padding-block: 1rem;
                 text-align: center;
                 width: 100%;
                 font-variation-settings: "wght" 500;
-                border-radius: 10px;
+                border-radius: 1rem;
                 color: rgb(102, 188, 122);
                 background-color: transparent;
             }
@@ -73,19 +79,19 @@ export const JwtContainerStyled = styled.div`
         flex: 1;
 
         .inner-content.payload {
-            min-height: 150px;
+            min-height: 15rem;
         }
     }
 }
 
 .note-container-outer {
-    margin-left: calc(${leftContentWidth} + 20px);
-    margin-block: 11px 60px;
+    margin-left: calc(${leftContentWidth} + 2rem);
+    margin-block: 1.1rem 6rem;
     text-align: center;
     border-color: rgb(255, 153, 51);
 
     .note {
-        padding-block: 11px;
+        padding-block: 1.1rem;
         b {
             color: rgb(255, 153, 51);
         }
@@ -101,15 +107,15 @@ hr {
     display: flex;
     justify-content: center;
     span {
-        padding: 12px 30px;
+        padding: 1.2rem 3rem;
         background-color: rgba(40, 40, 40);
-        border-radius: 0 0 25px 25px;
+        border-radius: 0 0 2.5rem 2.5rem;
     }
 }
 
 .explanation-content-container{
   section{
-    margin-block-start: 60px;
+    margin-block-start: 6rem;
   }
 }
 `

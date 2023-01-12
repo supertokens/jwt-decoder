@@ -1,11 +1,30 @@
+import Image from "next/image"
 import React, { useState } from "react"
 import ExplanationContent from "./explanation-content.component"
 import { JwtContainerStyled } from "./jwt-decoder.styles"
+import Dropdown, { type IDropdownOption } from "../../components/dropdown/dropdown.component"
 // import "../style/jwt-decoder.module.css";
 
-const algorithms = [
+const algorithmOptions:IDropdownOption[] = [
   {
-
+    label: "HS256",
+    value: "HS256",
+  },
+  {
+    label: "ES256",
+    value: "ES256",
+  },
+  {
+    label: "RS256",
+    value: "RS256",
+  },
+  {
+    label: "PS256",
+    value: "PS256",
+  },
+  {
+    label: "EdDSA",
+    value: "EdDSA",
   }
 ]
 
@@ -28,13 +47,16 @@ const JwtDecoder = () => {
                 </div>
                 <button className="copy-btn">
                   Copy JWT
-                  <span>Clipboard</span>
+                  <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />
                 </button>
               </div>
 
             </aside>
             <div className="input-container common-container">
-              <div className="title-band bt-inherit">Header</div>
+              <div className="title-band bt-inherit" id="header">
+                <div>Header</div>
+                <div><Dropdown value={null} options={algorithmOptions}/></div>
+              </div>
               <div className="inner-content">{JSON.stringify({
                 "alg": "HS256",
                 "typ": "jwt"
