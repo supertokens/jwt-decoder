@@ -8,26 +8,29 @@ export interface IDropdownOption {
 }
 
 interface IDropdownProps {
-  value: IDropdownOption | null;
+  selected: IDropdownOption | null;
   options: IDropdownOption[];
-  onSelect?: (val: IDropdownOption) => void;
+  placeholder?: string;
+  obtainKey?: (option: IDropdownOption) => string | number;
+  onChange?: (val: IDropdownOption) => void;
 }
 
-const Dropdown: React.FC<IDropdownProps> = ({ value, options, onSelect }) => {
+const Dropdown: React.FC<IDropdownProps> = ({ selected, options, onChange, obtainKey, placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <DropdownContainer onClick={() => setIsOpen(true)}>
       <div className="dropdown-container flex-center-y">
-        <div className="label">Sample</div>
+        <div className="label">{selected?.label || placeholder}</div>
         <span className="chevron-container"><Image src={"images/chevron-down.svg"} width={10} height={10} alt={"chevron icon"} /></span>
       </div>
       {
         isOpen && <ul className="options-list">
-          {[1, 2, 3, 4, 5, 6, 7].map(item => <li key={item} onClick={e=>{
+          {options.map(item => <li key={obtainKey?.(item) || item.value} onClick={e => {
             e.stopPropagation();
+            onChange(item);
             setIsOpen(false);
-          }}>Option {item}</li>)}
+          }}>{item.label}</li>)}
         </ul>
       }
     </DropdownContainer>

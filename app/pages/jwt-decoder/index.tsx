@@ -30,6 +30,7 @@ const algorithmOptions:IDropdownOption[] = [
 
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0])
 
   return (
     <JwtContainerStyled className="jwt-decoder-container">
@@ -60,7 +61,7 @@ const JwtDecoder = () => {
             <div className="input-container common-container">
               <div className="title-band bt-inherit" id="header">
                 <div>Header</div>
-                <div><Dropdown value={null} options={algorithmOptions}/></div>
+                <div><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm}/></div>
               </div>
               <div className="inner-content">{JSON.stringify({
                 "alg": "HS256",
