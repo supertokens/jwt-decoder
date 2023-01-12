@@ -113,3 +113,5 @@ hr {
   }
 }
 `
+
+export default JwtContainerStyled
