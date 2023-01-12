@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "rm -rf build && next build",
     "start": "next start",
     "update": "npm i -D && npm run build"
   },
