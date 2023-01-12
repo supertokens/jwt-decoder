@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /home
 
@@ -16,4 +16,4 @@ RUN chmod 0655 /etc/cron.d/cronjobs.sh
 
 EXPOSE 3000
 
-CMD ["bash", "-c", "crontab /etc/cron.d/cronjobs.sh && cron && cd app/ && npm install && npm run dev"]
+CMD ["bash", "-c", "crontab /etc/cron.d/cronjobs.sh && crond && cd app/ && npm install && npm run build && npm run dev"]
