@@ -19,8 +19,9 @@ export const theme = {
       1000: "#cc0404"
     },
     grey: {
-      700: '#F8F9FC',
-      800: "#ADB4C1",
+      600: '#F8F9FC',
+      700: "#ADB4C1",
+      800: '#5e5e5e',
       900: "#6c6f76"
     },
   },
@@ -31,9 +32,7 @@ export const theme = {
     large: "2.5rem",
   },
   borderRadius: {
-    small: "0.7rem",
-    medium: "1rem",
-    large: "1.2rem",
+    medium: "1.4rem",
   },
   paddingMargins: {
     medium: "1.6rem"
