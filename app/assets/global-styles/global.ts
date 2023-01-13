@@ -1,12 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.cdnfonts.com/css/roboto');
 
 * {
   box-sizing: border-box;
-  
 }
+
 html {
   font-size: 10px;
 }
@@ -25,6 +24,14 @@ body {
   display: flex;
   justify-content: center;
 }
+
+${[100, 200, 300, 400, 500, 600, 700, 800].map(
+  (fontWeight) => `
+  .bold-${fontWeight}{
+    font-variation-settings: "wght" ${fontWeight}!important;
+  }
+`
+)}
 
 `;
 

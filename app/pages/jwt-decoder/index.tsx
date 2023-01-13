@@ -48,7 +48,7 @@ const JwtDecoder = () => {
                 </span>
               </div>
               <div className="content inner-content">
-                <div>
+                <div className="token code">
                   eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NjU3MjQyNzMsImV4cCI6MTY5NzI2MDI3MywiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9.4d7mG0jzELVxjwbYTZxH_OjhC4h3lFI0YTEZYzmmmNc
                 </div>
                 <button className="copy-btn">
@@ -63,12 +63,12 @@ const JwtDecoder = () => {
                 <div>Header</div>
                 <div><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm}/></div>
               </div>
-              <div className="inner-content">{JSON.stringify({
+              <div className="inner-content code-alternate">{JSON.stringify({
                 "alg": "HS256",
                 "typ": "jwt"
               })}</div>
               <div className="title-band">Payload</div>
-              <div className="inner-content payload">
+              <div className="inner-content payload code">
                 {JSON.stringify({
                   "iss": "SuperTokens.io",
                   "sub": "evander",
@@ -78,7 +78,7 @@ const JwtDecoder = () => {
                 }, null, 2)}
               </div>
               <div className="title-band">Signing Key</div>
-              <div className="inner-content signing-key">
+              <div className="inner-content signing-key code-alternate">
                 MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4JJaPHjlrh/
                 gDnVOHISFE59M8MkojCbhZ9
               </div>
@@ -96,7 +96,7 @@ const JwtDecoder = () => {
           </div>
           <hr />
           <div className="read-more-container">
-            {!showMoreContent && <span role={"button"} onClick={() => setShowMoreContent(true)}>Read More ^</span>}
+            {!showMoreContent && <span role={"button"} onClick={() => setShowMoreContent(true)}>Read More <Image className="down-chevron" src={"/images/chevron-down.svg"} alt="chevron-down" width={10} height={10} /></span>}
           </div>
         </article>
 

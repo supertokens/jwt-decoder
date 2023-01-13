@@ -5,6 +5,7 @@ export const theme = {
   colors: {
     // synonymous with black
     dark: {
+      800: '#282828',
       900: '#141414',
       950: '#1c1c1c',
       1000: '#1a1a1a',
@@ -20,14 +21,24 @@ export const theme = {
     red: {
       1000: "#cc0404"
     },
+    green: {
+      900: "#66bc7a",
+      1000: "#0c6e23",
+    },
     grey: {
+
       600: '#F8F9FC',
       700: "#ADB4C1",
+      750: '#606060',
       800: '#5e5e5e',
+      850: '#2a2a2a',
       900: "#6c6f76",
       950: '#323232',
       1000: "#333333"
     },
+    orange: {
+      1000: '#ff9933'
+    }
   },
   fontSizes: {
     xSmall: "1.3rem",
@@ -38,6 +49,10 @@ export const theme = {
   borderRadius: {
     small: ".6rem",
     medium: "1.4rem",
+  },
+  fontFamily: {
+    rubik: `"Rubik", "Menlo", monospace`,
+    menlo: `"Menlo", "Rubik", monospace`
   },
   paddingMargins: {
     medium: "1.6rem"
