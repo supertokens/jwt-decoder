@@ -1,9 +1,10 @@
 import Image from "next/image"
 import React from "react"
+import { ExplanationContainerStyled } from "./jwt-decoder.styles"
 
 const ExplanationContent = () => {
   return (
-    <article className="explanation-content-container">
+    <ExplanationContainerStyled className="explanation-content-container">
       <section className="jwts-introduction">
         <h3 className="title">What are JWTs</h3>
         <div>
@@ -22,34 +23,42 @@ const ExplanationContent = () => {
           <p>
             A JWT contains three parts:
           </p>
-          <ul>
-            <li>Header: Consists of two parts:
+          <ul className="parts-of-jwt">
+            <li><span className="part-name header">Header:</span><div className="description">
+              Consists of two parts:
               <ul>
                 <li>
-                  The signing algorithm that’s being used.
+                  The signing algorithm that's being used.
                 </li>
                 <li>
                   The type of token, which, in this case, is mostly “JWT”
                 </li>
               </ul>
+            </div>
             </li>
             <li>
-              Payload: The payload contains
+              <span className="part-name payload">Payload: </span>
+              <div className="description">
+                The payload contains
+              </div>
             </li>
             <li>
-              Signature: Signature contains xyz
+              <span className="part-name signature">Signature: </span>
+              <div className="description">
+                Signature contains xyz
+              </div>
             </li>
           </ul>
           <Image src={"/images/structure-of-jwt.png"} alt='Structure of a JSON Web Token'
-          width={"500"}
-          height={100}
+            width={"500"}
+            height={100}
             style={{ objectFit: "contain", height: "fit-content" }}
           />
         </div>
       </section>
 
 
-    </article>
+    </ExplanationContainerStyled>
   )
 }
 

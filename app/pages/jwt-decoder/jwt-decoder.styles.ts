@@ -17,6 +17,7 @@ export const JwtContainerStyled = styled.div`
 
   .title {
     font-size: 3.2rem;
+    font-weight: 700;
   }
 
   .common-container {
@@ -29,6 +30,7 @@ export const JwtContainerStyled = styled.div`
   }
 
   .title-band {
+    font-weight: 600;
     padding: 0.9rem 1.6rem;
     background-color: ${(props) => props.theme.colors.grey[850]};
     &.bt-inherit {
@@ -42,15 +44,14 @@ export const JwtContainerStyled = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    &+.code {
+    & + .code {
       height: 15rem;
     }
   }
 
-  #payload +.code{
+  #payload + .code {
     height: 22rem;
   }
-
 
   .decoder-main-container {
     display: flex;
@@ -82,8 +83,8 @@ export const JwtContainerStyled = styled.div`
           border-radius: 1rem;
           color: ${(props) => props.theme.colors.green[900]};
           background-color: ${(props) => props.theme.colors.green[1000]}1A;
-          img{
-            margin-left: .5rem;
+          img {
+            margin-left: 0.5rem;
           }
         }
       }
@@ -139,10 +140,41 @@ export const JwtContainerStyled = styled.div`
       filter: brightness(2);
     }
   }
+`;
 
-  .explanation-content-container {
+export const ExplanationContainerStyled = styled.article`
+  &.explanation-content-container {
     section {
       margin-block-start: 6rem;
+    }
+  }
+
+  ul{
+    padding: 0;
+  }
+
+  ul.parts-of-jwt{
+    &>li{
+      display: flex;
+      margin-bottom: 1.5rem;
+      & > :not(:last-child){
+        margin-right: .5rem;
+      }
+      span.header{
+        color: ${props=>props.theme.colors.red[200]};
+      }
+
+      span.payload{
+        color: ${props=>props.theme.colors.purple[200]};
+      }
+
+      span.signature{
+        color: ${props=>props.theme.colors.blue[200]};
+      }
+
+      .description ul{
+        list-style: disc inside;
+      }
     }
   }
 `;

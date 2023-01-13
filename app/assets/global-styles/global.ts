@@ -30,6 +30,10 @@ ${[100, 200, 300, 400, 500, 600, 700, 800].map(
   .bold-${fontWeight}{
     font-variation-settings: "wght" ${fontWeight}!important;
   }
+
+  .strong-${fontWeight}{
+    font-weight: ${fontWeight};
+  }
 `
 )}
 

@@ -57,7 +57,7 @@ const JwtDecoder = () => {
                   JWT
                 </span>
                 <span>
-                  <Popover popoverContent={"Some popover content from parent"}>
+                  <Popover popoverContent={"JWT will update Automatically when you edit Header, Payload and Signing key data"}>
                     <Image src={"images/help.svg"} alt="help" width={10} height={10} />
                   </Popover>
                 </span>

@@ -15,10 +15,15 @@ export const theme = {
       900: '#f5f6f7',
       1000: '#ffffff'
     },
+    blue: {
+      200: '#9cdcfe'
+    },
     purple: {
+      200: '#c19cfe',
       1000: "#664de5",
     },
     red: {
+      200: '#fe9c9c',
       1000: "#cc0404"
     },
     green: {
