@@ -1,6 +1,7 @@
 import Image from "next/image";
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import { DropdownContainer } from "./dropdown.styles"
+import useOnClickOutside from "../../hooks/useOnClickOutside"
 
 export interface IDropdownOption {
   label: string;
@@ -17,9 +18,12 @@ interface IDropdownProps {
 
 const Dropdown: React.FC<IDropdownProps> = ({ selected, options, onChange, obtainKey, placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownContainerRef = useRef(null);
+
+  useOnClickOutside(dropdownContainerRef, () => setIsOpen(false))
 
   return (
-    <DropdownContainer onClick={() => setIsOpen(true)}>
+    <DropdownContainer ref={dropdownContainerRef} onClick={() => setIsOpen(true)}>
       <div className="dropdown-container flex-center-y">
         <div className="label">{selected?.label || placeholder}</div>
         <span className="chevron-container"><Image src={"images/chevron-down.svg"} width={10} height={10} alt={"chevron icon"} /></span>

@@ -1,9 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.cdnfonts.com/css/roboto');
+
 * {
   box-sizing: border-box;
-  font-family: Roboto, sans-serif;
+  
 }
 html {
   font-size: 10px;
@@ -11,6 +13,7 @@ html {
 body {
   font-size: 1.6rem;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .flex-center-y {
