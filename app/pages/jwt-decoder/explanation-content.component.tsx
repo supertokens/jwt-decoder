@@ -39,21 +39,23 @@ const ExplanationContent = () => {
             <li>
               <span className="part-name payload">Payload: </span>
               <div className="description">
-                The payload contains
+              The payload contains the claims or the JSON object.
               </div>
             </li>
             <li>
               <span className="part-name signature">Signature: </span>
               <div className="description">
-                Signature contains xyz
+              A string that is generated via a cryptographic algorithm that can be used to verify the integrity of the JSON payload.
               </div>
             </li>
           </ul>
-          <Image src={"/images/structure-of-jwt.png"} alt='Structure of a JSON Web Token'
-            width={"500"}
-            height={100}
-            style={{ objectFit: "contain", height: "fit-content" }}
-          />
+
+          <figure className="structure-img">
+            <Image src={"/images/structure-of-jwt.png"} alt='Structure of a JSON Web Token'
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </figure>
         </div>
       </section>
 

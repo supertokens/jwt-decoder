@@ -18,6 +18,8 @@ export const JwtContainerStyled = styled.div`
   .title {
     font-size: 3.2rem;
     font-weight: 700;
+    margin:0;
+    margin-block-end: 3rem;
   }
 
   .common-container {
@@ -83,6 +85,7 @@ export const JwtContainerStyled = styled.div`
           border-radius: 1rem;
           color: ${(props) => props.theme.colors.green[900]};
           background-color: ${(props) => props.theme.colors.green[1000]}1A;
+          cursor: pointer;
           img {
             margin-left: 0.5rem;
           }
@@ -176,6 +179,13 @@ export const ExplanationContainerStyled = styled.article`
         list-style: disc inside;
       }
     }
+  }
+
+  .structure-img{
+    width: 100%;
+    position: relative;
+    height: 55rem;
+    margin: 0;
   }
 `;
 
