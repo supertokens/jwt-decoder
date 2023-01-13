@@ -26,7 +26,6 @@ export const theme = {
       1000: "#0c6e23",
     },
     grey: {
-
       600: '#F8F9FC',
       700: "#ADB4C1",
       750: '#606060',

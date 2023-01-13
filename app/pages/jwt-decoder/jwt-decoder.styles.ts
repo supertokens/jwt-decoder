@@ -82,6 +82,9 @@ export const JwtContainerStyled = styled.div`
           border-radius: 1rem;
           color: ${(props) => props.theme.colors.green[900]};
           background-color: ${(props) => props.theme.colors.green[1000]}1A;
+          img{
+            margin-left: .5rem;
+          }
         }
       }
 

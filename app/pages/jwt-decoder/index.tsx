@@ -1,11 +1,12 @@
 import Image from "next/image"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import ExplanationContent from "./explanation-content.component"
 import { JwtContainerStyled } from "./jwt-decoder.styles"
 import Dropdown, { type IDropdownOption } from "../../components/dropdown/dropdown.component"
-// import "../style/jwt-decoder.module.css";
+import Popover from "../../components/popover/popover.component"
+import jwt_decode from "jwt-decode";
 
-const algorithmOptions:IDropdownOption[] = [
+const algorithmOptions: IDropdownOption[] = [
   {
     label: "HS256",
     value: "HS256",
@@ -28,9 +29,21 @@ const algorithmOptions:IDropdownOption[] = [
   }
 ]
 
+const sampleToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NjU3MjQyNzMsImV4cCI6MTY5NzI2MDI3MywiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9.4d7mG0jzELVxjwbYTZxH_OjhC4h3lFI0YTEZYzmmmNc'
+
+const sampleToken2 = 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiZG9udHJlbWVtYmVyIiwiSXNzdWVyIjoiSXNzdWVyIiwiVXNlcm5hbWUiOiJzb21lb25lIiwiZXhwIjoxNjczNjAzODgzLCJpYXQiOjE2NzM2MDM4ODN9.IAI3so_yuxr_8QUgbXBPr8JtoK_fAX7hXqR1xadiWLQ'
+
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0])
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
+  const [tokenContent, setTokenContent] = useState(sampleToken);
+  const [decodedText, setDecodedText] = useState("");
+
+  useEffect(() => {
+    // const decoded = jwt_decode(tokenContent);
+    setDecodedText(jwt_decode(tokenContent))
+  }, [tokenContent])
+
 
   return (
     <JwtContainerStyled className="jwt-decoder-container">
@@ -44,13 +57,16 @@ const JwtDecoder = () => {
                   JWT
                 </span>
                 <span>
-                  <Image src={"images/help.svg"} alt="help" width={10} height={10} />
+                  <Popover popoverContent={"Some popover content from parent"}>
+                    <Image src={"images/help.svg"} alt="help" width={10} height={10} />
+                  </Popover>
                 </span>
               </div>
               <div className="content inner-content">
                 <div className="token code">
-                  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NjU3MjQyNzMsImV4cCI6MTY5NzI2MDI3MywiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9.4d7mG0jzELVxjwbYTZxH_OjhC4h3lFI0YTEZYzmmmNc
+                  {tokenContent}
                 </div>
+
                 <button className="copy-btn">
                   Copy JWT
                   <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />
@@ -61,7 +77,7 @@ const JwtDecoder = () => {
             <div className="input-container common-container">
               <div className="title-band bt-inherit" id="header">
                 <div>Header</div>
-                <div><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm}/></div>
+                <div><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
               </div>
               <div className="inner-content header code">{JSON.stringify({
                 "alg": "HS256",
@@ -69,13 +85,7 @@ const JwtDecoder = () => {
               })}</div>
               <div className="title-band" id="payload">Payload</div>
               <div className="inner-content code">
-                {JSON.stringify({
-                  "iss": "SuperTokens.io",
-                  "sub": "evander",
-                  "aud": "antonio",
-                  "iat": 1665729065,
-                  "exp": 1665729665
-                }, null, 2)}
+                {JSON.stringify(decodedText, null, 2)}
               </div>
               <div className="title-band" id="signing-key">Signing Key</div>
               <div className="inner-content signing-key code">
