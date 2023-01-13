@@ -1,3 +1,4 @@
+import Image from "next/image"
 import React from "react"
 
 const ExplanationContent = () => {
@@ -22,14 +23,28 @@ const ExplanationContent = () => {
             A JWT contains three parts:
           </p>
           <ul>
-            <li>Header: Consists of two parts: 
+            <li>Header: Consists of two parts:
               <ul>
                 <li>
-                The signing algorithm that’s being used.
+                  The signing algorithm that’s being used.
+                </li>
+                <li>
+                  The type of token, which, in this case, is mostly “JWT”
                 </li>
               </ul>
             </li>
+            <li>
+              Payload: The payload contains
+            </li>
+            <li>
+              Signature: Signature contains xyz
+            </li>
           </ul>
+          <Image src={"/images/structure-of-jwt.png"} alt='Structure of a JSON Web Token'
+          width={"500"}
+          height={100}
+            style={{ objectFit: "contain", height: "fit-content" }}
+          />
         </div>
       </section>
 

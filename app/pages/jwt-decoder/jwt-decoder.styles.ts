@@ -41,7 +41,16 @@ export const JwtContainerStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &+.code {
+      height: 15rem;
+    }
   }
+
+  #payload +.code{
+    height: 22rem;
+  }
+
 
   .decoder-main-container {
     display: flex;
@@ -72,7 +81,7 @@ export const JwtContainerStyled = styled.div`
           font-variation-settings: 'wght' 500;
           border-radius: 1rem;
           color: ${(props) => props.theme.colors.green[900]};
-          background-color: transparent;
+          background-color: ${(props) => props.theme.colors.green[1000]}1A;
         }
       }
 
@@ -85,19 +94,12 @@ export const JwtContainerStyled = styled.div`
 
     .input-container {
       flex: 1;
-
-      .inner-content.payload {
-        min-height: 15rem;
-      }
     }
   }
 
   .code {
-    font-family: ${(props) => props.theme.fontFamily.rubik};
-  }
-
-  .code-alternate {
     font-family: ${(props) => props.theme.fontFamily.menlo};
+    overflow-y: auto;
   }
 
   .note-container-outer {
@@ -126,7 +128,7 @@ export const JwtContainerStyled = styled.div`
     span[role='button'] {
       cursor: pointer;
       padding: 1.2rem 3rem;
-      background-color: ${props=>props.theme.colors.dark[800]};
+      background-color: ${(props) => props.theme.colors.dark[800]};
       border-radius: 0 0 2.5rem 2.5rem;
     }
 

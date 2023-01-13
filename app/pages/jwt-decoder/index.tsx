@@ -63,12 +63,12 @@ const JwtDecoder = () => {
                 <div>Header</div>
                 <div><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm}/></div>
               </div>
-              <div className="inner-content code-alternate">{JSON.stringify({
+              <div className="inner-content header code">{JSON.stringify({
                 "alg": "HS256",
                 "typ": "jwt"
               })}</div>
-              <div className="title-band">Payload</div>
-              <div className="inner-content payload code">
+              <div className="title-band" id="payload">Payload</div>
+              <div className="inner-content code">
                 {JSON.stringify({
                   "iss": "SuperTokens.io",
                   "sub": "evander",
@@ -77,8 +77,8 @@ const JwtDecoder = () => {
                   "exp": 1665729665
                 }, null, 2)}
               </div>
-              <div className="title-band">Signing Key</div>
-              <div className="inner-content signing-key code-alternate">
+              <div className="title-band" id="signing-key">Signing Key</div>
+              <div className="inner-content signing-key code">
                 MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4JJaPHjlrh/
                 gDnVOHISFE59M8MkojCbhZ9
               </div>

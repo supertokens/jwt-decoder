@@ -51,8 +51,8 @@ export const theme = {
     medium: "1.4rem",
   },
   fontFamily: {
-    rubik: `"Rubik", "Menlo", monospace`,
-    menlo: `"Menlo", "Rubik", monospace`
+    menlo: `"Menlo", monospace`,
+    roboto: `"Roboto", sans-serif`
   },
   paddingMargins: {
     medium: "1.6rem"

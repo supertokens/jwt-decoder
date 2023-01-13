@@ -6,11 +6,9 @@ import "../styles/global.css"
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <Theme>
       <GlobalStyle />
-      <Theme>
-        <Component {...pageProps} />
-      </Theme>
-    </>
+      <Component {...pageProps} />
+    </Theme>
   );
 }

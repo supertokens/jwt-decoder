@@ -12,7 +12,7 @@ html {
 body {
   font-size: 1.6rem;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: ${props=>props.theme.fontFamily.roboto};
 }
 
 .flex-center-y {
@@ -32,6 +32,26 @@ ${[100, 200, 300, 400, 500, 600, 700, 800].map(
   }
 `
 )}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: ${props=>props.theme.colors.grey[750]} transparent;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  width: .7rem;
+}
+*::-webkit-scrollbar-track {
+  border-radius: .5rem;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: .5rem;
+  background-color: ${props=>props.theme.colors.grey[750]};
+}
 
 `;
 
