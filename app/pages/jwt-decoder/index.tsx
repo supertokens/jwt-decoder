@@ -2,52 +2,21 @@ import Image from "next/image"
 import React, { useEffect, useState } from "react"
 import ExplanationContent from "../../components/jwt-decoder/explanation-content.component"
 import { JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
-import Dropdown, { type IDropdownOption } from "../../components/common/dropdown/dropdown.component"
+import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
 import TokenInput from "../../components/jwt-decoder/token-input.component"
 import jwt_decode from "jwt-decode";
 import useMediaQuery from "../../hooks/useMediaQuery"
 import { useAppTheme } from "../../assets/global-styles/theme"
-
-const algorithmOptions: IDropdownOption[] = [
-  {
-    label: "HS256",
-    value: "HS256",
-  },
-  {
-    label: "ES256",
-    value: "ES256",
-  },
-  {
-    label: "RS256",
-    value: "RS256",
-  },
-  {
-    label: "PS256",
-    value: "PS256",
-  },
-  {
-    label: "EdDSA",
-    value: "EdDSA",
-  }
-]
+import {algorithmOptions, optionsList, TOption} from "../../assets/constants"
 
 const sampleToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NjU3MjQyNzMsImV4cCI6MTY5NzI2MDI3MywiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9.4d7mG0jzELVxjwbYTZxH_OjhC4h3lFI0YTEZYzmmmNc'
 
 const sampleToken2 = 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiZG9udHJlbWVtYmVyIiwiSXNzdWVyIjoiSXNzdWVyIiwiVXNlcm5hbWUiOiJzb21lb25lIiwiZXhwIjoxNjczNjAzODgzLCJpYXQiOjE2NzM2MDM4ODN9.IAI3so_yuxr_8QUgbXBPr8JtoK_fAX7hXqR1xadiWLQ'
 
-type TOption = "encoded" | "decoded"
+const sampleSigningKey = 'MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4JJaPHjlrh/gDnVOHISFE59M8MkojCbhZ9'
 
-const optionsList: {label: string, value: TOption}[] = [
-  {
-    label: "Encoded",
-    value: "encoded",
-  },
-  {
-    label: "Decoded",
-    value: "decoded"
-  }
-]
+const sampleSigningKey2 = ""
 
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
@@ -55,28 +24,32 @@ const JwtDecoder = () => {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
   const [tokenValue, setTokenValue] = useState(sampleToken);
 
-  const [decodedText, setDecodedText] = useState("");
+  const [decodedPayload, setDecodedPayload] = useState("");
   const [showTokenError, setShowTokenError] = useState(false);
+
+  const [signingKey, setSigningKey] = useState(sampleSigningKey2);
   
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded")
 
   const theme = useAppTheme();
   const isSmallerDisplay = useMediaQuery(`(max-width: ${theme.breakpoints.tablet})`)
 
-  useEffect(() => {
-    console.log(`isSmallerDisplay`, isSmallerDisplay)
-  }, [isSmallerDisplay])
 
   useEffect(() => {
     try {
       setShowTokenError(false);
       const decoded = jwt_decode<string>(tokenValue);
-      setDecodedText(decoded)
+      setDecodedPayload(JSON.stringify(decoded))
     } catch (error) {
       console.log(error)
       setShowTokenError(true);
     }
   }, [tokenValue])
+
+
+  const onPayloadChange = e => {
+    setDecodedPayload(e.target.value)
+  }
 
 
   return (
@@ -126,12 +99,10 @@ const JwtDecoder = () => {
                 "typ": "jwt"
               })}</div>
               <div className="title-band" id="payload">Payload</div>
-              <textarea className="inner-content code" value={JSON.stringify(decodedText, null, 2)} />
+              <textarea className="inner-content code" value={decodedPayload} onChange={onPayloadChange} />
               <div className="title-band" id="signing-key">Signing Key</div>
-              <div className="inner-content signing-key code">
-                MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4JJaPHjlrh/
-                gDnVOHISFE59M8MkojCbhZ9
-              </div>
+
+              <textarea className="inner-content signing-key code" value={signingKey} onChange={(e) => setSigningKey(e.target.value)} />
             </div>
           </section>
           <section className="common-container note-container-outer">
