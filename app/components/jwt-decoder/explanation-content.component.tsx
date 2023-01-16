@@ -1,6 +1,6 @@
 import Image from "next/image"
 import React from "react"
-import { ExplanationContainerStyled } from "./jwt-decoder.styles"
+import { ExplanationContainerStyled } from "../../pages/jwt-decoder/jwt-decoder.styles"
 
 const ExplanationContent = () => {
   return (

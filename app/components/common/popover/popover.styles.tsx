@@ -28,6 +28,20 @@ const PopoverContainer = styled.div`
       background-color: inherit;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    .popover-tooltip{
+      left: initial;
+      right: 2rem;
+      max-width: calc(100vw - 3rem);
+
+      ::before{
+        left: initial;
+        right: -1rem;
+        transform: rotate(180deg);
+      }
+    }
+  }
 `;
 
 export default PopoverContainer

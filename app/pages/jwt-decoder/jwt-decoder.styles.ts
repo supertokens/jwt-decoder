@@ -55,6 +55,10 @@ export const JwtContainerStyled = styled.div`
     height: 22rem;
   }
 
+  #signing-key + .code{
+    word-break: break-all;
+  }
+
   .decoder-main-container {
     display: flex;
     aside.decoded {
@@ -141,6 +145,34 @@ export const JwtContainerStyled = styled.div`
 
     .down-chevron {
       filter: brightness(2);
+    }
+  }
+
+  textarea.code{
+    height: 100%;
+    width: 100%;
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    resize: none;
+    outline: none;
+    font-size: ${props=>props.theme.fontSizes.medium};
+  }
+
+  @media screen and (max-width: 768px) {
+    &.jwt-decoder-container main.inner-container{
+      padding-block: 3.5rem;
+    }
+
+    .decoder-main-container{
+      flex-direction: column; 
+      aside.decoded{
+        width: 100%;
+      }
+    }
+    
+    .note-container-outer{
+      margin-left: 0;
     }
   }
 `;

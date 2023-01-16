@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useRef, useState } from "react"
 import { DropdownContainer } from "./dropdown.styles"
-import useOnClickOutside from "../../hooks/useOnClickOutside"
+import useOnClickOutside from "../../../hooks/useOnClickOutside"
 
 export interface IDropdownOption {
   label: string;

@@ -1,10 +1,12 @@
 import Image from "next/image"
 import React, { useEffect, useState } from "react"
-import ExplanationContent from "./explanation-content.component"
+import ExplanationContent from "../../components/jwt-decoder/explanation-content.component"
 import { JwtContainerStyled } from "./jwt-decoder.styles"
-import Dropdown, { type IDropdownOption } from "../../components/dropdown/dropdown.component"
-import Popover from "../../components/popover/popover.component"
+import Dropdown, { type IDropdownOption } from "../../components/common/dropdown/dropdown.component"
+import Popover from "../../components/common/popover/popover.component"
+import TokenInput from "../../components/jwt-decoder/token-input.component"
 import jwt_decode from "jwt-decode";
+import useMediaQuery from "../../hooks/useMediaQuery"
 
 const algorithmOptions: IDropdownOption[] = [
   {
@@ -36,13 +38,27 @@ const sampleToken2 = 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiZG9udHJlbWVtYmVyIiwiSXNzd
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
-  const [tokenContent, setTokenContent] = useState(sampleToken);
+  const [tokenValue, setTokenValue] = useState(sampleToken);
   const [decodedText, setDecodedText] = useState("");
+  const [showTokenError, setShowTokenError] = useState(false);
+  const [selectedTab, setSelectedTab] = useState<"encoded" | "decoded">("encoded")
+
+  const isSmallerDisplay = useMediaQuery('(max-width: 768px)')
+
+  useEffect(()=>{
+    console.log(`isSmallerDisplay`, isSmallerDisplay)
+  },[isSmallerDisplay])
 
   useEffect(() => {
-    // const decoded = jwt_decode(tokenContent);
-    setDecodedText(jwt_decode(tokenContent))
-  }, [tokenContent])
+    try {
+      setShowTokenError(false);
+      const decoded = jwt_decode<string>(tokenValue);
+      setDecodedText(decoded)
+    } catch (error) {
+      console.log(error)
+      setShowTokenError(true);
+    }
+  }, [tokenValue])
 
 
   return (
@@ -63,16 +79,17 @@ const JwtDecoder = () => {
                 </span>
               </div>
               <div className="content inner-content">
-                <div className="token code">
-                  {tokenContent}
-                </div>
+                {/* <div className="token code"> */}
+                {/* <TokenInput value={tokenValue} setValue={setTokenValue} /> */}
+                <textarea className="token code" value={tokenValue} onChange={(e) => setTokenValue(e.target.value)} />
+                {/* {tokenContent} */}
+                {/* </div> */}
 
                 <button className="copy-btn">
                   Copy JWT
                   <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />
                 </button>
               </div>
-
             </aside>
             <div className="input-container common-container">
               <div className="title-band bt-inherit" id="header">
@@ -80,13 +97,11 @@ const JwtDecoder = () => {
                 <div><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
               </div>
               <div className="inner-content header code">{JSON.stringify({
-                "alg": "HS256",
+                "alg": selectedAlgorithm.label,
                 "typ": "jwt"
               })}</div>
               <div className="title-band" id="payload">Payload</div>
-              <div className="inner-content code">
-                {JSON.stringify(decodedText, null, 2)}
-              </div>
+              <textarea className="inner-content code" value={JSON.stringify(decodedText, null, 2)} />
               <div className="title-band" id="signing-key">Signing Key</div>
               <div className="inner-content signing-key code">
                 MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4JJaPHjlrh/
