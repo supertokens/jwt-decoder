@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider, useTheme } from "styled-components";
 
 export const theme = {
   colors: {
@@ -35,6 +35,7 @@ export const theme = {
       700: "#ADB4C1",
       750: '#606060',
       800: '#5e5e5e',
+      810: '#5D5D5D',
       850: '#2a2a2a',
       900: "#6c6f76",
       950: '#323232',
@@ -57,11 +58,19 @@ export const theme = {
   },
   paddingMargins: {
     medium: "1.6rem"
+  },
+  breakpoints: {
+    tablet: '768px'
   }
 };
 
 const Theme = ({ children }: { children: React.ReactNode }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
+
+export const useAppTheme = () => {
+  const appTheme = useTheme() as typeof theme;
+  return appTheme
+}
 
 export default Theme;

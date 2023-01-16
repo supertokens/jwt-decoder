@@ -1,12 +1,13 @@
 import Image from "next/image"
 import React, { useEffect, useState } from "react"
 import ExplanationContent from "../../components/jwt-decoder/explanation-content.component"
-import { JwtContainerStyled } from "./jwt-decoder.styles"
+import { JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown, { type IDropdownOption } from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
 import TokenInput from "../../components/jwt-decoder/token-input.component"
 import jwt_decode from "jwt-decode";
 import useMediaQuery from "../../hooks/useMediaQuery"
+import { useAppTheme } from "../../assets/global-styles/theme"
 
 const algorithmOptions: IDropdownOption[] = [
   {
@@ -35,19 +36,33 @@ const sampleToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSl
 
 const sampleToken2 = 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiZG9udHJlbWVtYmVyIiwiSXNzdWVyIjoiSXNzdWVyIiwiVXNlcm5hbWUiOiJzb21lb25lIiwiZXhwIjoxNjczNjAzODgzLCJpYXQiOjE2NzM2MDM4ODN9.IAI3so_yuxr_8QUgbXBPr8JtoK_fAX7hXqR1xadiWLQ'
 
+type TOption = "encoded" | "decoded"
+
+const optionsList: {label: string, value: TOption}[] = [
+  {
+    label: "Encoded",
+    value: "encoded",
+  },
+  {
+    label: "Decoded",
+    value: "decoded"
+  }
+]
+
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
   const [tokenValue, setTokenValue] = useState(sampleToken);
   const [decodedText, setDecodedText] = useState("");
   const [showTokenError, setShowTokenError] = useState(false);
-  const [selectedTab, setSelectedTab] = useState<"encoded" | "decoded">("encoded")
+  const [selectedTab, setSelectedTab] = useState<TOption>("encoded")
 
-  const isSmallerDisplay = useMediaQuery('(max-width: 768px)')
+  const theme = useAppTheme();
+  const isSmallerDisplay = useMediaQuery(`(max-width: ${theme.breakpoints.tablet})`)
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(`isSmallerDisplay`, isSmallerDisplay)
-  },[isSmallerDisplay])
+  }, [isSmallerDisplay])
 
   useEffect(() => {
     try {
@@ -67,6 +82,15 @@ const JwtDecoder = () => {
         <article className="hero-container">
           <h3 className="title">JWT Decoder</h3>
           <section className="decoder-main-container">
+
+            <TabContainer className="common-container tab-container">
+              {
+                optionsList.map(({label, value}) => <TabOption onClick={()=>setSelectedTab(value)} className="strong-600" key={value} isSelected={selectedTab === value}>
+                  {label}
+                </TabOption>)
+              }
+            </TabContainer>
+
             <aside className="decoded common-container">
               <div className="title-band bt-inherit header flex-center-y">
                 <span>

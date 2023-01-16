@@ -18,7 +18,7 @@ export const JwtContainerStyled = styled.div`
   .title {
     font-size: 3.2rem;
     font-weight: 700;
-    margin:0;
+    margin: 0;
     margin-block-end: 3rem;
   }
 
@@ -48,6 +48,7 @@ export const JwtContainerStyled = styled.div`
 
     & + .code {
       height: 15rem;
+      word-break: break-all;
     }
   }
 
@@ -55,7 +56,7 @@ export const JwtContainerStyled = styled.div`
     height: 22rem;
   }
 
-  #signing-key + .code{
+  #signing-key + .code {
     word-break: break-all;
   }
 
@@ -148,7 +149,7 @@ export const JwtContainerStyled = styled.div`
     }
   }
 
-  textarea.code{
+  textarea.code {
     height: 100%;
     width: 100%;
     border: none;
@@ -156,23 +157,37 @@ export const JwtContainerStyled = styled.div`
     color: inherit;
     resize: none;
     outline: none;
-    font-size: ${props=>props.theme.fontSizes.medium};
+    font-size: ${(props) => props.theme.fontSizes.medium};
   }
 
-  @media screen and (max-width: 768px) {
-    &.jwt-decoder-container main.inner-container{
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    &.jwt-decoder-container main.inner-container {
       padding-block: 3.5rem;
     }
 
-    .decoder-main-container{
-      flex-direction: column; 
-      aside.decoded{
+    .decoder-main-container {
+      flex-direction: column;
+      aside.decoded {
         width: 100%;
+
+        .content .token {
+          height: 60vh;
+        }
       }
     }
-    
-    .note-container-outer{
+
+    .tab-container{
+      margin-block-end: .9rem;
+    }
+
+    .note-container-outer {
       margin-left: 0;
+      padding: 1.2rem 1.6rem;
+      text-align: left;
+    }
+
+    .hero-container {
+      padding-inline: 2.6rem;
     }
   }
 `;
@@ -184,41 +199,73 @@ export const ExplanationContainerStyled = styled.article`
     }
   }
 
-  ul{
+  ul {
     padding: 0;
   }
 
-  ul.parts-of-jwt{
-    &>li{
+  ul.parts-of-jwt {
+    & > li {
       display: flex;
       margin-bottom: 1.5rem;
-      & > :not(:last-child){
-        margin-right: .5rem;
+      & > :not(:last-child) {
+        margin-right: 0.5rem;
       }
-      span.header{
-        color: ${props=>props.theme.colors.red[200]};
-      }
-
-      span.payload{
-        color: ${props=>props.theme.colors.purple[200]};
+      span.header {
+        color: ${(props) => props.theme.colors.red[200]};
       }
 
-      span.signature{
-        color: ${props=>props.theme.colors.blue[200]};
+      span.payload {
+        color: ${(props) => props.theme.colors.purple[200]};
       }
 
-      .description ul{
+      span.signature {
+        color: ${(props) => props.theme.colors.blue[200]};
+      }
+
+      .description ul {
         list-style: disc inside;
       }
     }
   }
 
-  .structure-img{
+  .structure-img {
     width: 100%;
     position: relative;
     height: 55rem;
     margin: 0;
   }
+
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    & ul.parts-of-jwt li {
+      & > :not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+`;
+
+export const TabContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .3rem;
+  &&& {
+    border-radius: .7rem;
+  }
+`;
+
+export const TabOption = styled.div<{ isSelected?: boolean }>`
+  flex: 1;
+  padding: .7rem 2.2rem;
+  text-align: center;
+  line-height: 1.875rem;
+  color: ${props=>props.theme.colors.grey[810]};
+  border-radius: .7rem;
+
+  ${props=>props.isSelected && `
+    background-color: ${props.theme.colors.light[1000]}
+  `}
 `;
 
 export default JwtContainerStyled;

@@ -29,7 +29,7 @@ const PopoverContainer = styled.div`
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: ${props=>props.theme.breakpoints.tablet}) {
     .popover-tooltip{
       left: initial;
       right: 2rem;
