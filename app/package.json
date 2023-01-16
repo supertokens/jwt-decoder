@@ -11,6 +11,7 @@
     "@types/styled-components": "^5.1.26",
     "@uiw/react-codemirror": "^4.19.6",
     "codemirror": "^6.0.1",
+    "jose": "^4.11.2",
     "jwt-decode": "^3.1.2",
     "next": "latest",
     "react": "18.2.0",

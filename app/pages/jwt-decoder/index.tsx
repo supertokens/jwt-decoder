@@ -51,10 +51,13 @@ const optionsList: {label: string, value: TOption}[] = [
 
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
+
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
   const [tokenValue, setTokenValue] = useState(sampleToken);
+
   const [decodedText, setDecodedText] = useState("");
   const [showTokenError, setShowTokenError] = useState(false);
+  
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded")
 
   const theme = useAppTheme();
@@ -103,11 +106,9 @@ const JwtDecoder = () => {
                 </span>
               </div>
               <div className="content inner-content">
-                {/* <div className="token code"> */}
                 {/* <TokenInput value={tokenValue} setValue={setTokenValue} /> */}
                 <textarea className="token code" value={tokenValue} onChange={(e) => setTokenValue(e.target.value)} />
-                {/* {tokenContent} */}
-                {/* </div> */}
+               
 
                 <button className="copy-btn strong-600">
                   Copy JWT

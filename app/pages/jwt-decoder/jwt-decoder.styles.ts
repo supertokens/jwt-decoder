@@ -170,6 +170,8 @@ export const JwtContainerStyled = styled.div`
   }
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    padding-inline: 2.6rem;
+
     &.jwt-decoder-container main.inner-container {
       padding-block: 3.5rem;
     }
@@ -194,10 +196,6 @@ export const JwtContainerStyled = styled.div`
       margin-left: 0;
       padding: 1.2rem 1.6rem;
       text-align: left;
-    }
-
-    .hero-container {
-      padding-inline: 2.6rem;
     }
   }
 `;
