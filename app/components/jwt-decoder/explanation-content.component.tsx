@@ -59,6 +59,10 @@ const ExplanationContent = () => {
         </div>
       </section>
 
+      <p>
+      You can find our complete guide on how JWT works and how you can generate JWTs in this blog.
+      </p>
+
 
     </ExplanationContainerStyled>
   )

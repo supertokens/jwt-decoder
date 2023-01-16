@@ -45,10 +45,15 @@ export const JwtContainerStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-block: .5rem;
 
     & + .code {
       height: 15rem;
       word-break: break-all;
+    }
+
+    .dropdown-outer .dropdown-container{
+      height: 3rem;
     }
   }
 
@@ -134,6 +139,10 @@ export const JwtContainerStyled = styled.div`
     margin-block-end: 0;
   }
 
+  .tab-container{
+    display: none;
+  }
+
   .read-more-container {
     display: flex;
     justify-content: center;
@@ -177,6 +186,7 @@ export const JwtContainerStyled = styled.div`
     }
 
     .tab-container{
+      display: flex;
       margin-block-end: .9rem;
     }
 
@@ -262,6 +272,7 @@ export const TabOption = styled.div<{ isSelected?: boolean }>`
   line-height: 1.875rem;
   color: ${props=>props.theme.colors.grey[810]};
   border-radius: .7rem;
+  cursor: pointer;
 
   ${props=>props.isSelected && `
     background-color: ${props.theme.colors.light[1000]}

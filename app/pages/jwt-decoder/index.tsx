@@ -109,7 +109,7 @@ const JwtDecoder = () => {
                 {/* {tokenContent} */}
                 {/* </div> */}
 
-                <button className="copy-btn">
+                <button className="copy-btn strong-600">
                   Copy JWT
                   <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />
                 </button>
@@ -118,7 +118,7 @@ const JwtDecoder = () => {
             <div className="input-container common-container">
               <div className="title-band bt-inherit" id="header">
                 <div>Header</div>
-                <div><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
+                <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
               </div>
               <div className="inner-content header code">{JSON.stringify({
                 "alg": selectedAlgorithm.label,
