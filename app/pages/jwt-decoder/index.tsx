@@ -7,7 +7,7 @@ import Popover from "../../components/common/popover/popover.component"
 import TokenInput from "../../components/jwt-decoder/token-input.component"
 import jwt_decode from "jwt-decode";
 import { useAppTheme } from "../../assets/global-styles/theme"
-import { algorithmOptions, optionsList, TOption } from "../../assets/constants"
+import { algorithmOptions, defaultTokens, optionsList, TOption } from "../../assets/constants"
 import * as jose from 'jose'
 
 // Create a JWT with a payload
@@ -77,7 +77,7 @@ const JwtDecoder = () => {
       .setIssuer('urn:example:issuer')
       .setAudience('urn:example:audience')
       .setExpirationTime('2h')
-      .sign(secret);
+      // .sign(secret);
   }
 
   useEffect(() => {
@@ -86,9 +86,12 @@ const JwtDecoder = () => {
     } else {
       generateAndSetJwt();
     }
-  }, [selectedAlgorithm, signingKey, payload]);
+  }, [signingKey, payload]);
 
-  
+
+  useEffect(() => {
+    setTokenValue(defaultTokens[selectedAlgorithm.value])
+  }, [selectedAlgorithm])
 
   const onPayloadChange = e => {
     setPayload(e.target.value)

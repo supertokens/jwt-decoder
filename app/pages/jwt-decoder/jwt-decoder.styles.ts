@@ -64,6 +64,7 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
 
   #signing-key + .code {
     word-break: break-all;
+    height: fit-content;
   }
 
   .decoder-main-container {
