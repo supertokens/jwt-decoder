@@ -6,9 +6,16 @@ import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
 import TokenInput from "../../components/jwt-decoder/token-input.component"
 import jwt_decode from "jwt-decode";
-import useMediaQuery from "../../hooks/useMediaQuery"
 import { useAppTheme } from "../../assets/global-styles/theme"
-import {algorithmOptions, optionsList, TOption} from "../../assets/constants"
+import { algorithmOptions, optionsList, TOption } from "../../assets/constants"
+import * as jose from 'jose'
+
+// Create a JWT with a payload
+const payload = {
+  name: "John Doe",
+  email: "johndoe@example.com"
+};
+
 
 const sampleToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NjU3MjQyNzMsImV4cCI6MTY5NzI2MDI3MywiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9.4d7mG0jzELVxjwbYTZxH_OjhC4h3lFI0YTEZYzmmmNc'
 
@@ -24,22 +31,21 @@ const JwtDecoder = () => {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
   const [tokenValue, setTokenValue] = useState(sampleToken);
 
-  const [decodedPayload, setDecodedPayload] = useState("");
+  const [payload, setPayload] = useState("");
   const [showTokenError, setShowTokenError] = useState(false);
 
   const [signingKey, setSigningKey] = useState(sampleSigningKey2);
-  
+
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded")
 
   const theme = useAppTheme();
-  const isSmallerDisplay = useMediaQuery(`(max-width: ${theme.breakpoints.tablet})`)
-
 
   useEffect(() => {
     try {
       setShowTokenError(false);
       const decoded = jwt_decode<string>(tokenValue);
-      setDecodedPayload(JSON.stringify(decoded))
+      console.log(decoded, '@@@@@@@')
+      setPayload(JSON.stringify(decoded))
     } catch (error) {
       console.log(error)
       setShowTokenError(true);
@@ -47,27 +53,60 @@ const JwtDecoder = () => {
   }, [tokenValue])
 
 
-  const onPayloadChange = e => {
-    setDecodedPayload(e.target.value)
+  const decodeJwt = async () => {
+    const secret = jose.base64url.decode('zH4NRP1HMALxxCFnRZABFA7GOJtzU_gIj02alfL1lvI')
+    const jwt =
+      'eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MB66qstZBPxAXKdsjet_lA.WHbtJTl4taHp7otOHLq3hBvv0yNPsPEKHYInmCPdDDeyV1kU-f-tGEiU4FxlSqkqAT2hVs8_wMNiQFAzPU1PUgIqWCPsBrPP3TtxYsrtwagpn4SvCsUsx0Mhw9ZhliAO8CLmCBQkqr_T9AcYsz5uZw.7nX9m7BGUu_u1p1qFHzyIg'
+
+    const { payload, protectedHeader } = await jose.jwtDecrypt(jwt, secret, {
+      issuer: 'urn:example:issuer',
+      audience: 'urn:example:audience',
+    })
+
+    console.log(protectedHeader)
+    console.log(payload)
   }
 
+  const generateAndSetJwt = async () => {
+    const secret = new TextEncoder().encode(
+      's',
+    )
+    const jwt = await new jose.SignJWT({ 'urn:example:claim': true, payload })
+      .setProtectedHeader({ alg: selectedAlgorithm.value, typ: "jwt" })
+      .setIssuedAt()
+      .setIssuer('urn:example:issuer')
+      .setAudience('urn:example:audience')
+      .setExpirationTime('2h')
+      .sign(secret);
+  }
+
+  useEffect(() => {
+    if (selectedAlgorithm.value === 'RS256') {
+      setTokenValue("")
+    } else {
+      generateAndSetJwt();
+    }
+  }, [selectedAlgorithm, signingKey, payload]);
+
+  const onPayloadChange = e => {
+    setPayload(e.target.value)
+  }
 
   return (
-    <JwtContainerStyled className="jwt-decoder-container">
+    <JwtContainerStyled $selectedTab={selectedTab} className="jwt-decoder-container">
       <main className="inner-container">
         <article className="hero-container">
           <h3 className="title">JWT Decoder</h3>
           <section className="decoder-main-container">
-
             <TabContainer className="common-container tab-container">
               {
-                optionsList.map(({label, value}) => <TabOption onClick={()=>setSelectedTab(value)} className="strong-600" key={value} isSelected={selectedTab === value}>
+                optionsList.map(({ label, value }) => <TabOption onClick={() => setSelectedTab(value)} className="strong-600" key={value} isSelected={selectedTab === value}>
                   {label}
                 </TabOption>)
               }
             </TabContainer>
 
-            <aside className="decoded common-container">
+            <aside id="encoded-content" className="encoded common-container">
               <div className="title-band bt-inherit header flex-center-y">
                 <span>
                   JWT
@@ -81,7 +120,7 @@ const JwtDecoder = () => {
               <div className="content inner-content">
                 {/* <TokenInput value={tokenValue} setValue={setTokenValue} /> */}
                 <textarea className="token code" value={tokenValue} onChange={(e) => setTokenValue(e.target.value)} />
-               
+
 
                 <button className="copy-btn strong-600">
                   Copy JWT
@@ -89,7 +128,8 @@ const JwtDecoder = () => {
                 </button>
               </div>
             </aside>
-            <div className="input-container common-container">
+
+            <div id="decoded-content" className="input-container common-container">
               <div className="title-band bt-inherit" id="header">
                 <div>Header</div>
                 <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
@@ -99,11 +139,13 @@ const JwtDecoder = () => {
                 "typ": "jwt"
               })}</div>
               <div className="title-band" id="payload">Payload</div>
-              <textarea className="inner-content code" value={decodedPayload} onChange={onPayloadChange} />
+              <textarea className="inner-content code" value={payload} onChange={onPayloadChange} />
               <div className="title-band" id="signing-key">Signing Key</div>
 
               <textarea className="inner-content signing-key code" value={signingKey} onChange={(e) => setSigningKey(e.target.value)} />
             </div>
+
+
           </section>
           <section className="common-container note-container-outer">
             <div className="inner note">

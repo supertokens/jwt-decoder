@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { TOption } from '../../assets/constants';
 
 const leftContentWidth = '31.5rem';
 
-export const JwtContainerStyled = styled.div`
+export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
   &.jwt-decoder-container {
     background-color: ${(props) => props.theme.colors.dark[1000]};
 
@@ -45,14 +46,14 @@ export const JwtContainerStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-block: .5rem;
+    padding-block: 0.5rem;
 
     & + .code {
       height: 15rem;
       word-break: break-all;
     }
 
-    .dropdown-outer .dropdown-container{
+    .dropdown-outer .dropdown-container {
       height: 3rem;
     }
   }
@@ -67,12 +68,12 @@ export const JwtContainerStyled = styled.div`
 
   .decoder-main-container {
     display: flex;
-    aside.decoded {
+    aside.encoded {
       width: ${leftContentWidth};
       margin-right: 2rem;
     }
 
-    .decoded {
+    .encoded {
       display: flex;
       flex-direction: column;
       .content {
@@ -139,7 +140,7 @@ export const JwtContainerStyled = styled.div`
     margin-block-end: 0;
   }
 
-  .tab-container{
+  .tab-container {
     display: none;
   }
 
@@ -178,7 +179,7 @@ export const JwtContainerStyled = styled.div`
 
     .decoder-main-container {
       flex-direction: column;
-      aside.decoded {
+      aside.encoded {
         width: 100%;
 
         .content .token {
@@ -187,9 +188,9 @@ export const JwtContainerStyled = styled.div`
       }
     }
 
-    .tab-container{
+    .tab-container {
       display: flex;
-      margin-block-end: .9rem;
+      margin-block-end: 0.9rem;
     }
 
     .note-container-outer {
@@ -197,6 +198,21 @@ export const JwtContainerStyled = styled.div`
       padding: 1.2rem 1.6rem;
       text-align: left;
     }
+
+    ${(props) => {
+      if (props.$selectedTab === 'encoded')
+        return `
+        #decoded-content {
+          display: none;
+        }
+      `;
+      else if (props.$selectedTab === 'decoded')
+        return `
+      #encoded-content {
+        display: none;
+      }
+    `;
+    }}
   }
 `;
 
@@ -257,22 +273,24 @@ export const TabContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: .3rem;
+  padding: 0.3rem;
   &&& {
-    border-radius: .7rem;
+    border-radius: 0.7rem;
   }
 `;
 
 export const TabOption = styled.div<{ isSelected?: boolean }>`
   flex: 1;
-  padding: .7rem 2.2rem;
+  padding: 0.7rem 2.2rem;
   text-align: center;
   line-height: 1.875rem;
-  color: ${props=>props.theme.colors.grey[810]};
-  border-radius: .7rem;
+  color: ${(props) => props.theme.colors.grey[810]};
+  border-radius: 0.7rem;
   cursor: pointer;
 
-  ${props=>props.isSelected && `
+  ${(props) =>
+    props.isSelected &&
+    `
     background-color: ${props.theme.colors.light[1000]}
   `}
 `;
