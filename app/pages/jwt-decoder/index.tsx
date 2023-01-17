@@ -88,6 +88,8 @@ const JwtDecoder = () => {
     }
   }, [selectedAlgorithm, signingKey, payload]);
 
+  
+
   const onPayloadChange = e => {
     setPayload(e.target.value)
   }

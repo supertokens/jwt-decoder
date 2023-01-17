@@ -1,36 +1,53 @@
-import { type IDropdownOption } from "../components/common/dropdown/dropdown.component"
+import { type IDropdownOption } from '../components/common/dropdown/dropdown.component';
+
+export enum Algorithms {
+  HS256 = 'HS256',
+  ES256 = 'ES256',
+  RS256 = 'RS256',
+  PS256 = 'PS256',
+  EdDSA = 'EdDSA',
+}
+
 export const algorithmOptions: IDropdownOption[] = [
   {
-    label: "HS256",
-    value: "HS256",
+    label: 'HS256',
+    value: Algorithms.HS256,
   },
   {
-    label: "ES256",
-    value: "ES256",
+    label: 'ES256',
+    value: Algorithms.ES256,
   },
   {
-    label: "RS256",
-    value: "RS256",
+    label: 'RS256',
+    value: Algorithms.RS256,
   },
   {
-    label: "PS256",
-    value: "PS256",
+    label: 'PS256',
+    value: Algorithms.PS256,
   },
   {
-    label: "EdDSA",
-    value: "EdDSA",
-  }
-]
+    label: 'EdDSA',
+    value: Algorithms.EdDSA,
+  },
+];
 
-export type TOption = "encoded" | "decoded"
+export type TOption = 'encoded' | 'decoded';
 
-export const optionsList: {label: string, value: TOption}[] = [
+export const optionsList: { label: string; value: TOption }[] = [
   {
-    label: "Encoded",
-    value: "encoded",
+    label: 'Encoded',
+    value: 'encoded',
   },
   {
-    label: "Decoded",
-    value: "decoded"
-  }
-]
+    label: 'Decoded',
+    value: 'decoded',
+  },
+];
+
+export const defaultTokens: { [key in Algorithms]: string } = {
+  [Algorithms.HS256]: ``,
+  [Algorithms.ES256]: ``,
+  [Algorithms.EdDSA]: ``,
+  [Algorithms.PS256]: ``,
+  [Algorithms.RS256]: ``,
+};
