@@ -86,6 +86,16 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
       display: flex;
       flex-direction: column;
 
+      .token-container{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .token.code{
+          position: relative;
+        }
+      }
+
       .title-band{
         justify-content: space-between;
       }
@@ -98,9 +108,10 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
 
         .token {
           line-height: 2.4rem;
+          flex: 1;
         }
 
-        .copy-btn {
+        #copy-btn {
           border: 1px solid ${(props) => props.theme.colors.green[1000]};
           padding-block: 1rem;
           text-align: center;
@@ -114,6 +125,14 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
             margin-left: 0.5rem;
           }
         }
+      }
+
+      .scroll-container{
+        position: absolute;
+        left: 0;
+        top: 0;
+        max-height: 100%;
+        overflow: auto;
       }
     }
 
@@ -191,9 +210,10 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
 
     .decoder-main-container {
       flex-direction: column;
-      aside.#encoded-content {
+      aside#encoded-content {
         width: 100%;
         .content .token {
+          min-height: 50vh;
           height: 60vh;
         }
       }
@@ -208,19 +228,23 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
       margin-left: 0;
       padding: 1.2rem 1.6rem;
       text-align: left;
+      .note{
+        padding-block: 0;
+        font-size: ${props=>props.theme.fontSizes.small};
+      }
     }
 
     ${(props) => {
       if (props.$selectedTab === 'encoded')
         return `
         #decoded-content {
-          display: none;
+          display: none!important;
         }
       `;
       else if (props.$selectedTab === 'decoded')
         return `
       #encoded-content {
-        display: none;
+        display: none!important;
       }
     `;
     }}

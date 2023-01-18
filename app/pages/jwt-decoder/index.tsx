@@ -48,15 +48,15 @@ const JwtDecoder = () => {
   const headerValue = JSON.stringify(header);
 
   const onPayloadChange = async (p: string) => {
-      setShowPayloadError(false);
-      setPayload(p);
-      populateTokenFromPayload(p);
+    setShowPayloadError(false);
+    setPayload(p);
+    populateTokenFromPayload(p);
   }
 
   const onTokenValueChange = async (t: string) => {
-      setShowJwtError(false);
-      setTokenValue(t);
-      populatePayloadFromToken(t);
+    setShowJwtError(false);
+    setTokenValue(t);
+    populatePayloadFromToken(t);
   }
 
   const populatePayloadFromToken = async (token: string) => {
@@ -72,18 +72,18 @@ const JwtDecoder = () => {
   const populateTokenFromPayload = async (payload: string) => {
     try {
       const secret = new TextEncoder().encode(signingKey)
-    const jwt = await new jose.SignJWT(JSON.parse(payload))
-      .setProtectedHeader(header)
-      .sign(secret);
-    setTokenValue(jwt);
+      const jwt = await new jose.SignJWT(JSON.parse(payload))
+        .setProtectedHeader(header)
+        .sign(secret);
+      setTokenValue(jwt);
     } catch (error) {
       setShowPayloadError(true);
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     populatePayloadFromToken(tokenValue);
-  },[])
+  }, [])
 
   const copyJwtClickHandler = async () => {
     try {
@@ -120,7 +120,7 @@ const JwtDecoder = () => {
               }
             </TabContainer>
             <aside id="encoded-content" className="common-container">
-              <InputContainer className="bt-inherit" $hasError={showJwtError}>
+              <InputContainer className="bt-inherit token-container" $hasError={showJwtError}>
                 <div className="title-band bt-inherit flex-center-y">
                   <span className="title-text">
                     JWT
@@ -131,14 +131,19 @@ const JwtDecoder = () => {
                     </Popover>
                   </span>
                 </div>
-                <div className="content inner-content bb-inherit">
+                <div className="content bb-inherit">
                   <div className="token code">
-                    <JWTInputEditor onChange={onTokenValueChange} value={tokenValue} />
+                    <div className="inner-content scroll-container">
+                      <JWTInputEditor onChange={onTokenValueChange} value={tokenValue} />
+                    </div>
                   </div>
-                  <button className="copy-btn strong-600" onClick={copyJwtClickHandler}>
-                    Copy JWT
-                    <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />
-                  </button>
+                  <div className="inner-content">
+                    <button id="copy-btn" className="strong-600" onClick={copyJwtClickHandler}>
+                      Copy JWT
+                      <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />
+                    </button>
+                  </div>
+
                 </div>
               </InputContainer>
             </aside>
@@ -149,20 +154,21 @@ const JwtDecoder = () => {
                 <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
               </div>
               <div className="inner-content code">
-                <InputEditor onValueChange={headerValueChangeHandler} 
-                value={headerValue}
-                 />
+                <InputEditor onValueChange={headerValueChangeHandler}
+                  value={headerValue}
+                />
               </div>
               <InputContainer $hasError={showPayloadError}>
                 <div className="title-band" id="payload">
                   <span className="title-text">Payload</span>
                 </div>
                 <div className="inner-content code">
-                  <InputEditor 
-                  value={payload}
-                  onChange={(value, viewUpdate)=>{
-                    onPayloadChange(value);
-                  }} />
+                  <InputEditor
+                    value={payload}
+                    onChange={(value, viewUpdate) => {
+                      console.log(viewUpdate.state.toJSON(), "@@@@@")
+                      onPayloadChange(value);
+                    }} />
                 </div>
               </InputContainer>
 

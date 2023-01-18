@@ -51,6 +51,7 @@ export const theme = {
     }
   },
   fontSizes: {
+    small: "1.4rem",
     medium: "1.6rem",
   },
   borderRadius: {
