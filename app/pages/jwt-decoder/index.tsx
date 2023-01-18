@@ -1,15 +1,12 @@
 import Image from "next/image"
 import React, { useEffect, useState } from "react"
 import ExplanationContent from "../../components/jwt-decoder/explanation-content.component"
-import { JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
+import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
-import TokenInput from "../../components/jwt-decoder/token-input.component"
-import jwt_decode from "jwt-decode";
-import { useAppTheme } from "../../assets/global-styles/theme"
 import { algorithmOptions, defaultTokens, optionsList, TOption } from "../../assets/constants"
 import * as jose from 'jose'
-import HighlightedEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
+import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 
 // Create a JWT with a payload
 const payload = {
@@ -32,62 +29,62 @@ const JwtDecoder = () => {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
   const [tokenValue, setTokenValue] = useState(sampleToken);
 
+  const [showJwtError, setShowJwtError] = useState(false);
+  const [showPayloadError, setShowPayloadError] = useState(false);
+
   const [payload, setPayload] = useState("");
-  const [showTokenError, setShowTokenError] = useState(false);
 
   const [signingKey, setSigningKey] = useState(sampleSigningKey2);
 
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded")
 
-  const theme = useAppTheme();
+  // useEffect(() => {
+  //   try {
+  //     setShowTokenError(false);
+  //     const decoded = jwt_decode<string>(tokenValue);
+  //     console.log(decoded, '@@@@@@@')
+  //     setPayload(JSON.stringify(decoded, null, 2))
+  //   } catch (error) {
+  //     console.log(error)
+  //     setShowTokenError(true);
+  //   }
+  // }, [tokenValue])
+
 
   useEffect(() => {
-    try {
-      setShowTokenError(false);
-      const decoded = jwt_decode<string>(tokenValue);
-      console.log(decoded, '@@@@@@@')
-      setPayload(JSON.stringify(decoded, null, 2))
-    } catch (error) {
-      console.log(error)
-      setShowTokenError(true);
+    const someFn = async () => {
+      try {
+        setShowJwtError(false);
+        const decoded = jose.decodeJwt(tokenValue);
+        // console.log(decoded, '@@@@@@JOSE')
+        // jose.EncryptJWT()
+        // Jose.JWT.Encode(payload, privateKey, JwsAlgorithm.RS25
+
+
+        setPayload(JSON.stringify(decoded, null, 2))
+      } catch (error) {
+        console.log(error)
+        setShowJwtError(true);
+      }
     }
+
+    someFn();
   }, [tokenValue])
 
 
   const decodeJwt = async () => {
-    const secret = jose.base64url.decode('zH4NRP1HMALxxCFnRZABFA7GOJtzU_gIj02alfL1lvI')
     const jwt =
       'eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MB66qstZBPxAXKdsjet_lA.WHbtJTl4taHp7otOHLq3hBvv0yNPsPEKHYInmCPdDDeyV1kU-f-tGEiU4FxlSqkqAT2hVs8_wMNiQFAzPU1PUgIqWCPsBrPP3TtxYsrtwagpn4SvCsUsx0Mhw9ZhliAO8CLmCBQkqr_T9AcYsz5uZw.7nX9m7BGUu_u1p1qFHzyIg'
-
-    const { payload, protectedHeader } = await jose.jwtDecrypt(jwt, secret, {
-      issuer: 'urn:example:issuer',
-      audience: 'urn:example:audience',
-    })
-
-    console.log(protectedHeader)
-    console.log(payload)
   }
 
   const generateAndSetJwt = async () => {
-    const secret = new TextEncoder().encode(
-      's',
-    )
-    const jwt = await new jose.SignJWT({ 'urn:example:claim': true, payload })
-      .setProtectedHeader({ alg: selectedAlgorithm.value, typ: "jwt" })
-      .setIssuedAt()
-      .setIssuer('urn:example:issuer')
-      .setAudience('urn:example:audience')
-      .setExpirationTime('2h')
-    // .sign(secret);
+
   }
 
+
   useEffect(() => {
-    if (selectedAlgorithm.value === 'RS256') {
-      setTokenValue("")
-    } else {
-      generateAndSetJwt();
-    }
-  }, [signingKey, payload]);
+    generateAndSetJwt();
+  }, [payload])
 
 
   useEffect(() => {
@@ -112,7 +109,7 @@ const JwtDecoder = () => {
               }
             </TabContainer>
 
-            <aside id="encoded-content" className="encoded common-container">
+            <InputContainer $hasError={showJwtError} as="aside" id="encoded-content" className="encoded common-container">
               <div className="title-band bt-inherit header flex-center-y">
                 <span>
                   JWT
@@ -125,14 +122,14 @@ const JwtDecoder = () => {
               </div>
               <div className="content inner-content">
                 <div className="token code">
-                  <JWTInputEditor value={tokenValue} />
+                  <JWTInputEditor onChange={setTokenValue} value={tokenValue} />
                 </div>
                 <button className="copy-btn strong-600">
                   Copy JWT
                   <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />
                 </button>
               </div>
-            </aside>
+            </InputContainer>
 
             <div id="decoded-content" className="input-container common-container">
               <div className="title-band bt-inherit" id="header">
@@ -140,7 +137,7 @@ const JwtDecoder = () => {
                 <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
               </div>
               <div className="inner-content header code">
-                <HighlightedEditor value={JSON.stringify({
+                <InputEditor onValueChange={() => null} value={JSON.stringify({
                   "alg": selectedAlgorithm.label,
                   "typ": "jwt"
                 }, null, 2)} />
@@ -148,12 +145,12 @@ const JwtDecoder = () => {
               </div>
               <div className="title-band" id="payload">Payload</div>
               <div className="inner-content code">
-                <HighlightedEditor value={payload} />
+                <InputEditor onValueChange={setPayload} value={payload} />
               </div>
               <div className="title-band" id="signing-key">Signing Key</div>
 
               <div className="inner-content signing-jey code">
-                <HighlightedEditor value={signingKey} />
+                <InputEditor placeholder={"Enter your signing key here."} onValueChange={setSigningKey} value={signingKey} />
               </div>
             </div>
 

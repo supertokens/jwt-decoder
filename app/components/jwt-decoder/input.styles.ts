@@ -25,5 +25,9 @@ export const InputWrapper = styled.div`
   .ͼu{
     color: #8ECE78
   }
+
+  .cm-placeholder{
+    font-style: italic;
+  }
 `
 

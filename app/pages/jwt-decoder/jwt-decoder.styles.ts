@@ -72,6 +72,7 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
     aside.encoded {
       width: ${leftContentWidth};
       margin-right: 2rem;
+      overflow: hidden;
     }
 
     .encoded {
@@ -126,10 +127,10 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
     margin-block: 1.1rem 6rem;
     text-align: center;
     border-color: ${(props) => props.theme.colors.orange[1000]};
+    background-color: ${(props) => props.theme.colors.orange[1000] + '0a'};
 
     .note {
       padding-block: 1.1rem;
-      background-color: ${(props) => props.theme.colors.orange[1000] + '0a'};
       b {
         color: ${(props) => props.theme.colors.orange[1000]};
       }
@@ -295,5 +296,16 @@ export const TabOption = styled.div<{ isSelected?: boolean }>`
     background-color: ${props.theme.colors.light[1000]}
   `}
 `;
+
+export const InputContainer = styled.div<{$hasError: boolean}>`
+  ${props=>props.$hasError && `
+    .inner-content{
+      background-color: ${props.theme.colors.red[800]};
+    }
+    .header{
+      color: ${props.theme.colors.red[300]};
+    }
+  `}
+`
 
 export default JwtContainerStyled;
