@@ -85,6 +85,11 @@ const JwtDecoder = () => {
     populatePayloadFromToken(tokenValue);
   }, [])
 
+  // If the token is empty and the algorithm is changed, insert a placeholder token value.
+  useEffect(() => {
+    onTokenValueChange(defaultTokens[selectedAlgorithm.value])
+  }, [selectedAlgorithm])
+
   const copyJwtClickHandler = async () => {
     try {
       await navigator.clipboard.writeText(tokenValue);
