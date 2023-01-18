@@ -139,7 +139,7 @@ const JwtDecoder = () => {
                 <div className="content bb-inherit">
                   <div className="token code">
                     <div className="inner-content scroll-container">
-                      <JWTInputEditor onChange={onTokenValueChange} value={tokenValue} />
+                      <JWTInputEditor onValueChange={onTokenValueChange} value={tokenValue} />
                     </div>
                   </div>
                   <div className="inner-content">

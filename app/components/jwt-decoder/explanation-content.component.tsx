@@ -60,7 +60,7 @@ const ExplanationContent = () => {
       </section>
 
       <p>
-      You can find our complete guide on how JWT works and how you can generate JWTs in this blog.
+      You can find our complete guide on how JWT works and how you can generate JWTs in this <a href="https://supertokens.com/blog/what-is-jwt" target={"_blank"}>blog.</a>
       </p>
 
 

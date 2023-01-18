@@ -259,6 +259,10 @@ export const ExplanationContainerStyled = styled.article`
     }
   }
 
+  a{
+    color: ${props=>props.theme.colors.orange[1000]}
+  }
+
   ul {
     padding: 0;
   }
@@ -270,7 +274,7 @@ export const ExplanationContainerStyled = styled.article`
       & > :not(:last-child) {
         margin-right: 0.5rem;
       }
-      span.title-header {
+      span.header {
         color: ${(props) => props.theme.colors.red[200]};
       }
 
