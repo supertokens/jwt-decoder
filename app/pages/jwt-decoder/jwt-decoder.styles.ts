@@ -70,7 +70,9 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
 
   #signing-key + .code {
     word-break: break-all;
-    height: fit-content;
+    height: 8.3rem;
+    padding-block-start: 2rem;
+    line-height: 1.85rem;
   }
 
   .decoder-main-container {
@@ -119,7 +121,12 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
 
     .input-container {
       flex: 1;
+      height: fit-content;
     }
+  }
+
+  #decoded-content .inner-content{
+    padding-inline-start: 3.1rem;
   }
 
   .code {

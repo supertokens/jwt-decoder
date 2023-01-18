@@ -2,8 +2,14 @@ import styled from "styled-components";
 
 
 export const InputWrapper = styled.div`
+  height: 100%;
+
   .cm-gutters{
     display: none;
+  }
+
+  .cm-line{
+    padding-inline-start: 0;
   }
 
   .ͼo,.cm-gutters{

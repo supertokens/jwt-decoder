@@ -36,6 +36,7 @@ export const JWTInputEditor = ({ value, onChange }) => {
       onChange={(value, viewUpdate) => {
         onChange(value)
       }}
+      minHeight="100%"
       className="code"
     /></InputWrapper>
 }

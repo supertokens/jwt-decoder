@@ -15,6 +15,7 @@ const PopoverContainer = styled.div`
     top: 50%;
     transform: translateY(-50%);
     font-weight: normal;
+    z-index: 2;
 
     ::before{
       content: "";
@@ -29,16 +30,18 @@ const PopoverContainer = styled.div`
     }
   }
 
-  @media screen and (max-width: ${props=>props.theme.breakpoints.tablet}) {
+  @media screen and (max-width: ${props => props.theme.breakpoints.tablet}) {
     .popover-tooltip{
-      left: initial;
-      right: 2rem;
       max-width: calc(100vw - 3rem);
+      left: initial;
+      right: -3rem;
+      top: 6.5rem;
 
       ::before{
         left: initial;
-        right: -1rem;
-        transform: rotate(180deg);
+        right: 3rem;
+        transform: rotate(90deg);
+        top: -1rem;
       }
     }
   }

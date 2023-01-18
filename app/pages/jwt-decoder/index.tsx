@@ -21,34 +21,26 @@ const sampleToken2 = 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiZG9udHJlbWVtYmVyIiwiSXNzd
 
 const sampleSigningKey = 'MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4JJaPHjlrh/gDnVOHISFE59M8MkojCbhZ9'
 
-const sampleSigningKey2 = ""
+const sampleSigningKey2 = " "
 
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
 
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
+
+  const [header, setHeader] = useState({
+    "alg": selectedAlgorithm.label,
+    "typ": "jwt"
+  })
+
   const [tokenValue, setTokenValue] = useState(sampleToken);
 
   const [showJwtError, setShowJwtError] = useState(false);
   const [showPayloadError, setShowPayloadError] = useState(false);
 
-  const [payload, setPayload] = useState("");
-
+  const [payload, setPayload] = useState("{}");
   const [signingKey, setSigningKey] = useState(sampleSigningKey2);
-
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded")
-
-  // useEffect(() => {
-  //   try {
-  //     setShowTokenError(false);
-  //     const decoded = jwt_decode<string>(tokenValue);
-  //     console.log(decoded, '@@@@@@@')
-  //     setPayload(JSON.stringify(decoded, null, 2))
-  //   } catch (error) {
-  //     console.log(error)
-  //     setShowTokenError(true);
-  //   }
-  // }, [tokenValue])
 
 
   useEffect(() => {
@@ -56,34 +48,24 @@ const JwtDecoder = () => {
       try {
         setShowJwtError(false);
         const decoded = jose.decodeJwt(tokenValue);
-        // console.log(decoded, '@@@@@@JOSE')
-        // jose.EncryptJWT()
-        // Jose.JWT.Encode(payload, privateKey, JwsAlgorithm.RS25
-
-
         setPayload(JSON.stringify(decoded, null, 2))
       } catch (error) {
         console.log(error)
         setShowJwtError(true);
       }
     }
-
     someFn();
   }, [tokenValue])
 
-
-  const decodeJwt = async () => {
-    const jwt =
-      'eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MB66qstZBPxAXKdsjet_lA.WHbtJTl4taHp7otOHLq3hBvv0yNPsPEKHYInmCPdDDeyV1kU-f-tGEiU4FxlSqkqAT2hVs8_wMNiQFAzPU1PUgIqWCPsBrPP3TtxYsrtwagpn4SvCsUsx0Mhw9ZhliAO8CLmCBQkqr_T9AcYsz5uZw.7nX9m7BGUu_u1p1qFHzyIg'
-  }
-
-  const generateAndSetJwt = async () => {
-
-  }
-
-
   useEffect(() => {
-    generateAndSetJwt();
+    const sign = async () => {
+      const secret = new TextEncoder().encode(signingKey)
+      const jwt = await new jose.SignJWT(JSON.parse(payload))
+        .setProtectedHeader(header)
+        .sign(secret)
+      setTokenValue(jwt);
+    }
+    sign();
   }, [payload])
 
 
@@ -145,10 +127,7 @@ const JwtDecoder = () => {
                 <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
               </div>
               <div className="inner-content code">
-                <InputEditor onValueChange={() => null} value={JSON.stringify({
-                  "alg": selectedAlgorithm.label,
-                  "typ": "jwt"
-                }, null, 2)} />
+                <InputEditor onValueChange={() => null} value={JSON.stringify(header, null, 2)} />
 
               </div>
               <div className="title-band" id="payload">Payload</div>
@@ -158,7 +137,7 @@ const JwtDecoder = () => {
               <div className="title-band" id="signing-key">Signing Key</div>
 
               <div className="inner-content signing-jey code">
-                <InputEditor placeholder={"Enter your signing key here."} onValueChange={setSigningKey} value={signingKey} />
+                <InputEditor onValueChange={setSigningKey} value={signingKey} />
               </div>
             </div>
 
