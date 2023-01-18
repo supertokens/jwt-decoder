@@ -23,9 +23,11 @@ const sampleSigningKey = 'MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4
 
 const sampleSigningKey2 = " "
 
+// When the token changes, change the payload
+// When the payload changes, change the token
+
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
-  const changedVia = useRef<"token" | "payload" | "header">()
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
 
   const [header, setHeader] = useState<any>({
@@ -41,40 +43,54 @@ const JwtDecoder = () => {
 
   const [payload, setPayload] = useState('{}');
   const [signingKey, setSigningKey] = useState(sampleSigningKey2);
-  const [selectedTab, setSelectedTab] = useState<TOption>("encoded")
+  const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
-  const signJwt = async () => {
-    const secret = new TextEncoder().encode(signingKey)
-    const p = typeof payload === 'object' ? payload : JSON.parse(payload as string)
-    const jwt = await new jose.SignJWT(p)
-      .setProtectedHeader(header)
-      .sign(secret)
-    setTokenValue(jwt);
-  }
+  const headerValue = JSON.stringify(header, null, 2)
 
-  const signWithPayload = async () => {
+  const onPayloadChange = async (p: string) => {
     try {
       setShowPayloadError(false);
-      signJwt();
+      setPayload(p);
+      populateTokenFromPayload(p);
     } catch (error) {
       console.log(error)
       setShowPayloadError(true)
     }
   }
 
-  useEffect(() => {
-    const someFn = async () => {
-      try {
-        setShowJwtError(false);
-        const decoded = jose.decodeJwt(tokenValue);
-        setPayload(JSON.stringify(decoded, null, 2))
-      } catch (error) {
-        console.log(error)
-        setShowJwtError(true);
-      }
+  const onTokenValueChange = async (t: string) => {
+    try {
+      setShowJwtError(false);
+      setTokenValue(t);
+      populatePayloadFromToken(t);
+    } catch (error) {
+      console.log(error)
+      setShowJwtError(true)
     }
-    someFn();
-  }, [tokenValue])
+  }
+
+  const populatePayloadFromToken = async (token: string) => {
+    try {
+      setShowJwtError(false);
+      const decoded = jose.decodeJwt(token);
+      setPayload(JSON.stringify(decoded, null, 2))
+    } catch (error) {
+      console.log(error)
+      setShowJwtError(true);
+    }
+  }
+
+  const populateTokenFromPayload = async (payload: string) => {
+    const secret = new TextEncoder().encode(signingKey)
+    const jwt = await new jose.SignJWT(JSON.parse(payload))
+      .setProtectedHeader(header)
+      .sign(secret);
+    setTokenValue(jwt);
+  }
+
+  useEffect(()=>{
+    populatePayloadFromToken(tokenValue);
+  },[])
 
   // useEffect(() => {
   //   signWithPayload();
@@ -133,7 +149,7 @@ const JwtDecoder = () => {
                 </div>
                 <div className="content inner-content bb-inherit">
                   <div className="token code">
-                    <JWTInputEditor onChange={setTokenValue} value={tokenValue} />
+                    <JWTInputEditor onChange={onTokenValueChange} value={tokenValue} />
                   </div>
                   <button className="copy-btn strong-600" onClick={copyJwtClickHandler}>
                     Copy JWT
@@ -150,8 +166,7 @@ const JwtDecoder = () => {
               </div>
               <div className="inner-content code">
                 <InputEditor onValueChange={headerValueChangeHandler} 
-                value={JSON.stringify(header, null, 2)}
-                
+                value={headerValue}
                  />
               </div>
               <InputContainer $hasError={showPayloadError}>
@@ -162,7 +177,7 @@ const JwtDecoder = () => {
                   <InputEditor 
                   value={payload}
                   onChange={(value, viewUpdate)=>{
-                    setPayload(value)
+                    onPayloadChange(value);
                   }} />
                 </div>
               </InputContainer>
