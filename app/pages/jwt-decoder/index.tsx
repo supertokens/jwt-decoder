@@ -1,5 +1,5 @@
 import Image from "next/image"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import ExplanationContent from "../../components/jwt-decoder/explanation-content.component"
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown from "../../components/common/dropdown/dropdown.component"
@@ -25,10 +25,10 @@ const sampleSigningKey2 = " "
 
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
-
+  const changedVia = useRef<"token" | "payload" | "header">()
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
 
-  const [header, setHeader] = useState({
+  const [header, setHeader] = useState<any>({
     "alg": selectedAlgorithm.label,
     "typ": "jwt"
   })
@@ -37,11 +37,30 @@ const JwtDecoder = () => {
 
   const [showJwtError, setShowJwtError] = useState(false);
   const [showPayloadError, setShowPayloadError] = useState(false);
+  const [showHeaderError, setShowHeaderError] = useState(false);
 
-  const [payload, setPayload] = useState("{}");
+  const [payload, setPayload] = useState('{}');
   const [signingKey, setSigningKey] = useState(sampleSigningKey2);
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded")
 
+  const signJwt = async () => {
+    const secret = new TextEncoder().encode(signingKey)
+    const p = typeof payload === 'object' ? payload : JSON.parse(payload as string)
+    const jwt = await new jose.SignJWT(p)
+      .setProtectedHeader(header)
+      .sign(secret)
+    setTokenValue(jwt);
+  }
+
+  const signWithPayload = async () => {
+    try {
+      setShowPayloadError(false);
+      signJwt();
+    } catch (error) {
+      console.log(error)
+      setShowPayloadError(true)
+    }
+  }
 
   useEffect(() => {
     const someFn = async () => {
@@ -57,33 +76,33 @@ const JwtDecoder = () => {
     someFn();
   }, [tokenValue])
 
-  useEffect(() => {
-    const sign = async () => {
-      try {
-        setShowPayloadError(false);
-        const secret = new TextEncoder().encode(signingKey)
-        const jwt = await new jose.SignJWT(JSON.parse(payload))
-          .setProtectedHeader(header)
-          .sign(secret)
-        setTokenValue(jwt);
-      } catch (error) {
-        console.log(error);
-        setShowPayloadError(true)
-      }
-    }
-    sign();
-  }, [payload])
+  // useEffect(() => {
+  //   signWithPayload();
+  // }, [payload])
 
 
-  useEffect(() => {
-    setTokenValue(defaultTokens[selectedAlgorithm.value])
-  }, [selectedAlgorithm])
+  // useEffect(() => {
+  //   setTokenValue(defaultTokens[selectedAlgorithm.value])
+  // }, [selectedAlgorithm])
 
   const copyJwtClickHandler = async () => {
     try {
       await navigator.clipboard.writeText(tokenValue);
     } catch (error) {
       console.log("Could not copy.")
+    }
+  }
+
+  const headerValueChangeHandler = (newValue: string) => {
+    try {
+      setShowHeaderError(false);
+      if (!("alg" in JSON.parse(newValue))) {
+        throw Error("Invalid Header")
+      }
+      console.log(newValue)
+      setHeader(newValue)
+    } catch (error) {
+      setShowHeaderError(true);
     }
   }
 
@@ -100,9 +119,8 @@ const JwtDecoder = () => {
                 </TabOption>)
               }
             </TabContainer>
-
-            <aside id="encoded-content" className="encoded common-container">
-              <InputContainer $hasError={showJwtError}>
+            <aside id="encoded-content" className="common-container">
+              <InputContainer className="bt-inherit" $hasError={showJwtError}>
                 <div className="title-band bt-inherit flex-center-y">
                   <span className="title-text">
                     JWT
@@ -131,14 +149,21 @@ const JwtDecoder = () => {
                 <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
               </div>
               <div className="inner-content code">
-                <InputEditor onValueChange={() => null} value={JSON.stringify(header, null, 2)} />
+                <InputEditor onValueChange={headerValueChangeHandler} 
+                value={JSON.stringify(header, null, 2)}
+                
+                 />
               </div>
               <InputContainer $hasError={showPayloadError}>
                 <div className="title-band" id="payload">
                   <span className="title-text">Payload</span>
                 </div>
                 <div className="inner-content code">
-                  <InputEditor onValueChange={setPayload} value={payload} />
+                  <InputEditor 
+                  value={payload}
+                  onChange={(value, viewUpdate)=>{
+                    setPayload(value)
+                  }} />
                 </div>
               </InputContainer>
 

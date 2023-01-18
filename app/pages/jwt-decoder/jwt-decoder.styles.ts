@@ -77,14 +77,18 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
 
   .decoder-main-container {
     display: flex;
-    aside.encoded {
+    aside#encoded-content {
       width: ${leftContentWidth};
       margin-right: 2rem;
     }
 
-    .encoded {
+    #encoded-content {
       display: flex;
       flex-direction: column;
+
+      .title-band{
+        justify-content: space-between;
+      }
       .content {
         word-break: break-word;
         flex: 1;
@@ -110,12 +114,6 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
             margin-left: 0.5rem;
           }
         }
-      }
-
-      .title-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
       }
     }
 
@@ -193,9 +191,8 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
 
     .decoder-main-container {
       flex-direction: column;
-      aside.encoded {
+      aside.#encoded-content {
         width: 100%;
-
         .content .token {
           height: 60vh;
         }

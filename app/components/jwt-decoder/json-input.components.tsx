@@ -5,7 +5,7 @@ import { InputWrapper } from "./input.styles"
 import { EditorView } from "@codemirror/view";
 
 interface IInputEditorProps extends ReactCodeMirrorProps {
-  onValueChange: (v: string) => void;
+  onValueChange?: (v: string) => void;
 }
 
 const InputEditor: React.FC<IInputEditorProps> = ({  onValueChange, ...props }) => {
