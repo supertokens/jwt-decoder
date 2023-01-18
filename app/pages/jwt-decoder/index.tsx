@@ -48,34 +48,23 @@ const JwtDecoder = () => {
   const headerValue = JSON.stringify(header);
 
   const onPayloadChange = async (p: string) => {
-    try {
       setShowPayloadError(false);
       setPayload(p);
       populateTokenFromPayload(p);
-    } catch (error) {
-      console.log(error)
-      setShowPayloadError(true)
-    }
   }
 
   const onTokenValueChange = async (t: string) => {
-    try {
       setShowJwtError(false);
       setTokenValue(t);
       populatePayloadFromToken(t);
-    } catch (error) {
-      console.log(error)
-      setShowJwtError(true)
-    }
   }
 
   const populatePayloadFromToken = async (token: string) => {
     try {
       setShowJwtError(false);
       const decoded = jose.decodeJwt(token);
-      setPayload(JSON.stringify(decoded, null, 2))
+      setPayload(JSON.stringify(decoded))
     } catch (error) {
-      console.log(error)
       setShowJwtError(true);
     }
   }
@@ -88,7 +77,6 @@ const JwtDecoder = () => {
       .sign(secret);
     setTokenValue(jwt);
     } catch (error) {
-      console.log(error)
       setShowPayloadError(true);
     }
   }
