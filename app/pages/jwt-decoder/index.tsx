@@ -45,7 +45,7 @@ const JwtDecoder = () => {
   const [signingKey, setSigningKey] = useState(sampleSigningKey2);
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
-  const headerValue = JSON.stringify(header, null, 2)
+  const headerValue = JSON.stringify(header);
 
   const onPayloadChange = async (p: string) => {
     try {
@@ -81,25 +81,21 @@ const JwtDecoder = () => {
   }
 
   const populateTokenFromPayload = async (payload: string) => {
-    const secret = new TextEncoder().encode(signingKey)
+    try {
+      const secret = new TextEncoder().encode(signingKey)
     const jwt = await new jose.SignJWT(JSON.parse(payload))
       .setProtectedHeader(header)
       .sign(secret);
     setTokenValue(jwt);
+    } catch (error) {
+      console.log(error)
+      setShowPayloadError(true);
+    }
   }
 
   useEffect(()=>{
     populatePayloadFromToken(tokenValue);
   },[])
-
-  // useEffect(() => {
-  //   signWithPayload();
-  // }, [payload])
-
-
-  // useEffect(() => {
-  //   setTokenValue(defaultTokens[selectedAlgorithm.value])
-  // }, [selectedAlgorithm])
 
   const copyJwtClickHandler = async () => {
     try {
