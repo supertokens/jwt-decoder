@@ -95,6 +95,14 @@ const JwtDecoder = () => {
     setPayload(e.target.value)
   }
 
+  const copyJwtClickHandler = async () => {
+    try {
+      await navigator.clipboard.writeText(tokenValue);
+    } catch (error) {
+      console.log("Could not copy.")
+    }
+  }
+
   return (
     <JwtContainerStyled $selectedTab={selectedTab} className="jwt-decoder-container">
       <main className="inner-container">
@@ -110,8 +118,8 @@ const JwtDecoder = () => {
             </TabContainer>
 
             <InputContainer $hasError={showJwtError} as="aside" id="encoded-content" className="encoded common-container">
-              <div className="title-band bt-inherit header flex-center-y">
-                <span>
+              <div className="title-band bt-inherit title-header flex-center-y">
+                <span className="band-title">
                   JWT
                 </span>
                 <span>
@@ -120,11 +128,11 @@ const JwtDecoder = () => {
                   </Popover>
                 </span>
               </div>
-              <div className="content inner-content">
+              <div className="content inner-content bb-inherit">
                 <div className="token code">
                   <JWTInputEditor onChange={setTokenValue} value={tokenValue} />
                 </div>
-                <button className="copy-btn strong-600">
+                <button className="copy-btn strong-600" onClick={copyJwtClickHandler}>
                   Copy JWT
                   <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />
                 </button>
@@ -136,7 +144,7 @@ const JwtDecoder = () => {
                 <div>Header</div>
                 <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
               </div>
-              <div className="inner-content header code">
+              <div className="inner-content code">
                 <InputEditor onValueChange={() => null} value={JSON.stringify({
                   "alg": selectedAlgorithm.label,
                   "typ": "jwt"

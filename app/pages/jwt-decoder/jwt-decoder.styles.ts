@@ -36,10 +36,16 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
     font-weight: 600;
     padding: 0.9rem 1.6rem;
     background-color: ${(props) => props.theme.colors.grey[850]};
-    &.bt-inherit {
-      border-top-right-radius: inherit;
-      border-top-left-radius: inherit;
-    }
+  }
+
+  .bt-inherit {
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+  }
+
+  .bb-inherit {
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
   }
 
   #header {
@@ -72,7 +78,6 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
     aside.encoded {
       width: ${leftContentWidth};
       margin-right: 2rem;
-      overflow: hidden;
     }
 
     .encoded {
@@ -105,7 +110,7 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
         }
       }
 
-      .header {
+      .title-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -236,7 +241,7 @@ export const ExplanationContainerStyled = styled.article`
       & > :not(:last-child) {
         margin-right: 0.5rem;
       }
-      span.header {
+      span.title-header {
         color: ${(props) => props.theme.colors.red[200]};
       }
 
@@ -297,15 +302,17 @@ export const TabOption = styled.div<{ isSelected?: boolean }>`
   `}
 `;
 
-export const InputContainer = styled.div<{$hasError: boolean}>`
-  ${props=>props.$hasError && `
+export const InputContainer = styled.div<{ $hasError: boolean }>`
+  ${(props) =>
+    props.$hasError &&
+    `
     .inner-content{
       background-color: ${props.theme.colors.red[800]};
     }
-    .header{
+    .title-header .band-title{
       color: ${props.theme.colors.red[300]};
     }
   `}
-`
+`;
 
 export default JwtContainerStyled;
