@@ -9,6 +9,7 @@ import jwt_decode from "jwt-decode";
 import { useAppTheme } from "../../assets/global-styles/theme"
 import { algorithmOptions, defaultTokens, optionsList, TOption } from "../../assets/constants"
 import * as jose from 'jose'
+import HighlightedEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 
 // Create a JWT with a payload
 const payload = {
@@ -45,7 +46,7 @@ const JwtDecoder = () => {
       setShowTokenError(false);
       const decoded = jwt_decode<string>(tokenValue);
       console.log(decoded, '@@@@@@@')
-      setPayload(JSON.stringify(decoded))
+      setPayload(JSON.stringify(decoded, null, 2))
     } catch (error) {
       console.log(error)
       setShowTokenError(true);
@@ -77,7 +78,7 @@ const JwtDecoder = () => {
       .setIssuer('urn:example:issuer')
       .setAudience('urn:example:audience')
       .setExpirationTime('2h')
-      // .sign(secret);
+    // .sign(secret);
   }
 
   useEffect(() => {
@@ -123,8 +124,14 @@ const JwtDecoder = () => {
                 </span>
               </div>
               <div className="content inner-content">
+
+
+                {/* <HighlightedEditor value={tokenValue} /> */}
+                <div className="token code">
+                  <JWTInputEditor value={tokenValue} />
+                </div>
                 {/* <TokenInput value={tokenValue} setValue={setTokenValue} /> */}
-                <textarea className="token code" value={tokenValue} onChange={(e) => setTokenValue(e.target.value)} />
+                {/* <textarea className="token code" value={tokenValue} onChange={(e) => setTokenValue(e.target.value)} /> */}
 
 
                 <button className="copy-btn strong-600">
@@ -139,15 +146,33 @@ const JwtDecoder = () => {
                 <div>Header</div>
                 <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
               </div>
-              <div className="inner-content header code">{JSON.stringify({
+              <div className="inner-content header code">
+
+                {/* {JSON.stringify({
                 "alg": selectedAlgorithm.label,
                 "typ": "jwt"
-              })}</div>
+              })} */}
+
+                <HighlightedEditor value={JSON.stringify({
+                  "alg": selectedAlgorithm.label,
+                  "typ": "jwt"
+                }, null, 2)} />
+
+              </div>
               <div className="title-band" id="payload">Payload</div>
-              <textarea className="inner-content code" value={payload} onChange={onPayloadChange} />
+              <div className="inner-content code">
+                <HighlightedEditor value={payload} />
+              </div>
+
+              {/* <textarea className="inner-content code" value={payload} onChange={onPayloadChange} /> */}
               <div className="title-band" id="signing-key">Signing Key</div>
 
-              <textarea className="inner-content signing-key code" value={signingKey} onChange={(e) => setSigningKey(e.target.value)} />
+              <div className="inner-content signing-jey code">
+                <HighlightedEditor value={signingKey} />
+              </div>
+
+
+              {/* <textarea className="inner-content signing-key code" value={signingKey} onChange={(e) => setSigningKey(e.target.value)} /> */}
             </div>
 
 

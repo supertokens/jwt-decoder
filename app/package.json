@@ -7,8 +7,10 @@
     "update": "npm i -D && npm run build"
   },
   "dependencies": {
+    "@codemirror/lang-json": "^6.0.1",
     "@next/font": "^13.1.1",
     "@types/styled-components": "^5.1.26",
+    "@uiw/codemirror-themes": "^4.19.7",
     "@uiw/react-codemirror": "^4.19.6",
     "codemirror": "^6.0.1",
     "jose": "^4.11.2",

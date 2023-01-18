@@ -33,6 +33,7 @@ export const DropdownContainer = styled.div`
     border-radius: ${props=>props.theme.borderRadius.small};
     max-height: 15rem;
     overflow-y: auto;
+    z-index: 2;
     li{
       padding-block: 1rem;
       cursor: pointer;

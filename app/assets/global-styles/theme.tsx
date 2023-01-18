@@ -26,6 +26,9 @@ export const theme = {
       200: '#fe9c9c',
       1000: "#cc0404"
     },
+    brown: {
+      500: '#CE9178'
+    },
     green: {
       900: "#66bc7a",
       1000: "#0c6e23",
