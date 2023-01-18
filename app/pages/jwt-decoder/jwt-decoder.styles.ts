@@ -9,7 +9,7 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
 
     .inner-container {
       padding-block: 16.5rem 18rem;
-      width: 100%;
+      width: min(100%, 90vw);
       max-width: 107.5rem;
       margin-inline: auto;
       color: ${(props) => props.theme.colors.light[900]};
@@ -131,8 +131,9 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
         position: absolute;
         left: 0;
         top: 0;
-        max-height: 100%;
-        overflow: auto;
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
       }
     }
 
