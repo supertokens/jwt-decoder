@@ -59,11 +59,17 @@ const JwtDecoder = () => {
 
   useEffect(() => {
     const sign = async () => {
-      const secret = new TextEncoder().encode(signingKey)
-      const jwt = await new jose.SignJWT(JSON.parse(payload))
-        .setProtectedHeader(header)
-        .sign(secret)
-      setTokenValue(jwt);
+      try {
+        setShowPayloadError(false);
+        const secret = new TextEncoder().encode(signingKey)
+        const jwt = await new jose.SignJWT(JSON.parse(payload))
+          .setProtectedHeader(header)
+          .sign(secret)
+        setTokenValue(jwt);
+      } catch (error) {
+        console.log(error);
+        setShowPayloadError(true)
+      }
     }
     sign();
   }, [payload])
@@ -72,10 +78,6 @@ const JwtDecoder = () => {
   useEffect(() => {
     setTokenValue(defaultTokens[selectedAlgorithm.value])
   }, [selectedAlgorithm])
-
-  const onPayloadChange = e => {
-    setPayload(e.target.value)
-  }
 
   const copyJwtClickHandler = async () => {
     try {
@@ -99,41 +101,47 @@ const JwtDecoder = () => {
               }
             </TabContainer>
 
-            <InputContainer $hasError={showJwtError} as="aside" id="encoded-content" className="encoded common-container">
-              <div className="title-band bt-inherit title-header flex-center-y">
-                <span className="band-title">
-                  JWT
-                </span>
-                <span>
-                  <Popover popoverContent={"JWT will update Automatically when you edit Header, Payload and Signing key data"}>
-                    <Image src={"images/help.svg"} alt="help" width={10} height={10} />
-                  </Popover>
-                </span>
-              </div>
-              <div className="content inner-content bb-inherit">
-                <div className="token code">
-                  <JWTInputEditor onChange={setTokenValue} value={tokenValue} />
+            <aside id="encoded-content" className="encoded common-container">
+              <InputContainer $hasError={showJwtError}>
+                <div className="title-band bt-inherit flex-center-y">
+                  <span className="title-text">
+                    JWT
+                  </span>
+                  <span>
+                    <Popover popoverContent={"JWT will update Automatically when you edit Header, Payload and Signing key data"}>
+                      <Image src={"images/help.svg"} alt="help" width={10} height={10} />
+                    </Popover>
+                  </span>
                 </div>
-                <button className="copy-btn strong-600" onClick={copyJwtClickHandler}>
-                  Copy JWT
-                  <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />
-                </button>
-              </div>
-            </InputContainer>
+                <div className="content inner-content bb-inherit">
+                  <div className="token code">
+                    <JWTInputEditor onChange={setTokenValue} value={tokenValue} />
+                  </div>
+                  <button className="copy-btn strong-600" onClick={copyJwtClickHandler}>
+                    Copy JWT
+                    <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />
+                  </button>
+                </div>
+              </InputContainer>
+            </aside>
 
             <div id="decoded-content" className="input-container common-container">
               <div className="title-band bt-inherit" id="header">
-                <div>Header</div>
+                <div className="title-text">Header</div>
                 <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
               </div>
               <div className="inner-content code">
                 <InputEditor onValueChange={() => null} value={JSON.stringify(header, null, 2)} />
+              </div>
+              <InputContainer $hasError={showPayloadError}>
+                <div className="title-band" id="payload">
+                  <span className="title-text">Payload</span>
+                </div>
+                <div className="inner-content code">
+                  <InputEditor onValueChange={setPayload} value={payload} />
+                </div>
+              </InputContainer>
 
-              </div>
-              <div className="title-band" id="payload">Payload</div>
-              <div className="inner-content code">
-                <InputEditor onValueChange={setPayload} value={payload} />
-              </div>
               <div className="title-band" id="signing-key">Signing Key</div>
 
               <div className="inner-content signing-jey code">
