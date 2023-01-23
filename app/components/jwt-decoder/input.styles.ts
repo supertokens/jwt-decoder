@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 export const InputWrapper = styled.div`
   height: 100%;
-  *{
-    font-family: ${props=>props.theme.fontFamily.menlo};
-  }
+  caret-color: ${(props) => props.theme.colors.light[1000]}!important;
 
+  * {
+    font-family: ${(props) => props.theme.fontFamily.menlo};
+  }
+  /* 
   .cm-gutters {
     display: none;
   }
@@ -36,8 +38,8 @@ export const InputWrapper = styled.div`
   }
 
   .cm-placeholder {
-    color: ${props=>props.theme.colors.blue[200]};
-  }
+    color: ${(props) => props.theme.colors.blue[200]};
+  } */
 
   .colored-token-parts {
     .str:nth-child(1) {
@@ -52,15 +54,20 @@ export const InputWrapper = styled.div`
   }
 `;
 
-export const JwtInputWrapper = styled(InputWrapper)<{$inFocus: boolean}>`
-  ${props=>!props.$inFocus && `
-    .cm-line, .cm-scroller{
-      display: none!important;
-    }
-  `}
-
-  .cm-content{
+export const JwtInputWrapper = styled(InputWrapper)`
+  .cm-content {
     padding: 0;
     line-height: 24px;
   }
-`
+
+  * {
+    color: ${(props) => props.theme.colors.blue[200]};
+  }
+
+  .ͼu:nth-child(1) {
+    color: ${(props) => props.theme.colors.red[200]};
+  }
+  .ͼu:nth-child(2) {
+    color: ${(props) => props.theme.colors.purple[200]};
+  }
+`;

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react"
-import ReactCodeMirror, { ReactCodeMirrorProps, ReactCodeMirrorRef } from '@uiw/react-codemirror';
+import ReactCodeMirror, { BasicSetupOptions, ReactCodeMirrorProps, ReactCodeMirrorRef } from '@uiw/react-codemirror';
 import { json } from "@codemirror/lang-json"
+import { css } from "@codemirror/lang-css"
 import { InputWrapper, JwtInputWrapper } from "./input.styles"
 import { EditorView } from "@codemirror/view";
 
@@ -8,10 +9,33 @@ interface IInputEditorProps extends ReactCodeMirrorProps {
   onValueChange?: (v: string) => void;
 }
 
+const commonBasicSetup: BasicSetupOptions = {
+  lineNumbers: false,
+  foldGutter: false
+}
+
+const jwtConfigSetup: BasicSetupOptions = {
+  history: false,
+  drawSelection: true,
+  highlightSpecialChars: false,
+  highlightActiveLineGutter: false,
+  indentOnInput: false,
+  syntaxHighlighting: true,
+  bracketMatching: false,
+  closeBrackets: false,
+  autocompletion: false,
+  rectangularSelection: false,
+  crosshairCursor: false,
+  highlightSelectionMatches: false,
+  closeBracketsKeymap: false,
+  highlightActiveLine: false,
+  defaultKeymap: false
+}
+
 const InputEditor: React.FC<IInputEditorProps> = ({ onValueChange, ...props }) => {
   return <InputWrapper className="input-wrapper">
     <ReactCodeMirror
-      basicSetup={{ lineNumbers: false }}
+      basicSetup={commonBasicSetup}
       theme={"dark"}
       extensions={[json(),
       EditorView.lineWrapping
@@ -20,43 +44,40 @@ const InputEditor: React.FC<IInputEditorProps> = ({ onValueChange, ...props }) =
         onValueChange(value)
       }}
       className="code"
+      height="auto"
+      minHeight="100%"
       {...props}
     /></InputWrapper>
 }
 
 export const JWTInputEditor: React.FC<IInputEditorProps> = ({ value, onValueChange, ...props }) => {
-  const [inFocus, setInFocus] = useState(false);
   const inputRef = useRef<ReactCodeMirrorRef>(null);
-  const subStrings = value.split(".")
-
   const onChange = (value: string) => {
     if (inputRef.current.view.hasFocus) {
       onValueChange(value)
     }
   }
 
-  return <JwtInputWrapper onMouseLeave={() => setInFocus(false)}
-    onMouseEnter={() => setInFocus(true)} $inFocus={inFocus}>
+  return <JwtInputWrapper
+  >
     <ReactCodeMirror
       value={value}
-      basicSetup={{ lineNumbers: false }}
+      basicSetup={{
+        ...commonBasicSetup,
+        ...jwtConfigSetup
+      }}
       theme={"dark"}
       extensions={[
+        css(),
         EditorView.lineWrapping
       ]}
+      height="auto"
       ref={inputRef}
       onChange={onChange}
-      minHeight="100%"
       className="code"
       {...props}
-    >
-      {
-        !inFocus && <div onClick={() => setInFocus(true)} className="colored-token-parts">
-          {subStrings.map((str, idx) => <span className="str" key={str + idx}>{str}{idx < subStrings.length - 1 ? '.' : ''}</span>)}
-        </div>
-      }
+    />
 
-    </ReactCodeMirror>
   </JwtInputWrapper>
 }
 
