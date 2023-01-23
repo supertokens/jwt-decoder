@@ -70,7 +70,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   }
 
   #payload + .code {
-    height: 22rem;
+    height: 20.5rem;
   }
 
   #signing-key + .code {
