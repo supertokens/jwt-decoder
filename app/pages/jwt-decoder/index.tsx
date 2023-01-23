@@ -2,7 +2,7 @@ import Image from "next/image"
 import React, { useEffect, useRef, useState } from "react"
 import ExplanationContent from "../../components/jwt-decoder/explanation-content.component"
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
-import Dropdown from "../../components/common/dropdown/dropdown.component"
+import Dropdown, { IDropdownOption } from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
 import { algorithmOptions, defaultTokens, optionsList, TOption } from "../../assets/constants"
 import * as jose from 'jose'

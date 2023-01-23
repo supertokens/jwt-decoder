@@ -13,8 +13,8 @@ interface IDropdownProps {
   selected: IDropdownOption | null;
   options: IDropdownOption[];
   placeholder?: string;
-  obtainKey?: (option: IDropdownOption) => string | number;
-  onChange?: (val: IDropdownOption) => void;
+  obtainKey?: <T extends IDropdownOption>(option: T) => string | number;
+  onChange?: (val: object extends IDropdownOption ? IDropdownOption : object) => void;
 }
 
 const Dropdown: React.FC<IDropdownProps> = ({ selected, options, onChange, obtainKey, placeholder }) => {

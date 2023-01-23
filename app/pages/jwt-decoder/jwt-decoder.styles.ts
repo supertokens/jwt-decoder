@@ -10,12 +10,11 @@ interface IJwtContainerStyledProps {
 
 const getSigningKeyHeight = (selectedAlg: Algorithms) => {
   switch (selectedAlg) {
-    case Algorithms.HS256:
-      return '16rem'
+    // the algorithms which have a public as well as a private key for signing
     case Algorithms.ES256:
       return '31.5rem'  
     default:
-      break;
+      return '16rem'
   }
 }
 
@@ -89,8 +88,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     height: ${props=> getSigningKeyHeight(props.$selectedAlg as Algorithms) || '8.3rem'};
     padding-block-start: 2rem;
     line-height: 1.85rem;
-    /* Only if the prefix and postfix are empty */
-    background-color: ${(props) => props.theme.colors.grey[1000]};
+    background-color: #202020;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 

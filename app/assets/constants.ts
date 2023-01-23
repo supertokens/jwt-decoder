@@ -8,27 +8,35 @@ export enum Algorithms {
   // EdDSA = 'EdDSA',
 }
 
+export interface IAlgorithmOption extends IDropdownOption {
+  signingMethodName: string;
+  requiresBothKeys?: boolean;
+}
 
-export const algorithmOptions: IDropdownOption[] = [
+export const algorithmOptions: IAlgorithmOption[] = [
   {
     label: 'HS256',
     value: Algorithms.HS256,
     signingMethodName: 'HMACSHA256',
+    requiresBothKeys: false,
   },
   {
     label: 'ES256',
     value: Algorithms.ES256,
     signingMethodName: 'ECDSASHA256',
+    requiresBothKeys: true,
   },
   {
     label: 'RS256',
     value: Algorithms.RS256,
     signingMethodName: 'HMACSHA256',
+    requiresBothKeys: true,
   },
   {
     label: 'PS256',
     value: Algorithms.PS256,
     signingMethodName: 'HMACSHA256',
+    requiresBothKeys: true,
   },
   // {
   //   label: 'EdDSA',
