@@ -1,9 +1,23 @@
 import styled from 'styled-components';
-import { TOption } from '../../assets/constants';
+import { Algorithms, TOption } from '../../assets/constants';
 
 const leftContentWidth = '31.5rem';
 
-export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
+interface IJwtContainerStyledProps {
+  $selectedTab: TOption;
+  $selectedAlg: string;
+}
+
+const getSigningKeyHeight = (selectedAlg: Algorithms) => {
+  switch (selectedAlg) {
+    case Algorithms.HS256:
+      return '16rem'
+    default:
+      break;
+  }
+}
+
+export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   &.jwt-decoder-container {
     background-color: ${(props) => props.theme.colors.dark[1000]};
     word-break: break-all;
@@ -70,26 +84,30 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
 
   #signing-key + .code {
     word-break: break-all;
-    height: 8.3rem;
+    height: ${props=> getSigningKeyHeight(props.$selectedAlg as Algorithms) || '8.3rem'};
     padding-block-start: 2rem;
     line-height: 1.85rem;
     /* Only if the prefix and postfix are empty */
-    background-color: ${props=>props.theme.colors.grey[1000]};
+    background-color: ${(props) => props.theme.colors.grey[1000]};
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 
-    pre{
+    .signing-key-editor *{
+      color: ${props=>props.theme.colors.blue[200]};
+    }
+
+    pre {
       margin-block: 0;
       font-family: inherit;
     }
 
-    .cm-theme-dark{
-      background-color: ${props=>props.theme.colors.dark[1000]}!important;
+    .cm-theme-dark {
+      background-color: ${(props) => props.theme.colors.dark[1000]}!important;
       /* Only if the prefix and postfix are empty */
       margin-block: 1rem;
-      border-radius: .9rem;
-      padding-inline: .5rem;
-      border: 1px solid ${props=>props.theme.colors.grey[810]};
+      border-radius: 0.9rem;
+      padding-inline: 0.5rem;
+      border: 1px solid ${(props) => props.theme.colors.grey[810]};
     }
   }
 
@@ -104,17 +122,17 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
       display: flex;
       flex-direction: column;
 
-      .token-container{
+      .token-container {
         height: 100%;
         display: flex;
         flex-direction: column;
 
-        .token.code{
+        .token.code {
           position: relative;
         }
       }
 
-      .title-band{
+      .title-band {
         justify-content: space-between;
       }
       .content {
@@ -145,7 +163,7 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
         }
       }
 
-      .scroll-container{
+      .scroll-container {
         position: absolute;
         left: 0;
         top: 0;
@@ -161,7 +179,7 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
     }
   }
 
-  #decoded-content .inner-content{
+  #decoded-content .inner-content {
     padding-inline-start: 3.1rem;
   }
 
@@ -181,7 +199,7 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
       padding: 1.1rem;
       padding-inline-start: 4rem;
       text-align: left;
-      font-size: ${props=>props.theme.fontSizes.small};
+      font-size: ${(props) => props.theme.fontSizes.small};
       word-break: break-word;
       b {
         color: ${(props) => props.theme.colors.orange[1000]};
@@ -251,9 +269,9 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
       margin-left: 0;
       padding: 1.2rem 1.6rem;
       text-align: left;
-      .note{
+      .note {
         padding: 0;
-        font-size: ${props=>props.theme.fontSizes.small};
+        font-size: ${(props) => props.theme.fontSizes.small};
       }
     }
 
@@ -281,8 +299,8 @@ export const ExplanationContainerStyled = styled.article`
     }
   }
 
-  a{
-    color: ${props=>props.theme.colors.orange[1000]}
+  a {
+    color: ${(props) => props.theme.colors.orange[1000]};
   }
 
   ul {

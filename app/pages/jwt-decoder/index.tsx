@@ -22,12 +22,13 @@ const sampleToken2 = 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiZG9udHJlbWVtYmVyIiwiSXNzd
 
 const sampleSigningKey = 'MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4JJaPHjlrh/gDnVOHISFE59M8MkojCbhZ9'
 
-const sampleSigningKey2 = " "
+
+const placeholderSigningKey = '---Enter-your-256-bit-key---'
 
 // When the token changes, change the payload
 // When the payload changes, change the token
 
-const formatJSON = json => js_beautify(JSON.stringify(json), {indent_size: 1})
+const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 1 })
 
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
@@ -45,7 +46,7 @@ const JwtDecoder = () => {
   const [showHeaderError, setShowHeaderError] = useState(false);
 
   const [payload, setPayload] = useState('{}');
-  const [signingKey, setSigningKey] = useState(sampleSigningKey2);
+  const [signingKey, setSigningKey] = useState(placeholderSigningKey);
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
 
@@ -79,6 +80,7 @@ const JwtDecoder = () => {
         .sign(secret);
       setTokenValue(jwt);
     } catch (error) {
+      console.log(error)
       setShowPayloadError(true);
     }
   }
@@ -116,7 +118,7 @@ const JwtDecoder = () => {
   const { prefix = '', postfix = '' } = signingKeyConstants[selectedAlgorithm.value]
 
   return (
-    <JwtContainerStyled $selectedTab={selectedTab} className="jwt-decoder-container">
+    <JwtContainerStyled $selectedTab={selectedTab} $selectedAlg={selectedAlgorithm.value} className="jwt-decoder-container">
       <main className="inner-container">
         <article className="hero-container">
           <h3 className="title">JWT Decoder</h3>
@@ -175,7 +177,6 @@ const JwtDecoder = () => {
                   <InputEditor
                     value={payload}
                     onChange={(value, viewUpdate) => {
-                      console.log(viewUpdate.state.toJSON(), "@@@@@")
                       onPayloadChange(value);
                     }} />
                 </div>
@@ -188,7 +189,7 @@ const JwtDecoder = () => {
                   {prefix}
                 </pre>
                 <div>
-                  <InputEditor placeholder={"---Enter-your-256-bit-key---"} onValueChange={setSigningKey} value={signingKey} />
+                  <InputEditor className="signing-key-editor" onValueChange={setSigningKey} value={signingKey} />
                 </div>
                 <pre>
                   {postfix}
