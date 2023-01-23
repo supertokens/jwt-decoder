@@ -6,7 +6,7 @@ const leftContentWidth = '31.5rem';
 export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
   &.jwt-decoder-container {
     background-color: ${(props) => props.theme.colors.dark[1000]};
-
+    word-break: break-all;
     .inner-container {
       padding-block: 16.5rem 18rem;
       width: min(100%, 90vw);
@@ -73,6 +73,24 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
     height: 8.3rem;
     padding-block-start: 2rem;
     line-height: 1.85rem;
+    /* Only if the prefix and postfix are empty */
+    background-color: ${props=>props.theme.colors.grey[1000]};
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+
+    pre{
+      margin-block: 0;
+      font-family: inherit;
+    }
+
+    .cm-theme-dark{
+      background-color: ${props=>props.theme.colors.dark[1000]}!important;
+      /* Only if the prefix and postfix are empty */
+      margin-block: 1rem;
+      border-radius: .9rem;
+      padding-inline: .5rem;
+      border: 1px solid ${props=>props.theme.colors.grey[810]};
+    }
   }
 
   .decoder-main-container {
@@ -160,7 +178,11 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
     background-color: ${(props) => props.theme.colors.orange[1000] + '0a'};
 
     .note {
-      padding-block: 1.1rem;
+      padding: 1.1rem;
+      padding-inline-start: 4rem;
+      text-align: left;
+      font-size: ${props=>props.theme.fontSizes.small};
+      word-break: break-word;
       b {
         color: ${(props) => props.theme.colors.orange[1000]};
       }
@@ -230,7 +252,7 @@ export const JwtContainerStyled = styled.div<{ $selectedTab: TOption }>`
       padding: 1.2rem 1.6rem;
       text-align: left;
       .note{
-        padding-block: 0;
+        padding: 0;
         font-size: ${props=>props.theme.fontSizes.small};
       }
     }

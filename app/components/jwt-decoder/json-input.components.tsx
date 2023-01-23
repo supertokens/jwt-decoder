@@ -45,7 +45,7 @@ export const JWTInputEditor: React.FC<IInputEditorProps> = ({ value, onValueChan
     >
       {
         !inFocus && <div onClick={() => setInFocus(true)} className="colored-token-parts">
-          {subStrings.map((str, idx) => <span className="str">{str}{idx < subStrings.length - 1 ? '.' : ''}</span>)}
+          {subStrings.map((str, idx) => <span className="str" key={str+idx}>{str}{idx < subStrings.length - 1 ? '.' : ''}</span>)}
         </div>
       }
 

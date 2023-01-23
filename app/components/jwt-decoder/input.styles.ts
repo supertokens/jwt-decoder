@@ -36,7 +36,7 @@ export const InputWrapper = styled.div`
   }
 
   .cm-placeholder {
-    font-style: italic;
+    color: ${props=>props.theme.colors.blue[200]};
   }
 
   .colored-token-parts {

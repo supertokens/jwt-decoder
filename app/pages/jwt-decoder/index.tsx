@@ -4,7 +4,7 @@ import ExplanationContent from "../../components/jwt-decoder/explanation-content
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
-import { algorithmOptions, defaultTokens, optionsList, TOption } from "../../assets/constants"
+import { algorithmOptions, defaultTokens, optionsList, signingKeyConstants, TOption } from "../../assets/constants"
 import * as jose from 'jose'
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 
@@ -111,6 +111,8 @@ const JwtDecoder = () => {
     }
   }
 
+  const { prefix = '', postfix = '' } = signingKeyConstants[selectedAlgorithm.value]
+
   return (
     <JwtContainerStyled $selectedTab={selectedTab} className="jwt-decoder-container">
       <main className="inner-container">
@@ -179,8 +181,16 @@ const JwtDecoder = () => {
 
               <div className="title-band" id="signing-key">Signing Key</div>
 
-              <div className="inner-content signing-jey code">
-                <InputEditor onValueChange={setSigningKey} value={signingKey} />
+              <div className="inner-content code">
+                <pre>
+                  {prefix}
+                </pre>
+                <div>
+                  <InputEditor placeholder={"---Enter-your-256-bit-key---"} onValueChange={setSigningKey} value={signingKey} />
+                </div>
+                <pre>
+                  {postfix}
+                </pre>
               </div>
             </div>
 
