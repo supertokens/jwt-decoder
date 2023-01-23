@@ -4,7 +4,7 @@ import ExplanationContent from "../../components/jwt-decoder/explanation-content
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
-import { algorithmOptions, defaultTokens, optionsList, signingKeyConstants, TOption } from "../../assets/constants"
+import { algorithmOptions, defaultTokens, optionsList, TOption } from "../../assets/constants"
 import * as jose from 'jose'
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 import js_beautify from "js-beautify"
@@ -24,6 +24,12 @@ const sampleSigningKey = 'MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4
 
 
 const placeholderSigningKey = '---Enter-your-256-bit-key---'
+const signingKeyConstants = {
+  prefix: `( 
+    base64UrlEncode(header) + "." +
+    base64UrlEncode(payload),`,
+  postfix: `)`,
+}
 
 // When the token changes, change the payload
 // When the payload changes, change the token
@@ -34,7 +40,7 @@ const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
 
-  const [header, setHeader] = useState<any>(formatJSON({
+  const [header, setHeader] = useState<string>(formatJSON({
     "alg": selectedAlgorithm.label,
     "typ": "jwt"
   }))
@@ -46,7 +52,9 @@ const JwtDecoder = () => {
   const [showHeaderError, setShowHeaderError] = useState(false);
 
   const [payload, setPayload] = useState('{}');
-  const [signingKey, setSigningKey] = useState(placeholderSigningKey);
+  const [publicSigningKey, setPublicSigningKey] = useState(placeholderSigningKey);
+  const [privateSigningKey, setPrivateSigningKey] = useState("-");
+
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
 
@@ -74,9 +82,9 @@ const JwtDecoder = () => {
 
   const populateTokenFromPayload = async (payload: string) => {
     try {
-      const secret = new TextEncoder().encode(signingKey)
+      const secret = new TextEncoder().encode(publicSigningKey)
       const jwt = await new jose.SignJWT(JSON.parse(payload))
-        .setProtectedHeader(header)
+        .setProtectedHeader(JSON.parse(header))
         .sign(secret);
       setTokenValue(jwt);
     } catch (error) {
@@ -114,8 +122,6 @@ const JwtDecoder = () => {
       setShowHeaderError(true);
     }
   }
-
-  const { prefix = '', postfix = '' } = signingKeyConstants[selectedAlgorithm.value]
 
   return (
     <JwtContainerStyled $selectedTab={selectedTab} $selectedAlg={selectedAlgorithm.value} className="jwt-decoder-container">
@@ -186,13 +192,13 @@ const JwtDecoder = () => {
 
               <div className="inner-content code">
                 <pre>
-                  {prefix}
+                  {selectedAlgorithm?.signingMethodName}{signingKeyConstants.prefix}
                 </pre>
                 <div>
-                  <InputEditor className="signing-key-editor" onValueChange={setSigningKey} value={signingKey} />
+                  <InputEditor className="signing-key-editor" onValueChange={setPublicSigningKey} value={publicSigningKey} />
                 </div>
                 <pre>
-                  {postfix}
+                  {signingKeyConstants.postfix}
                 </pre>
               </div>
             </div>

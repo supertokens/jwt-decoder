@@ -12,6 +12,8 @@ const getSigningKeyHeight = (selectedAlg: Algorithms) => {
   switch (selectedAlg) {
     case Algorithms.HS256:
       return '16rem'
+    case Algorithms.ES256:
+      return '31.5rem'  
     default:
       break;
   }
