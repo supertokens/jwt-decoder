@@ -7,6 +7,7 @@ import Popover from "../../components/common/popover/popover.component"
 import { algorithmOptions, defaultTokens, optionsList, signingKeyConstants, TOption } from "../../assets/constants"
 import * as jose from 'jose'
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
+import js_beautify from "js-beautify"
 
 // Create a JWT with a payload
 const payload = {
@@ -26,14 +27,16 @@ const sampleSigningKey2 = " "
 // When the token changes, change the payload
 // When the payload changes, change the token
 
+const formatJSON = json => js_beautify(JSON.stringify(json), {indent_size: 1})
+
 const JwtDecoder = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
 
-  const [header, setHeader] = useState<any>({
+  const [header, setHeader] = useState<any>(formatJSON({
     "alg": selectedAlgorithm.label,
     "typ": "jwt"
-  })
+  }))
 
   const [tokenValue, setTokenValue] = useState(sampleToken);
 
@@ -45,7 +48,6 @@ const JwtDecoder = () => {
   const [signingKey, setSigningKey] = useState(sampleSigningKey2);
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
-  const headerValue = JSON.stringify(header);
 
   const onPayloadChange = async (p: string) => {
     setShowPayloadError(false);
@@ -63,7 +65,7 @@ const JwtDecoder = () => {
     try {
       setShowJwtError(false);
       const decoded = jose.decodeJwt(token);
-      setPayload(JSON.stringify(decoded))
+      setPayload(formatJSON(decoded))
     } catch (error) {
       setShowJwtError(true);
     }
@@ -162,7 +164,7 @@ const JwtDecoder = () => {
               </div>
               <div className="inner-content code">
                 <InputEditor onValueChange={headerValueChangeHandler}
-                  value={headerValue}
+                  value={header}
                 />
               </div>
               <InputContainer $hasError={showPayloadError}>
