@@ -6,6 +6,7 @@ import useOnClickOutside from "../../../hooks/useOnClickOutside"
 export interface IDropdownOption {
   label: string;
   value: string;
+  [key: string]: any;
 }
 
 interface IDropdownProps {

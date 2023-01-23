@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const PopoverContainer = styled.div`
   position: relative;
   cursor: pointer;
+  word-break: break-word;
   .popover-tooltip{
     position: absolute;
     top: 0;

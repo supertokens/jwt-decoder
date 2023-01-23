@@ -9,8 +9,6 @@ const Popover: React.FC<PropsWithChildren<IPopoverProps>> = ({
   popoverContent,
   children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [isOpen] = useState(true);
-  // const [,setIsOpen] = useState(true)
 
   return (
     <PopoverContainer className='popover-container' onMouseOver={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>

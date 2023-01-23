@@ -8,22 +8,27 @@ export enum Algorithms {
   // EdDSA = 'EdDSA',
 }
 
+
 export const algorithmOptions: IDropdownOption[] = [
   {
     label: 'HS256',
     value: Algorithms.HS256,
+    signingMethodName: 'HMACSHA256',
   },
   {
     label: 'ES256',
     value: Algorithms.ES256,
+    signingMethodName: 'HMACSHA256',
   },
   {
     label: 'RS256',
     value: Algorithms.RS256,
+    signingMethodName: 'HMACSHA256',
   },
   {
     label: 'PS256',
     value: Algorithms.PS256,
+    signingMethodName: 'HMACSHA256',
   },
   // {
   //   label: 'EdDSA',
