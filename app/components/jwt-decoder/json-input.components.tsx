@@ -9,7 +9,7 @@ interface IInputEditorProps extends ReactCodeMirrorProps {
 }
 
 const InputEditor: React.FC<IInputEditorProps> = ({ onValueChange, ...props }) => {
-  return <InputWrapper>
+  return <InputWrapper className="input-wrapper">
     <ReactCodeMirror
       basicSetup={{ lineNumbers: false }}
       theme={"dark"}

@@ -208,32 +208,30 @@ const JwtDecoder = () => {
                 <pre>
                   {selectedAlgorithm.signingMethodName}{signingKeyConstants.prefix}
                 </pre>
-                <div>
-                  {
-                    selectedAlgorithm.requiresBothKeys ? <div className="keys-input-container">
-                      <InputContainer $hasError={false}>
-                        <div className="title-band">
-                          <span className="title-text">Public Key</span>
-                        </div>
-                        <div className="code">
-                          <InputEditor
-                            className="signing-key-editor" onValueChange={setPublicSigningKey} value={publicSigningKey}
-                          />
-                        </div>
-                      </InputContainer>
-                      <InputContainer $hasError={false}>
-                        <div className="title-band">
-                          <span className="title-text">Private Key</span>
-                        </div>
-                        <div className="code">
-                          <InputEditor
-                            className="signing-key-editor" onValueChange={setPublicSigningKey} value={publicSigningKey} />
-                        </div>
-                      </InputContainer>
-                    </div> :
-                      <InputEditor className="signing-key-editor" onValueChange={onSecretKeyChange} value={secretKey} />
-                  }
-                </div>
+                {
+                  selectedAlgorithm.requiresBothKeys ? <div className="keys-input-container">
+                    <InputContainer className="key-container" $hasError={false}>
+                      <div className="title-band">
+                        <span className="title-text">Public Key</span>
+                      </div>
+                      <div className="code">
+                        <InputEditor
+                          className="signing-key-editor" onValueChange={setPublicSigningKey} value={publicSigningKey}
+                        />
+                      </div>
+                    </InputContainer>
+                    <InputContainer className="key-container" $hasError={false}>
+                      <div className="title-band">
+                        <span className="title-text">Private Key</span>
+                      </div>
+                      <div className="code">
+                        <InputEditor
+                          className="signing-key-editor" onValueChange={setPublicSigningKey} value={publicSigningKey} />
+                      </div>
+                    </InputContainer>
+                  </div> :
+                    <InputEditor className="signing-key-editor" onValueChange={onSecretKeyChange} value={secretKey} />
+                }
                 <pre>
                   {signingKeyConstants.postfix}
                 </pre>

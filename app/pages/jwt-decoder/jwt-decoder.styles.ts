@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Algorithms, IAlgorithmOption, TOption } from '../../assets/constants';
+import styled, { css } from 'styled-components';
+import { IAlgorithmOption, TOption } from '../../assets/constants';
 
 const leftContentWidth = '31.5rem';
 
@@ -7,16 +7,6 @@ interface IJwtContainerStyledProps {
   $selectedTab: TOption;
   $selectedAlg: IAlgorithmOption;
 }
-
-const getSigningKeyHeight = (selectedAlg: Algorithms) => {
-  switch (selectedAlg) {
-    // the algorithms which have a public as well as a private key for signing
-    case Algorithms.ES256:
-      return '31.5rem';
-    default:
-      return '16rem';
-  }
-};
 
 export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   &.jwt-decoder-container {
@@ -104,12 +94,13 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
 
     .cm-theme-dark {
       background-color: ${(props) => props.theme.colors.dark[1000]}!important;
-      /* Only if the prefix and postfix are empty */
       margin-block: 1rem;
       border-radius: 0.9rem;
-      padding-inline: 0.5rem;
+      padding-inline: 1.5rem;
       border: 1px solid ${(props) => props.theme.colors.grey[810]};
     }
+
+    ${(props) => props.$selectedAlg.requiresBothKeys && privatePublicKeysCSS}
   }
 
   .decoder-main-container {
@@ -290,6 +281,33 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
       }
     `;
     }}
+  }
+`;
+
+const privatePublicKeysCSS = css`
+  .key-container {
+    border-radius: 1.3rem;
+    margin-inline-start: 2rem;
+    margin-block-start: 1rem;
+    overflow: hidden;
+    border: 1px solid #5D5D5D;
+
+    .title-band {
+      font-family: ${(props) => props.theme.fontFamily.roboto};
+      font-size: ${props=>props.theme.fontSizes.small};
+      padding-block: .5rem;
+    }
+
+    /* .input-wrapper{
+      height: 5rem;
+      overflow-y: auto;
+    } */
+
+    .code .cm-theme-dark{
+      margin-block: 0;
+      border-radius: 0;
+      border: none;
+    }
   }
 `;
 
