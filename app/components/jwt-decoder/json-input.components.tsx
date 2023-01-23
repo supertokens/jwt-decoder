@@ -27,8 +27,8 @@ const InputEditor: React.FC<IInputEditorProps> = ({ onValueChange, ...props }) =
 export const JWTInputEditor: React.FC<IInputEditorProps> = ({ value, onValueChange, ...props }) => {
   const [inFocus, setInFocus] = useState(false)
   const subStrings = value.split(".")
-  return <JwtInputWrapper onBlur={() => setInFocus(false)}
-    onFocus={() => setInFocus(true)} $inFocus={inFocus}>
+  return <JwtInputWrapper onMouseLeave={() => setInFocus(false)}
+    onMouseEnter={() => setInFocus(true)} $inFocus={inFocus}>
     <ReactCodeMirror
       value={value}
       basicSetup={{ lineNumbers: false }}

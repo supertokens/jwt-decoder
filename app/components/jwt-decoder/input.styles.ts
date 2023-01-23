@@ -58,4 +58,9 @@ export const JwtInputWrapper = styled(InputWrapper)<{$inFocus: boolean}>`
       display: none!important;
     }
   `}
+
+  .cm-content{
+    padding: 0;
+    line-height: 24px;
+  }
 `
