@@ -64,3 +64,17 @@ export const defaultTokens: { [key in Algorithms]: string } = {
   [Algorithms.PS256]: `eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.iOeNU4dAFFeBwNj6qdhdvm-IvDQrTa6R22lQVJVuWJxorJfeQww5Nwsra0PjaOYhAMj9jNMO5YLmud8U7iQ5gJK2zYyepeSuXhfSi8yjFZfRiSkelqSkU19I-Ja8aQBDbqXf2SAWA8mHF8VS3F08rgEaLCyv98fLLH4vSvsJGf6ueZSLKDVXz24rZRXGWtYYk_OYYTVgR1cg0BLCsuCvqZvHleImJKiWmtS0-CymMO4MMjCy_FIl6I56NqLE9C87tUVpo1mT-kbg5cHDD8I7MjCW5Iii5dethB4Vid3mZ6emKjVYgXrtkOQ-JyGMh6fnQxEFN1ft33GX2eRHluK9eg`,
   // [Algorithms.EdDSA]: ``,
 };
+
+export const placeholderSecretKey = '---Enter-your-256-bit-key---'
+export const signingKeyConstants = {
+  prefix: `( 
+    base64UrlEncode(header) + "." +
+    base64UrlEncode(payload),`,
+  postfix: `)`,
+}
+
+export const initPayload = {
+  "sub": "1234567890",
+  "name": "John Doe",
+  "iat": 1516239022
+}

@@ -2,32 +2,13 @@ import Image from "next/image"
 import React, { useEffect, useRef, useState } from "react"
 import ExplanationContent from "../../components/jwt-decoder/explanation-content.component"
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
-import Dropdown, { IDropdownOption } from "../../components/common/dropdown/dropdown.component"
+import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
-import { algorithmOptions, defaultTokens, optionsList, TOption } from "../../assets/constants"
+import { algorithmOptions, defaultTokens, initPayload, optionsList, placeholderSecretKey, signingKeyConstants, TOption } from "../../assets/constants"
 import * as jose from 'jose'
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 import js_beautify from "js-beautify"
 
-const sampleToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NjU3MjQyNzMsImV4cCI6MTY5NzI2MDI3MywiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9.4d7mG0jzELVxjwbYTZxH_OjhC4h3lFI0YTEZYzmmmNc'
-
-const sampleToken2 = 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiZG9udHJlbWVtYmVyIiwiSXNzdWVyIjoiSXNzdWVyIiwiVXNlcm5hbWUiOiJzb21lb25lIiwiZXhwIjoxNjczNjAzODgzLCJpYXQiOjE2NzM2MDM4ODN9.IAI3so_yuxr_8QUgbXBPr8JtoK_fAX7hXqR1xadiWLQ'
-
-const sampleSigningKey = 'MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4JJaPHjlrh/gDnVOHISFE59M8MkojCbhZ9'
-
-const placeholderSecretKey = '---Enter-your-256-bit-key---'
-const signingKeyConstants = {
-  prefix: `( 
-    base64UrlEncode(header) + "." +
-    base64UrlEncode(payload),`,
-  postfix: `)`,
-}
-
-const initPayload = {
-  "sub": "1234567890",
-  "name": "John Doe",
-  "iat": 1516239022
-}
 
 const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 1 })
 
@@ -40,7 +21,7 @@ const JwtDecoder = () => {
     "typ": "jwt"
   }))
 
-  const [tokenValue, setTokenValue] = useState(sampleToken);
+  const [tokenValue, setTokenValue] = useState("");
 
   const [showJwtError, setShowJwtError] = useState(false);
   const [showPayloadError, setShowPayloadError] = useState(false);
