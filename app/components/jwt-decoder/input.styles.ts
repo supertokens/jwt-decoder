@@ -7,21 +7,14 @@ export const InputWrapper = styled.div`
   * {
     font-family: ${(props) => props.theme.fontFamily.menlo};
   }
-  /* 
-  .cm-gutters {
-    display: none;
-  }
 
-  .cm-line {
-    padding-inline-start: 0;
+  .cm-theme-dark,
+  .cm-editor {
+    height: 100%;
   }
 
   .ͼo,
   .cm-gutters {
-    background-color: transparent !important;
-  }
-
-  .ͼo .cm-activeLine {
     background-color: transparent !important;
   }
 
@@ -36,22 +29,6 @@ export const InputWrapper = styled.div`
   .ͼu {
     color: #8ece78;
   }
-
-  .cm-placeholder {
-    color: ${(props) => props.theme.colors.blue[200]};
-  } */
-
-  .colored-token-parts {
-    .str:nth-child(1) {
-      color: ${(props) => props.theme.colors.red[200]};
-    }
-    .str:nth-child(2) {
-      color: ${(props) => props.theme.colors.purple[200]};
-    }
-    .str:nth-child(3) {
-      color: ${(props) => props.theme.colors.blue[200]};
-    }
-  }
 `;
 
 export const JwtInputWrapper = styled(InputWrapper)`
@@ -60,7 +37,7 @@ export const JwtInputWrapper = styled(InputWrapper)`
     line-height: 24px;
   }
 
-  * {
+  *, .ͼu {
     color: ${(props) => props.theme.colors.blue[200]};
   }
 

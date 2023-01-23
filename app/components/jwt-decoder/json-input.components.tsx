@@ -11,7 +11,8 @@ interface IInputEditorProps extends ReactCodeMirrorProps {
 
 const commonBasicSetup: BasicSetupOptions = {
   lineNumbers: false,
-  foldGutter: false
+  foldGutter: false,
+  highlightActiveLine: false,
 }
 
 const jwtConfigSetup: BasicSetupOptions = {
@@ -28,7 +29,6 @@ const jwtConfigSetup: BasicSetupOptions = {
   crosshairCursor: false,
   highlightSelectionMatches: false,
   closeBracketsKeymap: false,
-  highlightActiveLine: false,
   defaultKeymap: false
 }
 
