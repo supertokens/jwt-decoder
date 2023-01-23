@@ -197,7 +197,7 @@ const JwtDecoder = () => {
                       </div>
                       <div className="code">
                         <InputEditor
-                          className="signing-key-editor" onValueChange={setPublicSigningKey} value={publicSigningKey} />
+                          className="signing-key-editor" onValueChange={setPrivateSigningKey} value={privateSigningKey} />
                       </div>
                     </InputContainer>
                   </div> :
