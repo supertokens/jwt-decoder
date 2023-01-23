@@ -1,5 +1,5 @@
 import Image from "next/image"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import ExplanationContent from "../../components/jwt-decoder/explanation-content.component"
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown from "../../components/common/dropdown/dropdown.component"
@@ -71,7 +71,7 @@ const JwtDecoder = () => {
         .sign(secret);
       setTokenValue(jwt);
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       setShowPayloadError(true);
     }
   }
