@@ -22,13 +22,18 @@ const sampleToken2 = 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiZG9udHJlbWVtYmVyIiwiSXNzd
 
 const sampleSigningKey = 'MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsi4JJaPHjlrh/gDnVOHISFE59M8MkojCbhZ9'
 
-
-const placeholderSigningKey = '---Enter-your-256-bit-key---'
+const placeholderSecretKey = '---Enter-your-256-bit-key---'
 const signingKeyConstants = {
   prefix: `( 
     base64UrlEncode(header) + "." +
     base64UrlEncode(payload),`,
   postfix: `)`,
+}
+
+const initPayload = {
+  "sub": "1234567890",
+  "name": "John Doe",
+  "iat": 1516239022
 }
 
 // When the token changes, change the payload
@@ -52,8 +57,10 @@ const JwtDecoder = () => {
   const [showHeaderError, setShowHeaderError] = useState(false);
 
   const [payload, setPayload] = useState('{}');
-  const [publicSigningKey, setPublicSigningKey] = useState(placeholderSigningKey);
-  const [privateSigningKey, setPrivateSigningKey] = useState("-");
+
+  const [secretKey, setSecretKey] = useState(placeholderSecretKey)
+  const [publicSigningKey, setPublicSigningKey] = useState("");
+  const [privateSigningKey, setPrivateSigningKey] = useState("");
 
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
@@ -70,6 +77,11 @@ const JwtDecoder = () => {
     populatePayloadFromToken(t);
   }
 
+  const onSecretKeyChange = async (s: string) => {
+    setSecretKey(s);
+    populateTokenFromPayload(payload)
+  }
+
   const populatePayloadFromToken = async (token: string) => {
     try {
       setShowJwtError(false);
@@ -82,7 +94,7 @@ const JwtDecoder = () => {
 
   const populateTokenFromPayload = async (payload: string) => {
     try {
-      const secret = new TextEncoder().encode(publicSigningKey)
+      const secret = new TextEncoder().encode(secretKey)
       const jwt = await new jose.SignJWT(JSON.parse(payload))
         .setProtectedHeader(JSON.parse(header))
         .sign(secret);
@@ -94,8 +106,10 @@ const JwtDecoder = () => {
   }
 
   useEffect(() => {
-    populatePayloadFromToken(tokenValue);
+    populateTokenFromPayload(JSON.stringify(initPayload));
   }, [])
+
+
 
   // If the token is empty and the algorithm is changed, insert a placeholder token value.
   useEffect(() => {
@@ -192,10 +206,33 @@ const JwtDecoder = () => {
 
               <div className="inner-content code">
                 <pre>
-                  {selectedAlgorithm?.signingMethodName}{signingKeyConstants.prefix}
+                  {selectedAlgorithm.signingMethodName}{signingKeyConstants.prefix}
                 </pre>
                 <div>
-                  <InputEditor className="signing-key-editor" onValueChange={setPublicSigningKey} value={publicSigningKey} />
+                  {
+                    selectedAlgorithm.requiresBothKeys ? <div className="keys-input-container">
+                      <InputContainer $hasError={false}>
+                        <div className="title-band">
+                          <span className="title-text">Public Key</span>
+                        </div>
+                        <div className="code">
+                          <InputEditor
+                            className="signing-key-editor" onValueChange={setPublicSigningKey} value={publicSigningKey}
+                          />
+                        </div>
+                      </InputContainer>
+                      <InputContainer $hasError={false}>
+                        <div className="title-band">
+                          <span className="title-text">Private Key</span>
+                        </div>
+                        <div className="code">
+                          <InputEditor
+                            className="signing-key-editor" onValueChange={setPublicSigningKey} value={publicSigningKey} />
+                        </div>
+                      </InputContainer>
+                    </div> :
+                      <InputEditor className="signing-key-editor" onValueChange={onSecretKeyChange} value={secretKey} />
+                  }
                 </div>
                 <pre>
                   {signingKeyConstants.postfix}
