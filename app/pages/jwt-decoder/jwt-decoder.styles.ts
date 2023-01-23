@@ -1,22 +1,22 @@
 import styled from 'styled-components';
-import { Algorithms, TOption } from '../../assets/constants';
+import { Algorithms, IAlgorithmOption, TOption } from '../../assets/constants';
 
 const leftContentWidth = '31.5rem';
 
 interface IJwtContainerStyledProps {
   $selectedTab: TOption;
-  $selectedAlg: string;
+  $selectedAlg: IAlgorithmOption;
 }
 
 const getSigningKeyHeight = (selectedAlg: Algorithms) => {
   switch (selectedAlg) {
     // the algorithms which have a public as well as a private key for signing
     case Algorithms.ES256:
-      return '31.5rem'  
+      return '31.5rem';
     default:
-      return '16rem'
+      return '16rem';
   }
-}
+};
 
 export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   &.jwt-decoder-container {
@@ -85,15 +85,16 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
 
   #signing-key + .code {
     word-break: break-all;
-    height: ${props=> getSigningKeyHeight(props.$selectedAlg as Algorithms) || '8.3rem'};
+    height: ${(props) =>
+      props.$selectedAlg.requiresBothKeys ? '31.5rem' : '16rem'};
     padding-block-start: 2rem;
     line-height: 1.85rem;
     background-color: #202020;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 
-    .signing-key-editor *{
-      color: ${props=>props.theme.colors.blue[200]};
+    .signing-key-editor * {
+      color: ${(props) => props.theme.colors.blue[200]};
     }
 
     pre {

@@ -41,7 +41,7 @@ const JwtDecoder = () => {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
 
   const [header, setHeader] = useState<string>(formatJSON({
-    "alg": selectedAlgorithm.label,
+    "alg": selectedAlgorithm.value,
     "typ": "jwt"
   }))
 
@@ -124,7 +124,7 @@ const JwtDecoder = () => {
   }
 
   return (
-    <JwtContainerStyled $selectedTab={selectedTab} $selectedAlg={selectedAlgorithm.value} className="jwt-decoder-container">
+    <JwtContainerStyled $selectedTab={selectedTab} $selectedAlg={selectedAlgorithm} className="jwt-decoder-container">
       <main className="inner-container">
         <article className="hero-container">
           <h3 className="title">JWT Decoder</h3>
