@@ -83,6 +83,10 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 
+    .input-wrapper{
+      height: fit-content;
+    }
+
     .signing-key-editor * {
       color: ${(props) => props.theme.colors.blue[200]};
     }
@@ -290,23 +294,21 @@ const privatePublicKeysCSS = css`
     margin-inline-start: 2rem;
     margin-block-start: 1rem;
     overflow: hidden;
-    border: 1px solid #5D5D5D;
+    border: 1px solid #5d5d5d;
 
     .title-band {
       font-family: ${(props) => props.theme.fontFamily.roboto};
-      font-size: ${props=>props.theme.fontSizes.small};
-      padding-block: .5rem;
+      font-size: ${(props) => props.theme.fontSizes.small};
+      padding-block: 0.5rem;
     }
 
-    /* .input-wrapper{
-      height: 5rem;
-      overflow-y: auto;
-    } */
-
-    .code .cm-theme-dark{
+    .code .cm-theme-dark {
       margin-block: 0;
       border-radius: 0;
       border: none;
+      height: 5.8rem;
+      overflow-y: auto;
+      padding-block: 0.5rem;
     }
   }
 `;

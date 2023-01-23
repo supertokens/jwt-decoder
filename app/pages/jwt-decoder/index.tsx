@@ -9,13 +9,6 @@ import * as jose from 'jose'
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 import js_beautify from "js-beautify"
 
-// Create a JWT with a payload
-const payload = {
-  name: "John Doe",
-  email: "johndoe@example.com"
-};
-
-
 const sampleToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NjU3MjQyNzMsImV4cCI6MTY5NzI2MDI3MywiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciJ9.4d7mG0jzELVxjwbYTZxH_OjhC4h3lFI0YTEZYzmmmNc'
 
 const sampleToken2 = 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiZG9udHJlbWVtYmVyIiwiSXNzdWVyIjoiSXNzdWVyIiwiVXNlcm5hbWUiOiJzb21lb25lIiwiZXhwIjoxNjczNjAzODgzLCJpYXQiOjE2NzM2MDM4ODN9.IAI3so_yuxr_8QUgbXBPr8JtoK_fAX7hXqR1xadiWLQ'
@@ -35,9 +28,6 @@ const initPayload = {
   "name": "John Doe",
   "iat": 1516239022
 }
-
-// When the token changes, change the payload
-// When the payload changes, change the token
 
 const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 1 })
 
