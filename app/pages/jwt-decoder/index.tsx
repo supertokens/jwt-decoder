@@ -71,7 +71,7 @@ const JwtDecoder = () => {
         .sign(secret);
       setTokenValue(jwt);
     } catch (error) {
-      // console.log(error)
+      console.log(error)
       setShowPayloadError(true);
     }
   }
@@ -79,8 +79,6 @@ const JwtDecoder = () => {
   useEffect(() => {
     populateTokenFromPayload(JSON.stringify(initPayload));
   }, [])
-
-
 
   // If the token is empty and the algorithm is changed, insert a placeholder token value.
   useEffect(() => {
