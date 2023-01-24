@@ -13,9 +13,10 @@ import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-i
 const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 1 })
 
 const JwtDecoder = () => {
+  // The flag to show / hide the informational content (hidden by default)
   const [showMoreContent, setShowMoreContent] = useState(false);
+  // The algorithm
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
-
   const [header, setHeader] = useState<string>(formatJSON({
     "alg": selectedAlgorithm.value,
     "typ": "jwt"
@@ -65,6 +66,7 @@ const JwtDecoder = () => {
 
   const populateTokenFromPayload = async (payload: string) => {
     try {
+      // Based on the algorithm selected, generate a JWT
       const secret = new TextEncoder().encode(secretKey)
       const jwt = await new jose.SignJWT(JSON.parse(payload))
         .setProtectedHeader(JSON.parse(header))
@@ -127,7 +129,7 @@ const JwtDecoder = () => {
                   </span>
                   <span>
                     <Popover popoverContent={"JWT will update Automatically when you edit Header, Payload and Signing key data"}>
-                      <Image src={"images/help.svg"} alt="help" width={10} height={10} />
+                      <Image src={"images/help.svg"} alt="help" width={15} height={15} />
                     </Popover>
                   </span>
                 </div>
