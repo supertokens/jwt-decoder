@@ -31,6 +31,7 @@ const JwtDecoder = () => {
   const [payload, setPayload] = useState('{}');
 
   const [secretKey, setSecretKey] = useState(placeholderSecretKey)
+
   const [publicSigningKey, setPublicSigningKey] = useState("");
   const [privateSigningKey, setPrivateSigningKey] = useState("");
 
@@ -60,6 +61,7 @@ const JwtDecoder = () => {
       const decoded = jose.decodeJwt(token);
       setPayload(formatJSON(decoded))
     } catch (error) {
+      console.log(error)
       setShowJwtError(true);
     }
   }

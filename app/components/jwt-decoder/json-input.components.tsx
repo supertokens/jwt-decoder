@@ -16,17 +16,13 @@ const commonBasicSetup: BasicSetupOptions = {
 }
 
 const jwtConfigSetup: BasicSetupOptions = {
-  history: false,
   drawSelection: true,
   highlightSpecialChars: false,
   highlightActiveLineGutter: false,
   indentOnInput: false,
-  syntaxHighlighting: true,
   bracketMatching: false,
   closeBrackets: false,
   autocompletion: false,
-  rectangularSelection: false,
-  crosshairCursor: false,
   highlightSelectionMatches: false,
   closeBracketsKeymap: false,
   defaultKeymap: false
