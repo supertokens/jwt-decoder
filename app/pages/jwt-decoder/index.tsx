@@ -1,13 +1,13 @@
-import Image from "next/image"
 import React, { useEffect, useState } from "react"
+import Image from "next/image"
+import * as jose from 'jose'
+import js_beautify from "js-beautify"
 import ExplanationContent from "../../components/jwt-decoder/explanation-content.component"
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
 import { algorithmOptions, defaultTokens, initPayload, optionsList, placeholderSecretKey, signingKeyConstants, TOption } from "../../assets/constants"
-import * as jose from 'jose'
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
-import js_beautify from "js-beautify"
 
 
 const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 1 })

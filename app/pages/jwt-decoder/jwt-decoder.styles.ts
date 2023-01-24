@@ -321,7 +321,7 @@ const privatePublicKeysCSS = css`
 
     .cm-scroller{
       padding: 0;
-      padding-inline-start: 1rem!important;
+      padding-inline: 1rem!important;
     }
 
     .code .cm-theme-dark {
