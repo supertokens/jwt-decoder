@@ -33,7 +33,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     border: 1px solid ${(props) => props.theme.colors.grey[1000]};
   }
 
-  .inner-content {
+  .inner-content .cm-editor .cm-scroller{
     padding: 2.5rem;
   }
 
@@ -77,7 +77,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     word-break: break-all;
     height: ${(props) =>
       props.$selectedAlg.requiresBothKeys ? '31.5rem' : '16rem'};
-    padding-block-start: 2rem;
+    padding: 2.5rem 3rem;
     line-height: 1.85rem;
     background-color: #202020;
     border-bottom-left-radius: inherit;
@@ -85,6 +85,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
 
     .input-wrapper{
       height: fit-content;
+      padding-inline-start: 3rem;
     }
 
     .signing-key-editor * {
@@ -100,8 +101,16 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
       background-color: ${(props) => props.theme.colors.dark[1000]}!important;
       margin-block: 1rem;
       border-radius: 0.9rem;
-      padding-inline: 1.5rem;
       border: 1px solid ${(props) => props.theme.colors.grey[810]};
+    }
+
+    .cm-focused{
+      outline: none;
+    }
+
+    .cm-scroller{
+      padding: .5rem;
+      padding-inline: 0!important;
     }
 
     ${(props) => props.$selectedAlg.requiresBothKeys && privatePublicKeysCSS}
@@ -175,7 +184,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     }
   }
 
-  #decoded-content .inner-content {
+  #decoded-content .inner-content .cm-editor .cm-scroller {
     padding-inline-start: 3.1rem;
   }
 
@@ -289,6 +298,10 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
 `;
 
 const privatePublicKeysCSS = css`
+  .input-wrapper{
+    padding-inline-start: 0;
+  }
+
   .key-container {
     border-radius: 1.3rem;
     margin-inline-start: 2rem;
@@ -300,6 +313,10 @@ const privatePublicKeysCSS = css`
       font-family: ${(props) => props.theme.fontFamily.roboto};
       font-size: ${(props) => props.theme.fontSizes.small};
       padding-block: 0.5rem;
+    }
+
+    .cm-scroller{
+      padding: 0;
     }
 
     .code .cm-theme-dark {
