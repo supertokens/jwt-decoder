@@ -51,7 +51,7 @@ const JwtDecoder = () => {
 
   const onSecretKeyChange = async (s: string) => {
     setSecretKey(s);
-    populateTokenFromPayload(payload)
+    populateTokenFromPayload(undefined, s)
   }
 
   const populatePayloadFromToken = async (token: string) => {
@@ -64,12 +64,12 @@ const JwtDecoder = () => {
     }
   }
 
-  const populateTokenFromPayload = async (payload: string) => {
+  const populateTokenFromPayload = async (newPayload: string = payload, newSecretKey: string = secretKey, newHeader:string = header) => {
     try {
       // Based on the algorithm selected, generate a JWT
-      const secret = new TextEncoder().encode(secretKey)
-      const jwt = await new jose.SignJWT(JSON.parse(payload))
-        .setProtectedHeader(JSON.parse(header))
+      const secret = new TextEncoder().encode(newSecretKey)
+      const jwt = await new jose.SignJWT(JSON.parse(newPayload))
+        .setProtectedHeader(JSON.parse(newHeader))
         .sign(secret);
       setTokenValue(jwt);
     } catch (error) {
@@ -101,8 +101,8 @@ const JwtDecoder = () => {
       if (!("alg" in JSON.parse(newValue))) {
         throw Error("Invalid Header")
       }
-      console.log(newValue)
       setHeader(newValue)
+      populateTokenFromPayload(undefined, undefined, newValue);
     } catch (error) {
       setShowHeaderError(true);
     }
