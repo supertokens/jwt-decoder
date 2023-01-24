@@ -137,7 +137,7 @@ const JwtDecoder = () => {
                       <JWTInputEditor onValueChange={onTokenValueChange} value={tokenValue} />
                     </div>
                   </div>
-                  <div className="inner-content">
+                  <div id="clipboard-btn-container">
                     <button id="copy-btn" className="strong-600" onClick={copyJwtClickHandler}>
                       Copy JWT
                       <Image alt={"copy to clipboard"} width={10} height={10} src={"images/clipboard.svg"} />

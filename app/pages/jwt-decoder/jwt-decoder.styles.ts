@@ -73,11 +73,16 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     height: 20.5rem;
   }
 
+  #clipboard-btn-container{
+    padding: 2.5rem;
+    padding-inline-end: 2rem;
+  }
+
   #signing-key + .code {
     word-break: break-all;
     height: ${(props) =>
-      props.$selectedAlg.requiresBothKeys ? '31.5rem' : '16rem'};
-    padding: 2.5rem 3rem;
+      props.$selectedAlg.requiresBothKeys ? '31.5rem' : '16.3rem'};
+    padding: 2.4rem 3rem 1.2rem;
     line-height: 1.85rem;
     background-color: #202020;
     border-bottom-left-radius: inherit;
@@ -109,8 +114,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     }
 
     .cm-scroller{
-      padding: .5rem;
-      padding-inline: 0!important;
+      padding: 0!important;
     }
 
     ${(props) => props.$selectedAlg.requiresBothKeys && privatePublicKeysCSS}
