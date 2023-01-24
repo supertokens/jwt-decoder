@@ -6,9 +6,16 @@ import ExplanationContent from "../../components/jwt-decoder/explanation-content
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
-import { algorithmOptions, defaultTokens, initPayload, optionsList, placeholderSecretKey, signingKeyConstants, TOption } from "../../assets/constants"
+import { algorithmOptions, Algorithms, defaultTokens, IAlgorithmOption, initPayload, optionsList, placeholderSecretKey, samplePrivateKey, samplePublicKey, signingKeyConstants, TOption } from "../../assets/constants"
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 
+interface IPopulateToken {
+  newPayload?: string;
+  newSecretKey?: string;
+  newHeader?: string;
+  privateKey?: string;
+  publicKey?: string
+}
 
 const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 1 })
 
@@ -32,8 +39,8 @@ const JwtDecoder = () => {
 
   const [secretKey, setSecretKey] = useState(placeholderSecretKey)
 
-  const [publicSigningKey, setPublicSigningKey] = useState("");
-  const [privateSigningKey, setPrivateSigningKey] = useState("");
+  const [publicSigningKey, setPublicSigningKey] = useState(samplePublicKey);
+  const [privateSigningKey, setPrivateSigningKey] = useState(samplePrivateKey);
 
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
@@ -41,7 +48,7 @@ const JwtDecoder = () => {
   const onPayloadChange = async (p: string) => {
     setShowPayloadError(false);
     setPayload(p);
-    populateTokenFromPayload(p);
+    populateTokenFromPayload({newPayload: p});
   }
 
   const onTokenValueChange = async (t: string) => {
@@ -52,7 +59,25 @@ const JwtDecoder = () => {
 
   const onSecretKeyChange = async (s: string) => {
     setSecretKey(s);
-    populateTokenFromPayload(undefined, s)
+    populateTokenFromPayload({newSecretKey:s})
+  }
+
+  const onPrivateKeyChange = async (k: string) => {
+    setPrivateSigningKey(k);
+    populateTokenFromPayload({privateKey: k})
+  }
+
+  const onPublicKeyChange = async (k: string) => {
+    setPublicSigningKey(k);
+    populateTokenFromPayload({publicKey: k})
+  }
+
+  const onAlgorithmChange = (algOption: IAlgorithmOption) => {
+    setHeader(formatJSON({
+      "alg": algOption.value,
+      "typ": "jwt"
+    }))
+    setSelectedAlgorithm(algOption)
   }
 
   const populatePayloadFromToken = async (token: string) => {
@@ -66,13 +91,22 @@ const JwtDecoder = () => {
     }
   }
 
-  const populateTokenFromPayload = async (newPayload: string = payload, newSecretKey: string = secretKey, newHeader:string = header) => {
+  const populateTokenFromPayload = async ({
+    newPayload = payload, newSecretKey = secretKey, newHeader = header, privateKey = privateSigningKey
+  }:IPopulateToken) => {
     try {
       // Based on the algorithm selected, generate a JWT
-      const secret = new TextEncoder().encode(newSecretKey)
+      const getSecret = async () => {
+        if(selectedAlgorithm.value === Algorithms.ES256){
+          return await jose.importPKCS8(privateKey, selectedAlgorithm.value);
+        }
+        return new TextEncoder().encode(newSecretKey)
+      }
+
       const jwt = await new jose.SignJWT(JSON.parse(newPayload))
         .setProtectedHeader(JSON.parse(newHeader))
-        .sign(secret);
+        .sign(await getSecret());
+
       setTokenValue(jwt);
     } catch (error) {
       console.log(error)
@@ -81,11 +115,12 @@ const JwtDecoder = () => {
   }
 
   useEffect(() => {
-    populateTokenFromPayload(JSON.stringify(initPayload));
+    populateTokenFromPayload({newPayload: JSON.stringify(initPayload)});
   }, [])
 
   // If the token is empty and the algorithm is changed, insert a placeholder token value.
   useEffect(() => {
+    // TODO: Check if token is generated. If not, set default value.
     onTokenValueChange(defaultTokens[selectedAlgorithm.value])
   }, [selectedAlgorithm])
 
@@ -97,14 +132,14 @@ const JwtDecoder = () => {
     }
   }
 
-  const headerValueChangeHandler = (newValue: string) => {
+  const headerValueChangeHandler = (newHeader: string) => {
     try {
       setShowHeaderError(false);
-      if (!("alg" in JSON.parse(newValue))) {
+      if (!("alg" in JSON.parse(newHeader))) {
         throw Error("Invalid Header")
       }
-      setHeader(newValue)
-      populateTokenFromPayload(undefined, undefined, newValue);
+      setHeader(newHeader)
+      populateTokenFromPayload({newHeader});
     } catch (error) {
       setShowHeaderError(true);
     }
@@ -155,7 +190,7 @@ const JwtDecoder = () => {
             <div id="decoded-content" className="input-container common-container">
               <div className="title-band bt-inherit" id="header">
                 <div className="title-text">Header</div>
-                <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={setSelectedAlgorithm} /></div>
+                <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={onAlgorithmChange} /></div>
               </div>
               <div className="inner-content code">
                 <InputEditor onValueChange={headerValueChangeHandler}
@@ -199,7 +234,7 @@ const JwtDecoder = () => {
                       </div>
                       <div className="code">
                         <InputEditor
-                          className="signing-key-editor" onValueChange={setPrivateSigningKey} value={privateSigningKey} />
+                          className="signing-key-editor" onValueChange={onPrivateKeyChange} value={privateSigningKey} />
                       </div>
                     </InputContainer>
                   </div> :
@@ -210,8 +245,6 @@ const JwtDecoder = () => {
                 </pre>
               </div>
             </div>
-
-
           </section>
           <section className="common-container note-container-outer">
             <div className="inner note">

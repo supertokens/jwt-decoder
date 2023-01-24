@@ -29,6 +29,14 @@ const jwtConfigSetup: BasicSetupOptions = {
 }
 
 const InputEditor: React.FC<IInputEditorProps> = ({ onValueChange, ...props }) => {
+
+  const inputRef = useRef<ReactCodeMirrorRef>(null);
+  const onChange = (value: string) => {
+    if (inputRef.current.view.hasFocus) {
+      onValueChange(value)
+    }
+  }
+
   return <InputWrapper className="input-wrapper">
     <ReactCodeMirror
       basicSetup={commonBasicSetup}
@@ -36,9 +44,8 @@ const InputEditor: React.FC<IInputEditorProps> = ({ onValueChange, ...props }) =
       extensions={[json(),
       EditorView.lineWrapping
       ]}
-      onChange={(value, viewUpdate) => {
-        onValueChange(value)
-      }}
+      ref={inputRef}
+      onChange={onChange}
       className="code"
       height="auto"
       minHeight="100%"
