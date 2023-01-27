@@ -108,6 +108,8 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     pre {
       margin-block: 0;
       font-family: inherit;
+      word-break: break-all;
+      white-space: pre-wrap;
     }
 
     .cm-theme-dark {
