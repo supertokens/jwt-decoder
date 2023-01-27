@@ -90,7 +90,6 @@ const JwtDecoder = () => {
       const decoded = jose.decodeJwt(token);
       setPayload(formatJSON(decoded))
     } catch (error) {
-      console.log(error)
       setShowJwtError(true);
     }
   }
@@ -126,7 +125,6 @@ const JwtDecoder = () => {
         .sign(await getSecretOrPublicKey());
       setTokenValue(jwt);
     } catch (error) {
-      console.log(error)
       if (error?.isSigningKeyError) setShowSigningKeyError(true)
       else setShowPayloadError(true);
     }
@@ -139,11 +137,13 @@ const JwtDecoder = () => {
   // If the token is empty and the algorithm is changed, insert a placeholder token value.
   useEffect(() => {
     onTokenValueChange(defaultTokens[selectedAlgorithm.value])
-
     if (selectedAlgorithm.requiresBothKeys) {
       const { privateKey, publicKey } = defaultSigningKeys[selectedAlgorithm.value as Algorithms]
+      if(!privateKey){
+        setShowSigningKeyError(true)
+      }
       setPrivateSigningKey(privateKey);
-      setPublicSigningKey(publicKey)
+      setPublicSigningKey(publicKey);
     }
   }, [selectedAlgorithm])
 
