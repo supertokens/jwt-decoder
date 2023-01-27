@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import { IAlgorithmOption, TOption } from '../../assets/constants';
+import styled, { css } from "styled-components";
+import { IAlgorithmOption, TOption } from "../../assets/constants";
 
-const leftContentWidth = '31.5rem';
+const leftContentWidth = "31.5rem";
 
 interface IJwtContainerStyledProps {
   $selectedTab: TOption;
@@ -33,7 +33,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     border: 1px solid ${(props) => props.theme.colors.grey[1000]};
   }
 
-  .inner-content .cm-editor .cm-scroller{
+  .inner-content .cm-editor .cm-scroller {
     padding: 2.5rem;
   }
 
@@ -73,22 +73,30 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     height: 20.5rem;
   }
 
-  #clipboard-btn-container{
+  #clipboard-btn-container {
     padding: 2.5rem;
     padding-inline-end: 2rem;
+  }
+
+  #signing-key.error {
+    color: ${(props) => props.theme.colors.red[300]};
+
+    + .inner-content {
+      background-color: ${(props) => props.theme.colors.red[800]};
+    }
   }
 
   #signing-key + .code {
     word-break: break-all;
     height: ${(props) =>
-      props?.$selectedAlg?.requiresBothKeys ? '31.5rem' : '16.3rem'};
+      props?.$selectedAlg?.requiresBothKeys ? leftContentWidth : "16.3rem"};
     padding: 2.4rem 3rem 1.2rem;
     line-height: 1.85rem;
     background-color: #202020;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 
-    .input-wrapper{
+    .input-wrapper {
       height: fit-content;
       padding-inline-start: 3rem;
     }
@@ -109,12 +117,12 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
       border: 1px solid ${(props) => props.theme.colors.grey[810]};
     }
 
-    .cm-focused{
+    .cm-focused {
       outline: none;
     }
 
-    .cm-scroller{
-      padding: 0!important;
+    .cm-scroller {
+      padding: 0 !important;
     }
 
     ${(props) => props.$selectedAlg?.requiresBothKeys && privatePublicKeysCSS}
@@ -123,7 +131,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   .decoder-main-container {
     display: flex;
     aside#encoded-content {
-      width: ${leftContentWidth};
+      width: min(40%, ${leftContentWidth});
       margin-right: 2rem;
     }
 
@@ -161,7 +169,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
           padding-block: 1rem;
           text-align: center;
           width: 100%;
-          font-variation-settings: 'wght' 500;
+          font-variation-settings: "wght" 500;
           border-radius: 1rem;
           color: ${(props) => props.theme.colors.green[900]};
           background-color: ${(props) => props.theme.colors.green[1000]}1A;
@@ -198,11 +206,11 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   }
 
   .note-container-outer {
-    margin-left: calc(${leftContentWidth} + 2rem);
+    margin-left: calc(min(40%, 31.5rem) + 2rem);
     margin-block: 1.1rem 6rem;
     text-align: center;
     border-color: ${(props) => props.theme.colors.orange[1000]};
-    background-color: ${(props) => props.theme.colors.orange[1000] + '0a'};
+    background-color: ${(props) => props.theme.colors.orange[1000] + "0a"};
 
     .note {
       padding: 1.1rem;
@@ -228,7 +236,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   .read-more-container {
     display: flex;
     justify-content: center;
-    span[role='button'] {
+    span[role="button"] {
       cursor: pointer;
       padding: 1.2rem 3rem;
       background-color: ${(props) => props.theme.colors.dark[800]};
@@ -285,13 +293,13 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     }
 
     ${(props) => {
-      if (props.$selectedTab === 'encoded')
+      if (props.$selectedTab === "encoded")
         return `
         #decoded-content {
           display: none!important;
         }
       `;
-      else if (props.$selectedTab === 'decoded')
+      else if (props.$selectedTab === "decoded")
         return `
       #encoded-content {
         display: none!important;
@@ -302,7 +310,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
 `;
 
 const privatePublicKeysCSS = css`
-  .input-wrapper{
+  .input-wrapper {
     padding-inline-start: 0;
   }
 
@@ -319,9 +327,9 @@ const privatePublicKeysCSS = css`
       padding-block: 0.5rem;
     }
 
-    .cm-scroller{
+    .cm-scroller {
       padding: 0;
-      padding-inline: 1rem!important;
+      padding-inline: 1rem !important;
     }
 
     .code .cm-theme-dark {

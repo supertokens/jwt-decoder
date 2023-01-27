@@ -42,6 +42,7 @@ const JwtDecoder = () => {
 
   const [publicSigningKey, setPublicSigningKey] = useState(samplePublicKey);
   const [privateSigningKey, setPrivateSigningKey] = useState(samplePrivateKey);
+  const [showSigningKeyError, setShowSigningKeyError] = useState(false);
 
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
@@ -99,25 +100,35 @@ const JwtDecoder = () => {
     algorithm = selectedAlgorithm
   }: IPopulateToken) => {
     try {
+      setShowPayloadError(false)
+      setShowSigningKeyError(false)
       // Based on the algorithm selected, generate a JWT
       const getSecretOrPublicKey = async () => {
         switch (algorithm.value) {
           case Algorithms.ES256:
-            return await jose.importPKCS8(privateKey, algorithm.value);
+            try {
+              setShowSigningKeyError(false);
+              if (privateSigningKey.toUpperCase().includes("PRIVATE KEY"))
+                return await jose.importPKCS8(privateSigningKey, algorithm.value)
+              else throw ("Can't find a private key")
+            } catch (error) {
+              setShowSigningKeyError(true);
+            }
           case Algorithms.RS256:
             return await jose.importPKCS8(sampleRS256PrivateKey, algorithm.value);
           default:
+            if(!newSecretKey.trim().length) throw({isSigningKeyError: true})
             return new TextEncoder().encode(newSecretKey)
         }
       }
       const jwt = await new jose.SignJWT(JSON.parse(newPayload))
         .setProtectedHeader(JSON.parse(newHeader))
         .sign(await getSecretOrPublicKey());
-
       setTokenValue(jwt);
     } catch (error) {
       console.log(error)
-      setShowPayloadError(true);
+      if(error?.isSigningKeyError) setShowSigningKeyError(true)
+      else setShowPayloadError(true);
     }
   }
 
@@ -216,7 +227,7 @@ const JwtDecoder = () => {
                 </div>
               </InputContainer>
 
-              <div className="title-band" id="signing-key">Signing Key</div>
+              <div className={`title-band ${showSigningKeyError ? 'error' : ''}`} id="signing-key">Signing Key</div>
 
               <div className="inner-content code">
                 <pre>
@@ -258,9 +269,8 @@ const JwtDecoder = () => {
               <span>We do not store any information in our database and all processing is done on the client side.</span>
             </div>
           </section>
-
           <div className="about">
-            The JWT Decoder Tool(TODO: placeholder name) allows you to decode JWTs for simple debugging. You can also create your own JWTs with custom payloads signed with your own secret for testing purposes.
+            The JWT Decoder Tool allows you to decode JWTs for simple debugging. You can also create your own JWTs with custom payloads signed with your own secret for testing purposes.
           </div>
           <hr />
           <div className="read-more-container">
