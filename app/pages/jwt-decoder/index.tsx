@@ -6,7 +6,7 @@ import ExplanationContent from "../../components/jwt-decoder/explanation-content
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
-import { algorithmOptions, Algorithms, defaultTokens, IAlgorithmOption, initPayload, optionsList, placeholderSecretKey, samplePrivateKey, samplePublicKey, signingKeyConstants, TOption } from "../../assets/constants"
+import { algorithmOptions, Algorithms, defaultTokens, IAlgorithmOption, initPayload, optionsList, placeholderSecretKey, samplePrivateKey, samplePublicKey, sampleRS256PrivateKey, signingKeyConstants, TOption } from "../../assets/constants"
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 
 interface IPopulateToken {
@@ -14,7 +14,8 @@ interface IPopulateToken {
   newSecretKey?: string;
   newHeader?: string;
   privateKey?: string;
-  publicKey?: string
+  publicKey?: string;
+  algorithm?: IAlgorithmOption
 }
 
 const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 1 })
@@ -48,7 +49,8 @@ const JwtDecoder = () => {
   const onPayloadChange = async (p: string) => {
     setShowPayloadError(false);
     setPayload(p);
-    populateTokenFromPayload({newPayload: p});
+    console.log("FROM PAYLOAD CHANGE")
+    populateTokenFromPayload({ newPayload: p });
   }
 
   const onTokenValueChange = async (t: string) => {
@@ -58,24 +60,25 @@ const JwtDecoder = () => {
   }
 
   const onSecretKeyChange = async (s: string) => {
+    setShowPayloadError(false);
     setSecretKey(s);
-    populateTokenFromPayload({newSecretKey:s})
+    populateTokenFromPayload({ newSecretKey: s })
   }
 
   const onPrivateKeyChange = async (k: string) => {
     setPrivateSigningKey(k);
-    populateTokenFromPayload({privateKey: k})
+    populateTokenFromPayload({ privateKey: k })
   }
 
   const onPublicKeyChange = async (k: string) => {
     setPublicSigningKey(k);
-    populateTokenFromPayload({publicKey: k})
+    populateTokenFromPayload({ publicKey: k })
   }
 
   const onAlgorithmChange = (algOption: IAlgorithmOption) => {
     setHeader(formatJSON({
       "alg": algOption.value,
-      "typ": "jwt"
+      "typ": "JWT"
     }))
     setSelectedAlgorithm(algOption)
   }
@@ -92,20 +95,24 @@ const JwtDecoder = () => {
   }
 
   const populateTokenFromPayload = async ({
-    newPayload = payload, newSecretKey = secretKey, newHeader = header, privateKey = privateSigningKey
-  }:IPopulateToken) => {
+    newPayload = payload, newSecretKey = secretKey, newHeader = header, privateKey = privateSigningKey,
+    algorithm = selectedAlgorithm
+  }: IPopulateToken) => {
     try {
       // Based on the algorithm selected, generate a JWT
-      const getSecret = async () => {
-        if(selectedAlgorithm.value === Algorithms.ES256){
-          return await jose.importPKCS8(privateKey, selectedAlgorithm.value);
+      const getSecretOrPublicKey = async () => {
+        switch (algorithm.value) {
+          case Algorithms.ES256:
+            return await jose.importPKCS8(privateKey, algorithm.value);
+          case Algorithms.RS256:
+            return await jose.importPKCS8(sampleRS256PrivateKey, algorithm.value);
+          default:
+            return new TextEncoder().encode(newSecretKey)
         }
-        return new TextEncoder().encode(newSecretKey)
       }
-
       const jwt = await new jose.SignJWT(JSON.parse(newPayload))
         .setProtectedHeader(JSON.parse(newHeader))
-        .sign(await getSecret());
+        .sign(await getSecretOrPublicKey());
 
       setTokenValue(jwt);
     } catch (error) {
@@ -115,7 +122,7 @@ const JwtDecoder = () => {
   }
 
   useEffect(() => {
-    populateTokenFromPayload({newPayload: JSON.stringify(initPayload)});
+    populateTokenFromPayload({ newPayload: JSON.stringify(initPayload) });
   }, [])
 
   // If the token is empty and the algorithm is changed, insert a placeholder token value.
@@ -139,7 +146,7 @@ const JwtDecoder = () => {
         throw Error("Invalid Header")
       }
       setHeader(newHeader)
-      populateTokenFromPayload({newHeader});
+      populateTokenFromPayload({ newHeader });
     } catch (error) {
       setShowHeaderError(true);
     }
@@ -204,9 +211,8 @@ const JwtDecoder = () => {
                 <div className="inner-content code">
                   <InputEditor
                     value={payload}
-                    onChange={(value, viewUpdate) => {
-                      onPayloadChange(value);
-                    }} />
+                    onChange={onPayloadChange}
+                  />
                 </div>
               </InputContainer>
 

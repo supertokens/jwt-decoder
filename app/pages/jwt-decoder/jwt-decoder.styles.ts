@@ -81,7 +81,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   #signing-key + .code {
     word-break: break-all;
     height: ${(props) =>
-      props.$selectedAlg.requiresBothKeys ? '31.5rem' : '16.3rem'};
+      props?.$selectedAlg?.requiresBothKeys ? '31.5rem' : '16.3rem'};
     padding: 2.4rem 3rem 1.2rem;
     line-height: 1.85rem;
     background-color: #202020;
@@ -117,7 +117,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
       padding: 0!important;
     }
 
-    ${(props) => props.$selectedAlg.requiresBothKeys && privatePublicKeysCSS}
+    ${(props) => props.$selectedAlg?.requiresBothKeys && privatePublicKeysCSS}
   }
 
   .decoder-main-container {
