@@ -6,7 +6,7 @@ import ExplanationContent from "../../components/jwt-decoder/explanation-content
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
-import { algorithmOptions, Algorithms, defaultTokens, IAlgorithmOption, initPayload, optionsList, placeholderSecretKey, samplePrivateKey, samplePublicKey, sampleRS256PrivateKey, signingKeyConstants, TOption } from "../../assets/constants"
+import { algorithmOptions, Algorithms, defaultSigningKeys, defaultTokens, IAlgorithmOption, initPayload, optionsList, placeholderSecretKey, samplePrivateKey, samplePublicKey, signingKeyConstants, TOption } from "../../assets/constants"
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 
 interface IPopulateToken {
@@ -115,9 +115,9 @@ const JwtDecoder = () => {
               setShowSigningKeyError(true);
             }
           case Algorithms.RS256:
-            return await jose.importPKCS8(sampleRS256PrivateKey, algorithm.value);
+            return await jose.importPKCS8(privateKey, algorithm.value);
           default:
-            if(!newSecretKey.trim().length) throw({isSigningKeyError: true})
+            if (!newSecretKey.trim().length) throw ({ isSigningKeyError: true })
             return new TextEncoder().encode(newSecretKey)
         }
       }
@@ -127,7 +127,7 @@ const JwtDecoder = () => {
       setTokenValue(jwt);
     } catch (error) {
       console.log(error)
-      if(error?.isSigningKeyError) setShowSigningKeyError(true)
+      if (error?.isSigningKeyError) setShowSigningKeyError(true)
       else setShowPayloadError(true);
     }
   }
@@ -138,8 +138,13 @@ const JwtDecoder = () => {
 
   // If the token is empty and the algorithm is changed, insert a placeholder token value.
   useEffect(() => {
-    // TODO: Check if token is generated. If not, set default value.
     onTokenValueChange(defaultTokens[selectedAlgorithm.value])
+
+    if (selectedAlgorithm.requiresBothKeys) {
+      const { privateKey, publicKey } = defaultSigningKeys[selectedAlgorithm.value as Algorithms]
+      setPrivateSigningKey(privateKey);
+      setPublicSigningKey(publicKey)
+    }
   }, [selectedAlgorithm])
 
   const copyJwtClickHandler = async () => {
