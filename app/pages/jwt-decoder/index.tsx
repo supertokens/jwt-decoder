@@ -18,7 +18,7 @@ interface IPopulateToken {
   algorithm?: IAlgorithmOption
 }
 
-const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 1 })
+const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 2 })
 
 const JwtDecoder = () => {
   // The flag to show / hide the informational content (hidden by default)
