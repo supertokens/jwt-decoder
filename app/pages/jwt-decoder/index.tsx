@@ -8,6 +8,7 @@ import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
 import { algorithmOptions, Algorithms, defaultSigningKeys, defaultTokens, IAlgorithmOption, initPayload, optionsList, placeholderSecretKey, samplePrivateKey, samplePublicKey, signingKeyConstants, TOption } from "../../assets/constants"
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
+import usePreviousValue from "../../hooks/usePreviousValue"
 
 interface IPopulateToken {
   newPayload?: string;
@@ -29,6 +30,7 @@ const JwtDecoder = () => {
     "alg": selectedAlgorithm.value,
     "typ": "jwt"
   }))
+  const previousHeaderValue = usePreviousValue(header);
 
   const [tokenValue, setTokenValue] = useState("");
 
@@ -56,8 +58,8 @@ const JwtDecoder = () => {
 
   const onTokenValueChange = async (t: string) => {
     setShowJwtError(false);
-    setTokenValue(t);
-    populatePayloadFromToken(t);
+    populateDecodedContentFromToken(t);
+    setTokenValue(t)
   }
 
   const onSecretKeyChange = async (s: string) => {
@@ -76,22 +78,32 @@ const JwtDecoder = () => {
     populateTokenFromPayload({ publicKey: k })
   }
 
-  const onAlgorithmChange = (algOption: IAlgorithmOption) => {
+  const onAlgorithmChangeFromDropdown = (algOption: IAlgorithmOption) => {
     setHeader(formatJSON({
       "alg": algOption.value,
       "typ": "JWT"
     }))
-    setSelectedAlgorithm(algOption)
+    onAlgorithmChange(algOption);
   }
 
-  const populatePayloadFromToken = async (token: string) => {
+  const populateDecodedContentFromToken = async (token: string) => {
     try {
       setShowJwtError(false);
       const decoded = jose.decodeJwt(token);
+      const protectedHeader = jose.decodeProtectedHeader(token);
+      setHeader(formatJSON(protectedHeader));
+      try {
+        if (JSON.parse(previousHeaderValue).alg !== protectedHeader.alg) {
+          const algOption = algorithmOptions.find(a => a.value === protectedHeader.alg)
+          if (algOption){
+            onAlgorithmChange(algOption, false);
+          };
+        }
+      } catch (error) { }
       setPayload(formatJSON(decoded))
     } catch (error) {
       setShowJwtError(true);
-    }
+    } 
   }
 
   const populateTokenFromPayload = async ({
@@ -131,21 +143,25 @@ const JwtDecoder = () => {
   }
 
   useEffect(() => {
-    populateTokenFromPayload({ newPayload: JSON.stringify(initPayload) });
+    onAlgorithmChange(selectedAlgorithm);
   }, [])
 
-  // If the token is empty and the algorithm is changed, insert a placeholder token value.
-  useEffect(() => {
-    onTokenValueChange(defaultTokens[selectedAlgorithm.value])
+
+  const onAlgorithmChange = (alg: IAlgorithmOption, triggerTokenChange = true) => {
+    setSelectedAlgorithm(alg)
+    if (triggerTokenChange) {
+      onTokenValueChange(defaultTokens[alg.value])
+    }
+
     if (selectedAlgorithm.requiresBothKeys) {
       const { privateKey, publicKey } = defaultSigningKeys[selectedAlgorithm.value as Algorithms]
-      if(!privateKey){
+      if (!privateKey) {
         setShowSigningKeyError(true)
       }
       setPrivateSigningKey(privateKey);
       setPublicSigningKey(publicKey);
     }
-  }, [selectedAlgorithm])
+  }
 
   const copyJwtClickHandler = async () => {
     try {
@@ -155,13 +171,29 @@ const JwtDecoder = () => {
     }
   }
 
+  const detectAlgorithmChangeInHeader = (newlyParsedHeader: any) => {
+    try {
+      if (newlyParsedHeader.alg !== JSON.parse(previousHeaderValue)) {
+        algorithmOptions;
+        const algOption = algorithmOptions.find(alg => alg.value === newlyParsedHeader.alg);
+        if (!algOption) throw ({ currentHeaderError: true })
+        setSelectedAlgorithm(algOption)
+      }
+    } catch (error) {
+      if (error.currentHeaderError) throw error;
+      // no need to handle the error coming from parsing the previousHeaderValue, since it was handled in its own time
+    }
+  }
+
   const headerValueChangeHandler = (newHeader: string) => {
     try {
       setShowHeaderError(false);
-      if (!("alg" in JSON.parse(newHeader))) {
+      const headerParsed = JSON.parse(newHeader);
+      if (!("alg" in headerParsed)) {
         throw Error("Invalid Header")
       }
-      setHeader(newHeader)
+      setHeader(newHeader);
+      detectAlgorithmChangeInHeader(headerParsed)
       populateTokenFromPayload({ newHeader });
     } catch (error) {
       setShowHeaderError(true);
@@ -213,7 +245,7 @@ const JwtDecoder = () => {
             <div id="decoded-content" className="input-container common-container">
               <div className="title-band bt-inherit" id="header">
                 <div className="title-text">Header</div>
-                <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={onAlgorithmChange} /></div>
+                <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={onAlgorithmChangeFromDropdown} /></div>
               </div>
               <div className="inner-content code">
                 <InputEditor onValueChange={headerValueChangeHandler}
