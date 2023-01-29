@@ -435,7 +435,7 @@ export const InputContainer = styled.div<{ $hasError: boolean }>`
     .inner-content{
       background-color: ${props.theme.colors.red[800]};
     }
-    .title-band .title-text{
+    & .title-text, .title-band .title-text{
       color: ${props.theme.colors.red[300]};
     }
   `}

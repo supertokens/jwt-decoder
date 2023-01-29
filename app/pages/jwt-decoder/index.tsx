@@ -30,6 +30,7 @@ const JwtDecoder = () => {
     "alg": selectedAlgorithm.value,
     "typ": "jwt"
   }))
+  // Getting the previous value to see if there's a change in algorithm
   const previousHeaderValue = usePreviousValue(header);
 
   const [tokenValue, setTokenValue] = useState("");
@@ -52,11 +53,11 @@ const JwtDecoder = () => {
   const onPayloadChange = async (p: string) => {
     setShowPayloadError(false);
     setPayload(p);
-    console.log("FROM PAYLOAD CHANGE")
     populateTokenFromPayload({ newPayload: p });
   }
 
   const onTokenValueChange = async (t: string) => {
+    setShowPayloadError(false);
     setShowJwtError(false);
     populateDecodedContentFromToken(t);
     setTokenValue(t)
@@ -137,6 +138,7 @@ const JwtDecoder = () => {
         .sign(await getSecretOrPublicKey());
       setTokenValue(jwt);
     } catch (error) {
+      console.log('Payload error', error)
       if (error?.isSigningKeyError) setShowSigningKeyError(true)
       else setShowPayloadError(true);
     }
@@ -148,6 +150,7 @@ const JwtDecoder = () => {
 
 
   const onAlgorithmChange = (alg: IAlgorithmOption, triggerTokenChange = true) => {
+    setShowHeaderError(false);
     setSelectedAlgorithm(alg)
     if (triggerTokenChange) {
       onTokenValueChange(defaultTokens[alg.value])
@@ -243,10 +246,10 @@ const JwtDecoder = () => {
             </aside>
 
             <div id="decoded-content" className="input-container common-container">
-              <div className="title-band bt-inherit" id="header">
+              <InputContainer $hasError={showHeaderError} className="title-band bt-inherit" id="header">
                 <div className="title-text">Header</div>
                 <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={onAlgorithmChangeFromDropdown} /></div>
-              </div>
+              </InputContainer>
               <div className="inner-content code">
                 <InputEditor onValueChange={headerValueChangeHandler}
                   value={header}
