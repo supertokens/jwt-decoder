@@ -74,12 +74,8 @@ const JwtDecoder = () => {
     populateTokenFromPayload({ privateKey: k })
   }
 
-  const onPublicKeyChange = async (k: string) => {
-    setPublicSigningKey(k);
-    populateTokenFromPayload({ publicKey: k })
-  }
-
   const onAlgorithmChangeFromDropdown = (algOption: IAlgorithmOption) => {
+    setShowHeaderError(false);
     setHeader(formatJSON({
       "alg": algOption.value,
       "typ": "JWT"
@@ -96,7 +92,7 @@ const JwtDecoder = () => {
       try {
         if (JSON.parse(previousHeaderValue).alg !== protectedHeader.alg) {
           const algOption = algorithmOptions.find(a => a.value === protectedHeader.alg)
-          if (algOption){
+          if (algOption) {
             onAlgorithmChange(algOption, false);
           };
         }
@@ -104,38 +100,41 @@ const JwtDecoder = () => {
       setPayload(formatJSON(decoded))
     } catch (error) {
       setShowJwtError(true);
-    } 
+    }
   }
 
+
+  const getSecretOrPrivateKey = async (algorithm: IAlgorithmOption, newSecretKey: string) => {
+    switch (algorithm.value) {
+      case Algorithms.PS256:
+      case Algorithms.ES256:
+      case Algorithms.RS256:
+        try {
+          setShowSigningKeyError(false);
+          if (privateSigningKey.toUpperCase().includes("PRIVATE KEY"))
+            return await jose.importPKCS8(privateSigningKey, algorithm.value)
+          else throw ("Can't find a private key")
+        } catch (error) {
+          setShowSigningKeyError(true);
+        }
+      default:
+        if (!newSecretKey.trim().length) throw ({ isSigningKeyError: true })
+        return new TextEncoder().encode(newSecretKey)
+    }
+  }
+
+
   const populateTokenFromPayload = async ({
-    newPayload = payload, newSecretKey = secretKey, newHeader = header, privateKey = privateSigningKey,
+    newPayload = payload, newSecretKey = secretKey, newHeader = header,
     algorithm = selectedAlgorithm
   }: IPopulateToken) => {
     try {
       setShowPayloadError(false)
       setShowSigningKeyError(false)
-      // Based on the algorithm selected, generate a JWT
-      const getSecretOrPublicKey = async () => {
-        switch (algorithm.value) {
-          case Algorithms.ES256:
-            try {
-              setShowSigningKeyError(false);
-              if (privateSigningKey.toUpperCase().includes("PRIVATE KEY"))
-                return await jose.importPKCS8(privateSigningKey, algorithm.value)
-              else throw ("Can't find a private key")
-            } catch (error) {
-              setShowSigningKeyError(true);
-            }
-          case Algorithms.RS256:
-            return await jose.importPKCS8(privateKey, algorithm.value);
-          default:
-            if (!newSecretKey.trim().length) throw ({ isSigningKeyError: true })
-            return new TextEncoder().encode(newSecretKey)
-        }
-      }
+      const signingKey = await getSecretOrPrivateKey(algorithm, newSecretKey)
       const jwt = await new jose.SignJWT(JSON.parse(newPayload))
         .setProtectedHeader(JSON.parse(newHeader))
-        .sign(await getSecretOrPublicKey());
+        .sign(signingKey);
       setTokenValue(jwt);
     } catch (error) {
       console.log('Payload error', error)
@@ -156,8 +155,8 @@ const JwtDecoder = () => {
       onTokenValueChange(defaultTokens[alg.value])
     }
 
-    if (selectedAlgorithm.requiresBothKeys) {
-      const { privateKey, publicKey } = defaultSigningKeys[selectedAlgorithm.value as Algorithms]
+    if (alg.requiresBothKeys) {
+      const { privateKey, publicKey } = defaultSigningKeys[alg.value as Algorithms]
       if (!privateKey) {
         setShowSigningKeyError(true)
       }
