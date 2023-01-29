@@ -6,7 +6,7 @@ import { InputWrapper, JwtInputWrapper } from "./input.styles"
 import { EditorView } from "@codemirror/view";
 
 interface IInputEditorProps extends ReactCodeMirrorProps {
-  onValueChange?: (v: string) => void;
+  onValueChange: (v: string) => void;
 }
 
 const commonBasicSetup: BasicSetupOptions = {
@@ -44,12 +44,12 @@ const InputEditor: React.FC<IInputEditorProps> = ({ onValueChange, ...props }) =
       extensions={[json(),
       EditorView.lineWrapping
       ]}
-      ref={inputRef}
-      onChange={onChange}
       className="code"
       height="auto"
       minHeight="100%"
       {...props}
+      ref={inputRef}
+      onChange={onChange}
     /></InputWrapper>
 }
 

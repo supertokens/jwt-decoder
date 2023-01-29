@@ -259,7 +259,7 @@ const JwtDecoder = () => {
                 <div className="inner-content code">
                   <InputEditor
                     value={payload}
-                    onChange={onPayloadChange}
+                    onValueChange={onPayloadChange}
                   />
                 </div>
               </InputContainer>
