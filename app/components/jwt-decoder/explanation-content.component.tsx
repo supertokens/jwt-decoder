@@ -51,7 +51,7 @@ const ExplanationContent = () => {
           </ul>
 
           <figure className="structure-img">
-            <Image src={"/images/structure-of-jwt.png"} alt='Structure of a JSON Web Token'
+            <Image src={"/jwt_images/structure-of-jwt.png"} alt='Structure of a JSON Web Token'
               fill
               style={{ objectFit: "contain" }}
             />

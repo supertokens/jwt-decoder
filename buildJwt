@@ -9,8 +9,7 @@ cd ./app
 # build the jwt-decoder
 echo -e "${GREEN}Building jwt-decoder...${NC}"
 
-# npm run build >/dev/null 2>/dev/null
-npm run build
+npm run build >/dev/null 2>/dev/null
 doesBuild=$?
 
 if [ $doesBuild -ne 0 ]
@@ -19,7 +18,7 @@ then
   exit 1
 fi
 
-echo -e "${GREEN}JWT Deocder built successfully.${NC}"
+echo -e "${GREEN}JWT Decoder built successfully.${NC}"
 
 
 projectDir=$(pwd)
