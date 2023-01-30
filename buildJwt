@@ -1,3 +1,38 @@
 #!/bin/bash
 
-cd ./app && npm run build
+GREEN='\033[32m'
+RED='\033[0;31m'
+NC='\033[0m' # No color
+
+cd ./app
+
+# build the jwt-decoder
+echo -e "${GREEN}Building jwt-decoder...${NC}"
+
+# npm run build >/dev/null 2>/dev/null
+npm run build
+doesBuild=$?
+
+if [ $doesBuild -ne 0 ]
+then
+  echo -e "${RED}JWT Decoder build failed.${NC}"
+  exit 1
+fi
+
+echo -e "${GREEN}JWT Deocder built successfully.${NC}"
+
+
+projectDir=$(pwd)
+cd ..
+
+echo -e "${projectDir}";
+
+# check if the jet directory exists
+if [ ! -d ../supertokens-backend-website/app/jwt-decoder ]; then
+mkdir ../supertokens-backend-website/app/jwt-decoder
+fi
+
+# remove all the files of old jwt-decoder and replace with newly built jwt-decoder
+rm -rf ../supertokens-backend-website/app/jwt-decoder/*
+cp -r $projectDir/build/* ../supertokens-backend-website/app/jwt-decoder/
+echo -e "${GREEN}JWT Decoder moved to supertokens-backend-website.${NC}"
