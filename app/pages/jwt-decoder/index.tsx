@@ -236,7 +236,7 @@ const JwtDecoder = () => {
                   <div id="clipboard-btn-container">
                     <button id="copy-btn" className="strong-600" onClick={copyJwtClickHandler}>
                       Copy JWT
-                      <Image alt={"copy to clipboard"} width={10} height={10} src={"jwt_images/clipboard.svg"} />
+                      <Image alt={"copy to clipboard"} width={10} height={10} src={"/jwt_images/clipboard.svg"} />
                     </button>
                   </div>
 
