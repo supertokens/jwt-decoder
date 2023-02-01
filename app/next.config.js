@@ -6,6 +6,10 @@ const nextConfig = {
     styledComponents: true,
     
   },
+  assetPrefix: '/jwt-decoder',
+  images: {
+    path: '/jwt-decoder/_next/image',
+  },
   images: {
     unoptimized: true
   }
