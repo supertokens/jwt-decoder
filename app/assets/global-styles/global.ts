@@ -59,6 +59,9 @@ ${[100, 200, 300, 400, 500, 600, 700, 800].map(
   background-color: ${props=>props.theme.colors.grey[750]};
 }
 
+.cc-message{
+  font-size: 1.4rem!important;
+}
 `;
 
 export default GlobalStyle;

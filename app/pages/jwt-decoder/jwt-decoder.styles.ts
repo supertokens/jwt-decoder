@@ -12,7 +12,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   &.jwt-decoder-container {
     word-break: break-all;
     .inner-container {
-      padding-block: 16.5rem 18rem;
+      padding-block: 3.5rem 18rem;
       width: min(100%, 90vw);
       max-width: 107.5rem;
       margin-inline: auto;
