@@ -9,7 +9,8 @@ cd ./app
 # build the jwt-decoder
 echo -e "${GREEN}Building jwt-decoder...${NC}"
 
-npm run build >/dev/null 2>/dev/null
+# npm run build >/dev/null 2>/dev/null
+npm run build
 doesBuild=$?
 
 if [ $doesBuild -ne 0 ]
