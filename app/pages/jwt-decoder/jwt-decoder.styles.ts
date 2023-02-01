@@ -10,7 +10,6 @@ interface IJwtContainerStyledProps {
 
 export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   &.jwt-decoder-container {
-    background-color: ${(props) => props.theme.colors.dark[1000]};
     word-break: break-all;
     .inner-container {
       padding-block: 16.5rem 18rem;

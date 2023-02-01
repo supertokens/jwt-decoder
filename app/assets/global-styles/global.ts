@@ -14,6 +14,7 @@ body {
   font-size: 1.6rem;
   margin: 0;
   font-family: ${props=>props.theme.fontFamily.roboto};
+  background-color: ${(props) => props.theme.colors.dark[1000]};
 }
 
 .flex-center-y {
