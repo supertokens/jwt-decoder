@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useRef, useState } from "react"
 import { DropdownContainer } from "./dropdown.styles"
 import useOnClickOutside from "../../../hooks/useOnClickOutside"
+import { ChevronDownIcon } from "../../../assets/images";
 
 export interface IDropdownOption {
   label: string;
@@ -27,7 +28,7 @@ const Dropdown: React.FC<IDropdownProps> = ({ selected, options, onChange, obtai
     <DropdownContainer ref={dropdownContainerRef} onClick={() => setIsOpen(true)}>
       <div className="dropdown-container flex-center-y">
         <div className="label">{selected?.label || placeholder}</div>
-        <span className="chevron-container"><Image src={"/jwt_images/chevron-down.svg"} width={10} height={10} alt={"chevron icon"} /></span>
+        <span className="chevron-container"><Image src={ChevronDownIcon} width={10} height={10} alt={"chevron icon"} /></span>
       </div>
       {
         isOpen && <ul className="options-list">

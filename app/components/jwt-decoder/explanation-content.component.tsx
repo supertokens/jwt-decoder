@@ -1,5 +1,6 @@
 import Image from "next/image"
 import React from "react"
+import { StructureOfJwt } from "../../assets/images"
 import { ExplanationContainerStyled } from "../../pages/jwt-decoder/jwt-decoder.styles"
 
 const ExplanationContent = () => {
@@ -51,7 +52,7 @@ const ExplanationContent = () => {
           </ul>
 
           <figure className="structure-img">
-            <Image src={"/jwt_images/structure-of-jwt.png"} alt='Structure of a JSON Web Token'
+            <Image src={StructureOfJwt} alt='Structure of a JSON Web Token'
               fill
               style={{ objectFit: "contain" }}
             />

@@ -9,6 +9,7 @@ import Popover from "../../components/common/popover/popover.component"
 import { algorithmOptions, Algorithms, defaultSigningKeys, defaultTokens, IAlgorithmOption, initPayload, optionsList, placeholderSecretKey, samplePrivateKey, samplePublicKey, signingKeyConstants, TOption } from "../../assets/constants"
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 import usePreviousValue from "../../hooks/usePreviousValue"
+import { ChevronDownIcon, ClipboardIcon, HelpIcon } from "../../assets/images"
 
 interface IPopulateToken {
   newPayload?: string;
@@ -223,7 +224,7 @@ const JwtDecoder = () => {
                   </span>
                   <span>
                     <Popover popoverContent={"JWT will update Automatically when you edit Header, Payload and Signing key data"}>
-                      <Image src={"jwt_images/help.svg"} alt="help" width={15} height={15} />
+                      <Image src={HelpIcon} alt="help" width={15} height={15} />
                     </Popover>
                   </span>
                 </div>
@@ -236,7 +237,7 @@ const JwtDecoder = () => {
                   <div id="clipboard-btn-container">
                     <button id="copy-btn" className="strong-600" onClick={copyJwtClickHandler}>
                       Copy JWT
-                      <Image alt={"copy to clipboard"} width={10} height={10} src={"/jwt_images/clipboard.svg"} />
+                      <Image alt={"copy to clipboard"} width={10} height={10} src={ClipboardIcon} />
                     </button>
                   </div>
 
@@ -313,7 +314,7 @@ const JwtDecoder = () => {
           </div>
           <hr />
           <div className="read-more-container">
-            {!showMoreContent && <span role={"button"} onClick={() => setShowMoreContent(true)}>Read More <Image className="down-chevron" src={"/jwt_images/chevron-down.svg"} alt="chevron-down" width={10} height={10} /></span>}
+            {!showMoreContent && <span role={"button"} onClick={() => setShowMoreContent(true)}>Read More <Image className="down-chevron" src={ChevronDownIcon} alt="chevron-down" width={10} height={10} /></span>}
           </div>
         </article>
 
