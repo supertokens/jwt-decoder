@@ -23,7 +23,8 @@
     "next-env.d.ts",
     "./font.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "middleware.ts"
   ],
   "exclude": [
     "node_modules"
