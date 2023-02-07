@@ -24,7 +24,6 @@
     "./font.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "middleware.ts"
   ],
   "exclude": [
     "node_modules"
