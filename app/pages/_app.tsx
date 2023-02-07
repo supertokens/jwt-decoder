@@ -4,7 +4,7 @@ import Theme from "../assets/global-styles/theme"
 import GlobalStyle from "../assets/global-styles/global";
 import "../styles/global.css"
 import Head from "next/head";
-import ErrorBoundary from "../components/error-boundary";
+import ErrorBoundary from "../components/error-boundary/error-boundary.component";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
