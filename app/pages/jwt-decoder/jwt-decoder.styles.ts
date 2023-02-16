@@ -473,7 +473,7 @@ export const InputContainer = styled.div<{ $hasError: boolean }>`
   ${(props) =>
     props.$hasError &&
     `
-    .inner-content{
+    .inner-content, &#header + .inner-content{
       background-color: ${props.theme.colors.red[900]};
     }
     & .title-text, .title-band .title-text{
