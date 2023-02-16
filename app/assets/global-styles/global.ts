@@ -13,7 +13,7 @@ html {
 body {
   font-size: 1.6rem;
   margin: 0;
-  font-family: ${props=>props.theme.fontFamily.roboto};
+  font-family: ${props=>props.theme.fontFamily.inter};
   background-color: ${(props) => props.theme.colors.dark[1000]};
 }
 

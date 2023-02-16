@@ -8,7 +8,7 @@ export const theme = {
       800: '#282828',
       900: '#141414',
       950: '#1c1c1c',
-      1000: '#1a1a1a',
+      1000: '#000000',
     },
     // synonymous with white
     light: {
@@ -60,7 +60,7 @@ export const theme = {
   },
   fontFamily: {
     menlo: `"Menlo", monospace`,
-    roboto: `"Roboto", sans-serif`
+    inter: `"Inter", sans-serif`
   },
   paddingMargins: {
     medium: "1.6rem"

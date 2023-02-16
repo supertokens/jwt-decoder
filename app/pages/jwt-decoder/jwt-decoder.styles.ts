@@ -22,7 +22,6 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
 
   .title {
     font-size: 3.2rem;
-    font-weight: 700;
     margin: 0;
     margin-block-end: 3rem;
   }
@@ -37,7 +36,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   }
 
   .title-band {
-    font-weight: 600;
+    font-variation-settings: 'wght' 600;
     padding: 0.9rem 1.6rem;
     background-color: ${(props) => props.theme.colors.grey[850]};
   }
@@ -91,7 +90,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
       props?.$selectedAlg?.requiresBothKeys ? leftContentWidth : "16.3rem"};
     padding: 2.4rem 3rem 1.2rem;
     line-height: 1.85rem;
-    background-color: #202020;
+    background-color: transparent;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 
@@ -323,7 +322,7 @@ const privatePublicKeysCSS = css`
     border: 1px solid #5d5d5d;
 
     .title-band {
-      font-family: ${(props) => props.theme.fontFamily.roboto};
+      font-family: ${(props) => props.theme.fontFamily.inter};
       font-size: ${(props) => props.theme.fontSizes.small};
       padding-block: 0.5rem;
     }
