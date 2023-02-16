@@ -203,6 +203,8 @@ const JwtDecoder = () => {
     }
   }
 
+  const hasError = showSigningKeyError || showHeaderError || showPayloadError
+
   return (
     <JwtContainerStyled $selectedTab={selectedTab} $selectedAlg={selectedAlgorithm} className="jwt-decoder-container">
       <main className="inner-container">
@@ -304,9 +306,9 @@ const JwtDecoder = () => {
             </div>
           </section>
           <section className="note-and-indicator-container">
-            <div className={`signature-validity-indicator lg-left bold-600 flex-center-y ` + (showSigningKeyError ? 'is-invalid' : '')}>
+            <div className={`signature-validity-indicator lg-left bold-600 flex-center-y ` + (hasError ? 'is-invalid' : '')}>
               {
-                showSigningKeyError ? <>
+                hasError ? <>
                   <Image className="icon" src={InvalidSignatureIcon} alt={"Signature Invalid"} /><span>
                     Signature Invalid!
                   </span></> : <>
