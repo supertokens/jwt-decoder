@@ -6,10 +6,10 @@ import ExplanationContent from "../../components/jwt-decoder/explanation-content
 import { InputContainer, JwtContainerStyled, TabContainer, TabOption } from "./jwt-decoder.styles"
 import Dropdown from "../../components/common/dropdown/dropdown.component"
 import Popover from "../../components/common/popover/popover.component"
-import { algorithmOptions, Algorithms, defaultSigningKeys, defaultTokens, IAlgorithmOption, initPayload, optionsList, placeholderSecretKey, samplePrivateKey, samplePublicKey, signingKeyConstants, TOption } from "../../assets/constants"
+import { algorithmOptions, Algorithms, defaultSigningKeys, defaultTokens, IAlgorithmOption, optionsList, placeholderSecretKey, samplePrivateKey, samplePublicKey, signingKeyConstants, TOption } from "../../assets/constants"
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 import usePreviousValue from "../../hooks/usePreviousValue"
-import { ChevronDownIcon, ClipboardIcon, HelpIcon } from "../../assets/images"
+import { ChevronDownIcon, ClipboardIcon, HelpIcon, InvalidSignatureIcon, ValidSignatureIcon } from "../../assets/images"
 
 interface IPopulateToken {
   newPayload?: string;
@@ -216,7 +216,7 @@ const JwtDecoder = () => {
                 </TabOption>)
               }
             </TabContainer>
-            <aside id="encoded-content" className="common-container">
+            <aside id="encoded-content" className="common-container lg-left">
               <InputContainer className="bt-inherit token-container" $hasError={showJwtError}>
                 <div className="title-band bt-inherit flex-center-y">
                   <span className="title-text">
@@ -245,7 +245,7 @@ const JwtDecoder = () => {
               </InputContainer>
             </aside>
 
-            <div id="decoded-content" className="input-container common-container">
+            <div id="decoded-content" className="input-container common-container lg-right">
               <InputContainer $hasError={showHeaderError} className="title-band bt-inherit" id="header">
                 <div className="title-text">Header</div>
                 <div className="dropdown-outer"><Dropdown selected={selectedAlgorithm} options={algorithmOptions} onChange={onAlgorithmChangeFromDropdown} /></div>
@@ -303,11 +303,26 @@ const JwtDecoder = () => {
               </div>
             </div>
           </section>
-          <section className="common-container note-container-outer">
-            <div className="inner note">
-              <b>Note:</b>{" "}
-              <span>We do not store any information in our database and all processing is done on the client side.</span>
+          <section className="note-and-indicator-container">
+            <div className={`signature-validity-indicator lg-left bold-600 flex-center-y ` + (showSigningKeyError ? 'is-invalid' : '')}>
+              {
+                showSigningKeyError ? <>
+                  <Image className="icon" src={InvalidSignatureIcon} alt={"Signature Invalid"} /><span>
+                    Signature Invalid!
+                  </span></> : <>
+                  <Image className="icon" src={ValidSignatureIcon} alt={"Signature Verified"} /><span>
+                    Signature Verified!
+                  </span></>
+              }
+
             </div>
+            <div className="common-container note-container-outer lg-right">
+              <div className="inner note">
+                <b>Note:</b>{" "}
+                <span>We do not store any information in our database and all processing is done on the client side.</span>
+              </div>
+            </div>
+
           </section>
           <div className="about">
             The JWT Decoder Tool allows you to decode JWTs for simple debugging. You can also create your own JWTs with custom payloads signed with your own secret for testing purposes.

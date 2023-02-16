@@ -16,11 +16,15 @@ export const theme = {
       1000: '#ffffff'
     },
     blue: {
-      200: '#9cdcfe'
+      200: '#9cdcfe',
+      1000: "#459EFF"
     },
     purple: {
       200: '#c19cfe',
       1000: "#664de5",
+    },
+    pink: {
+      500: '#FF457D',
     },
     red: {
       200: '#fe9c9c',
@@ -54,6 +58,7 @@ export const theme = {
   fontSizes: {
     small: "1.4rem",
     medium: "1.6rem",
+    big: "1.8rem"
   },
   borderRadius: {
     small: ".6rem",

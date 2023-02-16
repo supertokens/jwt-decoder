@@ -130,10 +130,6 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
 
   .decoder-main-container {
     display: flex;
-    aside#encoded-content {
-      width: min(40%, ${leftContentWidth});
-      margin-right: 2rem;
-    }
 
     #encoded-content {
       display: flex;
@@ -205,9 +201,34 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     overflow-y: auto;
   }
 
-  .note-container-outer {
-    margin-left: 2rem;
+  section.note-and-indicator-container{
+    display: flex;
+    align-items: center;
     margin-block: 1.1rem 6rem;
+
+    .signature-validity-indicator{
+      text-align: center;
+      justify-content: center;
+      color: ${props=>props.theme.colors.blue[1000]};
+      font-size: ${props=>props.theme.fontSizes.big};
+
+      &.is-invalid{
+      color: ${props=>props.theme.colors.pink[500]};
+      }
+      img.icon{
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-inline-end: 1.2rem;
+      }
+      span{
+        text-decoration: underline .2rem;
+        text-underline-offset: 1.1rem;
+      }
+    }
+  }
+
+  .note-container-outer {
+    flex: 1;
     text-align: center;
     border-color: ${(props) => props.theme.colors.orange[1000]};
     background-color: ${(props) => props.theme.colors.orange[1000] + "0a"};
@@ -259,6 +280,15 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     font-size: ${(props) => props.theme.fontSizes.medium};
   }
 
+  .lg-left{
+    width: min(40%, ${leftContentWidth});
+    margin-right: 2rem;
+  }
+
+  .lg-right{
+
+  }
+
   @media screen and (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     padding-inline: 2.6rem;
 
@@ -269,7 +299,6 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     .decoder-main-container {
       flex-direction: column;
       aside#encoded-content {
-        width: 100%;
         .content .token {
           min-height: 50vh;
           height: 60vh;
@@ -277,13 +306,27 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
       }
     }
 
+    .lg-left{
+      width: 100%;
+    }
+
     .tab-container {
       display: flex;
       margin-block-end: 0.9rem;
     }
 
+    section.note-and-indicator-container{
+      flex-direction: column;
+      margin-block-start: 2.4rem;
+
+      .signature-validity-indicator{
+        margin-block-end: calc(1.1rem + 2.4rem); //1.1rem for the underline offset, 2.4 for the actual margin
+      }
+    }
+
     .note-container-outer {
       margin-left: 0;
+      width: 100%;
       padding: 1.2rem 1.6rem;
       text-align: left;
       .note {
@@ -422,7 +465,7 @@ export const TabOption = styled.div<{ isSelected?: boolean }>`
   ${(props) =>
     props.isSelected &&
     `
-    background-color: ${props.theme.colors.light[1000]}
+    background-color: ${props.theme.colors.light[1000]};
   `}
 `;
 
