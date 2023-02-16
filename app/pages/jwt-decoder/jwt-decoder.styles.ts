@@ -80,7 +80,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     color: ${(props) => props.theme.colors.red[300]};
 
     + .inner-content {
-      background-color: ${(props) => props.theme.colors.red[800]};
+      background-color: ${(props) => props.theme.colors.red[900]};
     }
   }
 
@@ -206,7 +206,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   }
 
   .note-container-outer {
-    margin-left: calc(min(40%, 31.5rem) + 2rem);
+    margin-left: 2rem;
     margin-block: 1.1rem 6rem;
     text-align: center;
     border-color: ${(props) => props.theme.colors.orange[1000]};
@@ -431,7 +431,7 @@ export const InputContainer = styled.div<{ $hasError: boolean }>`
     props.$hasError &&
     `
     .inner-content{
-      background-color: ${props.theme.colors.red[800]};
+      background-color: ${props.theme.colors.red[900]};
     }
     & .title-text, .title-band .title-text{
       color: ${props.theme.colors.red[300]};
