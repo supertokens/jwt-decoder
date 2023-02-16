@@ -50,6 +50,9 @@ const JwtDecoder = () => {
 
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
+  useEffect(()=>{
+    verifySignatureValidity({})
+  },[selectedAlgorithm, publicSigningKey, header, tokenValue])
 
   const onPayloadChange = async (p: string) => {
     setShowPayloadError(false);
@@ -123,7 +126,6 @@ const JwtDecoder = () => {
     jwt = tokenValue
   }): Promise<boolean> => {
     try {
-      console.log(algorithm, enteredPublicKey, newHeader, jwt)
       setShowSigningKeyError(false)
       if (!algorithm.isAsymmetric) return true;
       const alg = algorithm.value;
