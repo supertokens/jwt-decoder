@@ -61,8 +61,9 @@ const JwtDecoder = () => {
     setShowPayloadError(false);
     setShowJwtError(false);
     populateDecodedContentFromToken(t);
-    verifySignatureValidity({jwt: t})
     setTokenValue(t)
+
+    // verifySignatureValidity()
   }
 
   const onSecretKeyChange = async (s: string) => {
@@ -87,6 +88,7 @@ const JwtDecoder = () => {
 
   const onAlgorithmChangeFromDropdown = (algOption: IAlgorithmOption) => {
     setShowHeaderError(false);
+    setShowSigningKeyError(false);
     setHeader(formatJSON({
       "alg": algOption.value,
       "typ": "JWT"
@@ -121,9 +123,10 @@ const JwtDecoder = () => {
     jwt = tokenValue
   }): Promise<boolean> => {
     try {
-      if(!algorithm.isAsymmetric) return true;
+      console.log(algorithm, enteredPublicKey, newHeader, jwt)
       setShowSigningKeyError(false)
-      const alg = algorithm.value
+      if (!algorithm.isAsymmetric) return true;
+      const alg = algorithm.value;
       const spki = enteredPublicKey
       const publicKey = await jose.importSPKI(spki, alg)
       const { payload, protectedHeader } = await jose.jwtVerify(jwt, publicKey, JSON.parse(newHeader))
@@ -150,10 +153,12 @@ const JwtDecoder = () => {
         if (algorithm.isAsymmetric) {
           signingKey = await jose.importPKCS8(newPrivateKey, alg)
         } else {
+          if(!newSecretKey.trim().length) throw Error("Invalid secret key provided")
           signingKey = new TextEncoder().encode(newSecretKey);
         }
       } catch (error) {
         setShowSigningKeyError(true)
+        return;
       }
 
       jwt = await new jose.SignJWT(JSON.parse(newPayload))
