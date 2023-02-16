@@ -61,6 +61,7 @@ const JwtDecoder = () => {
     setShowPayloadError(false);
     setShowJwtError(false);
     populateDecodedContentFromToken(t);
+    verifySignatureValidity({jwt: t})
     setTokenValue(t)
   }
 
@@ -120,6 +121,7 @@ const JwtDecoder = () => {
     jwt = tokenValue
   }): Promise<boolean> => {
     try {
+      if(!algorithm.isAsymmetric) return true;
       setShowSigningKeyError(false)
       const alg = algorithm.value
       const spki = enteredPublicKey
@@ -127,6 +129,7 @@ const JwtDecoder = () => {
       const { payload, protectedHeader } = await jose.jwtVerify(jwt, publicKey, JSON.parse(newHeader))
       return true
     } catch (error) {
+      console.log(error)
       setShowSigningKeyError(true)
       return false
     }
