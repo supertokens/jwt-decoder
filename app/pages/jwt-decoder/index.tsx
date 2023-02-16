@@ -15,8 +15,8 @@ interface IPopulateToken {
   newPayload?: string;
   newSecretKey?: string;
   newHeader?: string;
-  privateKey?: string;
-  publicKey?: string;
+  newPrivateKey?: string;
+  newPublicKey?: string;
   algorithm?: IAlgorithmOption
 }
 
@@ -72,7 +72,16 @@ const JwtDecoder = () => {
 
   const onPrivateKeyChange = async (k: string) => {
     setPrivateSigningKey(k);
-    populateTokenFromPayload({ privateKey: k })
+    populateTokenFromPayload({ newPrivateKey: k })
+  }
+
+  const onPublicKeyChange = async (k: string) => {
+    try {
+      setPublicSigningKey(k);
+      await verifySignatureValidity({ enteredPublicKey: k });
+    } catch (error) {
+      setShowSigningKeyError(true)
+    }
   }
 
   const onAlgorithmChangeFromDropdown = (algOption: IAlgorithmOption) => {
@@ -104,38 +113,52 @@ const JwtDecoder = () => {
     }
   }
 
-
-  const getSecretOrPrivateKey = async (algorithm: IAlgorithmOption, newSecretKey: string) => {
-    switch (algorithm.value) {
-      case Algorithms.PS256:
-      case Algorithms.ES256:
-      case Algorithms.RS256:
-        try {
-          setShowSigningKeyError(false);
-          if (privateSigningKey.toUpperCase().includes("PRIVATE KEY"))
-            return await jose.importPKCS8(privateSigningKey, algorithm.value)
-          else throw ("Can't find a private key")
-        } catch (error) {
-          setShowSigningKeyError(true);
-        }
-      default:
-        if (!newSecretKey.trim().length) throw ({ isSigningKeyError: true })
-        return new TextEncoder().encode(newSecretKey)
+  const verifySignatureValidity = async ({
+    algorithm = selectedAlgorithm,
+    enteredPublicKey = publicSigningKey,
+    newHeader = header,
+    jwt = tokenValue
+  }): Promise<boolean> => {
+    try {
+      setShowSigningKeyError(false)
+      const alg = algorithm.value
+      const spki = enteredPublicKey
+      const publicKey = await jose.importSPKI(spki, alg)
+      const { payload, protectedHeader } = await jose.jwtVerify(jwt, publicKey, JSON.parse(newHeader))
+      return true
+    } catch (error) {
+      setShowSigningKeyError(true)
+      return false
     }
   }
 
-
   const populateTokenFromPayload = async ({
     newPayload = payload, newSecretKey = secretKey, newHeader = header,
-    algorithm = selectedAlgorithm
+    algorithm = selectedAlgorithm, newPrivateKey = privateSigningKey
   }: IPopulateToken) => {
     try {
       setShowPayloadError(false)
       setShowSigningKeyError(false)
-      const signingKey = await getSecretOrPrivateKey(algorithm, newSecretKey)
-      const jwt = await new jose.SignJWT(JSON.parse(newPayload))
+      const alg = algorithm.value
+      let jwt: string;
+      let signingKey: jose.KeyLike | Uint8Array;
+
+      try {
+        if (algorithm.isAsymmetric) {
+          signingKey = await jose.importPKCS8(newPrivateKey, alg)
+        } else {
+          signingKey = new TextEncoder().encode(newSecretKey);
+        }
+      } catch (error) {
+        setShowSigningKeyError(true)
+      }
+
+      jwt = await new jose.SignJWT(JSON.parse(newPayload))
         .setProtectedHeader(JSON.parse(newHeader))
-        .sign(signingKey);
+        .sign(signingKey)
+
+      if (algorithm.isAsymmetric && !(await verifySignatureValidity({ algorithm, newHeader, jwt }))) return;
+
       setTokenValue(jwt);
     } catch (error) {
       console.log('Payload error', error)
@@ -156,7 +179,7 @@ const JwtDecoder = () => {
       onTokenValueChange(defaultTokens[alg.value])
     }
 
-    if (alg.requiresBothKeys) {
+    if (alg.isAsymmetric) {
       const { privateKey, publicKey } = defaultSigningKeys[alg.value as Algorithms]
       if (!privateKey) {
         setShowSigningKeyError(true)
@@ -276,14 +299,14 @@ const JwtDecoder = () => {
                   {selectedAlgorithm.signingMethodName}{signingKeyConstants.prefix}
                 </pre>
                 {
-                  selectedAlgorithm.requiresBothKeys ? <div className="keys-input-container">
+                  selectedAlgorithm.isAsymmetric ? <div className="keys-input-container">
                     <InputContainer className="key-container" $hasError={false}>
                       <div className="title-band">
                         <span className="title-text">Public Key</span>
                       </div>
                       <div className="code">
                         <InputEditor
-                          className="signing-key-editor" onValueChange={setPublicSigningKey} value={publicSigningKey}
+                          className="signing-key-editor" onValueChange={onPublicKeyChange} value={publicSigningKey}
                         />
                       </div>
                     </InputContainer>

@@ -11,7 +11,7 @@ export enum Algorithms {
 
 export interface IAlgorithmOption extends IDropdownOption {
   signingMethodName: string;
-  requiresBothKeys?: boolean;
+  isAsymmetric?: boolean;
 }
 
 export const algorithmOptions: IAlgorithmOption[] = [
@@ -19,37 +19,37 @@ export const algorithmOptions: IAlgorithmOption[] = [
     label: "HS256",
     value: Algorithms.HS256,
     signingMethodName: "HMACSHA256",
-    requiresBothKeys: false,
+    isAsymmetric: false,
   },
   {
     label: "HS384",
     value: Algorithms.HS384,
     signingMethodName: "HMACSHA384",
-    requiresBothKeys: false,
+    isAsymmetric: false,
   },
   {
     label: "HS512",
     value: Algorithms.HS512,
     signingMethodName: "HMACSHA512",
-    requiresBothKeys: false,
+    isAsymmetric: false,
   },
   {
     label: "ES256",
     value: Algorithms.ES256,
     signingMethodName: "ECDSASHA256",
-    requiresBothKeys: true,
+    isAsymmetric: true,
   },
   {
     label: "RS256",
     value: Algorithms.RS256,
     signingMethodName: "RSASHA256",
-    requiresBothKeys: true,
+    isAsymmetric: true,
   },
   {
     label: "PS256",
     value: Algorithms.PS256,
     signingMethodName: "RSAPSSSHA256",
-    requiresBothKeys: true,
+    isAsymmetric: true,
   },
 ];
 
