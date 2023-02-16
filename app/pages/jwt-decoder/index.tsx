@@ -52,7 +52,7 @@ const JwtDecoder = () => {
 
   useEffect(() => {
     verifySignatureValidity({})
-  }, [selectedAlgorithm, publicSigningKey, header, tokenValue, secretKey])
+  }, [selectedAlgorithm, publicSigningKey, header, tokenValue])
 
   const onPayloadChange = async (p: string) => {
     setShowPayloadError(false);
