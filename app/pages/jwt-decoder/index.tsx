@@ -50,9 +50,9 @@ const JwtDecoder = () => {
 
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
-  useEffect(()=>{
+  useEffect(() => {
     verifySignatureValidity({})
-  },[selectedAlgorithm, publicSigningKey, header, tokenValue])
+  }, [selectedAlgorithm, publicSigningKey, header, tokenValue, secretKey])
 
   const onPayloadChange = async (p: string) => {
     setShowPayloadError(false);
@@ -122,16 +122,21 @@ const JwtDecoder = () => {
   const verifySignatureValidity = async ({
     algorithm = selectedAlgorithm,
     enteredPublicKey = publicSigningKey,
+    enteredSecretKey = secretKey,
     newHeader = header,
     jwt = tokenValue
   }): Promise<boolean> => {
+    let secret: Uint8Array | jose.KeyLike;
     try {
-      setShowSigningKeyError(false)
-      if (!algorithm.isAsymmetric) return true;
-      const alg = algorithm.value;
-      const spki = enteredPublicKey
-      const publicKey = await jose.importSPKI(spki, alg)
-      const { payload, protectedHeader } = await jose.jwtVerify(jwt, publicKey, JSON.parse(newHeader))
+      setShowSigningKeyError(false);
+      if (!algorithm.isAsymmetric) {
+        secret = new TextEncoder().encode(enteredSecretKey)
+      } else {
+        const alg = algorithm.value;
+        const spki = enteredPublicKey
+        secret = await jose.importSPKI(spki, alg)
+      }
+      const { payload, protectedHeader } = await jose.jwtVerify(jwt, secret, JSON.parse(newHeader))
       return true
     } catch (error) {
       console.log(error)
@@ -155,7 +160,7 @@ const JwtDecoder = () => {
         if (algorithm.isAsymmetric) {
           signingKey = await jose.importPKCS8(newPrivateKey, alg)
         } else {
-          if(!newSecretKey.trim().length) throw Error("Invalid secret key provided")
+          if (!newSecretKey.trim().length) throw Error("Invalid secret key provided")
           signingKey = new TextEncoder().encode(newSecretKey);
         }
       } catch (error) {
