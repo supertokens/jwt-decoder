@@ -408,6 +408,9 @@ export const ExplanationContainerStyled = styled.article`
       & > :not(:last-child) {
         margin-right: 0.5rem;
       }
+      span.part-name{
+        word-break: normal;
+      }
       span.header {
         color: ${(props) => props.theme.colors.red[200]};
       }
@@ -422,6 +425,10 @@ export const ExplanationContainerStyled = styled.article`
 
       .description ul {
         list-style: disc inside;
+      }
+
+      @media screen and (max-width: 450px) {
+        flex-direction: column;
       }
     }
   }
