@@ -87,7 +87,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
   #signing-key + .code {
     word-break: break-all;
     height: ${(props) =>
-      props?.$selectedAlg?.isAsymmetric ? leftContentWidth : "16.3rem"};
+    props?.$selectedAlg?.isAsymmetric ? leftContentWidth : "16.3rem"};
     padding: 2.4rem 3rem 1.2rem;
     line-height: 1.85rem;
     background-color: transparent;
@@ -209,11 +209,11 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     .signature-validity-indicator{
       text-align: center;
       justify-content: center;
-      color: ${props=>props.theme.colors.blue[1000]};
-      font-size: ${props=>props.theme.fontSizes.big};
+      color: ${props => props.theme.colors.blue[1000]};
+      font-size: ${props => props.theme.fontSizes.big};
 
       &.is-invalid{
-      color: ${props=>props.theme.colors.pink[500]};
+      color: ${props => props.theme.colors.pink[500]};
       }
       img.icon{
         width: 1.8rem;
@@ -336,19 +336,19 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
     }
 
     ${(props) => {
-      if (props.$selectedTab === "encoded")
-        return `
+    if (props.$selectedTab === "encoded")
+      return `
         #decoded-content {
           display: none!important;
         }
       `;
-      else if (props.$selectedTab === "decoded")
-        return `
+    else if (props.$selectedTab === "decoded")
+      return `
       #encoded-content {
         display: none!important;
       }
     `;
-    }}
+  }}
   }
 `;
 
@@ -426,10 +426,6 @@ export const ExplanationContainerStyled = styled.article`
       .description ul {
         list-style: disc inside;
       }
-
-      @media screen and (max-width: 450px) {
-        flex-direction: column;
-      }
     }
   }
 
@@ -438,6 +434,21 @@ export const ExplanationContainerStyled = styled.article`
     position: relative;
     height: 55rem;
     margin: 0;
+  }
+
+  @media screen and (max-width: 450px) {
+    ul.parts-of-jwt{
+      &>li{
+        flex-direction: column;
+      }
+    }
+
+    .structure-img{
+      height: initial;
+      img{
+        position: static!important;
+      }
+    }
   }
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.tablet}) {
