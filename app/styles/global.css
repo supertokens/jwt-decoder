@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Menlo";
+  src: url('../assets/fonts/Menlo/Menlo-Regular.woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url('../assets/fonts/Inter/Inter-Variable.ttf');
+  font-style: normal;
+}
