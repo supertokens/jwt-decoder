@@ -27,7 +27,7 @@ cd ..
 
 echo -e "${projectDir}";
 
-# check if the jet directory exists
+# check if the jwt directory exists
 if [ ! -d ../supertokens-backend-website/app/jwt-decoder ]; then
 mkdir ../supertokens-backend-website/app/jwt-decoder
 fi
