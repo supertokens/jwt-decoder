@@ -15,7 +15,7 @@ jobs:
       - run: ./buildJwt
       - run: git config --global user.email "$EMAIL"
       - run: git config --global user.name "$NAME"
-      - run: cd supertokens-backend-website && git add --all && git commit -m"docs changes" && git push && ./releaseDev.sh
+      - run: cd ../supertokens-backend-website && git add --all && git commit -m"docs changes" && git push && ./releaseDev.sh
       - slack/status
 
 workflows:
