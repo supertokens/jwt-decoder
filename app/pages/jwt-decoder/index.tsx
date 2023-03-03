@@ -275,7 +275,7 @@ const JwtDecoder = () => {
                     </div>
                   </div>
                   <div id="clipboard-btn-container">
-                    <button id="copy-btn" className="strong-600" onClick={copyJwtClickHandler}>
+                    <button id="jwt_decoder_copy_token_cta" className="strong-600" onClick={copyJwtClickHandler}>
                       Copy JWT
                       <Image alt={"copy to clipboard"} width={10} height={10} src={ClipboardIcon} />
                     </button>
@@ -369,7 +369,7 @@ const JwtDecoder = () => {
           </div>
           <hr />
           <div className="read-more-container">
-            {!showMoreContent && <span role={"button"} onClick={() => setShowMoreContent(true)}>Read More <Image className="down-chevron" src={ChevronDownIcon} alt="chevron-down" width={10} height={10} /></span>}
+            {!showMoreContent && <span role={"button"} id="jwt_decoder_read_more_btn" onClick={() => setShowMoreContent(true)}>Read More <Image className="down-chevron" src={ChevronDownIcon} alt="chevron-down" width={10} height={10} /></span>}
           </div>
         </article>
 
