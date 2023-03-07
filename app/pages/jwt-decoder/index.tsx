@@ -24,7 +24,7 @@ const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 2 })
 
 const JwtDecoder = () => {
   // The flag to show / hide the informational content (hidden by default)
-  const [showMoreContent, setShowMoreContent] = useState(false);
+  const [showMoreContent, setShowMoreContent] = useState(true);
   // The algorithm
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
   const [header, setHeader] = useState<string>(formatJSON({
