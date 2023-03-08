@@ -10,7 +10,7 @@ import { algorithmOptions, Algorithms, defaultSigningKeys, defaultTokens, IAlgor
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 import usePreviousValue from "../../hooks/usePreviousValue"
 import { ChevronDownIcon, ClipboardIcon, HelpIcon, InvalidSignatureIcon, ValidSignatureIcon } from "../../assets/images"
-import { getAnalytics } from ".."
+import { AnalyticsUtilities, getAnalytics } from ".."
 
 interface IPopulateToken {
   newPayload?: string;
@@ -51,37 +51,100 @@ const JwtDecoder = () => {
 
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
+  const sendJWTHeaderChangeEvent = () => {
+    if (AnalyticsUtilities.DID_SEND_HEADER_CHANGE_EVENT === true) {
+      return;
+    }
+
+    AnalyticsUtilities.DID_SEND_HEADER_CHANGE_EVENT = true;
+    getAnalytics().then((stAnalytics: any) => {
+      stAnalytics.sendEvent("button_jwt-encoder-decoder_edit_field", {
+        type: "field_edited",
+        field_edited: "header"
+      }, "v6")
+    })
+  }
+
+  const sendJWTPayloadChangeEvent = () => {
+    if (AnalyticsUtilities.DID_SEND_PAYLOAD_CHANGE_EVENT === true) {
+      return;
+    }
+
+    AnalyticsUtilities.DID_SEND_PAYLOAD_CHANGE_EVENT = true;
+    getAnalytics().then((stAnalytics: any) => {
+      stAnalytics.sendEvent("button_jwt-encoder-decoder_edit_field", {
+        type: "field_edited",
+        field_edited: "payload"
+      }, "v6")
+    })
+  }
+
+  const sendJWTValueChangeEvent = () => {
+    if (AnalyticsUtilities.DID_SEND_JWT_CHANGE_EVENT === true) {
+      return;
+    }
+
+    AnalyticsUtilities.DID_SEND_JWT_CHANGE_EVENT = true;
+    getAnalytics().then((stAnalytics: any) => {
+      stAnalytics.sendEvent("button_jwt-encoder-decoder_edit_field", {
+        type: "field_edited",
+        field_edited: "jwt"
+      }, "v6")
+    })
+  }
+
+  const sendJWTSigningKeyChangeEvent = () => {
+    if (AnalyticsUtilities.DID_SEND_SIGNING_KEY_CHANGE_EVENT === true) {
+      return;
+    }
+
+    AnalyticsUtilities.DID_SEND_SIGNING_KEY_CHANGE_EVENT = true;
+    getAnalytics().then((stAnalytics: any) => {
+      stAnalytics.sendEvent("button_jwt-encoder-decoder_edit_field", {
+        type: "field_edited",
+        field_edited: "signing key"
+      }, "v6")
+    })
+  }
+
   useEffect(() => {
     verifySignatureValidity({})
   }, [selectedAlgorithm, publicSigningKey, header, tokenValue])
 
   const onPayloadChange = async (p: string) => {
+    sendJWTPayloadChangeEvent();
     setShowPayloadError(false);
     setPayload(p);
     populateTokenFromPayload({ newPayload: p });
   }
 
-  const onTokenValueChange = async (t: string) => {
+  const onTokenValueChange = async (t: string, didRunForAlgChange: boolean = false) => {
+    if (!didRunForAlgChange) {
+      sendJWTValueChangeEvent();
+    }
+
     setShowPayloadError(false);
     setShowJwtError(false);
     populateDecodedContentFromToken(t);
     setTokenValue(t)
-
     // verifySignatureValidity()
   }
 
   const onSecretKeyChange = async (s: string) => {
+    sendJWTSigningKeyChangeEvent()
     setShowPayloadError(false);
     setSecretKey(s);
     populateTokenFromPayload({ newSecretKey: s })
   }
 
   const onPrivateKeyChange = async (k: string) => {
+    sendJWTSigningKeyChangeEvent()
     setPrivateSigningKey(k);
     populateTokenFromPayload({ newPrivateKey: k })
   }
 
   const onPublicKeyChange = async (k: string) => {
+    sendJWTSigningKeyChangeEvent()
     try {
       setPublicSigningKey(k);
       await verifySignatureValidity({ enteredPublicKey: k });
@@ -198,7 +261,7 @@ const JwtDecoder = () => {
     setShowHeaderError(false);
     setSelectedAlgorithm(alg)
     if (triggerTokenChange) {
-      onTokenValueChange(defaultTokens[alg.value])
+      onTokenValueChange(defaultTokens[alg.value], true)
     }
 
     if (alg.isAsymmetric) {
@@ -234,6 +297,7 @@ const JwtDecoder = () => {
   }
 
   const headerValueChangeHandler = (newHeader: string) => {
+    sendJWTHeaderChangeEvent();
     try {
       setShowHeaderError(false);
       const headerParsed = JSON.parse(newHeader);
