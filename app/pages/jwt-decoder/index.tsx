@@ -10,6 +10,7 @@ import { algorithmOptions, Algorithms, defaultSigningKeys, defaultTokens, IAlgor
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 import usePreviousValue from "../../hooks/usePreviousValue"
 import { ChevronDownIcon, ClipboardIcon, HelpIcon, InvalidSignatureIcon, ValidSignatureIcon } from "../../assets/images"
+import { getAnalytics } from ".."
 
 interface IPopulateToken {
   newPayload?: string;
@@ -89,7 +90,7 @@ const JwtDecoder = () => {
     }
   }
 
-  const onAlgorithmChangeFromDropdown = (algOption: IAlgorithmOption) => {
+  const onAlgorithmChangeFromDropdown = async (algOption: IAlgorithmOption) => {
     setShowHeaderError(false);
     setShowSigningKeyError(false);
     setHeader(formatJSON({
@@ -97,6 +98,12 @@ const JwtDecoder = () => {
       "typ": "JWT"
     }))
     onAlgorithmChange(algOption);
+    getAnalytics().then((stAnalytics: any) => {
+      stAnalytics.sendEvent("button_jwt-encoder-decoder_algorithm_change", {
+        type: "option_selected",
+        option_seleced: algOption.value,
+      }, "v6")
+    });
   }
 
   const populateDecodedContentFromToken = async (token: string) => {
