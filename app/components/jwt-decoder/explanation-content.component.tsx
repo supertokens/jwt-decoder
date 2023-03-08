@@ -7,7 +7,7 @@ const ExplanationContent = () => {
   return (
     <ExplanationContainerStyled className="explanation-content-container">
       <section className="jwts-introduction">
-        <h3 className="title">What are JWTs</h3>
+        <h2 className="title">What are JWTs</h2>
         <div>
           <p>
             JSON Web Token is an open industry standard used to share information between two entities.
@@ -19,7 +19,7 @@ const ExplanationContent = () => {
       </section>
 
       <section className="structure">
-        <h3 className="title">Structure of a JWT</h3>
+        <h2 className="title">Structure of a JWT</h2>
         <div>
           <p>
             A JWT contains three parts:

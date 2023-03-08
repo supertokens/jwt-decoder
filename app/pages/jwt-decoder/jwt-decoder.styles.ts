@@ -160,7 +160,7 @@ export const JwtContainerStyled = styled.div<IJwtContainerStyledProps>`
           flex: 1;
         }
 
-        #copy-btn {
+        #jwt-decoder-copy-btn {
           border: 1px solid ${(props) => props.theme.colors.green[1000]};
           padding-block: 1rem;
           text-align: center;

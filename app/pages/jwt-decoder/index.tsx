@@ -10,6 +10,7 @@ import { algorithmOptions, Algorithms, defaultSigningKeys, defaultTokens, IAlgor
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 import usePreviousValue from "../../hooks/usePreviousValue"
 import { ChevronDownIcon, ClipboardIcon, HelpIcon, InvalidSignatureIcon, ValidSignatureIcon } from "../../assets/images"
+import { AnalyticsUtilities, getAnalytics } from ".."
 
 interface IPopulateToken {
   newPayload?: string;
@@ -24,7 +25,7 @@ const formatJSON = json => js_beautify(JSON.stringify(json), { indent_size: 2 })
 
 const JwtDecoder = () => {
   // The flag to show / hide the informational content (hidden by default)
-  const [showMoreContent, setShowMoreContent] = useState(false);
+  const [showMoreContent, setShowMoreContent] = useState(true);
   // The algorithm
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithmOptions[0]);
   const [header, setHeader] = useState<string>(formatJSON({
@@ -50,37 +51,100 @@ const JwtDecoder = () => {
 
   const [selectedTab, setSelectedTab] = useState<TOption>("encoded");
 
+  const sendJWTHeaderChangeEvent = () => {
+    if (AnalyticsUtilities.DID_SEND_HEADER_CHANGE_EVENT === true) {
+      return;
+    }
+
+    AnalyticsUtilities.DID_SEND_HEADER_CHANGE_EVENT = true;
+    getAnalytics().then((stAnalytics: any) => {
+      stAnalytics.sendEvent("button_jwt-encoder-decoder_edit_field", {
+        type: "field_edited",
+        field_edited: "header"
+      }, "v6")
+    })
+  }
+
+  const sendJWTPayloadChangeEvent = () => {
+    if (AnalyticsUtilities.DID_SEND_PAYLOAD_CHANGE_EVENT === true) {
+      return;
+    }
+
+    AnalyticsUtilities.DID_SEND_PAYLOAD_CHANGE_EVENT = true;
+    getAnalytics().then((stAnalytics: any) => {
+      stAnalytics.sendEvent("button_jwt-encoder-decoder_edit_field", {
+        type: "field_edited",
+        field_edited: "payload"
+      }, "v6")
+    })
+  }
+
+  const sendJWTValueChangeEvent = () => {
+    if (AnalyticsUtilities.DID_SEND_JWT_CHANGE_EVENT === true) {
+      return;
+    }
+
+    AnalyticsUtilities.DID_SEND_JWT_CHANGE_EVENT = true;
+    getAnalytics().then((stAnalytics: any) => {
+      stAnalytics.sendEvent("button_jwt-encoder-decoder_edit_field", {
+        type: "field_edited",
+        field_edited: "jwt"
+      }, "v6")
+    })
+  }
+
+  const sendJWTSigningKeyChangeEvent = () => {
+    if (AnalyticsUtilities.DID_SEND_SIGNING_KEY_CHANGE_EVENT === true) {
+      return;
+    }
+
+    AnalyticsUtilities.DID_SEND_SIGNING_KEY_CHANGE_EVENT = true;
+    getAnalytics().then((stAnalytics: any) => {
+      stAnalytics.sendEvent("button_jwt-encoder-decoder_edit_field", {
+        type: "field_edited",
+        field_edited: "signing key"
+      }, "v6")
+    })
+  }
+
   useEffect(() => {
     verifySignatureValidity({})
   }, [selectedAlgorithm, publicSigningKey, header, tokenValue])
 
   const onPayloadChange = async (p: string) => {
+    sendJWTPayloadChangeEvent();
     setShowPayloadError(false);
     setPayload(p);
     populateTokenFromPayload({ newPayload: p });
   }
 
-  const onTokenValueChange = async (t: string) => {
+  const onTokenValueChange = async (t: string, didRunForAlgChange: boolean = false) => {
+    if (!didRunForAlgChange) {
+      sendJWTValueChangeEvent();
+    }
+
     setShowPayloadError(false);
     setShowJwtError(false);
     populateDecodedContentFromToken(t);
     setTokenValue(t)
-
     // verifySignatureValidity()
   }
 
   const onSecretKeyChange = async (s: string) => {
+    sendJWTSigningKeyChangeEvent()
     setShowPayloadError(false);
     setSecretKey(s);
     populateTokenFromPayload({ newSecretKey: s })
   }
 
   const onPrivateKeyChange = async (k: string) => {
+    sendJWTSigningKeyChangeEvent()
     setPrivateSigningKey(k);
     populateTokenFromPayload({ newPrivateKey: k })
   }
 
   const onPublicKeyChange = async (k: string) => {
+    sendJWTSigningKeyChangeEvent()
     try {
       setPublicSigningKey(k);
       await verifySignatureValidity({ enteredPublicKey: k });
@@ -89,7 +153,7 @@ const JwtDecoder = () => {
     }
   }
 
-  const onAlgorithmChangeFromDropdown = (algOption: IAlgorithmOption) => {
+  const onAlgorithmChangeFromDropdown = async (algOption: IAlgorithmOption) => {
     setShowHeaderError(false);
     setShowSigningKeyError(false);
     setHeader(formatJSON({
@@ -97,6 +161,12 @@ const JwtDecoder = () => {
       "typ": "JWT"
     }))
     onAlgorithmChange(algOption);
+    getAnalytics().then((stAnalytics: any) => {
+      stAnalytics.sendEvent("button_jwt-encoder-decoder_algorithm_change", {
+        type: "option_selected",
+        option_seleced: algOption.value,
+      }, "v6")
+    });
   }
 
   const populateDecodedContentFromToken = async (token: string) => {
@@ -191,7 +261,7 @@ const JwtDecoder = () => {
     setShowHeaderError(false);
     setSelectedAlgorithm(alg)
     if (triggerTokenChange) {
-      onTokenValueChange(defaultTokens[alg.value])
+      onTokenValueChange(defaultTokens[alg.value], true)
     }
 
     if (alg.isAsymmetric) {
@@ -227,6 +297,7 @@ const JwtDecoder = () => {
   }
 
   const headerValueChangeHandler = (newHeader: string) => {
+    sendJWTHeaderChangeEvent();
     try {
       setShowHeaderError(false);
       const headerParsed = JSON.parse(newHeader);
@@ -247,7 +318,7 @@ const JwtDecoder = () => {
     <JwtContainerStyled $selectedTab={selectedTab} $selectedAlg={selectedAlgorithm} className="jwt-decoder-container">
       <main className="inner-container">
         <article className="hero-container">
-          <h3 className="title bold-700">JWT Decoder</h3>
+          <h1 className="title bold-700">JWT Decoder</h1>
           <section className="decoder-main-container">
             <TabContainer className="common-container tab-container">
               {
@@ -275,7 +346,7 @@ const JwtDecoder = () => {
                     </div>
                   </div>
                   <div id="clipboard-btn-container">
-                    <button id="copy-btn" className="strong-600" onClick={copyJwtClickHandler}>
+                    <button id="jwt-decoder-copy-btn" className="strong-600" onClick={copyJwtClickHandler}>
                       Copy JWT
                       <Image alt={"copy to clipboard"} width={10} height={10} src={ClipboardIcon} />
                     </button>
