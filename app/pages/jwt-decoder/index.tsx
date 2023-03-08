@@ -254,7 +254,7 @@ const JwtDecoder = () => {
     <JwtContainerStyled $selectedTab={selectedTab} $selectedAlg={selectedAlgorithm} className="jwt-decoder-container">
       <main className="inner-container">
         <article className="hero-container">
-          <h3 className="title bold-700">JWT Decoder</h3>
+          <h1 className="title bold-700">JWT Decoder</h1>
           <section className="decoder-main-container">
             <TabContainer className="common-container tab-container">
               {
