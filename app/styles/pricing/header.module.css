@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+
+.header {
+    display: grid;
+    grid-template-columns: 3fr 20px 2fr;
+    gap: 5rem;
+
+    color: white;
+
+    padding: 12.438rem;
+
+    align-items: center;
+    background-size: 40vw;
+    background-repeat: no-repeat;
+}
+
+.text > h1 {
+    background: linear-gradient(90deg, rgba(221, 221, 221, 1), rgba(128, 128, 128, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    margin-top: 0;
+}
+
+.text > p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    /* or 150% */
+
+
+    color: #AAAAAA;
+}
+
+.brace {
+    font-family: 'Inter';
+    font-weight: 100;
+    font-size: 80px;
+    line-height: 97px;
+    /* identical to box height */
+
+
+    color: #FF9933;
+}
+
+.handwriting {
+    font-family: 'Covered By Your Grace';
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 43px;
+
+    color: #FF9933;
+}
+
+
+@media screen and (max-width: 768px) {
+    .header {
+        grid-template-columns: 1fr;
+
+        padding: 8.438rem;
+    }
+
+    .brace {
+        display: none;
+    }
+}
