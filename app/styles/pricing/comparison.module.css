@@ -26,6 +26,10 @@
     border-collapse: collapse;
 }
 
+.table > thead > tr:first-child {
+    display: none;
+}
+
 .table > thead > tr > th {
     padding-bottom: 20px;
 }
@@ -98,4 +102,51 @@
 
 .warning {
     color: #B68E00;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .comparison {
+        padding: 8.438rem;
+    }
+
+    .table-wrapper {
+        overflow-x: scroll;
+    }
+
+    .table {
+        padding: 0;
+        margin: 0;
+        width: calc(100vw - 8.438rem);
+    }
+
+    .table > thead > tr:first-child {
+        display: table-row;
+    }
+
+    .table > thead > tr:first-child > td:nth-child(2) {
+        font-family: 'Covered By Your Grace';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 32px;
+
+        color: #5772FF;
+
+        text-align: center;
+
+        padding-bottom: 20px;
+    }
+
+    .table > thead > tr:first-child > td:nth-child(2) > img {
+        width: 14px;
+    }
+
+    .table > tbody > tr > td {
+        min-width: 150px;
+    }
+
+    .feat {
+        min-width: 250px !important;
+    }
 }

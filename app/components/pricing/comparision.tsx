@@ -4,10 +4,22 @@ import firebase from "../../assets/pricing/firebase.png"
 import aws from "../../assets/pricing/AWS.png"
 import keycloak from "../../assets/pricing/keycloak.png"
 import auth0 from "../../assets/pricing/Auth0.png"
+import swipeBlue from "../../assets/pricing/swipe-icon-blue.png"
 
 
 const THead = () => {
     return <thead>
+    <tr>
+        <td></td>
+        <td>
+            <img src={swipeBlue.src} alt=""/>
+            Swipe
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
     <tr>
         <th></th>
         <th>
@@ -642,10 +654,12 @@ const Comparision = () => {
             <h1>Feature based comparison</h1>
             <p>See how we compare with other authentication solutions</p>
         </div>
-        <table className={styles.table}>
-            <THead />
-            <TBody />
-        </table>
+        <div className={styles["table-wrapper"]}>
+            <table className={styles.table}>
+                <THead />
+                <TBody />
+            </table>
+        </div>
     </div>
 }
 

@@ -229,3 +229,26 @@
     color: #000000;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 1000px) {
+    .addOn {
+        padding: 8.438rem;
+    }
+
+    .grid {
+        grid-template-areas: "tier1"
+    "tier2"
+    "tier3"
+    "basic";
+    }
+
+    .basic {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .basic > .bordered {
+        width: 100%;
+    }
+}

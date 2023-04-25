@@ -69,3 +69,10 @@
 
     color: #AAAAAA;
 }
+
+
+@media screen and (max-width: 1000px) {
+    .faq {
+        padding: 8.438rem;
+    }
+}

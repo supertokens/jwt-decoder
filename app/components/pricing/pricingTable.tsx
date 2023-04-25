@@ -20,6 +20,10 @@ const Tooltip = ({position, text}) => {
 
 const Thead = () => {
     return <thead>
+    {/*<tr>*/}
+    {/*    <td></td>*/}
+    {/*    <td>Swipe</td>*/}
+    {/*</tr>*/}
     <tr className={styles["main-header"]}>
         <th className={styles.left_align}>
             Features
@@ -158,7 +162,7 @@ const rows = [
                 "Pre built UI with your customizations",
             ]
         }
-    },{
+    }, {
         type: "feature",
         expandable: true,
         comingSoon: false,
@@ -183,7 +187,7 @@ const rows = [
                 }
             ]
         }
-    },{
+    }, {
         type: "feature",
         expandable: true,
         comingSoon: false,
@@ -194,15 +198,15 @@ const rows = [
             subList: [
                 "Unique user pools per tenant",
                 {
-                  text: "Configure custom login methods per tenant",
-                  tooltip: "eg: Okta for tenant1, passwordless for tenant2, Social SSO etc"
+                    text: "Configure custom login methods per tenant",
+                    tooltip: "eg: Okta for tenant1, passwordless for tenant2, Social SSO etc"
                 },
                 "Configure Enterprise SSO connections (Okta, AD etc) per tenant",
                 "Data isolation on a per tenant level",
                 "Sharing a user across tenants",
             ]
         }
-    },{
+    }, {
         type: "feature",
         expandable: true,
         comingSoon: false,
@@ -216,7 +220,7 @@ const rows = [
                 "Add multiple permissions to each role",
             ]
         }
-    },{
+    }, {
         type: "feature",
         expandable: true,
         comingSoon: false,
@@ -243,7 +247,7 @@ const rows = [
             text: "Everything Else",
             number: "6"
         }
-    },{
+    }, {
         type: "feature",
         expandable: false,
         comingSoon: false,
@@ -252,7 +256,7 @@ const rows = [
         data: {
             mainText: "Overrides",
         }
-    },{
+    }, {
         type: "feature",
         expandable: true,
         comingSoon: false,
@@ -265,7 +269,7 @@ const rows = [
                 "Customise email and SMS templates",
             ]
         }
-    },{
+    }, {
         type: "feature",
         expandable: false,
         comingSoon: false,
@@ -274,7 +278,7 @@ const rows = [
         data: {
             mainText: "SOC2 / GDPR",
         }
-    },{
+    }, {
         type: "feature",
         expandable: false,
         comingSoon: true,
@@ -283,14 +287,14 @@ const rows = [
         data: {
             mainText: "User impersonation",
         }
-    },{
+    }, {
         type: "section",
         data: {
             icon: tooltipIcon,
             text: "Support",
             number: "3"
         }
-    },{
+    }, {
         type: "feature",
         expandable: false,
         comingSoon: false,
@@ -299,7 +303,7 @@ const rows = [
         data: {
             mainText: "Uptime",
         }
-    },{
+    }, {
         type: "feature",
         expandable: false,
         comingSoon: false,
@@ -308,7 +312,7 @@ const rows = [
         data: {
             mainText: "Community support",
         }
-    },{
+    }, {
         type: "feature",
         expandable: false,
         comingSoon: false,
@@ -324,7 +328,7 @@ const Expandable = ({row}) => {
     const [expand, setExpand] = useState(false);
     return <div className={styles.expandable}>
         <div onClick={() => setExpand(!expand)} className={styles.header}>
-            <span>{row.data.mainText} {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom" /> }</span>
+            <span>{row.data.mainText} {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom"/>}</span>
             <div>
                 {row.comingSoon && <span className={styles['coming-soon-chip']}>Coming soon</span>}
                 {row.expandable && <img src={dropIcon.src}/>}
@@ -333,7 +337,7 @@ const Expandable = ({row}) => {
         {(row.expandable && expand) && <div className={styles.sublist}>
             <ul>
                 {row.data.subList.map((el, index) => <li key={index}>
-                    {typeof el === 'object' && <span>{el.text} <Tooltip text={el.tooltip} position="bottom" /> </span>}
+                    {typeof el === 'object' && <span>{el.text} <Tooltip text={el.tooltip} position="bottom"/> </span>}
                     {typeof el === 'string' && <span>{el}</span>}
                 </li>)}
             </ul>
@@ -389,13 +393,95 @@ const TFoot = () => {
     </tfoot>
 }
 
+const MobileTHead = () => {
+    return <table className={styles.mobileTHead}>
+        <thead>
+            <tr>
+                <th>Open Source</th>
+                <th>Scale</th>
+            </tr>
+            <tr className={styles.highlight}>
+                <td>Self host: Free at any scale</td>
+                <td>Custom Pricing</td>
+            </tr>
+            <tr className={styles.highlight}>
+                <td>Managed Service: $0.02 per MAU</td>
+                <td>Custom Pricing</td>
+            </tr>
+            <tr>
+                <td>
+                    <button className={styles.bordered}>
+                        Get Started
+                    </button>
+                </td>
+                <td>
+                    <button className={styles['filled-orange']}>
+                        Get Started
+                    </button>
+                </td>
+            </tr>
+        </thead>
+    </table>
+}
+
+const MobileTBody = () => {
+    return <div>
+        {rows.map((el, index) => {
+            if (el.type === "section") return <div key={index} className={styles.mobileSection}>
+                <img src={el.data.icon.src} alt=""/>{el.data.text} <small>{el.data.number}</small>
+            </div>
+            else return <div key={index} className={styles.mobileFeature}>
+                <Expandable row={el}/>
+                <div className={styles.check}>
+                    <div>
+                        {(typeof el.openSource === 'boolean' && el.openSource) &&
+                            <img src={openSourceCheck.src} alt=""/>}
+                        {typeof el.openSource === 'string' && <span>{el.openSource}</span>}
+                    </div>
+                    <div>
+                        {(typeof el.scale === 'boolean' && el.scale) && <img src={scaleCheck.src} alt=""/>}
+                        {typeof el.scale === 'string' && <span>{el.scale}</span>}
+                    </div>
+                </div>
+            </div>
+        })}
+    </div>
+}
+
+const MobileTFoot = () => {
+    return <table className={styles.mobileTFoot}>
+        <tfoot>
+            <tr>
+                <td>
+                    <div>
+                        <h1>No-Cost</h1>
+                        <button className={styles.bordered}>Get Started</button>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <h1>Pay when you scale</h1>
+                        <button className={styles['filled-orange']}>Get Started</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+}
+
 const PricingTable = () => {
     return <div className={styles['table-wrapper']}>
         <table className={styles.table}>
             <Thead/>
             <TBody/>
-            <TFoot />
+            <TFoot/>
         </table>
+        <div className={styles.mobileTable}>
+            <MobileTHead/>
+            <h3>Features</h3>
+            <MobileTBody/>
+            <MobileTFoot />
+        </div>
     </div>
 }
 
