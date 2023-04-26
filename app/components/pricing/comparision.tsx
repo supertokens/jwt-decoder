@@ -91,13 +91,15 @@ const rows = [
         }
     },{
         feat: "User Satisfaction",
+        text: "Based on 200+ respondents - shared feedback on the product's documentation, unsolved issues / bugs, and general 'ease of use')",
         st: {
             text: "High",
             color: "green",
         },
         auth0: {
             text: "Medium",
-            color: "warning"
+            color: "warning",
+            info: "Users complaint about pricing once they grow from a startup to a growth company"
         },
         aws: {
             text: "Low",
@@ -157,13 +159,15 @@ const rows = [
         }
     },{
         feat: "Company provided support for free tiers",
+        text: "Response times, Methods of support, etc",
         st: {
             text: "High",
             color: "green",
         },
         auth0: {
             text: "Low",
-            color: "red"
+            color: "red",
+            info: "Auth0 provides premium support for large contract values"
         },
         aws: {
             text: "Low",
@@ -186,7 +190,7 @@ const rows = [
         auth0: {
             text: "Yes",
             color: "warning",
-            message: ""
+            info: "It can be done on your own infrastructure but managed by Auth0"
         },
         aws: {
             text: "No",
@@ -469,6 +473,7 @@ const rows = [
         st: {
             text: "Partial",
             color: "warning",
+            info: "Only across sub domains"
         },
         auth0: {
             text: "Yes",
@@ -491,6 +496,7 @@ const rows = [
         st: {
             text: "Partial",
             color: "warning",
+            info: "No authenticator app support"
         },
         auth0: {
             text: "Yes",
@@ -586,7 +592,8 @@ const rows = [
         },
         aws: {
             text: "Yes",
-            color: "warning"
+            color: "warning",
+            info: "But limit to 4 tenants for custom domain"
         },
         key: {
             text: "Yes",
@@ -635,24 +642,47 @@ const rows = [
         key: {
             text: "Partial",
             color: "warning",
+            info: "Emails: Yes, SMS: It does not send SMS at all. You need to use custom hook to send SMS yourself."
         },
         fire: {
             text: "Partial",
             color: "warning",
+            info: "Only via custom email hook or SMS handler"
         }
     },
 ]
+
+const Tooltip = ({ title, text }: {title: string; text: string}) => {
+    return <div className={styles.tooltip}>
+        <u>{title}</u>
+        <div>
+            {text}
+        </div>
+    </div>
+}
 
 const TBody = () => {
     return <tbody>
     {rows.map((el, index) => {
         return <tr key={index}>
-            <td className={styles.feat}>{el.feat}</td>
-            <td className={styles[el.st.color]}>{el.st.text}</td>
-            <td className={styles[el.auth0.color]}>{el.auth0.text}</td>
-            <td className={styles[el.aws.color]}>{el.aws.text}</td>
-            <td className={styles[el.key.color]}>{el.key.text}</td>
-            <td className={styles[el.fire.color]}>{el.fire.text}</td>
+            <td className={styles.feat}>
+                {!el.text ? el.feat : <Tooltip title={el.feat} text={el.text} />}
+            </td>
+            <td className={styles[el.st.color]}>
+                {el.st.info ? <Tooltip title={el.st.text} text={el.st.info} /> : el.st.text}
+            </td>
+            <td className={styles[el.auth0.color]}>
+                {el.auth0.info ? <Tooltip title={el.auth0.text} text={el.auth0.info} /> : el.auth0.text}
+            </td>
+            <td className={styles[el.aws.color]}>
+                {el.aws.info ? <Tooltip title={el.aws.text} text={el.aws.info} /> : el.aws.text}
+            </td>
+            <td className={styles[el.key.color]}>
+                {el.key.info ? <Tooltip title={el.key.text} text={el.key.info} /> : el.key.text}
+            </td>
+            <td className={styles[el.fire.color]}>
+                {el.fire.info ? <Tooltip title={el.fire.text} text={el.fire.info} /> : el.fire.text}
+            </td>
         </tr>
     })}
     </tbody>

@@ -100,6 +100,37 @@
     color: #B68E00;
 }
 
+.tooltip {
+    position: relative;
+}
+
+.tooltip > div {
+    display: none;
+}
+
+.tooltip:hover > div {
+    display: block;
+
+    position: absolute;
+    top: 100%;
+
+    max-width: 300px;
+    min-width: 200px;
+
+    background: #F8F7F7;
+    border-radius: 6px;
+
+    padding: 12px;
+    margin-top: 10px;
+
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+
+    text-align: center;
+
+    color: #000000;
+}
 
 @media screen and (max-width: 1000px) {
     .comparison {
