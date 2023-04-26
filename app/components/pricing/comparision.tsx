@@ -24,31 +24,41 @@ const THead = () => {
         <th></th>
         <th>
             <div>
-                <img src={st.src} alt=""/>
+                <div>
+                    <img src={st.src} alt=""/>
+                </div>
             </div>
             <span>Supertokens</span>
         </th>
         <th>
             <div>
-                <img src={auth0.src} alt=""/>
+                <div>
+                    <img src={auth0.src} alt=""/>
+                </div>
             </div>
             <span>Auth0</span>
         </th>
         <th>
             <div>
-                <img src={aws.src} alt=""/>
+                <div>
+                    <img src={aws.src} alt=""/>
+                </div>
             </div>
             <span>AWS Cognito</span>
         </th>
         <th>
             <div>
-                <img src={keycloak.src} alt=""/>
+                <div>
+                    <img src={keycloak.src} alt=""/>
+                </div>
             </div>
             <span>Keycloak</span>
         </th>
         <th>
             <div>
-                <img src={firebase.src} alt=""/>
+                <div>
+                    <img src={firebase.src} alt=""/>
+                </div>
             </div>
             <span>Firebase</span>
         </th>

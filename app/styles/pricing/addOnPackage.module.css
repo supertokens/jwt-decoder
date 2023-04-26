@@ -96,21 +96,23 @@
     font-family: 'Inter';
     font-weight: 400;
     font-size: 14px;
-
-    padding: 5px 14px;
     color: #DDDDDD;
     position: relative;
+
+    width: 15ch;
+
+    padding: 1px;
 }
 
-.tier2 .chip::before {
-    content: "";
-    position: absolute;
-    background: linear-gradient(90deg, #FFE993 0%, #EB831C 100%);
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
-    top: -1px;
-    left: -1px;
+.chip > div {
+    padding: 5px 14px;
+    margin: 0;
+    background: black;
     border-radius: 20px;
+}
+
+.tier2 .chip {
+    background: linear-gradient(90deg, #FFE993 0%, #EB831C 100%);
 }
 
 .hr {

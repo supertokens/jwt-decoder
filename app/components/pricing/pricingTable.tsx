@@ -3,6 +3,11 @@ import tooltipIcon from "../../assets/pricing/tooltip-icon.png";
 import dropIcon from "../../assets/pricing/drop-icon.png";
 import openSourceCheck from "../../assets/pricing/open-source-check.png";
 import scaleCheck from "../../assets/pricing/scale-check.png";
+import selfHOst  from "../../assets/pricing/self-host.png"
+import managed from "../../assets/pricing/managed.png"
+import auth from "../../assets/pricing/auth.png";
+import everything from "../../assets/pricing/everything.png";
+import support from "../../assets/pricing/support.png";
 
 import {useState} from "react";
 
@@ -38,6 +43,7 @@ const Thead = () => {
     <tr className={styles.highlight}>
         <td className={styles.left_align}>
             Self host
+            <img src={selfHOst.src} alt=""/>
         </td>
         <td>
             Free at any scale
@@ -49,6 +55,7 @@ const Thead = () => {
     <tr className={styles.highlight}>
         <td className={styles.left_align}>
             Managed Service
+            <img src={managed.src} alt=""/>
         </td>
         <td>
             $0.02 per MAU&nbsp;
@@ -78,7 +85,7 @@ const rows = [
     {
         type: "section",
         data: {
-            icon: tooltipIcon,
+            icon: auth,
             text: "Authentication",
             number: "5"
         }
@@ -243,7 +250,7 @@ const rows = [
     {
         type: "section",
         data: {
-            icon: tooltipIcon,
+            icon: everything,
             text: "Everything Else",
             number: "6"
         }
@@ -290,7 +297,7 @@ const rows = [
     }, {
         type: "section",
         data: {
-            icon: tooltipIcon,
+            icon: support,
             text: "Support",
             number: "3"
         }

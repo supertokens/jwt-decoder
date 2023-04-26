@@ -60,6 +60,11 @@
     background: rgba(255, 153, 51, 0.16);
 }
 
+.highlight > td > img {
+    margin-left: 10px;
+    height: 16px;
+}
+
 .left_align {
     text-align: left !important;
     width: calc(29.68vw - 12.438rem * 2);

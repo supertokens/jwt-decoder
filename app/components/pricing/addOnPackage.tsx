@@ -44,9 +44,11 @@ const Card = ({tier}: { tier: number }) => {
     // @ts-ignore
     return <div className={styles[`tier${tier}`]}>
         <div className={styles['info-wrapper']}>
-            <span className={styles.chip}>
-                Tier {tier} Support
-            </span>
+            <div className={styles.chip}>
+                <div>
+                    Tier {tier} Support
+                </div>
+            </div>
             <hr className={styles.hr}/>
             <ul className={styles.ul}>
                 {data[`tier${tier}`].list.map((el, index) => <li key={index}
