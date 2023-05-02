@@ -285,3 +285,9 @@
         width: 100%;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .addOn {
+        padding: 20px;
+    }
+}

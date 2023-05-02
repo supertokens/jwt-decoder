@@ -386,7 +386,7 @@ const TFoot = () => {
     <tr>
         <td></td>
         <td>
-            <h1>No-Cost</h1>
+            <h1>Open Source</h1>
             <button className={styles.bordered}>Get Started</button>
         </td>
         <td>
@@ -456,13 +456,13 @@ const MobileTFoot = () => {
     return <table className={styles.mobileTFoot}>
         <tfoot>
             <tr>
-                <td>
+                <td className={styles["open-source-footer"]}>
                     <div>
-                        <h1>No-Cost</h1>
+                        <h1>Open source</h1>
                         <button className={styles.bordered}>Get Started</button>
                     </div>
                 </td>
-                <td>
+                <td className={styles["paid-footer"]}>
                     <div>
                         <h1>Pay when you scale</h1>
                         <button className={styles['filled-orange']}>Get Started</button>

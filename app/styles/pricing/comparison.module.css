@@ -177,3 +177,9 @@
         min-width: 250px !important;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .comparison {
+        padding: 20px;
+    }
+}

@@ -10,7 +10,7 @@ const PricingHeader = function PricingHeader() {
         </div>
         <div className={styles.brace}>{"}"}</div>
         <div className={styles.handwriting}>
-            No 10X surprise<br/>increases in price.
+            No 10X surprise <span className={styles.linebreak}/> increases in price.
         </div>
     </div>
 };

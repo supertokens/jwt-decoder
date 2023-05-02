@@ -93,3 +93,18 @@
         padding: 8.438rem;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .faq {
+        padding: 20px;
+    }
+
+    .chevron {
+        width: 12px;
+        height: 8px;
+    }
+
+    .question > .question-title-container > b {
+        max-width: 270px;
+    }
+}
