@@ -92,6 +92,10 @@
     .faq {
         padding: 8.438rem;
     }
+
+    .question > .question-title-container > b {
+        max-width: 550px;
+    }
 }
 
 @media screen and (max-width: 480px) {
