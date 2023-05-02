@@ -28,12 +28,14 @@
     background: linear-gradient(124.12deg, #797EAC 33.35%, #8D92A1 75.44%),
     linear-gradient(131.71deg, #797EAC 30.57%, #8D92A1 63.12%),
     linear-gradient(0deg, #F8F7F7, #F8F7F7);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .question {
     margin-bottom: 52px;
+    cursor: pointer;
 }
 
 .question > b {
@@ -50,15 +52,28 @@
     color: #F7F7F8;
 }
 
-.question > b::after {
+.question-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chevron {
     content: "";
-    position: absolute;
     width: 15px;
     height: 15px;
     background-image: url("../../assets/pricing/chevron.png");
     background-size: contain;
     background-repeat: no-repeat;
-    right: 0;
+    transform: rotateZ(-180deg);
+    transition: transform 0.3s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out;
+    -webkit-transition: transform 0.3s ease-in-out;
+}
+
+.rotated {
+    transform: rotateZ(0deg);
 }
 
 .question > p {

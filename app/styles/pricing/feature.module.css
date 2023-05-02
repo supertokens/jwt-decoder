@@ -70,7 +70,6 @@
     width: calc(29.68vw - 12.438rem * 2);
 }
 
-
 .bordered {
     display: block;
 
@@ -94,6 +93,17 @@
 
     margin-top: 32px;
     margin-bottom: 40px;
+    transition: all 150ms ease-in-out;
+    transition-property: background-color color;
+    -moz-transition: all 150ms ease-in-out;
+    -moz-transition-property: background-color color;
+    -webkit-transition: all 150ms ease-in-out;
+    -webkit-transition-property: background-color color;
+}
+
+.bordered:hover {
+    background: #F8F7F7;
+    color: #000;
 }
 
 .filled-orange {
@@ -119,6 +129,17 @@
 
     margin-top: 32px;
     margin-bottom: 40px;
+    transition: all 150ms ease-in-out;
+    transition-property: background-color color;
+    -moz-transition: all 150ms ease-in-out;
+    -moz-transition-property: background-color color;
+    -webkit-transition: all 150ms ease-in-out;
+    -webkit-transition-property: background-color color;
+}
+
+.filled-orange:hover {
+    background: #FE8D1C;
+    border: 1px solid #FFAF60;
 }
 
 .table > tbody > tr {

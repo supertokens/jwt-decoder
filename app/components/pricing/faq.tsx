@@ -43,7 +43,10 @@ const questions = [
 const QA = ({ el, state }) => {
     const [open, setOpen] = useState(state);
     return <div onClick={() => setOpen(!open)} className={styles.question}>
-        <b>{el.question}</b>
+        <div className={`${styles["question-title-container"]}`}>
+            <b>{el.question}</b>
+            <div className={`${styles.chevron} ${open ? styles.rotated : ""}`}/>
+        </div>
         {open && <p>
             {el.answer}
         </p>}

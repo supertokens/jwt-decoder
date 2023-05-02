@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
 
 .header {
     display: grid;
-    grid-template-columns: 3fr 20px 2fr;
+    grid-template-columns: 5fr 20px 2fr;
     gap: 5rem;
 
     color: white;
@@ -23,6 +24,7 @@
     font-size: 64px;
     line-height: 77px;
     margin-top: 0;
+    margin-bottom: 32px;
 }
 
 .text > p {
@@ -39,8 +41,7 @@
 .brace {
     font-family: 'Inter';
     font-weight: 100;
-    font-size: 80px;
-    line-height: 97px;
+    font-size: 97px;
     /* identical to box height */
 
 

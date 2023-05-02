@@ -188,10 +188,7 @@ const rows = [
                 "Customisable expiry time",
                 "Add session claims",
                 "Limit number of devices per user ID",
-                {
-                    text: "JWT Support",
-                    tooltip: "test info here"
-                }
+                "JWT Support",
             ]
         }
     }, {
@@ -308,7 +305,7 @@ const rows = [
         openSource: true,
         scale: true,
         data: {
-            mainText: "Uptime",
+            mainText: "Uptime guarantees (SLAs)",
         }
     }, {
         type: "feature",

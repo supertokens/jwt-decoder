@@ -104,6 +104,25 @@
     padding: 1px;
 }
 
+.get-in-touch-chip {
+    border: 1px solid rgb(48,48,48);
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 12);
+    position: relative;
+
+    width: 15ch;
+
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 16px;
+    background-color: rgb(48,48,48);
+}
+
 .chip > div {
     padding: 5px 14px;
     margin: 0;
@@ -182,6 +201,17 @@
     color: #F8F7F7;
 
     cursor: pointer;
+    transition: all 150ms ease-in-out;
+    transition-property: background-color color;
+    -moz-transition: all 150ms ease-in-out;
+    -moz-transition-property: background-color color;
+    -webkit-transition: all 150ms ease-in-out;
+    -webkit-transition-property: background-color color;
+}
+
+.bordered:hover {
+    background-color: #F8F7F7;
+    color: #000000;
 }
 
 .basic > .bordered {
@@ -230,6 +260,7 @@
 
     color: #000000;
     cursor: pointer;
+    border-width: 0px;
 }
 
 

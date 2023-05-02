@@ -8,9 +8,9 @@ const PricingHeader = function PricingHeader() {
             <p>Self host or use our managed service. <br/>
                 Self hosting the open source features is free without any limits!</p>
         </div>
-        <div className={styles.brace}>}</div>
+        <div className={styles.brace}>{"}"}</div>
         <div className={styles.handwriting}>
-            No 10X surprise increases in price.
+            No 10X surprise<br/>increases in price.
         </div>
     </div>
 };
