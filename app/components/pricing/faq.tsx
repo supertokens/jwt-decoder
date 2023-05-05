@@ -4,39 +4,22 @@ import {useState} from "react";
 const questions = [
     {
         "question": "What is the difference between the managed service and self hosting?",
-        "answer": "The same free and paid features are available in both options. In self hosted, you can use the open source features of \n" +
-            "SuperTokens for free at any scale.\n" +
+        "answer": "The same features are available in both options. In self hosted, you can use the open source features of SuperTokens for free at any scale and pay only for the paid features mentioned in “Scale”\n" +
             "\n" +
-            "However with the managed service, SuperTokens handles on demand scalability, reliability and updates - essentially \n" +
-            "reducing your devops workload. With the self hosted version, everything is managed within your infrastructure."
+            "With the managed service, SuperTokens handles on demand scalability, reliability and updates - essentially reducing your devops workload. With the self hosted version, everything is managed within your infrastructure."
     },{
-        "question": "Pricing for volume / bulk discounts",
-        "answer": "The same free and paid features are available in both options. In self hosted, you can use the open source features of \n" +
-            "SuperTokens for free at any scale.\n" +
-            "\n" +
-            "However with the managed service, SuperTokens handles on demand scalability, reliability and updates - essentially \n" +
-            "reducing your devops workload. With the self hosted version, everything is managed within your infrastructure."
+        "question": "Do you provide discounts for large volumes?",
+        "answer": "Yes. if you have greater than 10K MAUs or more than 5 organisations as customers, please reach out to us for discounted pricing"
     },{
-        "question": "How can I customize SuperTokens?",
-        "answer": "The same free and paid features are available in both options. In self hosted, you can use the open source features of \n" +
-            "SuperTokens for free at any scale.\n" +
-            "\n" +
-            "However with the managed service, SuperTokens handles on demand scalability, reliability and updates - essentially \n" +
-            "reducing your devops workload. With the self hosted version, everything is managed within your infrastructure."
+        "question": "Can I get help in evaluating SuperTokens?",
+        "answer": <span>Sure, feel free to join our <a onClick={e => {
+            e.stopPropagation();
+        }} className={styles.link} target="_blank" href="http://supertokens.com/discord">Discord</a> or <a onClick={e => {
+            e.stopPropagation();
+        }} className={styles.link} target="_blank" href="https://supertokens.com/call-user">schedule a call</a> with us if you're looking to implement SuperTokens commercially.</span>
     },{
-        "question": "SuperTokens is missing some features I need. How do I find out when it will be release?",
-        "answer": "The same free and paid features are available in both options. In self hosted, you can use the open source features of \n" +
-            "SuperTokens for free at any scale.\n" +
-            "\n" +
-            "However with the managed service, SuperTokens handles on demand scalability, reliability and updates - essentially \n" +
-            "reducing your devops workload. With the self hosted version, everything is managed within your infrastructure."
-    },{
-        "question": "Are all these features free if I use the self hosted version?",
-        "answer": "The same free and paid features are available in both options. In self hosted, you can use the open source features of \n" +
-            "SuperTokens for free at any scale.\n" +
-            "\n" +
-            "However with the managed service, SuperTokens handles on demand scalability, reliability and updates - essentially \n" +
-            "reducing your devops workload. With the self hosted version, everything is managed within your infrastructure."
+        "question": "How scalable is SuperTokens",
+        "answer": "SuperTokens is horizontally scalable and companies run it at the scale of millions of unique daily active users without any issues. Join thousands of other applications using SuperTokens in production!"
     },
 ]
 
