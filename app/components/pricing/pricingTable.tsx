@@ -10,6 +10,7 @@ import everything from "../../assets/pricing/everything.png";
 import support from "../../assets/pricing/support.png";
 
 import {useState} from "react";
+import { navigateOnButtonClick } from "../common/utils";
 
 
 const Tooltip = ({position, text}) => {
@@ -68,13 +69,13 @@ const Thead = () => {
     <tr>
         <td></td>
         <td>
-            <button className={styles.bordered}>
+            <button onClick={navigateToGuides} className={styles.bordered}>
                 Get Started
             </button>
         </td>
         <td>
-            <button className={styles['filled-orange']}>
-                Get Started
+            <button onClick={navigateToConsultancy} className={styles['filled-orange']}>
+                Contact Us
             </button>
         </td>
     </tr>
@@ -258,7 +259,7 @@ const rows = [
         openSource: true,
         scale: true,
         data: {
-            mainText: "Overrides",
+            mainText: "Overrides (hooks and custom actions)",
         }
     }, {
         type: "feature",
@@ -357,7 +358,7 @@ const TBody = () => {
                 <td className={styles.left_align}>
                     <img src={el.data.icon.src} alt=""/>
                     <span className={styles['section-text']}>{el.data.text}</span>
-                    <small>{el.data.number}</small>
+                    {/* <small>{el.data.number}</small> */}
                 </td>
                 <td/>
                 <td/>
@@ -381,17 +382,25 @@ const TBody = () => {
     </tbody>
 }
 
+const navigateToConsultancy = (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigateOnButtonClick("consultancy", e);
+}
+
+const navigateToGuides = (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigateOnButtonClick("/docs", e);
+}
+
 const TFoot = () => {
     return <tfoot>
     <tr>
         <td></td>
         <td>
             <h1>Open Source</h1>
-            <button className={styles.bordered}>Get Started</button>
+            <button onClick={navigateToGuides} className={styles.bordered}>Get Started</button>
         </td>
         <td>
             <h1>Pay when you scale</h1>
-            <button className={styles['filled-orange']}>Get Started</button>
+            <button onClick={navigateToConsultancy} className={styles['filled-orange']}>Contact Us</button>
         </td>
     </tr>
     </tfoot>
@@ -414,13 +423,13 @@ const MobileTHead = () => {
             </tr>
             <tr>
                 <td>
-                    <button className={styles.bordered}>
+                    <button onClick={navigateToGuides} className={styles.bordered}>
                         Get Started
                     </button>
                 </td>
                 <td>
-                    <button className={styles['filled-orange']}>
-                        Get Started
+                    <button onClick={navigateToConsultancy} className={styles['filled-orange']}>
+                        Contact Us
                     </button>
                 </td>
             </tr>
@@ -432,7 +441,7 @@ const MobileTBody = () => {
     return <div>
         {rows.map((el, index) => {
             if (el.type === "section") return <div key={index} className={styles.mobileSection}>
-                <img src={el.data.icon.src} alt=""/>{el.data.text} <small>{el.data.number}</small>
+                <img src={el.data.icon.src} alt=""/>{el.data.text} {/* <small>{el.data.number}</small> */}
             </div>
             else return <div key={index} className={styles.mobileFeature}>
                 <Expandable row={el}/>
@@ -459,13 +468,13 @@ const MobileTFoot = () => {
                 <td className={styles["open-source-footer"]}>
                     <div>
                         <h1>Open source</h1>
-                        <button className={styles.bordered}>Get Started</button>
+                        <button onClick={navigateToGuides} className={styles.bordered}>Get Started</button>
                     </div>
                 </td>
                 <td className={styles["paid-footer"]}>
                     <div>
                         <h1>Pay when you scale</h1>
-                        <button className={styles['filled-orange']}>Get Started</button>
+                        <button onClick={navigateToConsultancy} className={styles['filled-orange']}>Contact Us</button>
                     </div>
                 </td>
             </tr>

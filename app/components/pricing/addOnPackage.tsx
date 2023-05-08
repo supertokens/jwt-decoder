@@ -1,15 +1,17 @@
 import styles from "../../styles/pricing/addOnPackage.module.css"
+import { navigateOnButtonClick } from "../common/utils"
 
 const data = {
     tier1: {
         list: [
             "Email + Shared slack channel",
             "Response SLA: \nAcknowledgement - 60 hours",
-            "Included in SaaS if spend is \n>10,000 / year"
+            "Included in SaaS if spend is \n> $10,000 / year"
         ],
         button: {
             type: "bordered",
-            text: "Schedule a call"
+            text: "Schedule a call",
+            link: "/consultancy"
         }
     },
     tier2: {
@@ -18,11 +20,12 @@ const data = {
             "Video calls, MS Teams",
             "Prioritised feature requests",
             "Response SLA: \nAcknowledgement - 24 hours",
-            "Included in SaaS if spend is \n>15,000 / year"
+            "Included in SaaS if spend is \n> $15,000 / year"
         ],
         button: {
             type: "styled",
-            text: "Consult an Expert"
+            text: "Consult an Expert",
+            link: "/consultancy"
         }
     },
     tier3: {
@@ -31,11 +34,12 @@ const data = {
             "Any custom requirement",
             "Prioritised feature requests",
             "Response SLA: \nAcknowledgement - 6 hours",
-            "Included in SaaS if spend is \n>25,000 / year"
+            "Included in SaaS if spend is \n> $25,000 / year"
         ],
         button: {
             type: "solid",
-            text: "Consult an Expert"
+            text: "Consult an Expert",
+            link: "/consultancy"
         }
     },
 }
@@ -55,10 +59,14 @@ const Card = ({tier}: { tier: number }) => {
                                                                  className={el.startsWith("Every") ? styles.everything : ""}>{el}</li>)}
             </ul>
         </div>
-        <button className={styles[data[`tier${tier}`].button.type]}>
+        <button onClick={getOnClick(data[`tier${tier}`].button.link)} className={styles[data[`tier${tier}`].button.type]}>
             <span>{data[`tier${tier}`].button.text}</span>
         </button>
     </div>
+}
+
+const getOnClick = (link: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigateOnButtonClick(link, e);
 }
 
 const AddOnPackage = () => {
@@ -77,7 +85,7 @@ const AddOnPackage = () => {
                     <li>One time implementation and migration service</li>
                     <li>Available on all tiers</li>
                 </ul>
-                <button className={styles.bordered}>Get in touch</button>
+                <button onClick={getOnClick("/consultancy")} className={styles.bordered}>Get in touch</button>
             </div>
         </div>
     </div>
