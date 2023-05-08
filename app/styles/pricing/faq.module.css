@@ -1,0 +1,119 @@
+.faq {
+    padding: 12.438rem;
+    padding-top: 100px;
+    color: white;
+    position: relative;
+    /*border-top: 1px solid gray;*/
+    overflow: hidden;
+}
+
+.link {
+    color: #26b9ff;
+    text-decoration: none;
+}
+
+.faq::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: rgba(121, 126, 172, 1);
+    filter: blur(250px);
+    top: -50%;
+}
+
+.faq > h1 {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    margin-top: 0;
+}
+
+.faq > h1 > span {
+    background: linear-gradient(124.12deg, #797EAC 33.35%, #8D92A1 75.44%),
+    linear-gradient(131.71deg, #797EAC 30.57%, #8D92A1 63.12%),
+    linear-gradient(0deg, #F8F7F7, #F8F7F7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.question {
+    margin-bottom: 52px;
+    cursor: pointer;
+}
+
+.question > b {
+    display: block;
+    margin-bottom: 15px;
+    position: relative;
+    width: 100%;
+
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 16px;
+
+
+    color: #F7F7F8;
+}
+
+.question-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chevron {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-image: url("../../assets/pricing/chevron.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotateZ(-180deg);
+    transition: transform 0.3s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out;
+    -webkit-transition: transform 0.3s ease-in-out;
+}
+
+.rotated {
+    transform: rotateZ(0deg);
+}
+
+.question > p {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    /* or 162% */
+
+
+    color: #AAAAAA;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .faq {
+        padding: 8.438rem;
+    }
+
+    .question > .question-title-container > b {
+        max-width: 550px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .faq {
+        padding: 20px;
+    }
+
+    .chevron {
+        width: 12px;
+        height: 8px;
+    }
+
+    .question > .question-title-container > b {
+        max-width: 270px;
+    }
+}

@@ -1,0 +1,185 @@
+.comparison {
+    padding: 12.438rem;
+    padding-top: 100px;
+    color: white;
+}
+
+.text > h1 {
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 48px;
+
+    color: #F8F7F7;
+}
+
+.text > p {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 24px;
+
+    color: #AAAAAA;
+}
+
+.table {
+    width: calc(100vw - 30rem);
+    max-width: calc(1440px - 30rem);
+    border-collapse: collapse;
+}
+
+.table > thead > tr:first-child {
+    display: none;
+}
+
+.table > thead > tr > th {
+    padding-bottom: 20px;
+}
+
+.table > thead > tr > th > div {
+    background: #000614;
+    opacity: 0.8;
+    box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.05);
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 5px;
+    height: 60px;
+    width: 60px;
+    border-radius: 8px;
+    background: linear-gradient(131.9deg, #898FA1 3.03%, #1B2642 54.55%);
+}
+
+.table > thead > tr > th > div > div {
+    background: black;
+    border-radius: 8px;
+    padding: 15px;
+    height: 50px;
+    width: 50px;
+}
+
+.table > thead > tr > th  {
+    text-align: center;
+}
+
+.table > thead > tr > th > div > div > img {
+    height: 25px;
+}
+
+.table > tbody > tr {
+    border: 2px solid rgba(27, 36, 57, 1);
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+}
+
+.table > tbody > tr > td:not(:nth-child(1)) {
+    width: 15ch;
+}
+.table > tbody > tr > td:first-child,
+.table > tbody > tr > td:last-child {
+    border-right: none;
+    border-left: none;
+}
+
+.table > tbody > tr > td {
+    border: 2px solid rgba(27, 36, 57, 1);
+    padding: 12px 20px;
+    text-align: center;
+}
+
+.feat {
+    text-align: left !important;
+}
+
+.green {
+    color: #289A00;
+}
+
+.red {
+    color: #C1003A;
+}
+
+.warning {
+    color: #B68E00;
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip > div {
+    display: none;
+}
+
+.tooltip:hover > div {
+    display: block;
+
+    position: absolute;
+    top: 100%;
+
+    max-width: 300px;
+    min-width: 200px;
+
+    background: #F8F7F7;
+    border-radius: 6px;
+
+    padding: 12px;
+    margin-top: 10px;
+
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+
+    text-align: center;
+
+    color: #000000;
+}
+
+@media screen and (max-width: 1000px) {
+    .comparison {
+        padding: 8.438rem;
+    }
+
+    .table-wrapper {
+        overflow-x: scroll;
+    }
+
+    .table {
+        padding: 0;
+        margin: 0;
+        width: calc(100vw - 8.438rem);
+    }
+
+    .table > thead > tr:first-child {
+        display: table-row;
+    }
+
+    .table > thead > tr:first-child > td:nth-child(2) {
+        font-family: 'Covered By Your Grace';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 32px;
+
+        color: #5772FF;
+
+        text-align: center;
+
+        padding-bottom: 20px;
+    }
+
+    .table > thead > tr:first-child > td:nth-child(2) > img {
+        width: 14px;
+    }
+
+    .table > tbody > tr > td {
+        min-width: 150px;
+    }
+
+    .feat {
+        min-width: 250px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .comparison {
+        padding: 20px;
+    }
+}

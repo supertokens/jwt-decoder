@@ -4,7 +4,6 @@ const nextConfig = {
   reactStrictMode: true,
   compiler: {
     styledComponents: true,
-    
   },
   basePath: '/jwt-encoder-decoder',
   images: {

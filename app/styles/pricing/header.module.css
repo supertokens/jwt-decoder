@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
+
+.header {
+    display: grid;
+    grid-template-columns: 5fr 20px 2fr;
+    gap: 5rem;
+
+    color: white;
+
+    padding: 12.438rem;
+
+    align-items: center;
+    background-size: 40vw;
+    background-repeat: no-repeat;
+}
+
+.text > h1 {
+    background: linear-gradient(90deg, rgba(221, 221, 221, 1), rgba(128, 128, 128, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    margin-top: 0;
+    margin-bottom: 32px;
+}
+
+.text > p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    /* or 150% */
+
+
+    color: #AAAAAA;
+}
+
+.brace {
+    font-family: 'Inter';
+    font-weight: 100;
+    font-size: 97px;
+    /* identical to box height */
+
+
+    color: #FF9933;
+}
+
+.handwriting {
+    font-family: 'Covered By Your Grace';
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 43px;
+
+    color: #FF9933;
+}
+
+.linebreak {
+    content: "<br/>";
+}
+
+
+@media screen and (max-width: 768px) {
+    .text > h1 {
+        margin-bottom: 20px;
+    }
+
+    .header {
+        grid-template-columns: 1fr;
+
+        padding: 8.438rem;
+    }
+
+    .brace {
+        display: none;
+    }
+
+    .linebreak {
+        content: "";
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .text > h1 {
+        font-size: 40px;
+        margin-bottom: 24px;
+        line-height: 48px;
+    }
+
+    .text > p {
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
+    .header {
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 20px;
+    }
+
+    .handwriting {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .linebreak {
+        content: "";
+    }
+}

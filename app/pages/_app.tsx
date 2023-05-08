@@ -7,10 +7,16 @@ import Head from "next/head";
 import ErrorBoundary from "../components/error-boundary/error-boundary.component";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  let title = "SuperTokens JWT Decoder";
+
+  if ((Component as any).title !== undefined) {
+    title = (Component as any).title;
+  } 
+
   return (
     <Theme>
       <Head>
-        <title>SuperTokens JWT Decoder</title>
+        <title>{title}</title>
       </Head>
       <GlobalStyle />
       <div id="supertokens-webflow-header"></div>
