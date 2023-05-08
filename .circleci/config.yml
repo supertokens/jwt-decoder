@@ -13,8 +13,8 @@ jobs:
       - run: npm dedupe
       - run: cd ../ && git clone git@github.com:supertokens/supertokens-backend-website.git
       - run: curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-      - run: export NVM_DIR="$HOME/.nvm"
-      - run: \[ -s "$NVM_DIR/nvm.sh" \] && \. "$NVM_DIR/nvm.sh"
+      - run: export NVM_DIR="$HOME/.nvm" >> $BASH_ENV
+      - run: \[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
       - run: nvm install 16
       - run: nvm use 16 && ./buildJwt
       - run: git config --global user.email "$EMAIL"
