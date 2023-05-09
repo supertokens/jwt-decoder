@@ -18,7 +18,7 @@ const questions = [
             e.stopPropagation();
         }} className={styles.link} target="_blank" href="https://supertokens.com/call-user">schedule a call</a> with us if you're looking to implement SuperTokens commercially.</span>
     },{
-        "question": "How scalable is SuperTokens",
+        "question": "How scalable is SuperTokens?",
         "answer": "SuperTokens is horizontally scalable and companies run it at the scale of millions of unique daily active users without any issues. Join thousands of other applications using SuperTokens in production!"
     },
 ]

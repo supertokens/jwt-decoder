@@ -387,7 +387,7 @@ const navigateToConsultancy = (e: React.MouseEvent<HTMLButtonElement>) => {
 }
 
 const navigateToGuides = (e: React.MouseEvent<HTMLButtonElement>) => {
-    navigateOnButtonClick("/docs", e);
+    navigateOnButtonClick("/docs/guides", e);
 }
 
 const TFoot = () => {
