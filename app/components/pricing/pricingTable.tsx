@@ -111,51 +111,8 @@ const rows = [
             ]
         }
     },
+
     {
-        type: "feature",
-        expandable: false,
-        comingSoon: false,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "SAML Auth"
-        }
-    }, {
-        type: "feature",
-        expandable: false,
-        comingSoon: true,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "OAuth 2.0 Provider",
-            tooltip: "Multiple domains, with a single login portal"
-        }
-    }, {
-        type: "feature",
-        expandable: false,
-        comingSoon: true,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "M2M authentication"
-        }
-    }, {
-        type: "feature",
-        expandable: true,
-        comingSoon: true,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "2FA",
-            subList: [
-                "TOTP",
-                "Email",
-                "Phone number",
-                "QR code",
-                "Biometric"
-            ]
-        }
-    }, {
         type: "feature",
         expandable: true,
         comingSoon: false,
@@ -170,7 +127,9 @@ const rows = [
                 "Pre built UI with your customizations",
             ]
         }
-    }, {
+    },
+    
+    {
         type: "feature",
         expandable: true,
         comingSoon: false,
@@ -192,26 +151,9 @@ const rows = [
                 "JWT Support",
             ]
         }
-    }, {
-        type: "feature",
-        expandable: true,
-        comingSoon: false,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "Multi tenancy and Organisational support",
-            subList: [
-                "Unique user pools per tenant",
-                {
-                    text: "Configure custom login methods per tenant",
-                    tooltip: "eg: Okta for tenant1, passwordless for tenant2, Social SSO etc"
-                },
-                "Configure Enterprise SSO connections (Okta, AD etc) per tenant",
-                "Data isolation on a per tenant level",
-                "Sharing a user across tenants",
-            ]
-        }
-    }, {
+    },
+    
+    {
         type: "feature",
         expandable: true,
         comingSoon: false,
@@ -245,6 +187,91 @@ const rows = [
             ]
         }
     },
+
+    {
+        type: "feature",
+        expandable: true,
+        comingSoon: false,
+        openSource: false,
+        scale: true,
+        data: {
+            mainText: "Multi tenancy and Organisational support",
+            subList: [
+                "Unique user pools per tenant",
+                {
+                    text: "Configure custom login methods per tenant",
+                    tooltip: "eg: Okta for tenant1, passwordless for tenant2, Social SSO etc"
+                },
+                "Configure Enterprise SSO connections (Okta, AD etc) per tenant",
+                "Data isolation on a per tenant level",
+                "Sharing a user across tenants",
+            ]
+        }
+    },
+
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        openSource: false,
+        scale: true,
+        data: {
+            mainText: "SAML Auth"
+        }
+    },
+    
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: true,
+        openSource: false,
+        scale: true,
+        data: {
+            mainText: "OAuth 2.0 Provider",
+            tooltip: "Multiple domains, with a single login portal"
+        }
+    }, 
+    
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: true,
+        openSource: false,
+        scale: true,
+        data: {
+            mainText: "M2M authentication"
+        }
+    }, 
+
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: true,
+        openSource: false,
+        scale: true,
+        data: {
+            mainText: "Account Linking",
+        }
+    },
+    
+    {
+        type: "feature",
+        expandable: true,
+        comingSoon: true,
+        openSource: false,
+        scale: true,
+        data: {
+            mainText: "2FA",
+            subList: [
+                "TOTP",
+                "Email",
+                "Phone number",
+                "QR code",
+                "Biometric"
+            ]
+        }
+    },
+
     {
         type: "section",
         data: {
@@ -261,38 +288,20 @@ const rows = [
         data: {
             mainText: "Overrides (hooks and custom actions)",
         }
-    }, {
-        type: "feature",
-        expandable: true,
-        comingSoon: false,
-        openSource: "Market rate ($10 credit)",
-        scale: "Market rate ($10 credit)",
-        data: {
-            mainText: "SMS and email sending service",
-            subList: [
-                "Inbuilt or use your own",
-                "Customise email and SMS templates",
-            ]
-        }
-    }, {
+    },
+    
+    {
         type: "feature",
         expandable: false,
         comingSoon: false,
         openSource: false,
         scale: true,
         data: {
-            mainText: "SOC2 / GDPR",
+            mainText: "Compliance (SOC2)",
         }
-    }, {
-        type: "feature",
-        expandable: false,
-        comingSoon: true,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "User impersonation",
-        }
-    }, {
+    },
+    
+    {
         type: "section",
         data: {
             icon: support,
@@ -356,7 +365,7 @@ const TBody = () => {
         if (el.type === "section") {
             return <tr key={index} className={styles.section}>
                 <td className={styles.left_align}>
-                    <img src={el.data.icon.src} alt=""/>
+                    {/* <img src={el.data.icon.src} alt=""/> */}
                     <span className={styles['section-text']}>{el.data.text}</span>
                     {/* <small>{el.data.number}</small> */}
                 </td>
@@ -374,7 +383,7 @@ const TBody = () => {
                 </td>
                 <td>
                     {(typeof el.scale === 'boolean' && el.scale) && <img src={scaleCheck.src} alt=""/>}
-                    {typeof el.scale === 'string' && <span>{el.scale}</span>}
+                    {/* {typeof el.scale === 'string' && <span>{el.scale}</span>} */}
                 </td>
             </tr>
         }
@@ -441,7 +450,7 @@ const MobileTBody = () => {
     return <div>
         {rows.map((el, index) => {
             if (el.type === "section") return <div key={index} className={styles.mobileSection}>
-                <img src={el.data.icon.src} alt=""/>{el.data.text} {/* <small>{el.data.number}</small> */}
+                {/*<img src={el.data.icon.src} alt=""/>*/}{el.data.text} {/* <small>{el.data.number}</small> */}
             </div>
             else return <div key={index} className={styles.mobileFeature}>
                 <Expandable row={el}/>
@@ -453,7 +462,7 @@ const MobileTBody = () => {
                     </div>
                     <div>
                         {(typeof el.scale === 'boolean' && el.scale) && <img src={scaleCheck.src} alt=""/>}
-                        {typeof el.scale === 'string' && <span>{el.scale}</span>}
+                        {/* {typeof el.scale === 'string' && <span>{el.scale}</span>} */}
                     </div>
                 </div>
             </div>
