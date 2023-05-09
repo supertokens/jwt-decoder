@@ -5,8 +5,7 @@ const data = {
     tier1: {
         list: [
             "Email + Shared slack channel",
-            "Response SLA: \nAcknowledgement - 60 hours",
-            "Included in SaaS if spend is \n> $10,000 / year"
+            "Response SLA: \nAcknowledgement - 48 hours (2 business days)",
         ],
         button: {
             type: "bordered",
@@ -17,10 +16,9 @@ const data = {
     tier2: {
         list: [
             "Everything in Tier 1 plus:",
-            "Video calls, MS Teams",
+            "Video calls, MS Teams (Max 3 hours per month)",
             "Prioritised feature requests",
-            "Response SLA: \nAcknowledgement - 24 hours",
-            "Included in SaaS if spend is \n> $15,000 / year"
+            "Response SLA: \nAcknowledgement - 48 hours (2 business days)",
         ],
         button: {
             type: "styled",
@@ -32,9 +30,8 @@ const data = {
         list: [
             "Everything in Tier 2 plus:",
             "Any custom requirement",
-            "Prioritised feature requests",
-            "Response SLA: \nAcknowledgement - 6 hours",
-            "Included in SaaS if spend is \n> $25,000 / year"
+            "Guidance on integrating new features and customizations",
+            "Response SLA: \nAcknowledgement - 24 hours (1 business day)",
         ],
         button: {
             type: "solid",
@@ -78,8 +75,8 @@ const AddOnPackage = () => {
             <Card tier={3}/>
             <div className={styles.basic}>
                 <div style={{display: "flex", alignItems: "center"}}>
-                    <h1>Basic</h1>&nbsp;
-                    <span className={styles["get-in-touch-chip"]}>A one off deal</span>
+                    <h1>One Time</h1>&nbsp;
+                    {/* <span className={styles["get-in-touch-chip"]}>A one off deal</span> */}
                 </div>
                 <ul className={styles.ul}>
                     <li>One time implementation and migration service</li>
