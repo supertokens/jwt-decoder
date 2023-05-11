@@ -114,25 +114,25 @@ const rows = [
             color: "green"
         }
     },{
-        feat: "UI and backend customisability",
+        feat: "Ease of UI and backend customisability",
         st: {
-            text: "High",
+            text: "Easy",
             color: "green",
         },
         auth0: {
-            text: "Medium",
+            text: "Medium difficulty",
             color: "warning"
         },
         aws: {
-            text: "Low",
+            text: "High difficulty",
             color: "red"
         },
         key: {
-            text: "Low",
+            text: "High difficulty",
             color: "red"
         },
         fire: {
-            text: "Low",
+            text: "High difficulty",
             color: "red"
         }
     },{
@@ -691,7 +691,7 @@ const TBody = () => {
 const Comparision = () => {
     return <div className={styles.comparison}>
         <div className={styles.text}>
-            <h1>Feature based comparison</h1>
+            <h1 id="comparison-chart">Feature based comparison</h1>
             <p>See how we compare with other authentication solutions</p>
         </div>
         <div className={styles["table-wrapper"]}>
