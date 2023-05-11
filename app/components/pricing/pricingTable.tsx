@@ -94,6 +94,7 @@ const rows = [
     {
         type: "feature",
         expandable: true,
+        expandedByDefault: true,
         comingSoon: false,
         openSource: true,
         scale: true,
@@ -338,8 +339,11 @@ const rows = [
     },
 ]
 
-const Expandable = ({row}) => {
-    const [expand, setExpand] = useState(false);
+const Expandable = ({row, expandedByDefault = false}: {
+    row: any,
+    expandedByDefault?: boolean,
+}) => {
+    const [expand, setExpand] = useState(expandedByDefault);
     return <div className={styles.expandable}>
         <div onClick={() => setExpand(!expand)} className={styles.header}>
             <span>{row.data.mainText} {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom"/>}</span>
@@ -375,7 +379,7 @@ const TBody = () => {
         } else if (el.type === "feature") {
             return <tr key={index} className={styles.feature}>
                 <td className={styles.left_align}>
-                    <Expandable row={el}/>
+                    <Expandable row={el} expandedByDefault={el.expandedByDefault}/>
                 </td>
                 <td>
                     {(typeof el.openSource === 'boolean' && el.openSource) && <img src={openSourceCheck.src} alt=""/>}
