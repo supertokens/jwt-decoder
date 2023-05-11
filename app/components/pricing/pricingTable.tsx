@@ -457,7 +457,7 @@ const MobileTBody = () => {
                 {/*<img src={el.data.icon.src} alt=""/>*/}{el.data.text} {/* <small>{el.data.number}</small> */}
             </div>
             else return <div key={index} className={styles.mobileFeature}>
-                <Expandable row={el}/>
+                <Expandable row={el} expandedByDefault={el.expandedByDefault}/>
                 <div className={styles.check}>
                     <div>
                         {(typeof el.openSource === 'boolean' && el.openSource) &&
