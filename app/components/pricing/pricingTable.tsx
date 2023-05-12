@@ -103,11 +103,10 @@ const rows = [
             subList: [
                 "Email password",
                 "Social Login / SSO providers (Google, Github, Facebook, and all custom providers)",
-                "SMS Phone Auth",
                 "Passwordless Magic links",
-                "Passwordless SMS phone auth",
-                "SMS and password",
+                "Passwordless SMS OTP",
                 "Username and password",
+                "Phone number and password",
                 "Email Verification, forgot password flows"
             ]
         }

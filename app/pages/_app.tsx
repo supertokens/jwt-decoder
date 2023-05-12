@@ -25,7 +25,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </ErrorBoundary>
       <div id="supertokens-webflow-footer"></div>
-      <script defer src="/static/bundle.js" type="text/javascript"></script>
+      <script async defer src="/static/bundle.js" type="text/javascript"></script>
       <script defer src="/static/antcs.js" type="text/javascript"></script>
     </Theme>
   );
