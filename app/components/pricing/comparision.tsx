@@ -78,7 +78,7 @@ const rows = [
             color: "red"
         },
         aws: {
-            text: "$$$",
+            text: "$$",
             color: "warning"
         },
         key: {
