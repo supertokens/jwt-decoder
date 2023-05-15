@@ -11,7 +11,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   if ((Component as any).title !== undefined) {
     title = (Component as any).title;
-  } 
+  }
+
+  function loadBundleAfterDelay() {
+    setTimeout(() => {
+      const script = document.createElement("script");
+      script.src = "/static/bundle.js";
+      script.defer = true;
+      document.body.appendChild(script);
+    }, 100);
+  }
+
+  React.useEffect(() => {
+    loadBundleAfterDelay();
+  }, []);
 
   return (
     <Theme>
@@ -25,7 +38,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </ErrorBoundary>
       <div id="supertokens-webflow-footer"></div>
-      <script async defer src="/static/bundle.js" type="text/javascript"></script>
       <script defer src="/static/antcs.js" type="text/javascript"></script>
     </Theme>
   );
