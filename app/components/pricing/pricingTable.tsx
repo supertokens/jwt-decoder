@@ -91,25 +91,77 @@ const rows = [
             number: "5"
         }
     },
+
     {
         type: "feature",
-        expandable: true,
-        expandedByDefault: true,
+        expandable: false,
+        comingSoon: false,
+        openSource: true,
+        expandedByDefault: false,
+        scale: true,
+        data: {
+            mainText: "Email Password",
+        },
+    },
+    {
+        type: "feature",
+        expandable: false,
         comingSoon: false,
         openSource: true,
         scale: true,
         data: {
-            mainText: "All auth methods:",
-            subList: [
-                "Email password",
-                "Social Login / SSO providers (Google, Github, Facebook, and all custom providers)",
-                "Passwordless Magic links",
-                "Passwordless SMS OTP",
-                "Username and password",
-                "Phone number and password",
-                "Email Verification, forgot password flows"
-            ]
-        }
+            mainText: "Social Login / SSO providers (Google, Github, Facebook, and all custom providers)",
+        },
+    },
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        openSource: true,
+        scale: true,
+        data: {
+            mainText: "Passwordless Magic links",
+        },
+    },
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        openSource: true,
+        scale: true,
+        data: {
+            mainText: "Passwordless SMS OTP",
+        },
+    },
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        openSource: true,
+        scale: true,
+        data: {
+            mainText: "Username and password",
+        },
+    },
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        openSource: true,
+        scale: true,
+        data: {
+            mainText: "Phone number and password",
+        },
+    },
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        openSource: true,
+        scale: true,
+        data: {
+            mainText: "Email Verification, forgot password flows",
+        },
     },
 
     {
