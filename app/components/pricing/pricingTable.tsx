@@ -346,7 +346,7 @@ const rows = [
         type: "feature",
         expandable: false,
         comingSoon: false,
-        openSource: false,
+        openSource: true,
         scale: true,
         data: {
             mainText: "Compliance (SOC2)",
