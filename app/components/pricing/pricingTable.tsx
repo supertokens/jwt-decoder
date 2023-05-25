@@ -59,8 +59,8 @@ const Thead = () => {
             <img src={managed.src} alt=""/>
         </td>
         <td>
-            $0.02 per MAU&nbsp;
-            <Tooltip position="left" text="Free for under 5K MAU"/>
+            <span>$0.02 per MAU</span><br/>
+            <span className={styles.subtext}>Free under 5K MAU</span>
         </td>
         <td>
             Custom Pricing
@@ -346,7 +346,7 @@ const rows = [
         type: "feature",
         expandable: false,
         comingSoon: false,
-        openSource: false,
+        openSource: true,
         scale: true,
         data: {
             mainText: "Compliance (SOC2)",
@@ -482,7 +482,10 @@ const MobileTHead = () => {
                 <td>Custom Pricing</td>
             </tr>
             <tr className={styles.highlight}>
-                <td>Managed Service: $0.02 per MAU</td>
+                <td>
+                    Managed Service: $0.02 per MAU<br/>
+                    <span className={styles.subtext}>Free under 5K MAU</span>
+                </td>
                 <td>Custom Pricing</td>
             </tr>
             <tr>
