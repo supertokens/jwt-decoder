@@ -308,6 +308,14 @@
     transform: translateX(-50%);
 }
 
+.subtext {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #FF9933;
+}
+
 
 @media screen and (max-width: 768px) {
 
