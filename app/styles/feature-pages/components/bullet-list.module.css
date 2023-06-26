@@ -35,3 +35,14 @@
     min-height: 64px;
     max-height: 64px;
 }
+
+.bullet-indicator {
+    width: 4px;
+    height: 26px;
+    margin-right: 16px;
+    margin-top: 4px;
+}
+
+.left-container {
+    display: flex;
+}

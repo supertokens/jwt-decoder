@@ -8,4 +8,6 @@
 
 .section-child-container {
     display: flex;
+    /* overflow-x: clip; */
+    position: relative;
 }

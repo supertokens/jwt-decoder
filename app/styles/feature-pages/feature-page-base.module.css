@@ -10,11 +10,13 @@
     padding-bottom: 160px;
     position: relative;
     overflow-y: clip;
+    width: 100%;
 }
 
 .nested-child-container {
     display: flex;
     margin-top: 62px;
+    width: 100%;
 }
 
 .section-container:nth-child(1) {

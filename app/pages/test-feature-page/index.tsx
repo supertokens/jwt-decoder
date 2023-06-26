@@ -17,9 +17,52 @@ export default function TestFeaturePage() {
                     },
                     sections: [
                         {
+                            flex: "row",
+                            paddingRight: "0px",
+                            backgroundConfig: {
+                                background: FeaturePageIcons.MagicLinks.LandingBG,
+                                position: "right",
+                            },
+                            children: [
+                                {
+                                    type: "nested",
+                                    spacing: "space-between",
+                                    flex: "row",
+                                    children: [
+                                        {
+                                            maxWidth: "600px",
+                                            type: "title-subtitle-cta",
+                                            flex: "column",
+                                            title: {
+                                                text: "Email Magic-Link authentication",
+                                                highlight: {
+                                                    mode: "primary",
+                                                    texts: ["Magic-Link"],
+                                                },
+                                            },
+                                            subtitle: "Replace traditional email-password authentication with magic links that improve security and increase user conversion",
+                                            cta: {
+                                                targetUrl: "",
+                                                text: "Start Today!"
+                                            },
+                                        },
+                                        {
+                                            type: "image",
+                                            flex: "row",
+                                            image: FeaturePageIcons.MagicLinks.Landing as any,
+                                            dimensions: {
+                                                width: "547px",
+                                                height: "413px",
+                                            },
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                        {
                             flex: "column",
                             divider: {
-                                dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(162, 250, 207, 0.20) 0%, rgba(162, 250, 207, 0.00) 100%)",
+                                dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(112, 234, 102, 0.20) 0%, rgba(112, 234, 102, 0.00) 100%))",
                                 hueColor: "rgba(162, 250, 207, 0.15)",
                             },
                             children: [
@@ -90,6 +133,10 @@ export default function TestFeaturePage() {
                                     text: "SuperTokens is built with all these considerations!"
                                 }
                             ],
+                        },
+                        {
+                            prebuiltType: "supertokens-benefits",
+                            children: [],
                         },
                     ],
                 }}/>

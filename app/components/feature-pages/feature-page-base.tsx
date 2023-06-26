@@ -7,6 +7,7 @@ import { Pill } from "./components/pill";
 import { TextChild } from "./components/text";
 import { BulletList } from "./components/bullet-list";
 import { ImageChild } from "./components/image";
+import { SuperTokensBenefits } from "./common/supertokens-benefits";
 
 type Props = {
     config: FeaturePageType;
@@ -52,7 +53,10 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
                 return (
                     <div 
                         className={`${styles["nested-child-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]}`}
-                        key={`nested-child-${index}`}>
+                        key={`nested-child-${index}`}
+                        style={{
+                            justifyContent: config.spacing,
+                        }}>
                         {
                             config.children.map((child, index) => renderSectionChild(child, index, pageConfig))
                         }
@@ -73,11 +77,36 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
     );
 }
 
-const renderSection = (config: FeaturePageSectionType, index: number, pageConfig: FeaturePageType) => {
+export const renderSection = (config: FeaturePageSectionType, index: number, pageConfig: FeaturePageType) => {
+    if (config.prebuiltType === "supertokens-benefits") {
+        return (
+            <SuperTokensBenefits index={index} key={`supertokens-benefits-section`}/>
+        );
+    }
+
+    const backgroundConfig = config.backgroundConfig;
+
     return (
         <div 
             key={`section-container-${index}`} 
-            className={`${styles["section-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]}`}>
+            className={`${styles["section-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]}`}
+            style={{
+                paddingRight: config.paddingRight ?? undefined,
+            }}>
+                {
+                    backgroundConfig &&
+                    <img 
+                        {...(backgroundConfig.background) as any}
+                        style={{
+                            position: "absolute",
+                            zIndex: -1,
+                            top: backgroundConfig.top ?? 0,
+                            bottom: backgroundConfig.bottom ?? 0,
+                            left: backgroundConfig.position === "left" ? backgroundConfig.left ?? 0 : undefined,
+                            right: backgroundConfig.position === "right" ? backgroundConfig.right ?? 0 : undefined,
+                        }}/>
+                }
+                
                 {
                     config.children.map((child, childIndex) => renderSectionChild(child, childIndex, pageConfig))
                 }
@@ -89,8 +118,8 @@ const renderSection = (config: FeaturePageSectionType, index: number, pageConfig
                         background: config.divider.dividerBackground,
                         position: "absolute",
                         top: 0,
-                        left: 0,
-                        right: 0,
+                        left: 200,
+                        right: 200,
                     }}/>
                 }
 
@@ -100,8 +129,8 @@ const renderSection = (config: FeaturePageSectionType, index: number, pageConfig
                         height: 68,
                         position: "absolute",
                         top: -34,
-                        left: 0,
-                        right: 0,
+                        left: 200,
+                        right: 200,
                         background: config.divider.hueColor,
                         filter: "blur(75px)"
                     }}/>

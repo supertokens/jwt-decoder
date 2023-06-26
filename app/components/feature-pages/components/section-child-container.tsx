@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { CSSProperties, PropsWithChildren } from "react";
 import universalStyles from "../../../styles/feature-pages/universal-styles.module.css";
 import { getClassNameFromFlex, getMarginTopFromChildIndex } from "../utils";
 
@@ -7,6 +7,7 @@ type Props = {
     rootClassNames: string[];
     maxWidth?: string;
     flex?: "row" | "column";
+    additionalStyles?: CSSProperties;
 }
 
 export const SectionChildContainer = (props: PropsWithChildren<Props>) => {
@@ -16,6 +17,7 @@ export const SectionChildContainer = (props: PropsWithChildren<Props>) => {
         flex,
         index,
         children,
+        additionalStyles,
     } = props;
 
     return (
@@ -25,6 +27,7 @@ export const SectionChildContainer = (props: PropsWithChildren<Props>) => {
                 maxWidth: maxWidth,
                 minWidth: maxWidth,
                 marginTop: getMarginTopFromChildIndex(index),
+                ...additionalStyles,
             }}>
                 {children}
         </div>

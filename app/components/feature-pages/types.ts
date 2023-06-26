@@ -54,10 +54,17 @@ export type PillChildType = CommonChildProperties & {
 export type BulletListChildType = CommonChildProperties & {
     type: "bullets-list";
     direction: "horizontal" | "vertical";
+    spacing?: string | number;
+    addBlur?: boolean;
     bullets: {
         title?: string;
         useIndicators?: boolean;
+        indicatorBackground?: string;
         imagePath?: string;
+        imageDimensions?: {
+            width?: number | string;
+            height?: number | string;
+        }
         bulletImage?: {
             src: string;
             width: number;
@@ -66,6 +73,14 @@ export type BulletListChildType = CommonChildProperties & {
         subtitle?: string;
         bulletColor?: string;
     }[];
+    backgroundConfig?: {
+        background: string;
+        position?: "left" | "right";
+        top?: string | number;
+        right?: string | number;
+        bottom?: string | number;
+        left?: string | number;
+    },
 }
 
 export type TextChildType = CommonChildProperties & {
@@ -85,7 +100,12 @@ export type TextCTAChildType = CommonChildProperties & {
 
 export type NestedChildType = CommonChildProperties & {
     type: "nested";
+    spacing?: "center" | "space-between" | "flex-start",
     children: ChildType[];
+}
+
+export type SuperTokensBenefitsSection = {
+    type: "section";
 }
 
 export type ChildType = 
@@ -104,7 +124,17 @@ export type FeaturePageSectionType = {
     divider?: {
         dividerBackground: string;
         hueColor: string;
-    }
+    };
+    paddingRight?: number | string;
+    prebuiltType?: "supertokens-benefits";
+    backgroundConfig?: {
+        background: string;
+        position?: "left" | "right";
+        top?: string | number;
+        right?: string | number;
+        bottom?: string | number;
+        left?: string | number;
+    },
 }
 
 export type FeaturePageType = {
