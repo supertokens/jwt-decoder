@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 100%;
 }
 
 .bullet-item-text-container {
@@ -70,6 +71,7 @@
 
 .left-container {
     display: flex;
+    width: 100%;
 }
 
 .bullet-left-margin {
@@ -107,7 +109,7 @@
     margin-left: 139px;
 }
 
-@media screen and (max-device-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .bullet-left-margin {
         margin-left: 0px;
         margin-top: 80px;
@@ -142,7 +144,7 @@
     }
 }
 
-@media screen and (max-device-width: 767px) {
+@media screen and (max-width: 480px) {
     .bullet-image {
         margin-top: 0px;
     }

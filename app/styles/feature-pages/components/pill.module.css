@@ -29,13 +29,13 @@
     margin-left: 12px;
 }
 
-@media screen and (max-device-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .pill-container {
         flex-direction: row;
     }
 }
 
-@media screen and (max-device-width: 767px) {
+@media screen and (max-width: 480px) {
     .pill-text {
         font-size: 18px;
         line-height: initial;

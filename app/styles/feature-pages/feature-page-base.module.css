@@ -19,7 +19,7 @@
     margin-top: 0px !important;
 }
 
-@media screen and (max-device-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .section-container {
         padding-left: 120px;
         padding-right: 120px;
@@ -28,7 +28,7 @@
     }
 }
 
-@media only screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
     .landing-image {
         width: 320px;
         height: 343px;

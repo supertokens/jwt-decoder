@@ -55,7 +55,7 @@
     z-index: -1;
 }
 
-@media screen and (max-device-width: 767px) {
+@media screen and (max-width: 480px) {
     .section-child-title-container {
         font-size: 40px;
         line-height: initial;

@@ -62,7 +62,7 @@
     font-weight: 600;
 }
 
-@media screen and (max-device-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .indicator {
         display: none;
     }
@@ -72,7 +72,7 @@
     }
 }
 
-@media screen and (max-device-width: 767px) {
+@media screen and (max-width: 480px) {
     .text {
         font-size: 18px;
         line-height: 36px;
