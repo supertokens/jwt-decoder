@@ -22,7 +22,6 @@ export const TextCtaChild = (props: Props) => {
     } = config;
 
     const additionalClasses = rootClassNames ?? [];
-    console.log("w;oeghiuwhgio;whrgihwrio")
 
     return (
         <SectionChildContainer

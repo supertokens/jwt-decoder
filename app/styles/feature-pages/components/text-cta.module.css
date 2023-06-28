@@ -71,3 +71,17 @@
         margin-top: 36px;
     }
 }
+
+@media screen and (max-device-width: 767px) {
+    .text {
+        font-size: 18px;
+        line-height: 36px;
+    }
+
+    .cta-link {
+        padding-left: 32px;
+        padding-right: 32px;
+        font-size: 14px;
+        line-height: initial;
+    }
+}

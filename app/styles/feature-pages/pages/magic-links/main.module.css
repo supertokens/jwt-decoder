@@ -16,3 +16,10 @@
         margin-top: 80px;
     }
 }
+
+@media screen and (max-device-width: 767px) {
+    .things-to-keep-in-mind-image {
+        width: 320px;
+        height: 310px;
+    }
+}

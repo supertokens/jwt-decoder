@@ -141,3 +141,42 @@
         display: none;
     }
 }
+
+@media screen and (max-device-width: 767px) {
+    .bullet-image {
+        margin-top: 0px;
+    }
+
+    .bullet-item-subtitle {
+        font-size: 16px;
+        line-height: 36px;
+    }
+
+    .bullet-item-title {
+        font-size: 18px;
+        line-height: 36px;
+    }
+
+    .bullet-indicator-container {
+        min-width: 42px;
+        max-width: 42px;
+        min-height: 42px;
+        max-height: 42px;
+    }
+
+    .bullet-indicator-container img {
+        max-width: 23px;
+    }
+
+    .bullet-top-margin {
+        margin-top: 48px;
+    }
+
+    .supertokens-benefits-bullet-list .bullet-container .bullet-image {
+        margin-top: 40px;
+    }
+
+    .supertokens-benefits-bullet-image img {
+        height: 266px;
+    }
+}

@@ -73,6 +73,7 @@
 @media screen and (max-device-width: 1024px) {
     .section-row {
         flex-direction: column;
+        align-items: center;
     }
 
     .minimum-padding-right {
@@ -99,5 +100,21 @@
 
     .magic-links-user-flow-bullet-text {
         max-width: initial;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .landing-image {
+        width: 320px;
+        height: 343px;
+    }
+
+    .landing-bg {
+        top: initial;
+        bottom: 0px;
+    }
+
+    .minimum-padding-right {
+        padding-right: 20px !important;
     }
 }
