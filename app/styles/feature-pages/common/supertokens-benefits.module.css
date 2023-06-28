@@ -1,0 +1,9 @@
+.supertokens-benefits-bullet-list {
+
+}
+
+@media screen and (max-device-width: 1024px) {
+    .supertokens-benefits-bullet-list .bullet-container .bullet-image img {
+        width: 100%;
+    }
+}

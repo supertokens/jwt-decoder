@@ -8,6 +8,7 @@ import { TextChild } from "./components/text";
 import { BulletList } from "./components/bullet-list";
 import { ImageChild } from "./components/image";
 import { SuperTokensBenefits } from "./common/supertokens-benefits";
+import { TextCtaChild } from "./components/text-cta";
 
 type Props = {
     config: FeaturePageType;
@@ -50,13 +51,24 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
                     );
 
             case "nested":
+                let spacingClass = "";
+
+                if (config.spacing === "center") {
+                    spacingClass = universalStyles["justify-center"];
+                }
+
+                if (config.spacing === "space-between") {
+                    spacingClass = universalStyles["justify-space-between"];
+                }
+
+                if (config.spacing === "flex-start") {
+                    spacingClass = universalStyles["justify-flex-start"];
+                }
+
                 return (
                     <div 
-                        className={`${styles["nested-child-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]}`}
-                        key={`nested-child-${index}`}
-                        style={{
-                            justifyContent: config.spacing,
-                        }}>
+                        className={`${styles["nested-child-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]} ${spacingClass}`}
+                        key={`nested-child-${index}`}>
                         {
                             config.children.map((child, index) => renderSectionChild(child, index, pageConfig))
                         }
@@ -67,6 +79,14 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
                 return (
                     <ImageChild 
                         key={`image-child-${index}`}
+                        config={config}
+                        index={index}/>
+                );
+
+            case "text-cta":
+                return (
+                    <TextCtaChild 
+                        key={`text-cta-child-${index}`}
                         config={config}
                         index={index}/>
                 );
@@ -86,25 +106,21 @@ export const renderSection = (config: FeaturePageSectionType, index: number, pag
 
     const backgroundConfig = config.backgroundConfig;
 
+    let containerPaddingClass = "";
+
+    if (config.minimumPaddingRight === true) {
+        containerPaddingClass = universalStyles["minimum-padding-right"];
+    }
+
     return (
         <div 
             key={`section-container-${index}`} 
-            className={`${styles["section-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]}`}
-            style={{
-                paddingRight: config.paddingRight ?? undefined,
-            }}>
+            className={`${styles["section-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]} ${containerPaddingClass}`}>
                 {
                     backgroundConfig &&
                     <img 
                         {...(backgroundConfig.background) as any}
-                        style={{
-                            position: "absolute",
-                            zIndex: -1,
-                            top: backgroundConfig.top ?? 0,
-                            bottom: backgroundConfig.bottom ?? 0,
-                            left: backgroundConfig.position === "left" ? backgroundConfig.left ?? 0 : undefined,
-                            right: backgroundConfig.position === "right" ? backgroundConfig.right ?? 0 : undefined,
-                        }}/>
+                        className={backgroundConfig.className}/>
                 }
                 
                 {

@@ -1,5 +1,5 @@
 export function getClassNameFromFlex(flex?: "row" | "column"): string {
-    return flex === undefined ? "column" : flex;
+    return flex === undefined || flex === "column" ? "section-column" : "section-row";
 }
 
 export function getMarginTopFromChildIndex(index: number): string {

@@ -10,17 +10,17 @@ type Props = CommonComponentProps & {
 
 export const Pill = (props: Props) => {
     const {
-        maxWidth,
         text,
         iconPath,
+        rootClassNames,
     } = props.config;
+
+    const additionalClasses = rootClassNames ?? [];
 
     return (
         <SectionChildContainer 
             index={props.index}
-            rootClassNames={[styles["pill-container"]]}
-            flex={"row"}
-            maxWidth={maxWidth}>
+            rootClassNames={[styles["pill-container"], ...additionalClasses]}>
                 <div className={styles["pill-text"]}>
                     {text}
                 </div>

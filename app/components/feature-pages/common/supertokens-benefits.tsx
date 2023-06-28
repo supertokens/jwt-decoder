@@ -2,6 +2,7 @@ import { renderSection } from "../feature-page-base"
 import {
     FeaturePageIcons,
 } from "../../../assets/images";
+import styles from "../../../styles/feature-pages/components/bullet-list.module.css";
 
 type Props = {
     index: number;
@@ -39,6 +40,7 @@ export const SuperTokensBenefits = (props: Props) => {
                     top: "-60px",
                     bottom: "-60px",
                 },
+                rootClassNames: [styles["supertokens-benefits-bullet-list"]],
                 bullets: [
                     {
                         useIndicators: true,
@@ -46,10 +48,11 @@ export const SuperTokensBenefits = (props: Props) => {
                         title: "We worry about small details",
                         subtitle: "Authentication is all we do. We build magic links URLs based off an identifier which associates the URL with the user's email ID. We ensure that the URL expires within a certain period of time. And we solve all the edge cases with magic links.",
                         imagePath: FeaturePageIcons.SuperTokensBenefits.SmallDetails as any,
-                        imageDimensions: {
-                            width: 372,
-                            height: 308,
-                        },
+                        imageClassName: styles["supertokens-benefits-bullet-image"],
+                        // imageDimensions: {
+                        //     width: 372,
+                        //     height: 308,
+                        // },
                     },
 
                     {
@@ -58,10 +61,11 @@ export const SuperTokensBenefits = (props: Props) => {
                         title: "Customizability",
                         subtitle: "Change everything from the content of the email, use your own SMTP server or external service, implement custom email logic, and even how the authentication screens look.",
                         imagePath: FeaturePageIcons.SuperTokensBenefits.Customizability as any,
-                        imageDimensions: {
-                            width: 372,
-                            height: 308,
-                        },
+                        imageClassName: styles["supertokens-benefits-bullet-image"],
+                        // imageDimensions: {
+                        //     width: 372,
+                        //     height: 308,
+                        // },
                     },
 
                     {
@@ -70,10 +74,11 @@ export const SuperTokensBenefits = (props: Props) => {
                         title: "Open Source and self-hosted",
                         subtitle: "Self-hosting with SuperTokens is free. Our core project has over 8,500 stars on Github and we're trusted by startups and large enterprises like Serif Health, Skoot, and Poppy.",
                         imagePath: FeaturePageIcons.SuperTokensBenefits.OpenSource as any,
-                        imageDimensions: {
-                            width: 372,
-                            height: 308,
-                        },
+                        imageClassName: styles["supertokens-benefits-bullet-image"],
+                        // imageDimensions: {
+                        //     width: 372,
+                        //     height: 308,
+                        // },
                     },
                 ],
             }

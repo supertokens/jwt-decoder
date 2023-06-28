@@ -14,19 +14,19 @@ export const ImageChild = (props: Props) => {
 
     const {
         image,
-        maxWidth,
-        dimensions,
         layout,
+        rootClassNames,
+        imageClassName,
     } = config;
+
+    const additionalClasses = rootClassNames ?? [];
 
     return (
         <SectionChildContainer
             index={index}
-            rootClassNames={[styles["no-margin-top"]]}
-            maxWidth={maxWidth}>
+            rootClassNames={[...additionalClasses, imageClassName]}>
                 <img 
-                    {...(image) as any}
-                    {...dimensions}
+                    src={(image as any).src}
                     style={{
                         ...layout,
                     }}/>

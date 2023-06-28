@@ -3,29 +3,37 @@ export type SectionFlex = "row" | "column";
 export type CommonChildProperties = {
     flex: SectionFlex;
     alignment?: "center" | "top" | "start";
-    maxWidth?: string;
+    rootClassNames?: string[];
 }
+
+type FeaturePageCTA = {
+    text: string;
+    targetUrl: string;
+    fillType?: "white";
+};
 
 export type TitleChildType = CommonChildProperties & {
     type: "title-subtitle-cta";
-    title: {
+    title?: {
         text: string;
         highlight: {
             texts: string[];
             mode: "primary" | "grey-out";
+        } | {
+            texts: string[];
+            mode: "custom";
+            color: string;
         }
     };
     subtitle?: string;
-    cta?: {
-        text: string;
-        targetUrl: string;
-    };
+    cta?: FeaturePageCTA;
     supertext?: string;
 }
 
 export type ImageChildType = CommonChildProperties & {
     type: "image";
     image: string;
+    imageClassName?: string;
     layout?: {
         position: "relative",
         top?: number | string;
@@ -38,10 +46,6 @@ export type ImageChildType = CommonChildProperties & {
         left?: number | string;
         right?: number | string;
         bottom?: number | string;
-    };
-    dimensions?: {
-        width?: number | string;
-        height?: number | string;
     };
 }
 
@@ -56,15 +60,16 @@ export type BulletListChildType = CommonChildProperties & {
     direction: "horizontal" | "vertical";
     spacing?: string | number;
     addBlur?: boolean;
+    imageShadow?: {
+        background: string;
+    }
+    buletTextClassName?: string;
     bullets: {
         title?: string;
         useIndicators?: boolean;
         indicatorBackground?: string;
         imagePath?: string;
-        imageDimensions?: {
-            width?: number | string;
-            height?: number | string;
-        }
+        imageClassName?: string;
         bulletImage?: {
             src: string;
             width: number;
@@ -91,11 +96,13 @@ export type TextChildType = CommonChildProperties & {
 export type TextCTAChildType = CommonChildProperties & {
     type: "text-cta";
     text: string;
-    cta: {
-        text: string;
-        targetUrl: string;
+    cta?: Omit<FeaturePageCTA, "fillType"> & {
+        background: string;
+        hue: string;
     };
-    useIndicators?: boolean;
+    indicator?: {
+        background: string;
+    }
 }
 
 export type NestedChildType = CommonChildProperties & {
@@ -116,6 +123,7 @@ export type ChildType =
         | BulletListChildType    
         | TextChildType
         | NestedChildType
+        | TextCTAChildType
     )
 
 export type FeaturePageSectionType = {
@@ -125,16 +133,20 @@ export type FeaturePageSectionType = {
         dividerBackground: string;
         hueColor: string;
     };
-    paddingRight?: number | string;
+    minimumPaddingRight?: boolean;
     prebuiltType?: "supertokens-benefits";
     backgroundConfig?: {
+        className: string;
         background: string;
-        position?: "left" | "right";
-        top?: string | number;
-        right?: string | number;
-        bottom?: string | number;
-        left?: string | number;
     },
+    // backgroundConfig?: {
+    //     background: string;
+    //     position?: "left" | "right";
+    //     top?: string | number;
+    //     right?: string | number;
+    //     bottom?: string | number;
+    //     left?: string | number;
+    // },
 }
 
 export type FeaturePageType = {

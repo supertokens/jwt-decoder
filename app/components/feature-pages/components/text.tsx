@@ -8,17 +8,18 @@ type Props = CommonComponentProps & {
 
 export const TextChild = (props: Props) => {
     const {
-        maxWidth,
         flex,
         text,
+        rootClassNames
     } = props.config;
+
+    const additionalClasses = rootClassNames ?? [];
 
     return (
         <SectionChildContainer
             index={props.index}
-            maxWidth={maxWidth}
             flex={flex}
-            rootClassNames={[]}>
+            rootClassNames={[...additionalClasses]}>
                 <div className={styles["text-child-text-container"]}>
                     {text}
                 </div>

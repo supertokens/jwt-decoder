@@ -10,6 +10,7 @@
     border: 1px solid rgba(255, 153, 51, 0.05);
     border-radius: 6px;
     max-width: fit-content;
+    flex-direction: row;
 }
 
 .pill-text {
@@ -26,4 +27,10 @@
     max-width: 47px;
     max-height: 19px;
     margin-left: 12px;
+}
+
+@media screen and (max-device-width: 1024px) {
+    .pill-container {
+        flex-direction: row;
+    }
 }

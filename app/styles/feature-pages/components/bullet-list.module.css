@@ -1,6 +1,7 @@
 .bullet-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .bullet-item-text-container {
@@ -36,6 +37,30 @@
     max-height: 64px;
 }
 
+.bullet-indicator-container-numbered {
+    border-radius: 7px;
+    background: rgba(28, 28, 28, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    min-width: 32px;
+    max-width: 32px;
+    min-height: 32px;
+    max-height: 32px;
+    margin-top: 4px;
+}
+
+.bullet-number {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 36px;
+    background: linear-gradient(180deg, #FFE993 0%, #EB831C 106.94%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .bullet-indicator {
     width: 4px;
     height: 26px;
@@ -45,4 +70,74 @@
 
 .left-container {
     display: flex;
+}
+
+.bullet-left-margin {
+    margin-left: 64px;
+}
+
+.bullet-top-margin {
+    margin-top: 64px;
+}
+
+.bullet-list-flex-row {
+    flex-direction: row;
+}
+
+.bullet-list-flex-column {
+    flex-direction: column;
+}
+
+.bullet-image {
+    position: relative;
+}
+
+.bullet-image img {
+    max-width: 279px;
+}
+
+.supertokens-benefits-bullet-image img {
+    width: 372px;
+    height: 308px;
+    max-width: initial;
+}
+
+.supertokens-benefits-bullet-list .bullet-container .bullet-image {
+    width: 100%;
+    margin-left: 139px;
+}
+
+@media screen and (max-device-width: 1024px) {
+    .bullet-left-margin {
+        margin-left: 0px;
+        margin-top: 80px;
+    }
+
+    .bullet-image {
+        margin-left: 0px;
+        margin-top: 48px;
+    }
+
+    .bullet-top-margin {
+        margin-top: 128px;
+    }
+
+    .bullet-list-flex-row {
+        flex-direction: column;
+    }
+
+    .supertokens-benefits-bullet-list .bullet-container .bullet-image {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .supertokens-benefits-bullet-list .bullet-container .bullet-image img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+
+    .list-container-bg {
+        display: none;
+    }
 }

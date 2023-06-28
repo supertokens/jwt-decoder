@@ -5,30 +5,26 @@ import { getClassNameFromFlex, getMarginTopFromChildIndex } from "../utils";
 type Props = {
     index: number;
     rootClassNames: string[];
-    maxWidth?: string;
     flex?: "row" | "column";
-    additionalStyles?: CSSProperties;
 }
 
 export const SectionChildContainer = (props: PropsWithChildren<Props>) => {
     const {
-        maxWidth,
         rootClassNames,
         flex,
         index,
         children,
-        additionalStyles,
     } = props;
 
+    let marginTopClassName = "";
+
+    if (index !== 0) {
+        marginTopClassName = universalStyles["section-child-container-top-margin"];
+    }
+    
     return (
         <div 
-            className={`${universalStyles["section-child-container"]} ${universalStyles[getClassNameFromFlex(flex)]} ${rootClassNames.join(" ")}`}
-            style={{
-                maxWidth: maxWidth,
-                minWidth: maxWidth,
-                marginTop: getMarginTopFromChildIndex(index),
-                ...additionalStyles,
-            }}>
+            className={`${marginTopClassName} ${universalStyles["section-child-container"]} ${universalStyles[getClassNameFromFlex(flex)]} ${rootClassNames.join(" ")}`}>
                 {children}
         </div>
     );
