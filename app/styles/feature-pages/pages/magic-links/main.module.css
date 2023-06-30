@@ -1,9 +1,14 @@
 .things-to-keep-in-mind-image {
     margin-top: 0px;
+    width: 40vw;
 }
 
 .things-to-keep-in-mind-text {
     margin-top: 64px;
+}
+
+.see-blog-section {
+    margin-left: 100px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -14,6 +19,7 @@
 
     .see-blog-section {
         margin-top: 80px;
+        margin-left: 0px;
     }
 }
 
