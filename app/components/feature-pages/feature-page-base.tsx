@@ -14,7 +14,7 @@ type Props = {
     config: FeaturePageType;
 }
 
-const renderSectionChild = (config: ChildType, index: number, pageConfig: FeaturePageType) => {
+const renderSectionChild = (config: ChildType, index: number, pageConfig: FeaturePageType, isLanding: boolean) => {
     switch (config.type) {
         case "title-subtitle-cta":
             return (
@@ -23,7 +23,8 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
                     config={config} 
                     primaryColor={pageConfig.primaryColor}
                     gradient={pageConfig.gradient}
-                    index={index}/>
+                    index={index}
+                    isLanding={isLanding}/>
             );
         
             case "pill":
@@ -70,7 +71,7 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
                         className={`${styles["nested-child-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]} ${spacingClass}`}
                         key={`nested-child-${index}`}>
                         {
-                            config.children.map((child, index) => renderSectionChild(child, index, pageConfig))
+                            config.children.map((child, index) => renderSectionChild(child, index, pageConfig, isLanding))
                         }
                     </div>
                 );
@@ -124,7 +125,7 @@ export const renderSection = (config: FeaturePageSectionType, index: number, pag
                 }
                 
                 {
-                    config.children.map((child, childIndex) => renderSectionChild(child, childIndex, pageConfig))
+                    config.children.map((child, childIndex) => renderSectionChild(child, childIndex, pageConfig, index === 0))
                 }
 
                 {

@@ -72,11 +72,12 @@ export type BulletListChildType = CommonChildProperties & {
         imageClassName?: string;
         bulletImage?: {
             src: string;
-            width: number;
-            height: number;
         },
         subtitle?: string;
         bulletColor?: string;
+        number?: number;
+        leftContainerBottomMargin?: number | string;
+        hideIndicator?: boolean;
     }[];
     backgroundConfig?: {
         background: string;
@@ -139,14 +140,6 @@ export type FeaturePageSectionType = {
         className: string;
         background: string;
     },
-    // backgroundConfig?: {
-    //     background: string;
-    //     position?: "left" | "right";
-    //     top?: string | number;
-    //     right?: string | number;
-    //     bottom?: string | number;
-    //     left?: string | number;
-    // },
 }
 
 export type FeaturePageType = {

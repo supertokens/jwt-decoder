@@ -19,7 +19,7 @@ export const BulletList = (props: Props) => {
         backgroundConfig,
         buletTextClassName,
         imageShadow,
-        rootClassNames
+        rootClassNames,
     } = config;
 
     let justifyClassName = "";
@@ -86,29 +86,27 @@ export const BulletList = (props: Props) => {
                                     <div
                                         className={`${styles["left-container"]} ${marginBottomClassName}`}
                                         style={{
-                                            marginBottom: direction === "horizontal" ? "92px" : undefined,
+                                            marginBottom: direction === "horizontal" ? bullet.leftContainerBottomMargin ?? "92px" : undefined,
                                         }}>
                                         {
-                                            bullet.bulletImage &&
+                                            bullet.bulletImage && !bullet.hideIndicator &&
                                             <div className={styles["bullet-indicator-container"]}>
                                                 <img 
-                                                    {...(bullet.bulletImage.src) as any} 
-                                                    width={bullet.bulletImage!.width}
-                                                    height={bullet.bulletImage!.height}/>
+                                                    {...(bullet.bulletImage.src) as any} />
                                             </div>
                                         }
 
                                         {
-                                            numbered &&
+                                            numbered && !bullet.hideIndicator &&
                                             <div className={styles["bullet-indicator-container-numbered"]}>
                                                 <span className={`${styles["bullet-number"]}`}>
-                                                    {index + 1}
+                                                    {bullet.number || index + 1}
                                                 </span>
                                             </div>
                                         }
 
                                         {
-                                            bullet.useIndicators === true && bullet.indicatorBackground &&
+                                            bullet.useIndicators === true && bullet.indicatorBackground && !bullet.hideIndicator &&
                                             <div 
                                                 className={styles["bullet-indicator"]}
                                                 style={{
@@ -120,9 +118,9 @@ export const BulletList = (props: Props) => {
                                             className={`${styles["bullet-item-text-container"]} ${buletTextClassName ?? ""}`}>
                                             {
                                                 bullet.title &&
-                                                <div className={styles["bullet-item-title"]}>
+                                                <h3 className={styles["bullet-item-title"]}>
                                                     {bullet.title}
-                                                </div>
+                                                </h3>
                                             }
 
                                             {

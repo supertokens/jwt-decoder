@@ -3,6 +3,7 @@
     font-weight: 700;
     font-size: 48px;
     line-height: 58px;
+    margin: 0px;
 }
 
 .section-child-supertext {
@@ -17,6 +18,10 @@
     line-height: 36px;
     color: #AAAAAA;
     margin-top: 32px;
+}
+
+.item-margin-top {
+    margin-top: 24px;
 }
 
 .section-child-cta-container {

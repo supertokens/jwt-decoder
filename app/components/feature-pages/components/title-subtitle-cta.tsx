@@ -9,6 +9,7 @@ type Props = CommonComponentProps & {
     gradient?: {
         colors: string[];
     };
+    isLanding: boolean;
 }
 
 export const TitleSubtitleCta = (props: Props) => {
@@ -50,6 +51,41 @@ export const TitleSubtitleCta = (props: Props) => {
 
     const additionalClasses = rootClassNames ?? [];
 
+    const renderTitle = () => {
+        const children = titleParts.map((part, index) => {
+            if (highlightedParts.includes(part)) {
+                return (
+                    <span 
+                        key={`section-child-title-part-${index}`}
+                        className="section-child-title-highlight"
+                        style={{
+                            background: `-webkit-linear-gradient(${highlightColors.join(",")})`,
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                        }}>
+                        {`${part} `}
+                    </span>
+                );
+            }
+
+            return <span key={`section-child-title-part-${index}`}>{`${part} `}</span>
+        });
+        
+        if (props.isLanding) {
+            return (
+                <h1 className={styles["section-child-title-container"]}>
+                    {children}
+                </h1>
+            );
+        }
+
+        return (
+            <h2 className={styles["section-child-title-container"]}>
+                {children}
+            </h2>
+        );
+    }
+
     return (
         <SectionChildContainer
             index={props.index}
@@ -67,31 +103,7 @@ export const TitleSubtitleCta = (props: Props) => {
                     </div>
                 }
 
-                {
-                    titleParts.length > 0 &&
-                    <div className={styles["section-child-title-container"]}>
-                        {
-                            titleParts.map((part, index) => {
-                                if (highlightedParts.includes(part)) {
-                                    return (
-                                        <span 
-                                            key={`section-child-title-part-${index}`}
-                                            className="section-child-title-highlight"
-                                            style={{
-                                                background: `-webkit-linear-gradient(${highlightColors.join(",")})`,
-                                                WebkitBackgroundClip: "text",
-                                                WebkitTextFillColor: "transparent",
-                                            }}>
-                                            {`${part} `}
-                                        </span>
-                                    );
-                                }
-
-                                return <span key={`section-child-title-part-${index}`}>{`${part} `}</span>
-                            })
-                        }
-                    </div>
-                }
+                {renderTitle()}
 
                 {
                     subtitle !== undefined &&
@@ -100,7 +112,16 @@ export const TitleSubtitleCta = (props: Props) => {
                         style={{
                             marginTop: titleParts.length > 0 ? undefined : 0,
                         }}>
-                            {subtitle}
+                            {
+                                subtitle.split("\n").map((line, index) => {
+                                    return (
+                                        <div
+                                            className={index === 0 ? undefined : styles["item-margin-top"]}>
+                                            {line}
+                                        </div>
+                                    );
+                                })
+                            }
                     </div>
                 }
 

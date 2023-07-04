@@ -1,0 +1,32 @@
+.feature-image {
+    width: 455px;
+    height: 292px;
+}
+
+.feature-text {
+    max-width: 455px;
+}
+
+.feature-bullet-text {
+    margin-bottom: 0px;
+}
+
+.feature-image-container {
+    margin-top: 24px;
+}
+
+.protocols-image {
+    width: 430px;
+    height: 495px;
+}
+
+.protocols-bullets {
+    max-width: 500px;
+}
+
+@media screen and (max-width: 480px) {
+    .feature-image {
+        width: 100%;
+        height: initial;
+    }
+}

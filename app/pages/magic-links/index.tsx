@@ -1,3 +1,4 @@
+import { PageContainer } from "../../components/common/page-container";
 import { FeaturePageBase } from "../../components/feature-pages/feature-page-base";
 import {
     FeaturePageIcons,
@@ -5,9 +6,9 @@ import {
 import universalStyles from "../../styles/feature-pages/universal-styles.module.css";
 import magicLinkStyles from "../../styles/feature-pages/pages/magic-links/main.module.css";
 
-export default function TestFeaturePage() {
+export default function MagicLinksFeaturePage() {
     return (
-        <div style={{ maxWidth: "1440px", margin: "auto" }}>
+        <PageContainer>
             <FeaturePageBase 
                 config={{
                     primaryColor: "#A2FACF",
@@ -45,7 +46,7 @@ export default function TestFeaturePage() {
                                             },
                                             subtitle: "Replace traditional email-password authentication with magic links that improve security and increase user conversion",
                                             cta: {
-                                                targetUrl: "",
+                                                targetUrl: "/docs/guides",
                                                 text: "Start Today!"
                                             },
                                         },
@@ -151,8 +152,6 @@ export default function TestFeaturePage() {
                                                     subtitle: "Email clients may click on the link as part of their anti-malware scanning. This would consume the link and render it invalid for the user.",
                                                     bulletImage: {
                                                         src: FeaturePageIcons.MagicLinks.BrokenLink,
-                                                        height: 38,
-                                                        width: 35,
                                                     },
                                                 },
                                                 {
@@ -160,8 +159,6 @@ export default function TestFeaturePage() {
                                                     subtitle: "Magic link emails may land in the user's spam or junk folder, leaving the user frustrated if they can't find the email.",
                                                     bulletImage: {
                                                         src: FeaturePageIcons.MagicLinks.EmailAlert,
-                                                        height: 34,
-                                                        width: 32,
                                                     },
                                                 },
                                                 {
@@ -169,8 +166,6 @@ export default function TestFeaturePage() {
                                                     subtitle: "The browser used to request for a magic link maybe different than the one used to consume the link. Attackers can exploit this to gain access to accounts by spamming magic links to unsuspecting users. We ensure that only the user with access to the email account is able to authenticate to your service",
                                                     bulletImage: {
                                                         src: FeaturePageIcons.MagicLinks.BrowserSearch,
-                                                        height: 28,
-                                                        width: 32,
                                                     },
                                                 },
                                             ],
@@ -224,7 +219,7 @@ export default function TestFeaturePage() {
                                             flex: "column",
                                             subtitle: "Try supertokens to implement passwordless magic links. - we make it easy!",
                                             cta: {
-                                                targetUrl: "",
+                                                targetUrl: "/docs/guides",
                                                 text: "Start Building",
                                                 fillType: "white",
                                             },
@@ -237,7 +232,7 @@ export default function TestFeaturePage() {
                                                 background: "linear-gradient(270deg, #7A7FA8 0%, #8D92A1 100%)"
                                             },
                                             cta: {
-                                                targetUrl: "",
+                                                targetUrl: "/blog/a-guide-to-implementing-passwordless-login",
                                                 text: "See our blog",
                                                 background: "",
                                                 hue: "linear-gradient(134deg, #7D81AB 0%, #8D92A1 100%)",
@@ -250,6 +245,6 @@ export default function TestFeaturePage() {
                         },
                     ],
                 }}/>
-        </div>
+        </PageContainer>
     );
 }
