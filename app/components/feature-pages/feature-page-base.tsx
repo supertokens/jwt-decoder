@@ -68,7 +68,7 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
 
                 return (
                     <div 
-                        className={`${styles["nested-child-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]} ${spacingClass}`}
+                        className={`${styles["nested-child-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]} ${spacingClass} ${config.rootClassNames?.join(" ") ?? ""}`}
                         key={`nested-child-${index}`}>
                         {
                             config.children.map((child, index) => renderSectionChild(child, index, pageConfig, isLanding))

@@ -24,6 +24,19 @@
     font-family: Inter;
     line-height: 36px;
     margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.subtitle-text-container {
+    display: flex;
+    align-items: center;
+}
+
+.bullet {
+    font-size: 4px;
+    margin-right: 4px;
+    color: #AAA;
 }
 
 .bullet-indicator-container {
@@ -116,6 +129,7 @@
     width: 100%;
     margin-left: 139px;
 }
+
 
 @media screen and (max-width: 1024px) {
     .bullet-left-margin {

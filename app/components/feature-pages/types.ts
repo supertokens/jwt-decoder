@@ -74,6 +74,7 @@ export type BulletListChildType = CommonChildProperties & {
             src: string;
         },
         subtitle?: string;
+        displaySubtitleBullets?: boolean;
         bulletColor?: string;
         number?: number;
         leftContainerBottomMargin?: number | string;

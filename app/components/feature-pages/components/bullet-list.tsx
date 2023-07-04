@@ -130,7 +130,17 @@ export const BulletList = (props: Props) => {
                                                     style={{
                                                         marginTop: bullet.title !== undefined ? undefined : 0,
                                                     }}>
-                                                    {bullet.subtitle}
+                                                    {
+                                                        bullet.subtitle.split("\n").map((line, index) => {
+                                                            return (
+                                                                <span 
+                                                                    className={styles["subtitle-text-container"]}
+                                                                    key={`bullet-item-${index}`}>
+                                                                        {bullet.displaySubtitleBullets && <span className={styles["bullet"]}>{"\u2B24"}</span>}{line}
+                                                                </span>
+                                                            );
+                                                        })
+                                                    }
                                                 </div>
                                             }
                                         </div>
