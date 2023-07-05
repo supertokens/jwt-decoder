@@ -6,6 +6,7 @@ import {
 import universalStyles from "../../styles/feature-pages/universal-styles.module.css";
 import multitenanceStyles from "../../styles/feature-pages/pages/multitenancy/main.module.css";
 
+MultiTenancyFeaturePage.title = "Multi-Tenant (B2B) Authentication";
 export default function MultiTenancyFeaturePage() {
     return (
         <PageContainer>

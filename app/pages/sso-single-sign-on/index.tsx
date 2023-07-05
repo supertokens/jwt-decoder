@@ -7,6 +7,7 @@ import universalStyles from "../../styles/feature-pages/universal-styles.module.
 import ssoStyles from "../../styles/feature-pages/pages/sso/main.module.css";
 import magicLinkStyles from "../../styles/feature-pages/pages/magic-links/main.module.css";
 
+SSOSigngleSignOnPage.title = "Trustworthy SSO (Single-Sign On)";
 export default function SSOSigngleSignOnPage() {
     return (
         <PageContainer>

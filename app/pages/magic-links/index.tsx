@@ -6,6 +6,7 @@ import {
 import universalStyles from "../../styles/feature-pages/universal-styles.module.css";
 import magicLinkStyles from "../../styles/feature-pages/pages/magic-links/main.module.css";
 
+MagicLinksFeaturePage.title = "Passwordless Authentication with email Magic Links";
 export default function MagicLinksFeaturePage() {
     return (
         <PageContainer>
