@@ -200,6 +200,9 @@
     align-items: center;
 
     min-width: 450px;
+}
+
+.cursor {
     cursor: pointer;
 }
 
