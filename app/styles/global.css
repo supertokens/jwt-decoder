@@ -10,3 +10,9 @@
   src: url('../assets/fonts/Inter/Inter-Variable.ttf');
   font-style: normal;
 }
+
+@font-face {
+  font-family: "CoveredByYourGrace";
+  src: url('../assets/fonts/CoveredByYourGrace/CoveredByYourGrace-Regular.ttf');
+  font-style: normal;
+}

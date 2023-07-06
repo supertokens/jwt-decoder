@@ -396,7 +396,7 @@ const Expandable = ({row, expandedByDefault = false}: {
 }) => {
     const [expand, setExpand] = useState(expandedByDefault);
     return <div className={styles.expandable}>
-        <div onClick={() => setExpand(!expand)} className={styles.header}>
+        <div onClick={() => setExpand(!expand)} className={`${styles.header} ${row.data.subList !== undefined && row.data.subList.length > 0 ? styles.cursor : ""}`}>
             <span>{row.data.mainText} {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom"/>}</span>
             <div>
                 {row.comingSoon && <span className={styles['coming-soon-chip']}>Coming soon</span>}

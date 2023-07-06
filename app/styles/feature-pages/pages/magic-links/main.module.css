@@ -1,0 +1,31 @@
+.things-to-keep-in-mind-image {
+    margin-top: 0px;
+    width: 40vw;
+}
+
+.things-to-keep-in-mind-text {
+    margin-top: 64px;
+}
+
+.see-blog-section {
+    margin-left: 100px;
+}
+
+@media screen and (max-width: 1024px) {
+    .things-to-keep-in-mind-text {
+        margin-top: 0px;
+        display: none;
+    }
+
+    .see-blog-section {
+        margin-top: 80px;
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .things-to-keep-in-mind-image {
+        width: 320px;
+        height: 310px;
+    }
+}

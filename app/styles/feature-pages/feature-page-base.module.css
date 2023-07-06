@@ -1,0 +1,41 @@
+.section-container {
+    padding-left: 120px;
+    padding-right: 120px;
+    display: flex;
+    padding-top: 100px;
+    padding-bottom: 160px;
+    position: relative;
+    overflow-y: clip;
+    width: 100%;
+}
+
+.nested-child-container {
+    display: flex;
+    margin-top: 62px;
+    width: 100%;
+}
+
+.section-container:nth-child(1) {
+    margin-top: 0px !important;
+}
+
+@media screen and (max-width: 1024px) {
+    .section-container {
+        padding-left: 120px;
+        padding-right: 120px;
+        padding-bottom: 80px;
+        padding-top: 0px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .landing-image {
+        width: 320px;
+        height: 343px;
+    }
+
+    .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
