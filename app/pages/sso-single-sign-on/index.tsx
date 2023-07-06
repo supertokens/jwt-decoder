@@ -290,7 +290,7 @@ export default function SSOSigngleSignOnPage() {
                                             type: "title-subtitle-cta",
 
                                             flex: "column",
-                                            subtitle: "Try supertokens to implement passwordless magic links. - we make it easy!",
+                                            subtitle: "Try supertokens to implement SSO authentication. - we make it easy!",
                                             cta: {
                                                 targetUrl: "/docs/guides",
                                                 text: "Start Building",
@@ -300,13 +300,13 @@ export default function SSOSigngleSignOnPage() {
                                         {
                                             type: "text-cta",
                                             flex: "column",
-                                            text: "Looking to implement passwordless magic links on your own?",
+                                            text: "Looking to implement SSO authentication on your own?",
                                             indicator: {
                                                 background: "linear-gradient(270deg, #7A7FA8 0%, #8D92A1 100%)"
                                             },
                                             cta: {
                                                 targetUrl: "/blog/testing-sso-implementation",
-                                                text: "See our blog",
+                                                text: "See Our Guide",
                                                 background: "",
                                                 hue: "linear-gradient(134deg, #7D81AB 0%, #8D92A1 100%)",
                                             },
