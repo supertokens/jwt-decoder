@@ -98,10 +98,16 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
     );
 }
 
+export const isBenefitsSection = (config: FeaturePageSectionType): boolean => {
+    return config.prebuiltType === "supertokens-benefits-magic-links" ||
+        config.prebuiltType === "supertokens-benefits-multi-tenancy" ||
+        config.prebuiltType === "supertokens-benefits-sso";
+};
+
 export const renderSection = (config: FeaturePageSectionType, index: number, pageConfig: FeaturePageType) => {
-    if (config.prebuiltType === "supertokens-benefits") {
+    if (isBenefitsSection(config)) {
         return (
-            <SuperTokensBenefits index={index} key={`supertokens-benefits-section`}/>
+            <SuperTokensBenefits type={config.prebuiltType} index={index} key={`supertokens-benefits-section`}/>
         );
     }
 

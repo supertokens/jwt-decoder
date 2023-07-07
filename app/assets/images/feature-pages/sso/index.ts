@@ -8,6 +8,8 @@ import EnterpriseLoginImage from "./enterprise-sso-image.png";
 import Protocols from "./sso-protocols-image.png";
 import SAMLIcon from "./saml.svg";
 import OAuth2Icon from "./oauth2.png";
+import Benefits1 from "./sso-benefits-speed.png";
+import Benefits2 from "./sso-benefits-functionality.png";
 
 export const SSO = {
     Landing,
@@ -20,4 +22,6 @@ export const SSO = {
     Protocols,
     SAMLIcon,
     OAuth2Icon,
+    Benefits1,
+    Benefits2,
 }

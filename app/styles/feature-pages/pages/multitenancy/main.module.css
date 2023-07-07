@@ -2,9 +2,21 @@
     margin-left: 100px;
 }
 
+.landing-text-container {
+    max-width: 600px;
+}
+
+.landing-image-container {
+    max-width: 353px;
+}
+
 @media screen and (max-width: 1024px) {
     .see-blog-section {
         margin-top: 80px !important;
         margin-left: 0px;
+    }
+
+    .landing-image-container {
+        max-width: initial;
     }
 }
