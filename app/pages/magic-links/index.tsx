@@ -189,7 +189,7 @@ export default function MagicLinksFeaturePage() {
                             ],
                         },
                         {
-                            prebuiltType: "supertokens-benefits",
+                            prebuiltType: "supertokens-benefits-magic-links",
                             children: [],
                         },
                         {

@@ -22,6 +22,7 @@ export default function MultiTenancyFeaturePage() {
                                 {
                                     type: "nested",
                                     flex: "row",
+                                    spacing: "space-between",
                                     children: [
                                         {
                                             type: "title-subtitle-cta",
@@ -38,14 +39,14 @@ export default function MultiTenancyFeaturePage() {
                                                 text: "Start Today!",
                                                 targetUrl: "/docs/guides",
                                             },
-                                            rootClassNames: [universalStyles["landing-text-container"]],
+                                            rootClassNames: [universalStyles["landing-text-container"], multitenanceStyles["landing-text-container"]],
                                         },
                                         {
                                             type: "image",
                                             flex: "row",
                                             image: FeaturePageIcons.Multitenancy.Landing as any,
                                             imageClassName: universalStyles["landing-image"],
-                                            rootClassNames: [universalStyles["landing-image-container"]],
+                                            rootClassNames: [universalStyles["landing-image-container"], multitenanceStyles["landing-image-container"]],
                                         },
                                     ],
                                 },
@@ -113,7 +114,7 @@ export default function MultiTenancyFeaturePage() {
                             ],
                         },
                         {
-                            prebuiltType: "supertokens-benefits",
+                            prebuiltType: "supertokens-benefits-multi-tenancy",
                             children: [],
                         },
                         {
@@ -176,7 +177,7 @@ export default function MultiTenancyFeaturePage() {
                                                 background: "linear-gradient(270deg, #7A7FA8 0%, #8D92A1 100%)"
                                             },
                                             cta: {
-                                                targetUrl: "mailto:team@supertokens.com?subject=Interested%20in%20Multitenancy",
+                                                targetUrl: "mailto:team@supertokens.com?subject=Interested%20in%20SuperTokens&body=I%20am%20interested%20in%20the%20Multitenancy%20feature",
                                                 text: "Contact us!",
                                                 background: "",
                                                 hue: "linear-gradient(134deg, #7D81AB 0%, #8D92A1 100%)",

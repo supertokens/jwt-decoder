@@ -261,7 +261,7 @@ export default function SSOSigngleSignOnPage() {
                             ],
                         },
                         {
-                            prebuiltType: "supertokens-benefits",
+                            prebuiltType: "supertokens-benefits-sso",
                             children: [],
                         },
                         {

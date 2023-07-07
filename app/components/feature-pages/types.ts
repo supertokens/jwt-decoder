@@ -128,6 +128,11 @@ export type ChildType =
         | TextCTAChildType
     )
 
+export type PreBuiltType = 
+    | "supertokens-benefits-magic-links" 
+    | "supertokens-benefits-sso"
+    | "supertokens-benefits-multi-tenancy";
+
 export type FeaturePageSectionType = {
     flex?: SectionFlex;
     children: ChildType[];
@@ -136,7 +141,7 @@ export type FeaturePageSectionType = {
         hueColor: string;
     };
     minimumPaddingRight?: boolean;
-    prebuiltType?: "supertokens-benefits";
+    prebuiltType?: PreBuiltType;
     backgroundConfig?: {
         className: string;
         background: string;
