@@ -279,7 +279,7 @@ const rows = [
         openSource: false,
         scale: true,
         data: {
-            mainText: "OAuth 2.0 Provider",
+            mainText: "Single login across multiple domains",
             tooltip: "Multiple domains, with a single login portal"
         }
     }, 
@@ -309,17 +309,16 @@ const rows = [
     {
         type: "feature",
         expandable: true,
-        comingSoon: true,
         openSource: false,
         scale: true,
         data: {
             mainText: "2FA",
             subList: [
-                "TOTP",
                 "Email",
                 "Phone number",
-                "QR code",
-                "Biometric"
+                "TOTP (Coming Soon)",
+                "QR code (Coming Soon)",
+                "Biometric (Coming Soon)"
             ]
         }
     },
