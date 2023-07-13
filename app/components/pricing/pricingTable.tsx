@@ -280,7 +280,7 @@ const rows = [
         scale: true,
         data: {
             mainText: "Single login across multiple domains",
-            tooltip: "Multiple domains, with a single login portal"
+            tooltip: "This only applies to domains that are not sub domains"
         }
     }, 
     
