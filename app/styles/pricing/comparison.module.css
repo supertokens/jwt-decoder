@@ -130,6 +130,7 @@
     text-align: center;
 
     color: #000000;
+    z-index: 1;
 }
 
 @media screen and (max-width: 1000px) {
