@@ -263,6 +263,23 @@ const rows = [
 
     {
         type: "feature",
+        expandable: true,
+        openSource: false,
+        scale: true,
+        data: {
+            mainText: "2FA",
+            subList: [
+                "Email",
+                "Phone number",
+                "TOTP (Coming Soon)",
+                "QR code (Coming Soon)",
+                "Biometric (Coming Soon)"
+            ]
+        }
+    },
+
+    {
+        type: "feature",
         expandable: false,
         comingSoon: false,
         openSource: false,
@@ -303,23 +320,6 @@ const rows = [
         scale: true,
         data: {
             mainText: "Account Linking",
-        }
-    },
-    
-    {
-        type: "feature",
-        expandable: true,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "2FA",
-            subList: [
-                "Email",
-                "Phone number",
-                "TOTP (Coming Soon)",
-                "QR code (Coming Soon)",
-                "Biometric (Coming Soon)"
-            ]
         }
     },
 
