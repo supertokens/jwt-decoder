@@ -415,17 +415,14 @@ const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDe
     return (
         <div className={styles.expandable}>
             <div
-                onClick={() => setExpand(!expand)}
-                className={`${styles.header} ${
-                    row.data.subList !== undefined && row.data.subList.length > 0 ? styles.cursor : ""
-                }`}
+                className={`${styles.header}`}
             >
                 <span>
                     {row.data.links?.length ? insertLink(row.data.mainText,row.data.links):row.data.mainText } {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom" />}
                 </span>
                 <div>
                     {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>}
-                    {row.expandable && <img src={dropIcon.src} />}
+                    {row.expandable && <img className={styles.cursor} onClick={() => setExpand(!expand)}  src={dropIcon.src} />}
                 </div>
             </div>
             {row.expandable && expand && (
