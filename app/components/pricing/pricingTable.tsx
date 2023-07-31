@@ -435,7 +435,7 @@ const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDe
                             <li key={index}>
                                 {typeof el === "object" && (
                                     <span>
-                                        {el.links?.length ? insertLink(el.text,el.links):el.text} <Tooltip text={el.tooltip} position="bottom" />{" "}
+                                        {el.links?.length ? insertLink(el.text,el.links):el.text} {el.tooltip ? <Tooltip text={el.tooltip} position="bottom" /> :null}{" "}
                                     </span>
                                 )}
                                 {typeof el === "string" && <span>{el}</span>}
