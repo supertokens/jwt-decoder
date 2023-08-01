@@ -399,12 +399,15 @@ const rows = [
     }
 ];
 
+const stopAnchorPropagation = (e:React.MouseEvent<HTMLAnchorElement>)=>{
+    e.stopPropagation()
+}
 
 const insertLink = (mainText:string,links:Array<{text:string,href:string}>)=>{
     let returnableJSX:JSX.Element;
     links.map(link=>{
         const spiltedStr = mainText.split(link.text);
-        returnableJSX = <span>{spiltedStr[0]} <span className={styles.externalLink}><a target="_blank" href={link.href}>{link.text}</a> <img src={linkPng.src} alt="link"/></span>  {spiltedStr[1]}</span>
+        returnableJSX = <span>{spiltedStr[0]} <span className={styles.externalLink}><a onClick={stopAnchorPropagation} target="_blank" href={link.href}>{link.text}</a> <img src={linkPng.src} alt="link"/></span>  {spiltedStr[1]}</span>
     })
 
     return returnableJSX;
@@ -413,16 +416,16 @@ const insertLink = (mainText:string,links:Array<{text:string,href:string}>)=>{
 const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDefault?: boolean }) => {
     const [expand, setExpand] = useState(expandedByDefault);
     return (
-        <div className={styles.expandable}>
+        <div className={styles.expandable} onClick={() => setExpand(!expand)}>
             <div
-                className={`${styles.header}`}
+                className={`${styles.header} ${row.expandable ? styles.cursor : null}`}
             >
                 <span>
                     {row.data.links?.length ? insertLink(row.data.mainText,row.data.links):row.data.mainText } {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom" />}
                 </span>
                 <div>
                     {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>}
-                    {row.expandable && <img className={styles.cursor} onClick={() => setExpand(!expand)}  src={dropIcon.src} />}
+                    {row.expandable && <img   src={dropIcon.src} />}
                 </div>
             </div>
             {row.expandable && expand && (
