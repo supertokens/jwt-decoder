@@ -531,7 +531,15 @@
     font-style: normal;
     font-weight: 400;
     line-height: 26px;
+    text-decoration: none;
     text-underline-offset: 4px;
+}
+
+
+.externalLink > a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition-delay: 1s;
 }
 
 .externalLink > img {
