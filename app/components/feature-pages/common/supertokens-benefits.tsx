@@ -204,7 +204,7 @@ const multitenancyConfig: FeaturePageSectionType = {
 
 const socialLoginConfig: FeaturePageSectionType = {
     divider: {
-        dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%)",
+        dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%);",
         hueColor: "rgba(255, 153, 51, 0.15)",
     },
     children: [
