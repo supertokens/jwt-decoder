@@ -217,7 +217,7 @@ export default function EmailPasswordAuthenticationFeaturePage() {
                                             type: "title-subtitle-cta",
 
                                             flex: "column",
-                                            subtitle: "Use SuperTokens to implement Social Login - we make it easy!",
+                                            subtitle: "Use SuperTokens to implement Email Password Authentication - we make it easy!",
                                             cta: {
                                                 targetUrl: "/docs/emailpassword/introduction",
                                                 text: "Lets start!",
