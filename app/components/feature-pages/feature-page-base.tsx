@@ -101,7 +101,8 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
 export const isBenefitsSection = (config: FeaturePageSectionType): boolean => {
     return config.prebuiltType === "supertokens-benefits-magic-links" ||
         config.prebuiltType === "supertokens-benefits-multi-tenancy" ||
-        config.prebuiltType === "supertokens-benefits-sso";
+        config.prebuiltType === "supertokens-benefits-sso" ||
+        config.prebuiltType === "supertokens-benefits-email-password-authentication";
 };
 
 export const renderSection = (config: FeaturePageSectionType, index: number, pageConfig: FeaturePageType) => {

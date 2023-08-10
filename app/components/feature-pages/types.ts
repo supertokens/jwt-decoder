@@ -131,7 +131,8 @@ export type ChildType =
 export type PreBuiltType = 
     | "supertokens-benefits-magic-links" 
     | "supertokens-benefits-sso"
-    | "supertokens-benefits-multi-tenancy";
+    | "supertokens-benefits-multi-tenancy"
+    | "supertokens-benefits-email-password-authentication"
 
 export type FeaturePageSectionType = {
     flex?: SectionFlex;
