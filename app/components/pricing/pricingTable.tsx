@@ -41,22 +41,22 @@ const Thead = () => {
             <tr className={styles.highlight}>
                 <td className={styles.left_align}>
                     Self host
-                    <img src={selfHOst.src} alt="" />
+                    <img src={selfHOst.src} alt="self-hosted" />
                 </td>
                 <td>Free at any scale</td>
-                <td>Custom Pricing</td>
+                <td className={styles.customPricing}>See pricing breakdown</td>
             </tr>
             <tr className={styles.highlight}>
                 <td className={styles.left_align}>
                     Managed Service
-                    <img src={managed.src} alt="" />
+                    <img src={managed.src} alt="manged" />
                 </td>
                 <td>
                     <span>$0.02 per MAU</span>
                     <br />
                     <span className={styles.subtext}>Free under 5K MAU</span>
                 </td>
-                <td>Custom Pricing</td>
+                <td className={styles.customPricing}>See pricing breakdown</td>
             </tr>
             <tr>
                 <td></td>

@@ -535,7 +535,6 @@
     text-underline-offset: 4px;
 }
 
-
 .externalLink > a:hover {
     text-decoration: underline;
     text-underline-offset: 4px;
@@ -546,4 +545,22 @@
     height: 14px !important;
     width: 14px !important;
     margin-left: 8px;
+}
+
+.customPricing {
+    color: #f93;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    text-decoration: none;
+    text-underline-offset: 4px;
+
+    cursor: pointer;
+}
+
+.customPricing:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition-delay: 1s;
 }
