@@ -1,0 +1,11 @@
+.dialog__container{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+.dialog__container::backdrop{
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(5px);    
+}

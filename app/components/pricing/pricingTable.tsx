@@ -14,6 +14,8 @@ import linkPng from '../../assets/pricing/link.png'
 import { useState } from "react";
 import { navigateOnButtonClick } from "../common/utils";
 import React from "react";
+import Modal from "../common/dialog";
+import Dialog from "../common/dialog";
 
 const Tooltip = ({ position, text }) => {
     return (
@@ -27,6 +29,7 @@ const Tooltip = ({ position, text }) => {
 };
 
 const Thead = () => {
+    const [isModalOpen,setIsModalOpen] = useState(false)
     return (
         <thead>
             {/*<tr>*/}
@@ -56,7 +59,7 @@ const Thead = () => {
                     <br />
                     <span className={styles.subtext}>Free under 5K MAU</span>
                 </td>
-                <td className={styles.customPricing}>See pricing breakdown</td>
+                <td onClick={()=> setIsModalOpen(true)} className={styles.customPricing}>See pricing breakdown</td>
             </tr>
             <tr>
                 <td></td>
@@ -71,6 +74,11 @@ const Thead = () => {
                     </button>
                 </td>
             </tr>
+            {isModalOpen ?
+                 <Dialog onClose={()=> {}} onOk={()=>[]} showDialog={isModalOpen} title="Title of this modal is this">
+                    <h1>hiii</h1>
+                </Dialog>
+            : null}
         </thead>
     );
 };
