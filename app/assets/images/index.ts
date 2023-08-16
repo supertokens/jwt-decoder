@@ -5,6 +5,8 @@ import StructureOfJwt from "./structure-of-jwt.png"
 import ValidSignatureIcon from "./valid-signature.svg"
 import InvalidSignatureIcon from "./invalid-signature.svg"
 import { FeaturePageIcons } from "./feature-pages";
+import DollarIcon from './dollar.svg'
+import CrossIcon from './cross.svg'
 
 export {
     ChevronDownIcon,
@@ -14,4 +16,6 @@ export {
     ValidSignatureIcon,
     InvalidSignatureIcon,
     FeaturePageIcons,
+    DollarIcon,
+    CrossIcon
 }

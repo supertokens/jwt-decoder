@@ -547,8 +547,26 @@
     margin-left: 8px;
 }
 
-.customPricing {
-    color: #f93;
+.pricingContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+
+.pricingContainer > img{
+    height: 14px;
+    margin: 0 !important;
+}
+
+
+.gradientLink {
+    background: linear-gradient(120deg, #f93 0%, #ff6433 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -557,10 +575,20 @@
     text-underline-offset: 4px;
 
     cursor: pointer;
+
+    padding-bottom: 4px;
+    position: relative;
+    display: table;
+    margin: 0;
 }
 
-.customPricing:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    transition-delay: 1s;
+.gradientLink:hover::after {
+    background: linear-gradient(120deg, #f93 0%, #ff6433 100%);
+
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    height: 2px;
+    width: 100%;
 }

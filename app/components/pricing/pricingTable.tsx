@@ -12,9 +12,11 @@ import linkPng from '../../assets/pricing/link.png'
 
 
 import { useState } from "react";
+import Image from 'next/image'
 import { navigateOnButtonClick } from "../common/utils";
 import React from "react";
-import Dialog from "../common/dialog";
+import { DollarIcon } from "../../assets/images";
+import PricingDialog from "./pricingDialog";
 
 const Tooltip = ({ position, text }) => {
     return (
@@ -28,7 +30,7 @@ const Tooltip = ({ position, text }) => {
 };
 
 const Thead = () => {
-    const [isModalOpen,setIsModalOpen] = useState(false)
+    const [isModalOpen,setIsModalOpen] = useState(true)
     return (
         <thead>
             {/*<tr>*/}
@@ -46,7 +48,12 @@ const Thead = () => {
                     <img src={selfHOst.src} alt="self-hosted" />
                 </td>
                 <td>Free at any scale</td>
-                <td className={styles.customPricing}>See pricing breakdown</td>
+                <td className={styles.pricingContainer}>
+                    <span className={styles.gradientLink}>
+                        See pricing breakdown
+                    </span> 
+                    <Image src={DollarIcon} height={14} width={14} alt="dollar"/>
+                </td>
             </tr>
             <tr className={styles.highlight}>
                 <td className={styles.left_align}>
@@ -58,7 +65,7 @@ const Thead = () => {
                     <br />
                     <span className={styles.subtext}>Free under 5K MAU</span>
                 </td>
-                <td onClick={()=> setIsModalOpen(true)} className={styles.customPricing}>See pricing breakdown</td>
+                <td onClick={()=> setIsModalOpen(true)}>Custom Pricing</td>
             </tr>
             <tr>
                 <td></td>
@@ -73,11 +80,7 @@ const Thead = () => {
                     </button>
                 </td>
             </tr>
-            {isModalOpen ?
-                 <Dialog onClose={()=> {}} onOk={()=>[]} showDialog={isModalOpen} title="Title of this modal is this">
-                    <h1>hiii</h1>
-                </Dialog>
-            : null}
+           {isModalOpen ? <PricingDialog onClose={()=> setIsModalOpen(false)}/> : null}
         </thead>
     );
 };
