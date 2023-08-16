@@ -166,16 +166,6 @@ const rows = [
     },
     {
         type: "feature",
-        expandable: false,
-        comingSoon: false,
-        openSource: true,
-        scale: true,
-        data: {
-            mainText: "M2M authentication"
-        }
-    },
-    {
-        type: "feature",
         expandable: true,
         comingSoon: false,
         openSource: true,
@@ -248,6 +238,16 @@ const rows = [
                     tooltip: "Open source plan: 3 seats. Scale plan: 10 seats"
                 }
             ]
+        }
+    },
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        openSource: true,
+        scale: true,
+        data: {
+            mainText: "M2M authentication"
         }
     },
     {
