@@ -164,7 +164,16 @@ const rows = [
             mainText: "Email Verification, forgot password flows"
         }
     },
-
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        openSource: true,
+        scale: true,
+        data: {
+            mainText: "M2M authentication"
+        }
+    },
     {
         type: "feature",
         expandable: true,
@@ -241,7 +250,6 @@ const rows = [
             ]
         }
     },
-
     {
         type: "feature",
         expandable: true,
@@ -282,16 +290,6 @@ const rows = [
         data: {
             mainText: "2FA",
             subList: ["Email", "Phone number", "TOTP (Coming Soon)", "QR code (Coming Soon)", "Biometric (Coming Soon)"]
-        }
-    },
-    {
-        type: "feature",
-        expandable: false,
-        comingSoon: false,
-        openSource: true,
-        scale: true,
-        data: {
-            mainText: "M2M authentication"
         }
     },
     {
