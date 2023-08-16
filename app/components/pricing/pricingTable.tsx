@@ -14,7 +14,6 @@ import linkPng from '../../assets/pricing/link.png'
 import { useState } from "react";
 import { navigateOnButtonClick } from "../common/utils";
 import React from "react";
-import Modal from "../common/dialog";
 import Dialog from "../common/dialog";
 
 const Tooltip = ({ position, text }) => {
