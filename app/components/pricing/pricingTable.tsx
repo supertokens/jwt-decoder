@@ -253,7 +253,16 @@ const rows = [
             ]
         }
     },
-
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        openSource: "≤3",
+        scale: "See pricing",
+        data: {
+            mainText: "Number of Dashboard Userss"
+        }
+    },    
     {
         type: "feature",
         expandable: true,
@@ -490,7 +499,10 @@ const TBody = () => {
                             </td>
                             <td>
                                 {typeof el.scale === "boolean" && el.scale && <img src={scaleCheck.src} alt="" />}
-                                {/* {typeof el.scale === 'string' && <span>{el.scale}</span>} */}
+                                {typeof el.scale === 'string' && el.scale && 
+                                (el.scale === "See pricing"?
+                                    <button className={styles.seePricing} ><span>{el.scale}</span></button>:
+                                <span className={styles.scale}>{el.scale}</span>)}
                             </td>
                         </tr>
                     );

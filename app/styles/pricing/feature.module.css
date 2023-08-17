@@ -585,3 +585,37 @@
     height: 10px;
     width: 100%;
 }
+
+.spacer > td {
+    padding: 0 !important;
+}
+
+.scale {
+    color: #f93;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.seePricing {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+    padding: 2px 10px;
+
+    border-radius: 4px;
+    border: 1px solid rgba(255, 153, 51, 0.11);
+    background: rgba(255, 153, 51, 0.15);
+
+    cursor: pointer;
+}
+
+.seePricing > span {
+    background: linear-gradient(105deg, #f93 0%, #ff6433 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
