@@ -12,10 +12,8 @@ import linkPng from '../../assets/pricing/link.png'
 
 
 import { useState } from "react";
-import Image from 'next/image'
 import { navigateOnButtonClick } from "../common/utils";
 import React from "react";
-import { DollarIcon } from "../../assets/images";
 import PricingDialog from "./pricingDialog";
 
 const Tooltip = ({ position, text }) => {
@@ -53,7 +51,6 @@ const Thead = () => {
                         <span onClick={()=> setIsModalOpen(true)} className={styles.gradientLink}>
                             See pricing breakdown
                         </span> 
-                        <Image src={DollarIcon} height={14} width={14} alt="dollar"/>
                     </div>
                 </td>
             </tr>
