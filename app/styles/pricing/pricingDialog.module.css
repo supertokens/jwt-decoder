@@ -37,6 +37,7 @@
     background: linear-gradient(180deg, #3c3c3c 0%, #1a1a1a 100%);
 
     padding: 1px;
+    margin-bottom: 16px;
 }
 
 .pricing__card__wrapper {
@@ -44,6 +45,10 @@
 
     padding: 16px;
     background: linear-gradient(180deg, #0d0d0d 0%, #000 100%);
+}
+
+.mb12 {
+    margin-bottom: 12px;
 }
 
 .pricing__card {
@@ -59,14 +64,12 @@
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.06);
 
-    padding: 10px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
+    padding: 8px 42px 8px 10px;
 }
 
 .orange__pill {
+    display: inline-block;
+
     color: #f93;
     font-size: 16px;
     font-style: normal;
@@ -84,7 +87,9 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 28px;
+
+    margin-left: 14px;
 }
 
 .sub__text > b {
@@ -95,7 +100,7 @@
 .underline {
     background: #2a2a2a;
     height: 1px;
-    margin: 18px 0px;
+    margin: 24px 0px;
 }
 
 .gray__pill {
@@ -103,7 +108,7 @@
     background: #232323;
 
     color: #888;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -113,12 +118,7 @@
 
 .orange {
     color: #f93;
-}
-
-.stack {
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    font-weight: 600;
 }
 
 .close__dialog {
@@ -132,6 +132,20 @@
     right: 10px;
 
     cursor: pointer;
+}
+
+.pricing__dialog > ul {
+    padding: 0px 28px;
+}
+
+.pricing__dialog > ul > li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23px;
+}
+
+.pricing__dialog > ul > li:not(:last-child) {
+    margin-bottom: 10px;
 }
 
 .close__dialog > img {

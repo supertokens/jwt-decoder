@@ -14,7 +14,7 @@ import linkPng from '../../assets/pricing/link.png'
 import { useState } from "react";
 import { navigateOnButtonClick } from "../common/utils";
 import React from "react";
-import PricingDialog from "./pricingDialog";
+import { DashboardDialogContent, MultiTenancyDialogContent, PricingDialogContainer } from "./pricingDialog";
 
 const Tooltip = ({ position, text }) => {
     return (
@@ -28,7 +28,6 @@ const Tooltip = ({ position, text }) => {
 };
 
 const Thead = () => {
-    const [isModalOpen,setIsModalOpen] = useState(false)
     return (
         <thead>
             {/*<tr>*/}
@@ -82,7 +81,6 @@ const Thead = () => {
                 <td></td>
                 <td></td>
             </tr>
-           <PricingDialog show={isModalOpen} onClose={()=> setIsModalOpen(false)}/>
         </thead>
     );
 };
@@ -258,7 +256,10 @@ const rows = [
         expandable: false,
         comingSoon: false,
         openSource: "≤3",
-        scale: "See pricing",
+        scale: {
+            text:"See pricing",
+            dialogType:"dashboard"
+        },
         data: {
             mainText: "Number of Dashboard Userss"
         }
@@ -278,7 +279,10 @@ const rows = [
         expandable: true,
         comingSoon: false,
         openSource: false,
-        scale: "See pricing",
+        scale: {
+            text:"See pricing",
+            dialogType:"multi-tenancy"
+        },
         data: {
             mainText: "Multi tenancy and Organisational support",
             links: [{
@@ -458,6 +462,18 @@ const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDe
 };
 
 const TBody = () => {
+    const [isDashboardDialogOpen,setIsDashboardDialogOpen] = useState(false)
+    const [isMultiTenancyDialogOpen,setisMultiTenancyDialogOpen] = useState(false)
+
+    function openDialog(dialogType:string) {
+        if(dialogType === "multi-tenancy") {
+            setisMultiTenancyDialogOpen(true)
+        }
+
+        if(dialogType === "dashboard") {
+            setIsDashboardDialogOpen(true)
+        }
+    }
     return (
         <tbody>
             {rows.map((el, index) => {
@@ -487,15 +503,25 @@ const TBody = () => {
                             </td>
                             <td>
                                 {typeof el.scale === "boolean" && el.scale && <img src={scaleCheck.src} alt="" />}
-                                {typeof el.scale === 'string' && el.scale && 
-                                (el.scale === "See pricing"?
-                                    <button className={styles.seePricing} ><span>{el.scale}</span></button>:
-                                <span className={styles.scale}>{el.scale}</span>)}
+                                {typeof el.scale === 'object' && el.scale && 
+                                (el.scale.text === "See pricing"?
+                                    <button onClick={()=> openDialog(el.scale.dialogType)} className={styles.seePricing} ><span>{el.scale.text}</span></button>:
+                                null)}
+                                {typeof el.scale === "string" && el.scale && <span className={styles.scale}>{el.scale}</span>}
                             </td>
                         </tr>
                     );
                 }
             })}
+            {/* Dashboard Dialog */}
+           <PricingDialogContainer show={isDashboardDialogOpen} onClose={()=> setIsDashboardDialogOpen(false)}>
+            <DashboardDialogContent/>
+           </PricingDialogContainer>
+            {/* MultiTenancy Dialog */}
+           <PricingDialogContainer show={isMultiTenancyDialogOpen} onClose={()=> setisMultiTenancyDialogOpen(false)}>
+            <MultiTenancyDialogContent/>
+           </PricingDialogContainer>
+
         </tbody>
     );
 };
