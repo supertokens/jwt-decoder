@@ -248,7 +248,8 @@ const rows = [
                 {
                     text: "Included seats",
                     tooltip: "Open source plan: 3 seats. Scale plan: 10 seats"
-                }
+                },
+                "Number of Users"
             ]
         }
     },
@@ -277,7 +278,7 @@ const rows = [
         expandable: true,
         comingSoon: false,
         openSource: false,
-        scale: true,
+        scale: "See pricing",
         data: {
             mainText: "Multi tenancy and Organisational support",
             links: [{
@@ -299,6 +300,7 @@ const rows = [
                 },
                 "Data isolation on a per tenant level",
                 "Sharing a user across tenants",
+                //@ saml auth is missing in auth, maybe nevil didn't know about this change.
                 "SAML Auth"
             ]
         }
@@ -308,7 +310,7 @@ const rows = [
         type: "feature",
         expandable: true,
         openSource: false,
-        scale: true,
+        scale: "Additional $0.01/mau",
         data: {
             mainText: "2FA",
             subList: ["Email", "Phone number", "TOTP (Coming Soon)", "QR code (Coming Soon)", "Biometric (Coming Soon)"]
@@ -432,7 +434,7 @@ const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDe
                 </span>
                 <div>
                     {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>}
-                    {row.expandable && <img   src={dropIcon.src} />}
+                    {row.expandable && <img className={`${styles.expandbleIcon} ${expand ? styles.opened :""}`}   src={dropIcon.src} />}
                 </div>
             </div>
             {row.expandable && expand && (
@@ -509,23 +511,25 @@ const navigateToGuides = (e: React.MouseEvent<HTMLButtonElement>) => {
 
 const TFoot = () => {
     return (
-        <tfoot>
-            <tr>
-                <td></td>
-                <td>
-                    <h1>Open Source</h1>
-                    <button onClick={navigateToGuides} className={styles.bordered}>
-                        Get Started
-                    </button>
-                </td>
-                <td>
-                    <h1>Pay when you scale</h1>
-                    <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
-                        Contact Us
-                    </button>
-                </td>
-            </tr>
-        </tfoot>
+        // <tfoot>
+        //     <tr>
+        //         <td></td>
+        //         <td>
+                    
+        //         </td>
+        //         {/* <td>
+        //             <h1>Pay when you scale</h1>
+        //             <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
+        //                 Contact Us
+        //             </button>
+        //         </td> */}
+        //     </tr>
+        // </tfoot>
+        <div className={styles.footer}>
+            <button onClick={navigateToGuides} className={styles.bordered}>
+                Get Started
+            </button>
+        </div>
     );
 };
 
@@ -600,32 +604,32 @@ const MobileTBody = () => {
     );
 };
 
-const MobileTFoot = () => {
-    return (
-        <table className={styles.mobileTFoot}>
-            <tfoot>
-                <tr>
-                    <td className={styles["open-source-footer"]}>
-                        <div>
-                            <h1>Open source</h1>
-                            <button onClick={navigateToGuides} className={styles.bordered}>
-                                Get Started
-                            </button>
-                        </div>
-                    </td>
-                    <td className={styles["paid-footer"]}>
-                        <div>
-                            <h1>Pay when you scale</h1>
-                            <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
-                                Contact Us
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-    );
-};
+// const MobileTFoot = () => {
+//     return (
+//         <table className={styles.mobileTFoot}>
+//             <tfoot>
+//                 <tr>
+//                     <td className={styles["open-source-footer"]}>
+//                         <div>
+//                             <h1>Open source</h1>
+//                             <button onClick={navigateToGuides} className={styles.bordered}>
+//                                 Get Started
+//                             </button>
+//                         </div>
+//                     </td>
+//                     <td className={styles["paid-footer"]}>
+//                         <div>
+//                             <h1>Pay when you scale</h1>
+//                             <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
+//                                 Contact Us
+//                             </button>
+//                         </div>
+//                     </td>
+//                 </tr>
+//             </tfoot>
+//         </table>
+//     );
+// };
 
 const PricingTable = () => {
     return (
@@ -639,7 +643,7 @@ const PricingTable = () => {
                 <MobileTHead />
                 <h3>Features</h3>
                 <MobileTBody />
-                <MobileTFoot />
+                <TFoot />
             </div>
         </div>
     );

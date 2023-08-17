@@ -223,6 +223,14 @@
     margin-left: 10px;
 }
 
+.expandbleIcon {
+    transform: rotate(-90deg);
+}
+
+.opened {
+    transform: rotate(0deg);
+}
+
 .expandable > .sublist > ul {
     padding-left: 20px;
 }
@@ -618,4 +626,11 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(2, 3fr);
+    grid-auto-flow: dense;
+    direction: rtl;
 }
