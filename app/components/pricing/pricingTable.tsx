@@ -40,19 +40,26 @@ const Thead = () => {
                 <th>Open Source</th>
                 <th>Scale</th>
             </tr>
+            <tr className={styles.section}>
+                <td className={styles.left_align}>
+                    <span className={styles["section-text"]}>MAU Pricing</span>
+                </td>
+                <td />
+                <td />
+            </tr>
+            <tr className={styles.spacer}>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {/* <div className={s}/> */}
             <tr className={styles.highlight}>
                 <td className={styles.left_align}>
                     Self host
                     <img src={selfHOst.src} alt="self-hosted" />
                 </td>
-                <td>Free at any scale</td>
-                <td>
-                    <div className={styles.pricingContainer}>
-                        <span onClick={()=> setIsModalOpen(true)} className={styles.gradientLink}>
-                            See pricing breakdown
-                        </span> 
-                    </div>
-                </td>
+                <td>Free</td>
+                <td>Free</td>
             </tr>
             <tr className={styles.highlight}>
                 <td className={styles.left_align}>
@@ -64,20 +71,16 @@ const Thead = () => {
                     <br />
                     <span className={styles.subtext}>Free under 5K MAU</span>
                 </td>
-                <td>Custom Pricing</td>
+                <td> 
+                    <span>$0.02 per MAU</span>
+                    <br />
+                    <span className={styles.subtext}>Free under 5K MAU</span>
+                </td>
             </tr>
-            <tr>
+            <tr className={styles.spacer}>
                 <td></td>
-                <td>
-                    <button onClick={navigateToGuides} className={styles.bordered}>
-                        Get Started
-                    </button>
-                </td>
-                <td>
-                    <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
-                        Contact Us
-                    </button>
-                </td>
+                <td></td>
+                <td></td>
             </tr>
            <PricingDialog show={isModalOpen} onClose={()=> setIsModalOpen(false)}/>
         </thead>

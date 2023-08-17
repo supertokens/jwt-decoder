@@ -580,3 +580,8 @@
 .gradientLink:hover {
     text-decoration: underline;
 }
+
+.spacer {
+    height: 10px;
+    width: 100%;
+}
