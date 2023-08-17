@@ -176,7 +176,6 @@ const rows = [
             mainText: "Email Verification, forgot password flows"
         }
     },
-
     {
         type: "feature",
         expandable: true,
@@ -262,7 +261,17 @@ const rows = [
         data: {
             mainText: "Number of Dashboard Userss"
         }
-    },    
+    },
+    {    
+        type: "feature",
+        openSource: true,
+        expandable: false,
+        comingSoon: false,
+        scale: true,
+        data: {
+            mainText: "M2M authentication"
+        }
+    },
     {
         type: "feature",
         expandable: true,
@@ -289,7 +298,8 @@ const rows = [
                     }]
                 },
                 "Data isolation on a per tenant level",
-                "Sharing a user across tenants"
+                "Sharing a user across tenants",
+                "SAML Auth"
             ]
         }
     },
@@ -304,18 +314,6 @@ const rows = [
             subList: ["Email", "Phone number", "TOTP (Coming Soon)", "QR code (Coming Soon)", "Biometric (Coming Soon)"]
         }
     },
-
-    {
-        type: "feature",
-        expandable: false,
-        comingSoon: false,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "SAML Auth"
-        }
-    },
-
     {
         type: "feature",
         expandable: false,
@@ -327,18 +325,6 @@ const rows = [
             tooltip: "This only applies to domains that are not sub domains"
         }
     },
-
-    {
-        type: "feature",
-        expandable: false,
-        comingSoon: true,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "M2M authentication"
-        }
-    },
-
     {
         type: "feature",
         expandable: false,
@@ -392,7 +378,7 @@ const rows = [
         type: "feature",
         expandable: false,
         comingSoon: false,
-        openSource: true,
+        openSource: false,
         scale: true,
         data: {
             mainText: "Uptime guarantees (SLAs)"
