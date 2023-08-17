@@ -30,7 +30,7 @@ const Tooltip = ({ position, text }) => {
 };
 
 const Thead = () => {
-    const [isModalOpen,setIsModalOpen] = useState(true)
+    const [isModalOpen,setIsModalOpen] = useState(false)
     return (
         <thead>
             {/*<tr>*/}
@@ -48,11 +48,13 @@ const Thead = () => {
                     <img src={selfHOst.src} alt="self-hosted" />
                 </td>
                 <td>Free at any scale</td>
-                <td className={styles.pricingContainer}>
-                    <span className={styles.gradientLink}>
-                        See pricing breakdown
-                    </span> 
-                    <Image src={DollarIcon} height={14} width={14} alt="dollar"/>
+                <td>
+                    <div className={styles.pricingContainer}>
+                        <span onClick={()=> setIsModalOpen(true)} className={styles.gradientLink}>
+                            See pricing breakdown
+                        </span> 
+                        <Image src={DollarIcon} height={14} width={14} alt="dollar"/>
+                    </div>
                 </td>
             </tr>
             <tr className={styles.highlight}>
@@ -65,7 +67,7 @@ const Thead = () => {
                     <br />
                     <span className={styles.subtext}>Free under 5K MAU</span>
                 </td>
-                <td onClick={()=> setIsModalOpen(true)}>Custom Pricing</td>
+                <td>Custom Pricing</td>
             </tr>
             <tr>
                 <td></td>
@@ -80,7 +82,7 @@ const Thead = () => {
                     </button>
                 </td>
             </tr>
-           {isModalOpen ? <PricingDialog onClose={()=> setIsModalOpen(false)}/> : null}
+           <PricingDialog show={isModalOpen} onClose={()=> setIsModalOpen(false)}/>
         </thead>
     );
 };

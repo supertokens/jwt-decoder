@@ -547,25 +547,20 @@
     margin-left: 8px;
 }
 
-.pricingContainer{
+.pricingContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 4px;
 }
 
-
-.pricingContainer > img{
+.pricingContainer > img {
     height: 14px;
     margin: 0 !important;
 }
 
-
 .gradientLink {
-    background: linear-gradient(120deg, #f93 0%, #ff6433 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ff6433;
 
     font-size: 16px;
     font-style: normal;
@@ -582,13 +577,6 @@
     margin: 0;
 }
 
-.gradientLink:hover::after {
-    background: linear-gradient(120deg, #f93 0%, #ff6433 100%);
-
-    content: "";
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    height: 2px;
-    width: 100%;
+.gradientLink:hover {
+    text-decoration: underline;
 }

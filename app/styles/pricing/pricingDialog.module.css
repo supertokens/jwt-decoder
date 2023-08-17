@@ -1,6 +1,7 @@
 .pricing__dialog {
     max-width: 538px;
-    max-height: 600px;
+    max-height: 960px;
+    height: calc(80vh - 1rem);
 
     border-radius: 20px;
     border: 1px solid #464646;
@@ -10,12 +11,9 @@
     position: fixed;
     inset: 0;
     margin: auto;
+    box-shadow: 0px 0px 100px 0px rgba(255, 255, 255, 0.15), 0px 2px 4px 0px rgba(0, 0, 0, 0.74);
 
     overflow: scroll;
-}
-
-.pricing__dialog:hover {
-    box-shadow: 0px 0px 100px 0px rgba(255, 255, 255, 0.15), 0px 2px 4px 0px rgba(0, 0, 0, 0.74);
 }
 
 .pricing__dialog__container {
@@ -132,4 +130,40 @@
     position: absolute;
     top: 10px;
     right: 10px;
+
+    cursor: pointer;
+}
+
+.close__dialog > img {
+    filter: invert(0.5) sepia(1) saturate(0) hue-rotate(-150deg);
+}
+
+.close__dialog > img:hover {
+    filter: invert(0);
+}
+
+.animate__mount {
+    animation: mount 0.4s ease-in;
+}
+
+@keyframes mount {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate__unmount {
+    animation: unmount 0.5s ease-out;
+}
+
+@keyframes unmount {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
