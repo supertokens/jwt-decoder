@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useCallback, useState } from "react";
 import Image from "next/image";
 
 import styles from "../../styles/pricing/pricingDialog.module.css";
@@ -110,6 +110,21 @@ const multitenancyPricingConfig = [
 ];
 
 export function MultiTenancyDialogContent() {
+    
+    const highlightText = useCallback((completeText: string, stringsToHighlight: Array<string>) => {
+        let returnableJSX: JSX.Element;
+        stringsToHighlight.map(text => {
+            const spiltedStr = completeText.split(text);
+            returnableJSX = (
+                <span className={styles.sub__text}>
+                    {spiltedStr[0]} <b>{text}</b> {spiltedStr[1]}
+                </span>
+            );
+        });
+
+        return returnableJSX;
+    }, []);
+
     return (
         <>
             <h1 className={styles.dialog__heading}>Multitenancy</h1>
@@ -126,7 +141,7 @@ export function MultiTenancyDialogContent() {
                                         <span className={styles[`${price.mainText.color}__pill`]}>
                                             {price.mainText.content}
                                         </span>
-                                        <span className={styles.sub__text}>{price.subText.content}</span>
+                                        {highlightText(price.subText.content, price.subText.highlight)}
                                     </div>
                                 ))}
                             </div>
