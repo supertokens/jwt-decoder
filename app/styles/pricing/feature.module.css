@@ -15,8 +15,6 @@
 .table {
     margin: 12.438rem 12.438rem 0rem 12.438rem;
 
-    width: calc(100vw - 12rem * 2);
-
     display: block;
 
     color: #f8f7f7;
@@ -63,14 +61,6 @@
 
 .highlight {
     background: rgba(255, 153, 51, 0.16);
-}
-
-@media (max-width: 768px) {
-    .highlight {
-        padding: 12px;
-        text-align: center;
-        color: white;
-    }
 }
 
 .highlight > td > img {
@@ -471,6 +461,17 @@
         font-size: 24px;
         font-weight: 700;
     }
+
+    .tableFooter {
+        display: flex !important;
+        margin: 0 8.438rem !important;
+    }
+
+    .highlight {
+        padding: 12px;
+        text-align: center;
+        color: white;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -552,6 +553,10 @@
 
     .mobileTHead > thead > tr > th {
         font-size: 20px;
+    }
+
+    .tableFooter {
+        margin: 0 18px !important;
     }
 }
 
@@ -662,11 +667,4 @@
     direction: rtl;
 
     margin: 0rem 12.438rem
-}
-
-@media (max-width: 768px) {
-    .tableFooter {
-        display: flex;
-        margin: 0 18px;
-    }
 }
