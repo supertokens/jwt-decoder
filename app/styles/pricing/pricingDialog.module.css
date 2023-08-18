@@ -17,6 +17,7 @@
 
     -ms-overflow-style: none;
     scrollbar-width: none;
+    z-index: 10000;
 }
 
 .pricing__dialog::-webkit-scrollbar {

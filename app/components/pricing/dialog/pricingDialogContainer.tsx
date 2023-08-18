@@ -37,7 +37,7 @@ export default function PricingDialogContainer(props: PricingDialogProps) {
                         aboutToClose ? styles.animate__unmount : ""
                     }`}
                 >
-                    <div className={styles.pricing__dialog}>
+                    <div className={styles.pricing__dialog} onClick={(e)=> {e.stopPropagation()}}>
                         <span className={styles.close__dialog} onClick={closeDialog}>
                             <Image src={CrossIcon} alt="close" height={10} width={10} />
                         </span>
