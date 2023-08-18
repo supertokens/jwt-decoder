@@ -1,7 +1,7 @@
 .pricing__dialog {
     max-width: 538px;
-    max-height: 960px;
-    height: calc(80vh - 1rem);
+    max-height: 90vh;
+    height: fit-content;
 
     border-radius: 20px;
     border: 1px solid #464646;

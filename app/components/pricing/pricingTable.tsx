@@ -14,7 +14,9 @@ import linkPng from '../../assets/pricing/link.png'
 import { useState } from "react";
 import { navigateOnButtonClick } from "../common/utils";
 import React from "react";
-import { DashboardDialogContent, MultiTenancyDialogContent, PricingDialogContainer } from "./pricingDialog";
+import PricingDialogContainer from "./dialog/pricingDialogContainer";
+import DashboardDialog from "./dialog/dashboardDialog";
+import MultiTenancyDialog from "./dialog/multitenancyDialog";
 
 const Tooltip = ({ position, text }) => {
     return (
@@ -261,7 +263,7 @@ const rows = [
             dialogType:"dashboard"
         },
         data: {
-            mainText: "Number of Dashboard Userss"
+            mainText: "Number of Dashboard Users"
         }
     },
     {    
@@ -314,7 +316,7 @@ const rows = [
         type: "feature",
         expandable: true,
         openSource: false,
-        scale: "Additional $0.01/mau",
+        scale: "Additional $0.01/MAU",
         data: {
             mainText: "2FA",
             subList: ["Email", "Phone number", "TOTP (Coming Soon)", "QR code (Coming Soon)", "Biometric (Coming Soon)"]
@@ -515,13 +517,12 @@ const TBody = () => {
             })}
             {/* Dashboard Dialog */}
            <PricingDialogContainer show={isDashboardDialogOpen} onClose={()=> setIsDashboardDialogOpen(false)}>
-            <DashboardDialogContent/>
+                <DashboardDialog/>
            </PricingDialogContainer>
             {/* MultiTenancy Dialog */}
            <PricingDialogContainer show={isMultiTenancyDialogOpen} onClose={()=> setisMultiTenancyDialogOpen(false)}>
-            <MultiTenancyDialogContent/>
+                <MultiTenancyDialog/>
            </PricingDialogContainer>
-
         </tbody>
     );
 };

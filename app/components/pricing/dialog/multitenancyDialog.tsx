@@ -1,47 +1,7 @@
-import { ReactNode, useCallback, useState } from "react";
-import Image from "next/image";
+import { useCallback } from "react";
 
-import styles from "../../styles/pricing/pricingDialog.module.css";
-import { CrossIcon } from "../../assets/images";
+import styles from "../../../styles/pricing/pricingDialog.module.css";
 
-type PricingDialogProps = {
-    onClose: () => void;
-    show: boolean;
-    children: ReactNode;
-};
-
-export function PricingDialogContainer(props: PricingDialogProps) {
-    const { children, onClose, show } = props;
-
-    const [aboutToClose, setAboutToClose] = useState(false);
-
-    function closeDialog() {
-        setAboutToClose(true);
-        setTimeout(() => {
-            onClose();
-            setAboutToClose(false);
-        }, 400);
-    }
-
-    return (
-        <>
-            {show ? (
-                <div
-                    className={`${styles.pricing__dialog__container} ${styles.animate__mount} ${
-                        aboutToClose ? styles.animate__unmount : ""
-                    }`}
-                >
-                    <div className={styles.pricing__dialog}>
-                        <span className={styles.close__dialog} onClick={closeDialog}>
-                            <Image src={CrossIcon} alt="close" height={10} width={10} />
-                        </span>
-                        {children}
-                    </div>
-                </div>
-            ) : null}
-        </>
-    );
-}
 
 const multitenancyPricingConfig = [
     {
@@ -109,8 +69,7 @@ const multitenancyPricingConfig = [
     }
 ];
 
-export function MultiTenancyDialogContent() {
-    
+export default function MultiTenancyDialog() {
     const highlightText = useCallback((completeText: string, stringsToHighlight: Array<string>) => {
         let returnableJSX: JSX.Element;
         stringsToHighlight.map(text => {
@@ -153,39 +112,19 @@ export function MultiTenancyDialogContent() {
             <span className={styles.gray__pill}>Pricing Example</span>
             <ul>
                 <li>
-                    For <span className={styles.orange}>Email password, Social and passwordless login</span> pricing
-                    depends on number of users per tenant, so if one tenant has{" "}
-                    <span className={styles.orange}>3-10 users</span> and other has{" "}
-                    <span className={styles.orange}>10+</span>, total combined pricing will be{" "}
-                    <span className={styles.orange}>$15 / month.</span>
+                    2 tenants with email password in one, and social login in another, each tenant has 2 users: $0 /
+                    month (falls under free 25 tenants)
                 </li>
-                <li>Adding Enterprise SSO for particular tenant will cost $50 / tenant / month.</li>
                 <li>
-                    Sorem ipsum dolor sit amet, <span className={styles.orange}>$105 / month</span> consectetur
-                    adipiscing elit.
+                    2 tenants with email password in one (2 users), and social login in another (5 users): $5 / month
+                </li>
+                <li>2 tenants with SAML login in both, with zero users: $100 / month</li>
+                <li>26 tenants with email password in all (1 user in each tenant): $2 / month (first 25 are free)</li>
+                <li>
+                    27 tenants with email password in all (1 user in the first 26 tenants, and 5 users in the 27th one):
+                    $7 / month (first 25 are free)
                 </li>
             </ul>
-        </>
-    );
-}
-
-export function DashboardDialogContent() {
-    return (
-        <>
-            <h1 className={styles.dialog__heading}>Dashboard</h1>
-            <div className={styles.pricing__card__container}>
-                <div className={styles.pricing__card__wrapper}>
-                    <p className={styles.sub__text}>
-                        Sorem ipsum dolor 3-10 users, consectetur Enterprise SSO elit. Nunc vulputate libero et velit
-                        interdum, ac aliquet odio mattis New app.
-                    </p>
-                    <p>Sorem ipsum dolor sit amet, $105 / month consectetur adipiscing elit.</p>
-                    <div className={`${styles.pill__cards}`}>
-                        <span className={styles.orange__pill}>Pricing</span>
-                        <span className={styles.sub__text}>$20 / month / user</span>
-                    </div>
-                </div>
-            </div>
         </>
     );
 }
