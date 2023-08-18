@@ -13,7 +13,7 @@ const multitenancyPricingConfig = [
                     color: "gray"
                 },
                 subText: {
-                    content: "Free for 25 tenants, $2 / tenant / user after that",
+                    content: "Free for 25 tenants, $2 / tenant / month after that.",
                     highlight: ["$2"]
                 }
             },
@@ -109,7 +109,7 @@ export default function MultiTenancyDialog() {
                 );
             })}
             <div className={styles.underline} />
-            <span className={styles.gray__pill}>Pricing Example</span>
+            <span className={styles.gray__pill}>Pricing Examples</span>
             <ul>
                 <li>
                     2 tenants with email password in one, and social login in another, each tenant has 2 users: $0 /
