@@ -699,14 +699,13 @@ const PricingTable = () => {
             <table className={styles.table}>
                 <Thead />
                 <TBody />
-                <TFoot />
             </table>
             <div className={styles.mobileTable}>
                 <MobileTHead />
                 <h3>Features</h3>
                 <MobileTBody />
-                <TFoot />
             </div>
+            <TFoot />
         </div>
     );
 };

@@ -1,6 +1,7 @@
 .table-wrapper {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .mobileTable {
@@ -12,7 +13,7 @@
 }
 
 .table {
-    margin: 12.438rem;
+    margin: 12.438rem 12.438rem 0rem 12.438rem;
 
     width: calc(100vw - 12rem * 2);
 
@@ -343,7 +344,7 @@
 
     .mobileTable {
         display: block;
-        margin: 8.438rem;
+        margin: 8.438rem 8.438rem 0rem 8.438rem;
         width: calc(100vw - 8.438rem * 2);
     }
 
@@ -654,10 +655,13 @@
     grid-template-columns: repeat(2, 3fr);
     grid-auto-flow: dense;
     direction: rtl;
+
+    margin: 0rem 12.438rem
 }
 
 @media (max-width: 768px) {
     .tableFooter {
         display: flex;
+        margin: 0 18px;
     }
 }

@@ -32,6 +32,7 @@ export default function PricingDialogContainer(props: PricingDialogProps) {
         <>
             {show ? (
                 <div
+                    onClick={closeDialog}
                     className={`${styles.pricing__dialog__container} ${styles.animate__mount} ${
                         aboutToClose ? styles.animate__unmount : ""
                     }`}
