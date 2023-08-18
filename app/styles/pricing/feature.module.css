@@ -349,6 +349,7 @@
     }
 
     .mobileTHead {
+        width: 100%;
         border-collapse: collapse;
         border-bottom: 2px solid #2c2c2c;
         margin-bottom: 5px;
@@ -547,6 +548,10 @@
         padding-right: 20px;
         padding-top: 4px;
         padding-bottom: 4px;
+    }
+
+    .mobileTHead > thead > tr > th {
+        font-size: 20px;
     }
 }
 
