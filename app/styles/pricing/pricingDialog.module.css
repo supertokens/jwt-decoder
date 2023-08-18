@@ -68,11 +68,6 @@
 }
 
 .pill__cards {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.06);
 
@@ -92,6 +87,7 @@
     background: rgba(255, 153, 51, 0.1);
 
     padding: 2px 10px;
+    margin-right: 10px;
 }
 
 .sub__text {
@@ -124,6 +120,7 @@
     line-height: normal;
 
     padding: 2px 10px;
+    margin-right: 10px;
 }
 
 .orange {
@@ -163,14 +160,6 @@
     .pricing__dialog {
         padding: 30px 10px;
         margin: auto 20px;
-    }
-
-    .orange__pill {
-        font-size: 12px;
-    }
-
-    .gray__pill {
-        font-size: 12px;
     }
 
     .pill__cards {
