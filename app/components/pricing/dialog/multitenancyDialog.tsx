@@ -61,7 +61,7 @@ const multitenancyPricingConfig = [
                     color: "orange"
                 },
                 subText: {
-                    content: "$50 / month",
+                    content: "$50 / app / month",
                     highlight: ["$50"]
                 }
             }

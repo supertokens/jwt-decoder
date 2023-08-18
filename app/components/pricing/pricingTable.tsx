@@ -528,10 +528,6 @@ const TBody = () => {
 };
 
 
-const navigateToConsultancy = (e: React.MouseEvent<HTMLButtonElement>) => {
-    navigateOnButtonClick("consultancy", e);
-};
-
 const navigateToGuides = (e: React.MouseEvent<HTMLButtonElement>) => {
     navigateOnButtonClick("/docs/guides", e);
 };
@@ -552,7 +548,7 @@ const TFoot = () => {
         //         </td> */}
         //     </tr>
         // </tfoot>
-        <div className={styles.footer}>
+        <div className={styles.tableFooter}>
             <button onClick={navigateToGuides} className={styles.bordered}>
                 Get Started
             </button>
@@ -562,42 +558,68 @@ const TFoot = () => {
 
 const MobileTHead = () => {
     return (
-        <table className={styles.mobileTHead}>
-            <thead>
-                <tr>
-                    <th>Open Source</th>
-                    <th>Scale</th>
-                </tr>
-                <tr className={styles.highlight}>
-                    <td>Self host: Free at any scale</td>
-                    <td>Custom Pricing</td>
-                </tr>
-                <tr className={styles.highlight}>
-                    <td>
-                        Managed Service: $0.02 per MAU
-                        <br />
-                        <span className={styles.subtext}>Free under 5K MAU</span>
-                    </td>
-                    <td>Custom Pricing</td>
-                </tr>
-                <tr>
-                    <td>
-                        <button onClick={navigateToGuides} className={styles.bordered}>
-                            Get Started
-                        </button>
-                    </td>
-                    <td>
-                        <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
-                            Contact Us
-                        </button>
-                    </td>
-                </tr>
-            </thead>
-        </table>
+        <>
+            <table className={styles.mobileTHead}>
+                <thead>
+                    <tr>
+                        <th>Open Source</th>
+                        <th>Scale</th>
+                    </tr>
+                </thead>
+            </table>
+            <div>
+                <div className={styles.mobileSection}>
+                MAU Pricing
+                </div>
+                <div className={styles.highlight}>
+                   Self Host
+                </div>
+                <div className={styles.mobileFeature}>
+                    <div className={styles.check}>
+                        <div>
+                            <span>Free</span>
+                        </div>
+                        <div>
+                            <span>Free</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.highlight}>
+                   Managed Service
+                </div>
+                <div className={styles.mobileFeature}>
+                    <div className={styles.check}>
+                        <div>
+                            $0.02 per MAU
+                            <br />
+                            <span className={styles.subtext}>Free under 5K MAU</span>
+                        </div>
+                        <div>
+                            $0.02 per MAU
+                            <br />
+                            <span className={styles.subtext}>Free under 5K MAU</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 };
 
 const MobileTBody = () => {
+    const [isDashboardDialogOpen,setIsDashboardDialogOpen] = useState(false)
+    const [isMultiTenancyDialogOpen,setisMultiTenancyDialogOpen] = useState(false)
+
+    function openDialog(dialogType:string) {
+        if(dialogType === "multi-tenancy") {
+            setisMultiTenancyDialogOpen(true)
+        }
+
+        if(dialogType === "dashboard") {
+            setIsDashboardDialogOpen(true)
+        }
+    }
+
     return (
         <div>
             {rows.map((el, index) => {
@@ -622,11 +644,24 @@ const MobileTBody = () => {
                                 <div>
                                     {typeof el.scale === "boolean" && el.scale && <img src={scaleCheck.src} alt="" />}
                                     {/* {typeof el.scale === 'string' && <span>{el.scale}</span>} */}
+                                    {typeof el.scale === 'object' && el.scale && 
+                                    (el.scale.text === "See pricing"?
+                                        <button onClick={()=> openDialog(el.scale.dialogType)} className={styles.seePricing} ><span>{el.scale.text}</span></button>:
+                                    null)}
+                                    {typeof el.scale === "string" && el.scale && <span className={styles.scale}>{el.scale}</span>}
                                 </div>
                             </div>
                         </div>
                     );
             })}
+            {/* Dashboard Dialog */}
+           <PricingDialogContainer show={isDashboardDialogOpen} onClose={()=> setIsDashboardDialogOpen(false)}>
+                <DashboardDialog/>
+           </PricingDialogContainer>
+            {/* MultiTenancy Dialog */}
+           <PricingDialogContainer show={isMultiTenancyDialogOpen} onClose={()=> setisMultiTenancyDialogOpen(false)}>
+                <MultiTenancyDialog/>
+           </PricingDialogContainer>
         </div>
     );
 };

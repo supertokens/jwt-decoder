@@ -23,6 +23,11 @@ export default function PricingDialogContainer(props: PricingDialogProps) {
         }, 400);
     }
 
+    useEffect(() => {
+        const html = document.querySelector("html");
+        html.style.overflow = show ? "hidden" : "auto";
+    }, [show]);
+
     return (
         <>
             {show ? (
