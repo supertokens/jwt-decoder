@@ -338,7 +338,7 @@ const rows = [
         expandable: false,
         comingSoon: true,
         openSource: false,
-        scale: true,
+        scale: "Additional $0.01/MAU",
         data: {
             mainText: "Account Linking"
         }
