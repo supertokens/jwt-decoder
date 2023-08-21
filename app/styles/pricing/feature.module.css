@@ -327,7 +327,7 @@
     color: #ff9933;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .table {
         display: none;
     }
@@ -666,5 +666,5 @@
     grid-auto-flow: dense;
     direction: rtl;
 
-    margin: 0rem 12.438rem
+    margin: 0rem 12.438rem;
 }
