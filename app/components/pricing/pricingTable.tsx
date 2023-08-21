@@ -327,10 +327,9 @@ const rows = [
         expandable: false,
         comingSoon: true,
         openSource: false,
-        scale: true,
+        scale: "Additional $0.01/MAU",
         data: {
-            mainText: "Single login across multiple domains",
-            tooltip: "This only applies to domains that are not sub domains"
+            mainText: "Account Linking"
         }
     },
     {
@@ -338,13 +337,13 @@ const rows = [
         expandable: false,
         comingSoon: true,
         openSource: false,
-        scale: "Additional $0.01/MAU",
+        scale: true,
         data: {
-            mainText: "Account Linking"
+            mainText: "Single login across multiple domains",
+            tooltip: "This only applies to domains that are not sub domains"
         }
     },
-
-    {
+      {
         type: "section",
         data: {
             icon: everything,
