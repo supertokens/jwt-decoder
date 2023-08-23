@@ -25,7 +25,13 @@ export default function PricingDialogContainer(props: PricingDialogProps) {
 
     useEffect(() => {
         const html = document.querySelector("html");
-        html.style.overflow = show ? "hidden" : "auto";
+        if (show) {
+            html.style.overflow = "hidden";
+            html.style.marginRight = "0.7rem";
+        } else {
+            html.style.overflow = "auto";
+            html.style.marginRight = "0rem";
+        }
     }, [show]);
 
     return (
@@ -37,7 +43,12 @@ export default function PricingDialogContainer(props: PricingDialogProps) {
                         aboutToClose ? styles.animate__unmount : ""
                     }`}
                 >
-                    <div className={styles.pricing__dialog} onClick={(e)=> {e.stopPropagation()}}>
+                    <div
+                        className={styles.pricing__dialog}
+                        onClick={e => {
+                            e.stopPropagation();
+                        }}
+                    >
                         <span className={styles.close__dialog} onClick={closeDialog}>
                             <Image src={CrossIcon} alt="close" height={10} width={10} />
                         </span>
