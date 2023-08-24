@@ -213,5 +213,6 @@
     .gradient__btn {
         margin: auto;
         width: 100%;
+        padding: 14px 0px;
     }
 }
