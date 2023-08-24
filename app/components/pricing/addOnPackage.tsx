@@ -1,5 +1,4 @@
 import styles from "../../styles/pricing/addOnPackage.module.css";
-import { navigateOnButtonClick } from "../common/utils";
 
 const data = [
     {
@@ -51,9 +50,9 @@ export default function AddOnPackage() {
                     })}
                 </div>
                 <div className={styles.break} />
-                <button className={styles.gradient__btn}>
+                <a role="button" href="mailto:team@supertokens.com"  className={styles.gradient__btn}>
                     <span>Get in touch</span>
-                </button>
+                </a>
             </div>
         </section>
     );

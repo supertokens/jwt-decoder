@@ -31,6 +31,8 @@
 
     padding: 14px 82px;
     margin: auto;
+
+    text-decoration: none;
 }
 
 .gradient__btn > span {
