@@ -133,6 +133,11 @@
     z-index: 1;
 }
 
+.table-wrapper {
+    overflow-x: scroll;
+}
+
+
 @media screen and (max-width: 1000px) {
     .comparison {
         padding: 8.438rem;

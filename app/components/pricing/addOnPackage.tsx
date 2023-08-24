@@ -1,91 +1,60 @@
-import styles from "../../styles/pricing/addOnPackage.module.css"
-import { navigateOnButtonClick } from "../common/utils"
+import styles from "../../styles/pricing/addOnPackage.module.css";
+import { navigateOnButtonClick } from "../common/utils";
 
-const data = {
-    tier1: {
-        list: [
-            "Email + Shared slack channel",
-            "Response SLA: \nAcknowledgement - 48 hours (2 business days)",
-        ],
-        button: {
-            type: "bordered",
-            text: "Schedule a call",
-            link: "/consultancy"
-        }
+const data = [
+    {
+        title: "Multichannel Access",
+        content: "Reach us via Email, Slack, MS Teams, and Video calls."
     },
-    tier2: {
-        list: [
-            "Everything in Tier 1 plus:",
-            "Video calls, MS Teams (Max 3 hours per month)",
-            "Prioritised feature requests",
-            "Response SLA: \nAcknowledgement - 48 hours (2 business days)",
-        ],
-        button: {
-            type: "styled",
-            text: "Consult an Expert",
-            link: "/consultancy"
-        }
+    {
+        title: "Fast-Track Response",
+        content: "Guaranteed response times from 2 hours to 2 days."
     },
-    tier3: {
-        list: [
-            "Everything in Tier 2 plus:",
-            "Any custom requirement",
-            "Guidance on integrating new features and customizations",
-            "Response SLA: \nAcknowledgement - 24 hours (1 business day)",
-        ],
-        button: {
-            type: "solid",
-            text: "Consult an Expert",
-            link: "/consultancy"
-        }
+    {
+        title: "Types of queries",
+        content:
+            "Bug fixes, downtime issues, code reviews, testing, upgrades, customizations and integrating new features."
     },
-}
+    {
+        title: "Implementation and migration assistance",
+        content: "Architecture review, proof checking, manual testing and migrating your existing users."
+    }
+];
 
-const Card = ({tier}: { tier: number }) => {
-    // @ts-ignore
-    return <div className={styles[`tier${tier}`]}>
-        <div className={styles['info-wrapper']}>
-            <div className={styles.chip}>
+type SupportCardType = typeof data[0];
+
+function SupportCard({ title, content }: SupportCardType) {
+    return (
+        <div className={styles.support__card}>
+            <div className={styles.support__pill}>
                 <div>
-                    Tier {tier} Support
+                    <span>{title}</span>
                 </div>
             </div>
-            <hr className={styles.hr}/>
-            <ul className={styles.ul}>
-                {data[`tier${tier}`].list.map((el, index) => <li key={index}
-                                                                 className={el.startsWith("Every") ? styles.everything : ""}>{el}</li>)}
-            </ul>
-        </div>
-        <button onClick={getOnClick(data[`tier${tier}`].button.link)} className={styles[data[`tier${tier}`].button.type]}>
-            <span>{data[`tier${tier}`].button.text}</span>
-        </button>
-    </div>
-}
-
-const getOnClick = (link: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
-    navigateOnButtonClick(link, e);
-}
-
-const AddOnPackage = () => {
-    return <div className={styles.addOn}>
-        <h1 style={{ marginBottom: "60px" }}>Professional Support</h1>
-        <div className={styles.grid}>
-            <Card tier={1}/>
-            <Card tier={2}/>
-            <Card tier={3}/>
-            <div className={styles.basic}>
-                <div style={{display: "flex", alignItems: "center"}}>
-                    <h1>One Time</h1>&nbsp;
-                    {/* <span className={styles["get-in-touch-chip"]}>A one off deal</span> */}
-                </div>
-                <ul className={styles.ul}>
-                    <li>One time implementation and migration service</li>
-                    <li>Available on all tiers</li>
-                </ul>
-                <button onClick={getOnClick("/consultancy")} className={styles.bordered}>Get in touch</button>
+            <div className={styles.content__container}>
+                <div className={styles.line} />
+                <p>{content}</p>
             </div>
         </div>
-    </div>
+    );
 }
 
-export default AddOnPackage;
+export default function AddOnPackage() {
+    return (
+        <section className={styles.support__section}>
+            <h2>Professional Support</h2>
+            <p>We offer a range of options that include</p>
+            <div className={styles.support__container}>
+                <div className={styles.support__card__container}>
+                    {data.map(item => {
+                        return <SupportCard {...item} />;
+                    })}
+                </div>
+                <div className={styles.break} />
+                <button className={styles.gradient__btn}>
+                    <span>Get in touch</span>
+                </button>
+            </div>
+        </section>
+    );
+}
