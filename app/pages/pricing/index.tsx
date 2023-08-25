@@ -1,5 +1,5 @@
 import PricingHeader from "../../components/pricing/header";
-import AddOnPackage from "../../components/pricing/addOnPackage";
+import Support from "../../components/pricing/support";
 import PricingTable from "../../components/pricing/pricingTable";
 import FAQ from "../../components/pricing/faq";
 import Comparision from "../../components/pricing/comparision";
@@ -9,7 +9,7 @@ export default function PricingPage() {
     return <div style={{ maxWidth: "1440px", margin: "auto" }}>
         <PricingHeader />
         <PricingTable />
-        <AddOnPackage />
+        <Support />
         <Comparision />
         <FAQ />
     </div>
