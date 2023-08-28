@@ -36,6 +36,9 @@
 }
 
 .gradient__btn > span {
+    display: block;
+    text-align: center;
+    
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -98,6 +101,8 @@
 
 .support__pill > div {
     display: inline-block;
+    max-width: 190px;
+    width: fit-content;
 
     background: #000;
 
