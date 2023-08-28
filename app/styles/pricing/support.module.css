@@ -1,0 +1,225 @@
+.support__section {
+    color: #fff;
+
+    margin: 12.438rem 12.438rem 0;
+}
+
+.support__section > h2 {
+    color: #fff;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-bottom: 32px;
+}
+
+.support__section > p {
+    color: #aaa;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    margin-bottom: 72px;
+}
+
+.gradient__btn {
+    border-radius: 6px;
+    border: 1px solid rgba(255, 153, 51, 0.05);
+    background: linear-gradient(90deg, rgba(255, 233, 147, 0.2) 0%, rgba(235, 131, 28, 0.2) 100%);
+
+    padding: 14px 82px;
+    margin: auto;
+
+    text-decoration: none;
+}
+
+.gradient__btn > span {
+    display: block;
+    text-align: center;
+    
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    background: linear-gradient(90deg, #ffe993 0%, #eb831c 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.support__container {
+    position: relative;
+
+    background: #000;
+    border: 1px solid #292929;
+    box-shadow: 0 0 100px hsla(0, 0%, 100%, 0.08);
+    border-radius: 12px;
+    padding: 34px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.support__container::before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(180deg, #ffe993 0.68%, #eb831c 99.19%) !important;
+    top: -2px;
+    left: -2px;
+    border-radius: 12px;
+    z-index: -1;
+}
+
+.support__container::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 4px);
+    height: calc((100% + 4px));
+    background: linear-gradient(180deg, rgba(255, 233, 147, 0.3) 0.68%, rgba(235, 131, 28, 0.3) 99.19%) !important;
+
+    top: -2px;
+    left: -2px;
+    border-radius: 12px;
+    z-index: -1;
+    filter: blur(25px);
+}
+
+.support__pill {
+    display: inline-block;
+
+    background: linear-gradient(180deg, rgba(255, 231, 145, 0.3) 50%, rgba(235, 132, 29, 0.3) 100%);
+    padding: 1px;
+
+    border-radius: 6px;
+}
+
+.support__pill > div {
+    display: inline-block;
+    max-width: 190px;
+    width: fit-content;
+
+    background: #000;
+
+    border-radius: 6px;
+    padding: 2px 12px;
+}
+
+.support__pill > div > span {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    background: linear-gradient(126deg, #ffe791 0%, #eb841d 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.support__card__container {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px 26px;
+}
+
+.support__card {
+    height: auto;
+    width: 218px;
+}
+
+.line {
+    flex-shrink: 0;
+
+    width: 2px;
+    height: 16px;
+    margin-top: 5px;
+
+    background: linear-gradient(180deg, #ffe791 50%, #ec861f 100%);
+}
+
+.break {
+    margin: 24px 0;
+
+    height: 1px;
+    width: 100%;
+    background: rgba(255, 153, 51, 0.2);
+}
+
+.content__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 22px;
+}
+
+.content__container > p {
+    color: #ddd;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    margin: 0;
+}
+
+@media (max-width:1260px){
+    .support__card__container{
+        gap: 0px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .support__section {
+        margin: 8rem 8rem 0;
+    }
+
+    .support__container {
+        padding: 32px 64px;
+    }
+
+    .support__card {
+        width: 45%;
+    }
+
+    .support__card__container{
+        gap: 40px 26px;
+    }
+}
+
+@media (max-width: 768px) {
+    .support__container {
+        padding: 32px 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .support__card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .support__section {
+        margin: 8rem 2rem 0;
+    }
+}
+
+@media (max-width: 375px) {
+    .gradient__btn {
+        margin: auto;
+        width: 100%;
+        padding: 14px 0px;
+    }
+}
