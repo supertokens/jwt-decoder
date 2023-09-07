@@ -50,13 +50,13 @@ export default function PasswordlessLoginFeaturePage() {
                                                 text: "Start Today!"
                                             },
                                         },
-                                        // {
-                                        //     type: "image",
-                                        //     flex: "row",
-                                        //     image: FeaturePageIcons.MagicLinks.Landing as any,
-                                        //     imageClassName: universalStyles["landing-image"],
-                                        //     rootClassNames: [universalStyles["landing-image-container"]],
-                                        // },
+                                        {
+                                            type: "image",
+                                            flex: "row",
+                                            image: FeaturePageIcons.MagicLinks.Landing as any,
+                                            imageClassName: universalStyles["landing-image"],
+                                            rootClassNames: [universalStyles["landing-image-container"]],
+                                        },
                                     ],
                                 },
                             ],
