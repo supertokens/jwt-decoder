@@ -17,6 +17,7 @@ import React from "react";
 import PricingDialogContainer from "./dialog/pricingDialogContainer";
 import DashboardDialog from "./dialog/dashboardDialog";
 import MultiTenancyDialog from "./dialog/multitenancyDialog";
+import AccountLinkingDialog from "./dialog/accountLinkingDialog";
 
 const Tooltip = ({ position, text }) => {
     return (
@@ -327,7 +328,11 @@ const rows = [
         expandable: false,
         comingSoon: true,
         openSource: false,
-        scale: "Additional $0.01/MAU",
+        // scale: "Additional $0.01/MAU",
+        scale: {
+            text:"See pricing",
+            dialogType:"account-linking"
+        },
         data: {
             mainText: "Account Linking"
         }
@@ -465,6 +470,7 @@ const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDe
 const TBody = () => {
     const [isDashboardDialogOpen,setIsDashboardDialogOpen] = useState(false)
     const [isMultiTenancyDialogOpen,setisMultiTenancyDialogOpen] = useState(false)
+    const [isAccountLinkingDialogOpen,setIsAccountLinkingDialogOpen] = useState(false)
 
     function openDialog(dialogType:string) {
         if(dialogType === "multi-tenancy") {
@@ -473,6 +479,10 @@ const TBody = () => {
 
         if(dialogType === "dashboard") {
             setIsDashboardDialogOpen(true)
+        }
+
+        if(dialogType === "account-linking"){
+            setIsAccountLinkingDialogOpen(true)
         }
     }
     return (
@@ -521,6 +531,10 @@ const TBody = () => {
             {/* MultiTenancy Dialog */}
            <PricingDialogContainer show={isMultiTenancyDialogOpen} onClose={()=> setisMultiTenancyDialogOpen(false)}>
                 <MultiTenancyDialog/>
+           </PricingDialogContainer>
+            {/* Account Linking pricing dialog */}
+           <PricingDialogContainer show={isAccountLinkingDialogOpen} onClose={()=> setIsAccountLinkingDialogOpen(false)}>
+                <AccountLinkingDialog/>
            </PricingDialogContainer>
         </tbody>
     );
