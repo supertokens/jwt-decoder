@@ -183,8 +183,8 @@ const multitenancyConfig: FeaturePageSectionType = {
                 {
                     useIndicators: true,
                     indicatorBackground: "linear-gradient(90deg, #54F0FF 0%, #345BD3 100%)",
-                    title: "Unique or shared user pools",
-                    subtitle: "With SuperTokens built in flexibility, you can share the same user pool for some tenants and provide unique user pools to other tenants (eg: different pricing tiers)",
+                    title: "Unique user pools",
+                    subtitle: "Each tenant has its own user pool. You can store each pool in a shared db (logical isolation), or in separate dbs (physical isolation).",
                     imagePath: FeaturePageIcons.Multitenancy.Benefits2 as any,
                     imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
                 },
