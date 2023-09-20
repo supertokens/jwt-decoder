@@ -153,6 +153,13 @@
     line-height: 23px;
 }
 
+.para {
+    color: #ddd;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23px;
+}
+
 @media (max-width: 640px) {
     .pricing__dialog > ul > li {
         font-size: 14px;

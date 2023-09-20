@@ -22,6 +22,15 @@ export default function AccountLinkingDialog() {
                     </div>
                 </div>
             </div>
+            <div className={styles.underline} />
+            <p className={styles.para}>Account linking costs minimum $100 / month (for both managed and self hosted)</p>
+            <span className={styles.gray__pill}>Pricing Examples</span>
+            <ul>
+                <li>If you have &gt; 5K MAU, that costs minimum of $100</li>
+                <li>
+                    2 tenants with email password in one (2 users), and social login in another (5 users): $5 / month
+                </li>
+            </ul>
         </>
     );
 }
