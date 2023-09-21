@@ -622,6 +622,7 @@ const MobileTHead = () => {
 const MobileTBody = () => {
     const [isDashboardDialogOpen,setIsDashboardDialogOpen] = useState(false)
     const [isMultiTenancyDialogOpen,setisMultiTenancyDialogOpen] = useState(false)
+    const [isAccountLinkingDialogOpen,setIsAccountLinkingDialogOpen] = useState(false)
 
     function openDialog(dialogType:string) {
         if(dialogType === "multi-tenancy") {
@@ -631,8 +632,12 @@ const MobileTBody = () => {
         if(dialogType === "dashboard") {
             setIsDashboardDialogOpen(true)
         }
-    }
 
+        if(dialogType === "account-linking"){
+            setIsAccountLinkingDialogOpen(true)
+        }
+    }
+    
     return (
         <div>
             {rows.map((el, index) => {
@@ -674,6 +679,10 @@ const MobileTBody = () => {
             {/* MultiTenancy Dialog */}
            <PricingDialogContainer show={isMultiTenancyDialogOpen} onClose={()=> setisMultiTenancyDialogOpen(false)}>
                 <MultiTenancyDialog/>
+           </PricingDialogContainer>
+              {/* Account Linking pricing dialog */}
+            <PricingDialogContainer show={isAccountLinkingDialogOpen} onClose={()=> setIsAccountLinkingDialogOpen(false)}>
+                <AccountLinkingDialog/>
            </PricingDialogContainer>
         </div>
     );
