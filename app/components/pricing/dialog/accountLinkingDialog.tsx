@@ -4,7 +4,7 @@ export default function AccountLinkingDialog() {
     return (
         <>
             <h1 className={styles.dialog__heading}>Account Linking</h1>
-            <div className={styles.pricing__card__container}>
+            <div className={styles.pricing__card__container+ " "+ styles.greyish__border}>
                 <div className={styles.pricing__card__wrapper}>
                     <div className={styles.pricing__card}>
                         <div className={styles.pill__cards}>
@@ -20,16 +20,22 @@ export default function AccountLinkingDialog() {
                             </span>
                         </div>
                     </div>
+                    <div className={styles.underline} />
+                    <h3 className={styles.dialog__heading_2}>Minimum $100 / month</h3>
                 </div>
             </div>
-            <div className={styles.underline} />
-            <p className={styles.para}>Account linking costs minimum $100 / month (for both managed and self hosted)</p>
             <span className={styles.gray__pill}>Pricing Examples</span>
             <ul>
-                <li>If you have &gt; 5K MAU, that costs minimum of $100</li>
+                <li>For managed service, if you have 1 - 4,999 MAUs, that will be $100 / month.</li>
                 <li>
-                    2 tenants with email password in one (2 users), and social login in another (5 users): $5 / month
+                    For managed service, if you have 5,000 MAUs, that will be ( $0.02 + $0.005 ) * 5000 = $125 / month
                 </li>
+                <li>
+                    For managed service, if you have 7,000 MAUs, that will be ( $0.02 + $0.005 ) * 7000 = $175 / month
+                </li>
+                <li>For self hosted, if you have 1 - 10,000 MAUs, that will be, $100 / month</li>
+                <li>For self hosted, if you have 10,001 MAUs, that will be ( $0.01 * 10001 ) = $100.01 / month</li>
+                <li>For self hosted, if you have 15,000 MAUs, that will be ( $0.01 * 15000 ) = $150 / month</li>
             </ul>
         </>
     );
