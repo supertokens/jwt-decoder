@@ -33,7 +33,7 @@ export default function AccountLinkingDialog() {
                 <li>
                     For managed service, if you have 7,000 MAUs, that will be ( $0.02 + $0.005 ) * 7000 = $175 / month
                 </li>
-                <li>For self hosted, if you have 1 - 10,000 MAUs, that will be, $100 / month</li>
+                <li>For self hosted, if you have 1 - 10,000 MAUs, that will be $100 / month</li>
                 <li>For self hosted, if you have 10,001 MAUs, that will be ( $0.01 * 10001 ) = $100.01 / month</li>
                 <li>For self hosted, if you have 15,000 MAUs, that will be ( $0.01 * 15000 ) = $150 / month</li>
             </ul>
