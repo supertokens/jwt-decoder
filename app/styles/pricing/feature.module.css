@@ -1,16 +1,19 @@
 .table-wrapper {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .mobileTable {
     display: none;
 }
 
-.table {
-    margin: 12.438rem;
+.mobileTable > h3 {
+    margin: 18px 0px;
+}
 
-    width: calc(100vw - 12rem * 2);
+.table {
+    margin: 12.438rem 12.438rem 0rem 12.438rem;
 
     display: block;
 
@@ -223,6 +226,14 @@
     margin-left: 10px;
 }
 
+.expandbleIcon {
+    transform: rotate(-90deg);
+}
+
+.opened {
+    transform: rotate(0deg) !important;
+}
+
 .expandable > .sublist > ul {
     padding-left: 20px;
 }
@@ -316,18 +327,19 @@
     color: #ff9933;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .table {
         display: none;
     }
 
     .mobileTable {
         display: block;
-        margin: 8.438rem;
+        margin: 8.438rem 8.438rem 0rem 8.438rem;
         width: calc(100vw - 8.438rem * 2);
     }
 
     .mobileTHead {
+        width: 100%;
         border-collapse: collapse;
         border-bottom: 2px solid #2c2c2c;
         margin-bottom: 5px;
@@ -342,6 +354,12 @@
         padding-bottom: 12px;
         font-size: 24px;
         font-weight: 700;
+
+        width: 50%;
+    }
+
+    .mobileTHead > thead > tr > th:not(:last-child) {
+        border-right: 1px solid #5c5c5c;
     }
 
     .mobileTHead > thead > tr > td {
@@ -368,6 +386,9 @@
         padding: 7px;
         background: #1f1f1f;
         text-align: center;
+
+        font-weight: 600;
+        font-size: 16px;
     }
 
     .mobileSection > img {
@@ -406,7 +427,7 @@
         color: white;
         text-align: center;
         padding: 14px;
-        font-size: 12px;
+        font-size: 14px;
         border: 1px solid #2c2c2c;
     }
 
@@ -439,6 +460,17 @@
         text-align: center;
         font-size: 24px;
         font-weight: 700;
+    }
+
+    .tableFooter {
+        display: flex !important;
+        margin: 0 8.438rem !important;
+    }
+
+    .highlight {
+        padding: 12px;
+        text-align: center;
+        color: white;
     }
 }
 
@@ -518,6 +550,14 @@
         padding-top: 4px;
         padding-bottom: 4px;
     }
+
+    .mobileTHead > thead > tr > th {
+        font-size: 20px;
+    }
+
+    .tableFooter {
+        margin: 0 18px !important;
+    }
 }
 
 .externalLink {
@@ -535,7 +575,6 @@
     text-underline-offset: 4px;
 }
 
-
 .externalLink > a:hover {
     text-decoration: underline;
     text-underline-offset: 4px;
@@ -546,4 +585,86 @@
     height: 14px !important;
     width: 14px !important;
     margin-left: 8px;
+}
+
+.pricingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.pricingContainer > img {
+    height: 14px;
+    margin: 0 !important;
+}
+
+.gradientLink {
+    color: #ff6433;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    text-decoration: none;
+    text-underline-offset: 4px;
+
+    cursor: pointer;
+
+    padding-bottom: 4px;
+    position: relative;
+    display: table;
+    margin: 0;
+}
+
+.gradientLink:hover {
+    text-decoration: underline;
+}
+
+.spacer {
+    height: 10px;
+    width: 100%;
+}
+
+.spacer > td {
+    padding: 0 !important;
+}
+
+.scale {
+    color: #f93;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.seePricing {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+    padding: 2px 10px;
+
+    border-radius: 4px;
+    border: 1px solid rgba(255, 153, 51, 0.11);
+    background: rgba(255, 153, 51, 0.15);
+
+    cursor: pointer;
+}
+
+.seePricing > span {
+    background: linear-gradient(105deg, #f93 0%, #ff6433 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tableFooter {
+    display: grid;
+    grid-template-columns: repeat(2, 3fr);
+    grid-auto-flow: dense;
+    direction: rtl;
+
+    margin: 0rem 12.438rem
 }

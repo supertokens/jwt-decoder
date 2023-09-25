@@ -14,6 +14,10 @@ import linkPng from '../../assets/pricing/link.png'
 import { useState } from "react";
 import { navigateOnButtonClick } from "../common/utils";
 import React from "react";
+import PricingDialogContainer from "./dialog/pricingDialogContainer";
+import DashboardDialog from "./dialog/dashboardDialog";
+import MultiTenancyDialog from "./dialog/multitenancyDialog";
+import AccountLinkingDialog from "./dialog/accountLinkingDialog";
 
 const Tooltip = ({ position, text }) => {
     return (
@@ -38,38 +42,47 @@ const Thead = () => {
                 <th>Open Source</th>
                 <th>Scale</th>
             </tr>
+            <tr className={styles.section}>
+                <td className={styles.left_align}>
+                    <span className={styles["section-text"]}>MAU Pricing</span>
+                </td>
+                <td />
+                <td />
+            </tr>
+            <tr className={styles.spacer}>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {/* <div className={s}/> */}
             <tr className={styles.highlight}>
                 <td className={styles.left_align}>
                     Self host
-                    <img src={selfHOst.src} alt="" />
+                    <img src={selfHOst.src} alt="self-hosted" />
                 </td>
-                <td>Free at any scale</td>
-                <td>Custom Pricing</td>
+                <td>Free</td>
+                <td>Free</td>
             </tr>
             <tr className={styles.highlight}>
                 <td className={styles.left_align}>
                     Managed Service
-                    <img src={managed.src} alt="" />
+                    <img src={managed.src} alt="manged" />
                 </td>
                 <td>
                     <span>$0.02 per MAU</span>
                     <br />
                     <span className={styles.subtext}>Free under 5K MAU</span>
                 </td>
-                <td>Custom Pricing</td>
+                <td> 
+                    <span>$0.02 per MAU</span>
+                    <br />
+                    <span className={styles.subtext}>Free under 5K MAU</span>
+                </td>
             </tr>
-            <tr>
+            <tr className={styles.spacer}>
                 <td></td>
-                <td>
-                    <button onClick={navigateToGuides} className={styles.bordered}>
-                        Get Started
-                    </button>
-                </td>
-                <td>
-                    <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
-                        Contact Us
-                    </button>
-                </td>
+                <td></td>
+                <td></td>
             </tr>
         </thead>
     );
@@ -164,7 +177,6 @@ const rows = [
             mainText: "Email Verification, forgot password flows"
         }
     },
-
     {
         type: "feature",
         expandable: true,
@@ -237,17 +249,43 @@ const rows = [
                 {
                     text: "Included seats",
                     tooltip: "Open source plan: 3 seats. Scale plan: 10 seats"
-                }
+                },
+                "Number of Users"
             ]
         }
     },
-
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        openSource: "≤3",
+        scale: {
+            text:"See pricing",
+            dialogType:"dashboard"
+        },
+        data: {
+            mainText: "Number of Dashboard Users"
+        }
+    },
+    {    
+        type: "feature",
+        openSource: true,
+        expandable: false,
+        comingSoon: false,
+        scale: true,
+        data: {
+            mainText: "M2M authentication"
+        }
+    },
     {
         type: "feature",
         expandable: true,
         comingSoon: false,
         openSource: false,
-        scale: true,
+        scale: {
+            text:"See pricing",
+            dialogType:"multi-tenancy"
+        },
         data: {
             mainText: "Multi tenancy and Organisational support",
             links: [{
@@ -268,7 +306,9 @@ const rows = [
                     }]
                 },
                 "Data isolation on a per tenant level",
-                "Sharing a user across tenants"
+                "Sharing a user across tenants",
+                //@ saml auth is missing in auth, maybe nevil didn't know about this change.
+                "SAML Auth"
             ]
         }
     },
@@ -277,24 +317,26 @@ const rows = [
         type: "feature",
         expandable: true,
         openSource: false,
-        scale: true,
+        scale: "Additional $0.01/MAU",
         data: {
             mainText: "2FA",
             subList: ["Email", "Phone number", "TOTP (Coming Soon)", "QR code (Coming Soon)", "Biometric (Coming Soon)"]
         }
     },
-
     {
         type: "feature",
         expandable: false,
-        comingSoon: false,
+        comingSoon: true,
         openSource: false,
-        scale: true,
+        // scale: "Additional $0.01/MAU",
+        scale: {
+            text:"See pricing",
+            dialogType:"account-linking"
+        },
         data: {
-            mainText: "SAML Auth"
+            mainText: "Account Linking"
         }
     },
-
     {
         type: "feature",
         expandable: false,
@@ -306,30 +348,7 @@ const rows = [
             tooltip: "This only applies to domains that are not sub domains"
         }
     },
-
-    {
-        type: "feature",
-        expandable: false,
-        comingSoon: true,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "M2M authentication"
-        }
-    },
-
-    {
-        type: "feature",
-        expandable: false,
-        comingSoon: true,
-        openSource: false,
-        scale: true,
-        data: {
-            mainText: "Account Linking"
-        }
-    },
-
-    {
+      {
         type: "section",
         data: {
             icon: everything,
@@ -371,7 +390,7 @@ const rows = [
         type: "feature",
         expandable: false,
         comingSoon: false,
-        openSource: true,
+        openSource: false,
         scale: true,
         data: {
             mainText: "Uptime guarantees (SLAs)"
@@ -425,7 +444,7 @@ const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDe
                 </span>
                 <div>
                     {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>}
-                    {row.expandable && <img   src={dropIcon.src} />}
+                    {row.expandable && <img className={`${styles.expandbleIcon} ${expand ? styles.opened :""}`}   src={dropIcon.src} />}
                 </div>
             </div>
             {row.expandable && expand && (
@@ -449,6 +468,23 @@ const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDe
 };
 
 const TBody = () => {
+    const [isDashboardDialogOpen,setIsDashboardDialogOpen] = useState(false)
+    const [isMultiTenancyDialogOpen,setisMultiTenancyDialogOpen] = useState(false)
+    const [isAccountLinkingDialogOpen,setIsAccountLinkingDialogOpen] = useState(false)
+
+    function openDialog(dialogType:string) {
+        if(dialogType === "multi-tenancy") {
+            setisMultiTenancyDialogOpen(true)
+        }
+
+        if(dialogType === "dashboard") {
+            setIsDashboardDialogOpen(true)
+        }
+
+        if(dialogType === "account-linking"){
+            setIsAccountLinkingDialogOpen(true)
+        }
+    }
     return (
         <tbody>
             {rows.map((el, index) => {
@@ -478,20 +514,32 @@ const TBody = () => {
                             </td>
                             <td>
                                 {typeof el.scale === "boolean" && el.scale && <img src={scaleCheck.src} alt="" />}
-                                {/* {typeof el.scale === 'string' && <span>{el.scale}</span>} */}
+                                {typeof el.scale === 'object' && el.scale && 
+                                (el.scale.text === "See pricing"?
+                                    <button onClick={()=> openDialog(el.scale.dialogType)} className={styles.seePricing} ><span>{el.scale.text}</span></button>:
+                                null)}
+                                {typeof el.scale === "string" && el.scale && <span className={styles.scale}>{el.scale}</span>}
                             </td>
                         </tr>
                     );
                 }
             })}
+            {/* Dashboard Dialog */}
+           <PricingDialogContainer show={isDashboardDialogOpen} onClose={()=> setIsDashboardDialogOpen(false)}>
+                <DashboardDialog/>
+           </PricingDialogContainer>
+            {/* MultiTenancy Dialog */}
+           <PricingDialogContainer show={isMultiTenancyDialogOpen} onClose={()=> setisMultiTenancyDialogOpen(false)}>
+                <MultiTenancyDialog/>
+           </PricingDialogContainer>
+            {/* Account Linking pricing dialog */}
+           <PricingDialogContainer show={isAccountLinkingDialogOpen} onClose={()=> setIsAccountLinkingDialogOpen(false)}>
+                <AccountLinkingDialog/>
+           </PricingDialogContainer>
         </tbody>
     );
 };
 
-
-const navigateToConsultancy = (e: React.MouseEvent<HTMLButtonElement>) => {
-    navigateOnButtonClick("consultancy", e);
-};
 
 const navigateToGuides = (e: React.MouseEvent<HTMLButtonElement>) => {
     navigateOnButtonClick("/docs/guides", e);
@@ -499,64 +547,97 @@ const navigateToGuides = (e: React.MouseEvent<HTMLButtonElement>) => {
 
 const TFoot = () => {
     return (
-        <tfoot>
-            <tr>
-                <td></td>
-                <td>
-                    <h1>Open Source</h1>
-                    <button onClick={navigateToGuides} className={styles.bordered}>
-                        Get Started
-                    </button>
-                </td>
-                <td>
-                    <h1>Pay when you scale</h1>
-                    <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
-                        Contact Us
-                    </button>
-                </td>
-            </tr>
-        </tfoot>
+        // <tfoot>
+        //     <tr>
+        //         <td></td>
+        //         <td>
+                    
+        //         </td>
+        //         {/* <td>
+        //             <h1>Pay when you scale</h1>
+        //             <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
+        //                 Contact Us
+        //             </button>
+        //         </td> */}
+        //     </tr>
+        // </tfoot>
+        <div className={styles.tableFooter}>
+            <button onClick={navigateToGuides} className={styles.bordered}>
+                Get Started
+            </button>
+        </div>
     );
 };
 
 const MobileTHead = () => {
     return (
-        <table className={styles.mobileTHead}>
-            <thead>
-                <tr>
-                    <th>Open Source</th>
-                    <th>Scale</th>
-                </tr>
-                <tr className={styles.highlight}>
-                    <td>Self host: Free at any scale</td>
-                    <td>Custom Pricing</td>
-                </tr>
-                <tr className={styles.highlight}>
-                    <td>
-                        Managed Service: $0.02 per MAU
-                        <br />
-                        <span className={styles.subtext}>Free under 5K MAU</span>
-                    </td>
-                    <td>Custom Pricing</td>
-                </tr>
-                <tr>
-                    <td>
-                        <button onClick={navigateToGuides} className={styles.bordered}>
-                            Get Started
-                        </button>
-                    </td>
-                    <td>
-                        <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
-                            Contact Us
-                        </button>
-                    </td>
-                </tr>
-            </thead>
-        </table>
+        <>
+            <table className={styles.mobileTHead}>
+                <thead>
+                    <tr>
+                        <th>Open Source</th>
+                        <th>Scale</th>
+                    </tr>
+                </thead>
+            </table>
+            <div>
+                <div className={styles.mobileSection}>
+                MAU Pricing
+                </div>
+                <div className={styles.highlight}>
+                   Self Host
+                </div>
+                <div className={styles.mobileFeature}>
+                    <div className={styles.check}>
+                        <div>
+                            <span>Free</span>
+                        </div>
+                        <div>
+                            <span>Free</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.highlight}>
+                   Managed Service
+                </div>
+                <div className={styles.mobileFeature}>
+                    <div className={styles.check}>
+                        <div>
+                            $0.02 per MAU
+                            <br />
+                            <span className={styles.subtext}>Free under 5K MAU</span>
+                        </div>
+                        <div>
+                            $0.02 per MAU
+                            <br />
+                            <span className={styles.subtext}>Free under 5K MAU</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 };
 
 const MobileTBody = () => {
+    const [isDashboardDialogOpen,setIsDashboardDialogOpen] = useState(false)
+    const [isMultiTenancyDialogOpen,setisMultiTenancyDialogOpen] = useState(false)
+    const [isAccountLinkingDialogOpen,setIsAccountLinkingDialogOpen] = useState(false)
+
+    function openDialog(dialogType:string) {
+        if(dialogType === "multi-tenancy") {
+            setisMultiTenancyDialogOpen(true)
+        }
+
+        if(dialogType === "dashboard") {
+            setIsDashboardDialogOpen(true)
+        }
+
+        if(dialogType === "account-linking"){
+            setIsAccountLinkingDialogOpen(true)
+        }
+    }
+    
     return (
         <div>
             {rows.map((el, index) => {
@@ -581,41 +662,58 @@ const MobileTBody = () => {
                                 <div>
                                     {typeof el.scale === "boolean" && el.scale && <img src={scaleCheck.src} alt="" />}
                                     {/* {typeof el.scale === 'string' && <span>{el.scale}</span>} */}
+                                    {typeof el.scale === 'object' && el.scale && 
+                                    (el.scale.text === "See pricing"?
+                                        <button onClick={()=> openDialog(el.scale.dialogType)} className={styles.seePricing} ><span>{el.scale.text}</span></button>:
+                                    null)}
+                                    {typeof el.scale === "string" && el.scale && <span className={styles.scale}>{el.scale}</span>}
                                 </div>
                             </div>
                         </div>
                     );
             })}
+            {/* Dashboard Dialog */}
+           <PricingDialogContainer show={isDashboardDialogOpen} onClose={()=> setIsDashboardDialogOpen(false)}>
+                <DashboardDialog/>
+           </PricingDialogContainer>
+            {/* MultiTenancy Dialog */}
+           <PricingDialogContainer show={isMultiTenancyDialogOpen} onClose={()=> setisMultiTenancyDialogOpen(false)}>
+                <MultiTenancyDialog/>
+           </PricingDialogContainer>
+              {/* Account Linking pricing dialog */}
+            <PricingDialogContainer show={isAccountLinkingDialogOpen} onClose={()=> setIsAccountLinkingDialogOpen(false)}>
+                <AccountLinkingDialog/>
+           </PricingDialogContainer>
         </div>
     );
 };
 
-const MobileTFoot = () => {
-    return (
-        <table className={styles.mobileTFoot}>
-            <tfoot>
-                <tr>
-                    <td className={styles["open-source-footer"]}>
-                        <div>
-                            <h1>Open source</h1>
-                            <button onClick={navigateToGuides} className={styles.bordered}>
-                                Get Started
-                            </button>
-                        </div>
-                    </td>
-                    <td className={styles["paid-footer"]}>
-                        <div>
-                            <h1>Pay when you scale</h1>
-                            <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
-                                Contact Us
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-    );
-};
+// const MobileTFoot = () => {
+//     return (
+//         <table className={styles.mobileTFoot}>
+//             <tfoot>
+//                 <tr>
+//                     <td className={styles["open-source-footer"]}>
+//                         <div>
+//                             <h1>Open source</h1>
+//                             <button onClick={navigateToGuides} className={styles.bordered}>
+//                                 Get Started
+//                             </button>
+//                         </div>
+//                     </td>
+//                     <td className={styles["paid-footer"]}>
+//                         <div>
+//                             <h1>Pay when you scale</h1>
+//                             <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
+//                                 Contact Us
+//                             </button>
+//                         </div>
+//                     </td>
+//                 </tr>
+//             </tfoot>
+//         </table>
+//     );
+// };
 
 const PricingTable = () => {
     return (
@@ -623,14 +721,13 @@ const PricingTable = () => {
             <table className={styles.table}>
                 <Thead />
                 <TBody />
-                <TFoot />
             </table>
             <div className={styles.mobileTable}>
                 <MobileTHead />
                 <h3>Features</h3>
                 <MobileTBody />
-                <MobileTFoot />
             </div>
+            <TFoot />
         </div>
     );
 };

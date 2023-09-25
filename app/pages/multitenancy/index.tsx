@@ -109,7 +109,7 @@ export default function MultiTenancyFeaturePage() {
                                 {
                                     type: "text",
                                     flex: "column",
-                                    text: "You have multiple independent applications with their own login and signup pages.\nHowever, instead of hosting SuperTokens for each app individually, you can use the multi tenancy feature to run a single SuperTokens instance to power all the apps. (with their own user pools)",
+                                    text: "You have multiple independent applications with their own login and signup pages.\nHowever, instead of hosting SuperTokens for each app individually, you can use the multi tenancy feature to run a single SuperTokens instance to power all the apps (with their own user pools).",
                                 }
                             ],
                         },
