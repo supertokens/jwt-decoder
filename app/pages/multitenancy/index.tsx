@@ -151,7 +151,7 @@ export default function MultiTenancyFeaturePage() {
                                                     bullets: [
                                                         {
                                                             title: "We have two pricing models:",
-                                                            subtitle: "Tenants without SSO\nTenants with enterprise SSO",
+                                                            subtitle: "Tenants with Email password, Social or Passwordless login\nTenants with enterprise SSO",
                                                             displaySubtitleBullets: true,
                                                             hideIndicator: true,
                                                         }
