@@ -16,6 +16,12 @@ export default function SocialLoginPage() {
                     },
                     sections: [
                         {
+                            flex: "row",
+                            minimumPaddingRight: true,
+                            backgroundConfig: {
+                                background: FeaturePageIcons.MagicLinks.LandingBG,
+                                className: universalStyles["landing-bg"],
+                            },
                             children: [
                                 {
                                     type: "nested",
@@ -81,52 +87,6 @@ export default function SocialLoginPage() {
                                     text:
                                         "With Social Login end users can leverage existing login information from social network providers like Facebook, Google, or Github to sign into your website without having to create a new account specifically for that website. This reduces the friction for users when signing up to your website."
                                 }
-                                // {
-                                //     type: "pill",
-                                //     flex: "row",
-                                //     text: "User Flow",
-                                //     iconPath: FeaturePageIcons.UserFlowPill as any
-                                // },
-                                // {
-                                //     type: "bullets-list",
-                                //     direction: "horizontal",
-                                //     flex: "row",
-                                //     bullets: [
-                                //         {
-                                //             subtitle:
-                                //                 "Multiple organisations sign up to your SaaS app and require their own login methods or SSO configurations.",
-                                //             imagePath: FeaturePageIcons.Multitenancy.UserFlow1 as any
-                                //         },
-                                //         {
-                                //             subtitle:
-                                //                 "Your app needs to offer unique user pools for each customer organization",
-                                //             imagePath: FeaturePageIcons.Multitenancy.UserFlow2 as any
-                                //         },
-                                //         {
-                                //             subtitle:
-                                //                 "You can host all organizations on the same domain or offer each organization their own unique subdomain",
-                                //             imagePath: FeaturePageIcons.Multitenancy.UserFlow3 as any
-                                //         }
-                                //     ]
-                                // },
-                                // {
-                                //     type: "text",
-                                //     flex: "column",
-                                //     text:
-                                //         "Offer access control (authorization) and assign roles to the different members within the organization"
-                                // },
-                                // {
-                                //     type: "pill",
-                                //     flex: "row",
-                                //     text: "User Flow example 2",
-                                //     iconPath: FeaturePageIcons.UserFlowPill as any
-                                // },
-                                // {
-                                //     type: "text",
-                                //     flex: "column",
-                                //     text:
-                                //         "You have multiple independent applications with their own login and signup pages.\nHowever, instead of hosting SuperTokens for each app individually, you can use the multi tenancy feature to run a single SuperTokens instance to power all the apps. (with their own user pools)"
-                                // }
                             ]
                         },
                         {
