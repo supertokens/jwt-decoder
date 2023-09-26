@@ -42,17 +42,17 @@ export default function SocialLoginPage() {
                                                 universalStyles["landing-text-container"],
                                                 socialLoginStyles["landing-text-container"]
                                             ]
+                                        },
+                                        {
+                                            type: "image",
+                                            flex: "row",
+                                            image: FeaturePageIcons.SocialLogin.Landing as any,
+                                            imageClassName: universalStyles["landing-image"],
+                                            rootClassNames: [
+                                                universalStyles["landing-image-container"],
+                                                socialLoginStyles["landing-image-container"]
+                                            ]
                                         }
-                                        // {
-                                        //     type: "image",
-                                        //     flex: "row",
-                                        //     image: FeaturePageIcons.Multitenancy.Landing as any,
-                                        //     imageClassName: universalStyles["landing-image"],
-                                        //     rootClassNames: [
-                                        //         universalStyles["landing-image-container"],
-                                        //         socialLoginStyles["landing-image-container"]
-                                        //     ]
-                                        // }
                                     ]
                                 },
                             ]
@@ -60,8 +60,8 @@ export default function SocialLoginPage() {
                         {
                             divider: {
                                 dividerBackground:
-                                    "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(98, 246, 255, 0.20) 0%, rgba(98, 246, 255, 0.00) 100%)",
-                                hueColor: "rgba(98, 246, 255, 0.15)"
+                                    "linear-gradient(45deg, rgba(98, 246, 255, 0) 10%,rgba(98, 246, 255, 0.10) 55%, rgba(98, 246, 255, 0.00) 100%)",
+                                hueColor: "linear-gradient(45deg,rgba(98, 246, 255, 0.2),rgba(98, 246, 255, 0.2))"
                             },
                             children: [
                                 {
