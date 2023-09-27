@@ -3,6 +3,7 @@ import { SSO } from "./sso";
 import { Multitenancy } from "./multitenancy";
 import UserFlowPillIcon from "./user-flow-pill-icon.svg";
 import { SuperTokensBenefits } from "./supertokens-benefits";
+import { Passwordless } from "./passwordless-login"
 
 export const FeaturePageIcons = {
     UserFlowPill: UserFlowPillIcon,
@@ -10,4 +11,5 @@ export const FeaturePageIcons = {
     SSO,
     SuperTokensBenefits,
     Multitenancy,
+    Passwordless
 }

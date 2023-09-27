@@ -1,31 +1,25 @@
 import { PageContainer } from "../../components/common/page-container";
 import { FeaturePageBase } from "../../components/feature-pages/feature-page-base";
-import {
-    FeaturePageIcons,
-} from "../../assets/images";
+import { FeaturePageIcons } from "../../assets/images";
 import universalStyles from "../../styles/feature-pages/universal-styles.module.css";
 
 PasswordlessLoginFeaturePage.title = "Passwordless Login";
 export default function PasswordlessLoginFeaturePage() {
     return (
         <PageContainer>
-            <FeaturePageBase 
+            <FeaturePageBase
                 config={{
                     primaryColor: "#A2FACF",
                     gradient: {
-                        colors: [
-                            "#0089D6",
-                            "#70EA66",
-                        ],
+                        colors: ["#6272FF", "#54D569"]
                     },
                     sections: [
                         {
                             flex: "row",
-                            minimumPaddingRight: true,
+                            minimumPaddingRight: false,
                             backgroundConfig: {
                                 background: FeaturePageIcons.MagicLinks.LandingBG,
-                                className: universalStyles["landing-bg"],
-                                // position: "right",
+                                className: universalStyles["landing-bg"]
                             },
                             children: [
                                 {
@@ -41,30 +35,32 @@ export default function PasswordlessLoginFeaturePage() {
                                                 text: "Passwordless Login",
                                                 highlight: {
                                                     mode: "primary",
-                                                    texts: [],
-                                                },
+                                                    texts: []
+                                                }
                                             },
-                                            subtitle: "Passwordless Login streamlines the authentication experience and increases security.",
+                                            subtitle:
+                                                "Passwordless Login streamlines the authentication experience and increases security.",
                                             cta: {
                                                 targetUrl: "/docs/passwordless/introduction",
                                                 text: "Start Today!"
-                                            },
+                                            }
                                         },
                                         {
                                             type: "image",
                                             flex: "row",
-                                            image: FeaturePageIcons.MagicLinks.Landing as any,
+                                            image: FeaturePageIcons.Passwordless.Landing as any,
                                             imageClassName: universalStyles["landing-image"],
-                                            rootClassNames: [universalStyles["landing-image-container"]],
-                                        },
-                                    ],
-                                },
-                            ],
+                                            rootClassNames: [universalStyles["landing-image-container"]]
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             divider: {
-                                dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(112, 234, 102, 0.20) 0%, rgba(112, 234, 102, 0.00) 100%))",
-                                hueColor: "rgba(162, 250, 207, 0.15)",
+                                dividerBackground:
+                                    "linear-gradient(45deg, rgba(98, 246, 255, 0) 0%,rgba(98, 246, 255, 0.12) 45%, rgba(98, 246, 255, 0.00) 100%)",
+                                hueColor: "linear-gradient(45deg,rgba(98, 246, 255, 0.15),rgba(98, 246, 255, 0.15))"
                             },
                             children: [
                                 {
@@ -74,48 +70,25 @@ export default function PasswordlessLoginFeaturePage() {
                                         text: "What is Passwordless login?",
                                         highlight: {
                                             mode: "grey-out",
-                                            texts: ["Passwordless", "login?"],
-                                        },
+                                            texts: ["Passwordless", "login?"]
+                                        }
                                     },
-                                    subtitle: "Most people tend to re-use their passwords across sites making them susceptible to attacks. Passwordless replaces traditional password-based authentication with other authentication factors that are more secure. This could be through sending an OTP or magic link through email or phone number.",
+                                    subtitle:
+                                        "Most people tend to re-use their passwords across sites making them susceptible to attacks. Passwordless replaces traditional password-based authentication with other authentication factors that are more secure. This could be through sending an OTP or magic link through email or phone number."
                                 },
-                                // {
-                                //     type: "pill",
-                                //     flex: "row",
-                                //     text: "User Flow",
-                                //     iconPath: FeaturePageIcons.UserFlowPill,
-                                // },
-                                // {
-                                //     type: "bullets-list",
-                                //     direction: "horizontal",
-                                //     buletTextClassName: universalStyles["magic-links-user-flow-bullet-text"],
-                                //     imageShadow: {
-                                //         background: "linear-gradient(180deg, #FFE690 0%, #EE8F2A 100%)",
-                                //     },
-                                //     bullets: [
-                                //         {
-                                //             subtitle: "The user lands on an authentication screen and inputs their email",
-                                //             imagePath: FeaturePageIcons.MagicLinks.UserFlow1 as any,
-                                //         },
-                                //         {
-                                //             subtitle: "The application sends a unique one-time use URL link to the user's email",
-                                //             imagePath: FeaturePageIcons.MagicLinks.UserFlow2 as any,
-                                //         },
-                                //         {
-                                //             subtitle: "Once the link is clicked, an access token is sent to the application to authenticate the user.",
-                                //             imagePath: FeaturePageIcons.MagicLinks.UserFlow3 as any,
-                                //         },
-                                //     ],
-                                //     flex: "row",
-                                //     spacing: 66,
-                                //     backgroundConfig: {
-                                //         background: FeaturePageIcons.MagicLinks.UserFlowBg,
-                                //         position: "right",
-                                //         right: "-10%",
-                                //         bottom: "-10%",
-                                //     },
-                                // }
-                            ],
+                                {
+                                    type: "image",
+                                    flex: "row",
+                                    image: FeaturePageIcons.Passwordless.GetStarted as any,
+                                    spacing: 66,
+                                    backgroundConfig: {
+                                        background: FeaturePageIcons.MagicLinks.UserFlowBg,
+                                        position: "right",
+                                        right: "-10%",
+                                        bottom: "-10%",
+                                    },
+                                },
+                            ]
                             // flex: "column",
                         },
                         // {
@@ -189,12 +162,13 @@ export default function PasswordlessLoginFeaturePage() {
                         // },
                         {
                             prebuiltType: "supertokens-benefits-passwordless-login",
-                            children: [],
+                            children: []
                         },
                         {
                             divider: {
-                                dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(121, 126, 172, 0.20) 0%, rgba(121, 126, 172, 0.00) 100%)",
-                                hueColor: "rgba(121, 126, 172, 0.15)",
+                                dividerBackground:
+                                    "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(121, 126, 172, 0.20) 0%, rgba(121, 126, 172, 0.00) 100%)",
+                                hueColor: "rgba(121, 126, 172, 0.15)"
                             },
                             children: [
                                 {
@@ -205,9 +179,9 @@ export default function PasswordlessLoginFeaturePage() {
                                         highlight: {
                                             mode: "custom",
                                             texts: ["Today"],
-                                            color: "#8D92A1",
-                                        },
-                                    },
+                                            color: "#8D92A1"
+                                        }
+                                    }
                                 },
                                 {
                                     type: "nested",
@@ -217,13 +191,14 @@ export default function PasswordlessLoginFeaturePage() {
                                             type: "title-subtitle-cta",
 
                                             flex: "column",
-                                            subtitle: "Use SuperTokens to implement Passwordless login- we make it easy!",
+                                            subtitle:
+                                                "Use SuperTokens to implement Passwordless login- we make it easy!",
                                             cta: {
                                                 targetUrl: "/docs/passwordless/introduction",
-                                                text: "Start Building",
-                                                fillType: "white",
-                                            },
-                                        },
+                                                text: "Lets start!",
+                                                fillType: "white"
+                                            }
+                                        }
                                         // {
                                         //     type: "text-cta",
                                         //     flex: "column",
@@ -239,12 +214,13 @@ export default function PasswordlessLoginFeaturePage() {
                                         //     },
                                         //     rootClassNames: [magicLinkStyles["see-blog-section"]],
                                         // }
-                                    ],
+                                    ]
                                 }
-                            ],
-                        },
-                    ],
-                }}/>
+                            ]
+                        }
+                    ]
+                }}
+            />
         </PageContainer>
     );
 }
