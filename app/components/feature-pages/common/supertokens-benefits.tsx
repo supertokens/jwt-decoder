@@ -238,7 +238,7 @@ const passwordlessLoginConfig: FeaturePageSectionType = {
                 {
                     useIndicators: true,
                     indicatorBackground: "linear-gradient(90deg, #F93 0%, #ED1F18 100%)",
-                    title: "Custom Configurations for each Tenant",
+                    title: "Enhanced Security",
                     subtitle: "Most data breaches occur due to stolen or weak passwords, removing the reliance on passwords makes systems more secure.",
                     imagePath: FeaturePageIcons.Passwordless.DataBreches as any,
                     imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
@@ -247,7 +247,7 @@ const passwordlessLoginConfig: FeaturePageSectionType = {
                 {
                     useIndicators: true,
                     indicatorBackground: "linear-gradient(90deg, #54F0FF 0%, #345BD3 100%)",
-                    title: "Unique or shared user pools",
+                    title: "Streamlined User Experience",
                     subtitle: "Improves the authentication experience since users do not have to enter passwords or go through the hassle of resetting them in case they are forgotten.",
                     imagePath: FeaturePageIcons.Passwordless.AuthExperience as any,
                     imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
