@@ -57,6 +57,10 @@
     justify-content: space-between;
 }
 
+.justify-space-around {
+    justify-content: space-around;
+}
+
 .landing-text-container {
     max-width: 600px;
 }

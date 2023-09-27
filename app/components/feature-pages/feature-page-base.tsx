@@ -66,6 +66,10 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
                     spacingClass = universalStyles["justify-flex-start"];
                 }
 
+                if(config.spacing === "space-around"){
+                    spacingClass = universalStyles["justify-space-around"]
+                }
+
                 return (
                     <div 
                         className={`${styles["nested-child-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]} ${spacingClass} ${config.rootClassNames?.join(" ") ?? ""}`}

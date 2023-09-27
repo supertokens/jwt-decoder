@@ -26,7 +26,7 @@ export default function SocialLoginPage() {
                                 {
                                     type: "nested",
                                     flex: "row",
-                                    spacing: "space-between",
+                                    spacing: "space-around",
                                     children: [
                                         {
                                             type: "title-subtitle-cta",

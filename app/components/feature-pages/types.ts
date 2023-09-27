@@ -109,7 +109,7 @@ export type TextCTAChildType = CommonChildProperties & {
 
 export type NestedChildType = CommonChildProperties & {
     type: "nested";
-    spacing?: "center" | "space-between" | "flex-start",
+    spacing?: "center" | "space-between" | "flex-start" | "space-around",
     children: ChildType[];
 }
 
