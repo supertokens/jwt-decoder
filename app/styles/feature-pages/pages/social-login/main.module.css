@@ -11,6 +11,11 @@
     margin-bottom: 130px;
 }
 
+.landing-bg {
+    height: auto;
+    width: 100%;
+}
+
 @media screen and (max-width: 1024px) {
     .see-blog-section {
         margin-top: 80px !important;
@@ -19,5 +24,11 @@
 
     .landing-image-container {
         max-width: initial;
+    }
+}
+
+@media (max-width: 320px) {
+    .landing-image-container {
+        margin-bottom: 0px;
     }
 }

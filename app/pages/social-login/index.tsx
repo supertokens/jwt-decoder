@@ -17,10 +17,9 @@ export default function SocialLoginPage() {
                     sections: [
                         {
                             flex: "row",
-                            minimumPaddingRight: true,
                             backgroundConfig: {
-                                background: FeaturePageIcons.MagicLinks.LandingBG,
-                                className: universalStyles["landing-bg"],
+                                background: FeaturePageIcons.SocialLogin.LandingBG as any,
+                                className: `${universalStyles["landing-bg"]} ${socialLoginStyles["landing-bg"]}`,
                             },
                             children: [
                                 {
@@ -66,8 +65,8 @@ export default function SocialLoginPage() {
                         {
                             divider: {
                                 dividerBackground:
-                                    "linear-gradient(45deg, rgba(98, 246, 255, 0) 10%,rgba(98, 246, 255, 0.10) 55%, rgba(98, 246, 255, 0.00) 100%)",
-                                hueColor: "linear-gradient(45deg,rgba(98, 246, 255, 0.2),rgba(98, 246, 255, 0.2))"
+                                    "linear-gradient(45deg, rgba(98, 246, 255, 0) 0%,rgba(98, 246, 255, 0.12) 45%, rgba(98, 246, 255, 0.00) 100%)",
+                                hueColor: "linear-gradient(45deg,rgba(98, 246, 255, 0.15),rgba(98, 246, 255, 0.15))"
                             },
                             children: [
                                 {
