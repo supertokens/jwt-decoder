@@ -238,27 +238,18 @@ const emailPasswordAuthConfig: FeaturePageSectionType = {
                 {
                     useIndicators: true,
                     indicatorBackground: "linear-gradient(90deg, #F93 0%, #ED1F18 100%)",
-                    title: "Reduce sign-up friction",
-                    subtitle: "Creating new accounts on websites can be a hassle for users and results in drop-offs. Social login circumvents this by allowing users to authenticate themselves with their pre-existing social accounts.",
-                    imagePath: FeaturePageIcons.SocialLogin.ReduceFriction as any,
+                    title: "Options for Pre-built or Custom UI",
+                    subtitle: "SuperTokens allows you to get started with Pre-built React UI components that can tailored to your needs or you can build your own custom UI",
+                    imagePath: FeaturePageIcons.EmailPasswordAuthentication.OptionsForPreBuiltUI as any,
                     imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
                 },
 
                 {
                     useIndicators: true,
                     indicatorBackground: "linear-gradient(90deg, #54F0FF 0%, #345BD3 100%)",
-                    title: "Email Verification",
-                    subtitle: "Social login reduces the likelihood of user impersonation and fake email addresses and password recovery is handled by the provider.",
-                    imagePath: FeaturePageIcons.SocialLogin.EmailVerification as any,
-                    imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
-                },
-
-                {
-                    useIndicators: true,
-                    indicatorBackground: "linear-gradient(90deg, #CEF5B8 0%, #168567 100%)",
-                    title: "Built-in and Custom Providers",
-                    subtitle: "SuperTokens provides a number of built-in providers like Apple, Google, Facebook, Github, etc. Additionally, you can add your own custom OAuth provider.",
-                    imagePath: FeaturePageIcons.SocialLogin.CustomProviders as any,
+                    title: "Extensibility",
+                    subtitle: "With Overriding, SuperTokens components, functions and APIs can be modified and extended to create auth flows which are custom to your use case.",
+                    imagePath: FeaturePageIcons.EmailPasswordAuthentication.Extensibility as any,
                     imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
                 },
             ],

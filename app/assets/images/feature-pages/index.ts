@@ -4,6 +4,7 @@ import { Multitenancy } from "./multitenancy";
 import UserFlowPillIcon from "./user-flow-pill-icon.svg";
 import { SuperTokensBenefits } from "./supertokens-benefits";
 import { SocialLogin } from "./social-login";
+import { EmailPasswordAuthentication } from "./email-password-authentication"
 
 
 export const FeaturePageIcons = {
@@ -12,5 +13,6 @@ export const FeaturePageIcons = {
     SSO,
     SuperTokensBenefits,
     Multitenancy,
-    SocialLogin
+    SocialLogin,
+    EmailPasswordAuthentication
 }
