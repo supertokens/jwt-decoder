@@ -218,7 +218,6 @@ const passwordlessLoginConfig: FeaturePageSectionType = {
                     texts: ["Passwordless"],
                 },
             },
-            // supertext: "Why use SuperTokens?",
         },
         {
             type: "bullets-list",
