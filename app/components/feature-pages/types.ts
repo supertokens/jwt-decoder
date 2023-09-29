@@ -132,6 +132,7 @@ export type PreBuiltType =
     | "supertokens-benefits-magic-links" 
     | "supertokens-benefits-sso"
     | "supertokens-benefits-multi-tenancy"
+    | "supertokens-benefits-email-password-authentication"
     | "supertokens-benefits-passwordless-login"
     | "supertokens-benefits-social-login";
 

@@ -202,6 +202,61 @@ const multitenancyConfig: FeaturePageSectionType = {
     ],
 }
 
+const emailPasswordAuthConfig: FeaturePageSectionType = {
+    divider: {
+        dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%)",
+        hueColor: "rgba(255, 153, 51, 0.15)",
+    },
+    children: [
+        {
+            type: "title-subtitle-cta",
+            flex: "column",
+            title: {
+                text: "SuperTokens Benefits",
+                highlight: {
+                    mode: "grey-out",
+                    texts: ["Benefits"],
+                },
+            },
+            supertext: "Why use SuperTokens?",
+        },
+        {
+            type: "bullets-list",
+            direction: "vertical",
+            flex: "column",
+            spacing: 132,
+            addBlur: true,
+            backgroundConfig: {
+                background: FeaturePageIcons.SuperTokensBenefits.Background,
+                position: "right",
+                right: "-120px",
+                top: "-60px",
+                bottom: "-60px",
+            },
+            rootClassNames: [supertokensBenefitsStyles["supertokens-benefits-bullet-list"]],
+            bullets: [
+                {
+                    useIndicators: true,
+                    indicatorBackground: "linear-gradient(90deg, #F93 0%, #ED1F18 100%)",
+                    title: "Options for Pre-built or Custom UI",
+                    subtitle: "SuperTokens allows you to get started with Pre-built React UI components that can tailored to your needs or you can build your own custom UI",
+                    imagePath: FeaturePageIcons.EmailPasswordAuthentication.OptionsForPreBuiltUI as any,
+                    imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
+                },
+
+                {
+                    useIndicators: true,
+                    indicatorBackground: "linear-gradient(90deg, #54F0FF 0%, #345BD3 100%)",
+                    title: "Extensibility",
+                    subtitle: "With Overriding, SuperTokens components, functions and APIs can be modified and extended to create auth flows which are custom to your use case.",
+                    imagePath: FeaturePageIcons.EmailPasswordAuthentication.Extensibility as any,
+                    imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
+                },
+            ],
+        }
+    ],
+}
+
 const passwordlessLoginConfig: FeaturePageSectionType = {
     divider: {
         dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%)",
@@ -255,6 +310,8 @@ const passwordlessLoginConfig: FeaturePageSectionType = {
         }
     ],
 }
+
+
 
 const socialLoginConfig: FeaturePageSectionType = {
     divider: {
@@ -329,6 +386,8 @@ export const SuperTokensBenefits = (props: Props) => {
                 return magicLinksConfig;
             case "supertokens-benefits-multi-tenancy":
                 return multitenancyConfig;
+            case "supertokens-benefits-email-password-authentication":
+                return emailPasswordAuthConfig;
             case "supertokens-benefits-passwordless-login":
                 return passwordlessLoginConfig;
             case "supertokens-benefits-social-login":
