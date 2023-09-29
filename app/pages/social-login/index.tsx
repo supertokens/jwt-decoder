@@ -93,6 +93,10 @@ export default function SocialLoginPage() {
                             children: []
                         },
                         {
+                            divider: {
+                                dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(121, 126, 172, 0.20) 0%, rgba(121, 126, 172, 0.00) 100%)",
+                                hueColor: "rgba(121, 126, 172, 0.15)",
+                            },
                             children: [
                                 {
                                     type: "title-subtitle-cta",
