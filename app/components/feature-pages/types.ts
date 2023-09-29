@@ -109,7 +109,7 @@ export type TextCTAChildType = CommonChildProperties & {
 
 export type NestedChildType = CommonChildProperties & {
     type: "nested";
-    spacing?: "center" | "space-between" | "flex-start",
+    spacing?: "center" | "space-between" | "flex-start" | "space-around",
     children: ChildType[];
 }
 
@@ -131,7 +131,8 @@ export type ChildType =
 export type PreBuiltType = 
     | "supertokens-benefits-magic-links" 
     | "supertokens-benefits-sso"
-    | "supertokens-benefits-multi-tenancy";
+    | "supertokens-benefits-multi-tenancy"
+    | "supertokens-benefits-social-login";
 
 export type FeaturePageSectionType = {
     flex?: SectionFlex;

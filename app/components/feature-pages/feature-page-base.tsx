@@ -66,6 +66,10 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
                     spacingClass = universalStyles["justify-flex-start"];
                 }
 
+                if(config.spacing === "space-around"){
+                    spacingClass = universalStyles["justify-space-around"]
+                }
+
                 return (
                     <div 
                         className={`${styles["nested-child-container"]} ${universalStyles[getClassNameFromFlex(config.flex)]} ${spacingClass} ${config.rootClassNames?.join(" ") ?? ""}`}
@@ -101,7 +105,8 @@ const renderSectionChild = (config: ChildType, index: number, pageConfig: Featur
 export const isBenefitsSection = (config: FeaturePageSectionType): boolean => {
     return config.prebuiltType === "supertokens-benefits-magic-links" ||
         config.prebuiltType === "supertokens-benefits-multi-tenancy" ||
-        config.prebuiltType === "supertokens-benefits-sso";
+        config.prebuiltType === "supertokens-benefits-sso" || 
+        config.prebuiltType === "supertokens-benefits-social-login"
 };
 
 export const renderSection = (config: FeaturePageSectionType, index: number, pageConfig: FeaturePageType) => {
