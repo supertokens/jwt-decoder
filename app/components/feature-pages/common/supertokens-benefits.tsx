@@ -183,8 +183,8 @@ const multitenancyConfig: FeaturePageSectionType = {
                 {
                     useIndicators: true,
                     indicatorBackground: "linear-gradient(90deg, #54F0FF 0%, #345BD3 100%)",
-                    title: "Unique or shared user pools",
-                    subtitle: "With SuperTokens built in flexibility, you can share the same user pool for some tenants and provide unique user pools to other tenants (eg: different pricing tiers)",
+                    title: "Unique user pools",
+                    subtitle: "Each tenant has its own user pool. You can store each pool in a shared db (logical isolation), or in separate dbs (physical isolation).",
                     imagePath: FeaturePageIcons.Multitenancy.Benefits2 as any,
                     imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
                 },
@@ -238,18 +238,92 @@ const emailPasswordAuthConfig: FeaturePageSectionType = {
                 {
                     useIndicators: true,
                     indicatorBackground: "linear-gradient(90deg, #F93 0%, #ED1F18 100%)",
-                    title: "Options for Pre-built or Custom UI",
-                    subtitle: "SuperTokens allows you to get started with Pre-built React UI components that can tailored to your needs or you can build your own custom UI",
-                    imagePath: FeaturePageIcons.Multitenancy.Benefits1 as any,
+                    title: "Reduce sign-up friction",
+                    subtitle: "Creating new accounts on websites can be a hassle for users and results in drop-offs. Social login circumvents this by allowing users to authenticate themselves with their pre-existing social accounts.",
+                    imagePath: FeaturePageIcons.SocialLogin.ReduceFriction as any,
                     imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
                 },
 
                 {
                     useIndicators: true,
                     indicatorBackground: "linear-gradient(90deg, #54F0FF 0%, #345BD3 100%)",
-                    title: "Extensibility",
-                    subtitle: "With Overriding, SuperTokens components, functions and APIs can be modified and extended to create auth flows which are custom to your use case.",
-                    imagePath: FeaturePageIcons.Multitenancy.Benefits2 as any,
+                    title: "Email Verification",
+                    subtitle: "Social login reduces the likelihood of user impersonation and fake email addresses and password recovery is handled by the provider.",
+                    imagePath: FeaturePageIcons.SocialLogin.EmailVerification as any,
+                    imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
+                },
+
+                {
+                    useIndicators: true,
+                    indicatorBackground: "linear-gradient(90deg, #CEF5B8 0%, #168567 100%)",
+                    title: "Built-in and Custom Providers",
+                    subtitle: "SuperTokens provides a number of built-in providers like Apple, Google, Facebook, Github, etc. Additionally, you can add your own custom OAuth provider.",
+                    imagePath: FeaturePageIcons.SocialLogin.CustomProviders as any,
+                    imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
+                },
+            ],
+        }
+    ],
+}
+
+
+const socialLoginConfig: FeaturePageSectionType = {
+    divider: {
+        dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%);",
+        hueColor: "rgba(255, 153, 51, 0.15)",
+    },
+    children: [
+        {
+            type: "title-subtitle-cta",
+            flex: "column",
+            title: {
+                text: "SuperTokens Benefits",
+                highlight: {
+                    mode: "grey-out",
+                    texts: ["Benefits"],
+                },
+            },
+            supertext: "Why use SuperTokens?",
+        },
+        {
+            type: "bullets-list",
+            direction: "vertical",
+            flex: "column",
+            spacing: 132,
+            addBlur: true,
+            backgroundConfig: {
+                background: FeaturePageIcons.SuperTokensBenefits.Background,
+                position: "right",
+                right: "-120px",
+                top: "-60px",
+                bottom: "-60px",
+            },
+            rootClassNames: [supertokensBenefitsStyles["supertokens-benefits-bullet-list"]],
+            bullets: [
+                {
+                    useIndicators: true,
+                    indicatorBackground: "linear-gradient(90deg, #F93 0%, #ED1F18 100%)",
+                    title: "Reduce sign-up friction",
+                    subtitle: "Creating new accounts on websites can be a hassle for users and results in drop-offs. Social login circumvents this by allowing users to authenticate themselves with their pre-existing social accounts.",
+                    imagePath: FeaturePageIcons.SocialLogin.ReduceFriction as any,
+                    imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
+                },
+
+                {
+                    useIndicators: true,
+                    indicatorBackground: "linear-gradient(90deg, #54F0FF 0%, #345BD3 100%)",
+                    title: "Email Verification",
+                    subtitle: "Social login reduces the likelihood of user impersonation and fake email addresses and password recovery is handled by the provider.",
+                    imagePath: FeaturePageIcons.SocialLogin.EmailVerification as any,
+                    imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
+                },
+
+                {
+                    useIndicators: true,
+                    indicatorBackground: "linear-gradient(90deg, #CEF5B8 0%, #168567 100%)",
+                    title: "Built-in and Custom Providers",
+                    subtitle: "SuperTokens provides a number of built-in providers like Apple, Google, Facebook, Github, etc. Additionally, you can add your own custom OAuth provider.",
+                    imagePath: FeaturePageIcons.SocialLogin.CustomProviders as any,
                     imageClassName: supertokensBenefitsStyles["supertokens-benefits-bullet-image"],
                 },
             ],
@@ -266,6 +340,8 @@ export const SuperTokensBenefits = (props: Props) => {
                 return multitenancyConfig;
             case "supertokens-benefits-email-password-authentication":
                 return emailPasswordAuthConfig;
+            case "supertokens-benefits-social-login":
+                return socialLoginConfig;
             default:
                 return ssoConfig;
         }

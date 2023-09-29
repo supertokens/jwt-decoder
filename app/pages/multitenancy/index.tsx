@@ -109,7 +109,7 @@ export default function MultiTenancyFeaturePage() {
                                 {
                                     type: "text",
                                     flex: "column",
-                                    text: "You have multiple independent applications with their own login and signup pages.\nHowever, instead of hosting SuperTokens for each app individually, you can use the multi tenancy feature to run a single SuperTokens instance to power all the apps. (with their own user pools)",
+                                    text: "You have multiple independent applications with their own login and signup pages.\nHowever, instead of hosting SuperTokens for each app individually, you can use the multi tenancy feature to run a single SuperTokens instance to power all the apps (with their own user pools).",
                                 }
                             ],
                         },
@@ -151,7 +151,7 @@ export default function MultiTenancyFeaturePage() {
                                                     bullets: [
                                                         {
                                                             title: "We have two pricing models:",
-                                                            subtitle: "Tenants without SSO\nTenants with enterprise SSO",
+                                                            subtitle: "Tenants with Email password, Social or Passwordless login\nTenants with enterprise SSO",
                                                             displaySubtitleBullets: true,
                                                             hideIndicator: true,
                                                         }
