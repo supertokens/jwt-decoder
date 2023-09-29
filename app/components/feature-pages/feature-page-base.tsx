@@ -107,6 +107,7 @@ export const isBenefitsSection = (config: FeaturePageSectionType): boolean => {
         config.prebuiltType === "supertokens-benefits-multi-tenancy" ||
         config.prebuiltType === "supertokens-benefits-sso" ||
         config.prebuiltType === "supertokens-benefits-email-password-authentication" ||
+        config.prebuiltType === "supertokens-benefits-passwordless-login" ||
         config.prebuiltType === "supertokens-benefits-social-login"
 };
 
