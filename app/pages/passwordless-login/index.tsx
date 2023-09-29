@@ -41,7 +41,7 @@ export default function PasswordlessLoginFeaturePage() {
                                             subtitle:
                                                 "Passwordless Login streamlines the authentication experience and increases security.",
                                             cta: {
-                                                targetUrl: "/docs/passwordless/introduction",
+                                                targetUrl: "/docs/guides",
                                                 text: "Start Today!"
                                             }
                                         },
@@ -118,7 +118,7 @@ export default function PasswordlessLoginFeaturePage() {
                                             subtitle:
                                                 "Use SuperTokens to implement Passwordless login- we make it easy!",
                                             cta: {
-                                                targetUrl: "/docs/passwordless/introduction",
+                                                targetUrl: "/docs/guides",
                                                 text: "Lets start!",
                                                 fillType: "white"
                                             }
