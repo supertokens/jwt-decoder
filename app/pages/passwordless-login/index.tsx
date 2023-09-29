@@ -80,13 +80,6 @@ export default function PasswordlessLoginFeaturePage() {
                                     type: "image",
                                     flex: "row",
                                     image: FeaturePageIcons.Passwordless.GetStarted as any,
-                                    spacing: 66,
-                                    backgroundConfig: {
-                                        background: FeaturePageIcons.MagicLinks.UserFlowBg,
-                                        position: "right",
-                                        right: "-10%",
-                                        bottom: "-10%",
-                                    },
                                 },
                             ]
                             // flex: "column",

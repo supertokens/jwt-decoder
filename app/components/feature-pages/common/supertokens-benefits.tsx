@@ -212,13 +212,13 @@ const passwordlessLoginConfig: FeaturePageSectionType = {
             type: "title-subtitle-cta",
             flex: "column",
             title: {
-                text: "SuperTokens Benefits",
+                text: "Benefits of Passwordless",
                 highlight: {
                     mode: "grey-out",
-                    texts: ["Benefits"],
+                    texts: ["Passwordless"],
                 },
             },
-            supertext: "Why use SuperTokens?",
+            // supertext: "Why use SuperTokens?",
         },
         {
             type: "bullets-list",
