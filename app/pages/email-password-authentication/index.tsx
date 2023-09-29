@@ -4,6 +4,7 @@ import {
     FeaturePageIcons,
 } from "../../assets/images";
 import universalStyles from "../../styles/feature-pages/universal-styles.module.css";
+import emailPasswordStyles from "../../styles/feature-pages/pages/email-password-authentication/main.module.css"
 
 EmailPasswordAuthenticationFeaturePage.title = "Email Password Authentication";
 export default function EmailPasswordAuthenticationFeaturePage() {
@@ -21,7 +22,6 @@ export default function EmailPasswordAuthenticationFeaturePage() {
                     sections: [
                         {
                             flex: "row",
-                            minimumPaddingRight: true,
                             backgroundConfig: {
                                 background: FeaturePageIcons.MagicLinks.LandingBG as any,
                                 className: universalStyles["landing-bg"],
@@ -29,7 +29,7 @@ export default function EmailPasswordAuthenticationFeaturePage() {
                             children: [
                                 {
                                     type: "nested",
-                                    spacing: "space-between",
+                                    spacing: "space-around",
                                     flex: "row",
                                     children: [
                                         {
@@ -54,7 +54,7 @@ export default function EmailPasswordAuthenticationFeaturePage() {
                                             flex: "row",
                                             image: FeaturePageIcons.EmailPasswordAuthentication.Landing as any,
                                             imageClassName: universalStyles["landing-image"],
-                                            rootClassNames: [universalStyles["landing-image-container"]],
+                                            rootClassNames: [universalStyles["landing-image-container"],emailPasswordStyles["landing-image-container"]],
                                         },
                                     ],
                                 },
@@ -73,7 +73,7 @@ export default function EmailPasswordAuthenticationFeaturePage() {
                                         text: "What is Email Password Authentication?",
                                         highlight: {
                                             mode: "grey-out",
-                                            texts: ["Email","Password","Authentication?"],
+                                            texts: ["Authentication?"],
                                         },
                                     },
                                     subtitle: "Email Password Authentication Allow users to create accounts with an email and password. SuperTokens SDKs are designed in a way to allow extensibility to improve your user's experience while also maximizing security.",
