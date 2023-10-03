@@ -148,8 +148,8 @@ export const renderSection = (config: FeaturePageSectionType, index: number, pag
                         background: config.divider.dividerBackground,
                         position: "absolute",
                         top: 0,
-                        left: 200,
-                        right: 200,
+                        left: 0,
+                        right: 0,
                     }}/>
                 }
 
@@ -159,8 +159,8 @@ export const renderSection = (config: FeaturePageSectionType, index: number, pag
                         height: 68,
                         position: "absolute",
                         top: -34,
-                        left: 200,
-                        right: 200,
+                        left: 0,
+                        right: 0,
                         background: config.divider.hueColor,
                         filter: "blur(75px)"
                     }}/>

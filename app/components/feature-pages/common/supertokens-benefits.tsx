@@ -12,8 +12,8 @@ type Props = {
 
 const magicLinksConfig: FeaturePageSectionType = {
     divider: {
-        dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%)",
-        hueColor: "rgba(255, 153, 51, 0.15)",
+        dividerBackground: "linear-gradient(45deg, rgba(255, 153, 51, 0) 0%,rgba(255, 153, 51, 0.20) 45%, rgba(255, 153, 51, 0) 100%)",
+        hueColor: "linear-gradient(45deg,rgba(255, 153, 51, 0.20),rgba(255, 153, 51, 0.20))",
     },
     children: [
         {
@@ -76,8 +76,8 @@ const magicLinksConfig: FeaturePageSectionType = {
 
 const ssoConfig: FeaturePageSectionType = {
     divider: {
-        dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%)",
-        hueColor: "rgba(255, 153, 51, 0.15)",
+        dividerBackground: "linear-gradient(45deg, rgba(255, 153, 51, 0) 0%,rgba(255, 153, 51, 0.20) 45%, rgba(255, 153, 51, 0) 100%)",
+        hueColor: "linear-gradient(45deg,rgba(255, 153, 51, 0.20),rgba(255, 153, 51, 0.20))",
     },
     children: [
         {
@@ -140,8 +140,8 @@ const ssoConfig: FeaturePageSectionType = {
 
 const multitenancyConfig: FeaturePageSectionType = {
     divider: {
-        dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%)",
-        hueColor: "rgba(255, 153, 51, 0.15)",
+        dividerBackground: "linear-gradient(45deg, rgba(255, 153, 51, 0) 0%,rgba(255, 153, 51, 0.20) 45%, rgba(255, 153, 51, 0) 100%)",
+        hueColor: "linear-gradient(45deg,rgba(255, 153, 51, 0.20),rgba(255, 153, 51, 0.20))",
     },
     children: [
         {
@@ -204,8 +204,8 @@ const multitenancyConfig: FeaturePageSectionType = {
 
 const emailPasswordAuthConfig: FeaturePageSectionType = {
     divider: {
-        dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%)",
-        hueColor: "rgba(255, 153, 51, 0.15)",
+        dividerBackground: "linear-gradient(45deg, rgba(255, 153, 51, 0) 0%,rgba(255, 153, 51, 0.20) 45%, rgba(255, 153, 51, 0) 100%)",
+        hueColor: "linear-gradient(45deg,rgba(255, 153, 51, 0.20),rgba(255, 153, 51, 0.20))",
     },
     children: [
         {
@@ -259,8 +259,8 @@ const emailPasswordAuthConfig: FeaturePageSectionType = {
 
 const passwordlessLoginConfig: FeaturePageSectionType = {
     divider: {
-        dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%)",
-        hueColor: "rgba(255, 153, 51, 0.15)",
+        dividerBackground: "linear-gradient(45deg, rgba(255, 153, 51, 0) 0%,rgba(255, 153, 51, 0.20) 45%, rgba(255, 153, 51, 0) 100%)",
+        hueColor: "linear-gradient(45deg,rgba(255, 153, 51, 0.20),rgba(255, 153, 51, 0.20))",
     },
     children: [
         {
@@ -315,8 +315,8 @@ const passwordlessLoginConfig: FeaturePageSectionType = {
 
 const socialLoginConfig: FeaturePageSectionType = {
     divider: {
-        dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(255, 153, 51, 0.20) 0%, rgba(255, 153, 51, 0.00) 100%);",
-        hueColor: "rgba(255, 153, 51, 0.15)",
+        dividerBackground: "linear-gradient(45deg, rgba(255, 153, 51, 0) 0%,rgba(255, 153, 51, 0.20) 45%, rgba(255, 153, 51, 0) 100%)",
+        hueColor: "linear-gradient(45deg,rgba(255, 153, 51, 0.20),rgba(255, 153, 51, 0.20))",
     },
     children: [
         {

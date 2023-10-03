@@ -26,6 +26,10 @@
         padding-bottom: 80px;
         padding-top: 0px;
     }
+
+    .section-container:not(:nth-child(1)){
+        padding-top: 80px !important;
+    }
 }
 
 @media screen and (max-width: 480px) {
