@@ -87,6 +87,8 @@ export type BulletListChildType = CommonChildProperties & {
         right?: string | number;
         bottom?: string | number;
         left?: string | number;
+        height?: string | number
+        width?: string | number;
     },
 }
 

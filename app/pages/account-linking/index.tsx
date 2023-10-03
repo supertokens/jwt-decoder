@@ -4,6 +4,8 @@ import {
     FeaturePageIcons,
 } from "../../assets/images";
 import universalStyles from "../../styles/feature-pages/universal-styles.module.css";
+import accountLinkingStyles from "../../styles/feature-pages/pages/account-linking/main.module.css";
+
 
 AccountLinkingFeaturePage.title = "Account Linking";
 
@@ -24,7 +26,7 @@ export default function AccountLinkingFeaturePage() {
                             flex: "row",
                             backgroundConfig: {
                                 background: FeaturePageIcons.AccountLinking.LandingBG as any,
-                                className: universalStyles["landing-bg"],
+                                className: `${universalStyles["landing-bg"]} ${accountLinkingStyles["landing-bg"]}`,
                             },
                             children: [
                                 {
@@ -34,7 +36,6 @@ export default function AccountLinkingFeaturePage() {
                                     children: [
                                         {
                                             type: "title-subtitle-cta",
-                                            rootClassNames: [universalStyles["landing-text-container"]],
                                             flex: "column",
                                             title: {
                                                 text: "Account Linking",
@@ -48,13 +49,14 @@ export default function AccountLinkingFeaturePage() {
                                                 targetUrl: "/docs/guides",
                                                 text: "Start Today!"
                                             },
+                                            rootClassNames: [universalStyles["landing-text-container"], accountLinkingStyles["landing-text-container"]],
                                         },
                                         {
                                             type: "image",
                                             flex: "row",
                                             image: FeaturePageIcons.AccountLinking.Landing as any,
                                             imageClassName: universalStyles["landing-image"],
-                                            rootClassNames: [universalStyles["landing-image-container"]],
+                                            rootClassNames: [universalStyles["landing-image-container"], accountLinkingStyles["landing-image-container"]],
                                         },
                                     ],
                                 },
@@ -62,8 +64,8 @@ export default function AccountLinkingFeaturePage() {
                         },
                         {
                             divider: {
-                                dividerBackground: "radial-gradient(59296055.02% 50.00% at 50.00% 53.02%, rgba(112, 234, 102, 0.20) 0%, rgba(112, 234, 102, 0.00) 100%))",
-                                hueColor: "rgba(162, 250, 207, 0.15)",
+                                dividerBackground: "linear-gradient(45deg, rgba(169, 197, 240, 0) 0%,rgba(169, 197, 240, 0.20) 50%, rgba(169, 197, 240, 0.00) 100%)",
+                                hueColor: "rgba(169, 197, 240, 0.15)",
                             },
                             children: [
                                 {
@@ -95,14 +97,17 @@ export default function AccountLinkingFeaturePage() {
                                         {
                                             subtitle: "A user signs up using their social Google account",
                                             imagePath: FeaturePageIcons.AccountLinking.UserFlow1 as any,
+                                            imageClassName: accountLinkingStyles["bullet-list-image"]
                                         },
                                         {
                                             subtitle: "The same user accidentally signs up again using their email and creating a password (with the same email ID as the Google account)",
                                             imagePath: FeaturePageIcons.AccountLinking.UserFlow2 as any,
+                                            imageClassName: accountLinkingStyles["bullet-list-image"]
                                         },
                                         {
                                             subtitle: "SuperTokens will link these accounts automatically",
                                             imagePath: FeaturePageIcons.AccountLinking.UserFlow3 as any,
+                                            imageClassName: `${accountLinkingStyles["bullet-list-image"]} ${accountLinkingStyles["adjust-top"]}`
                                         },
                                     ],
                                     flex: "row",
@@ -112,6 +117,9 @@ export default function AccountLinkingFeaturePage() {
                                         position: "right",
                                         right: "-10%",
                                         bottom: "-10%",
+                                        top:"30%",
+                                        height: "auto",
+                                        width: "100%"
                                     },
                                 },
                                 {
@@ -183,20 +191,6 @@ export default function AccountLinkingFeaturePage() {
                                                 },
                                             ],
                                         },
-                                        {
-                                            type: "text-cta",
-                                            flex: "column",
-                                            text: "Try Supertokens to implement Account Linking.",
-                                            indicator: {
-                                                background: "linear-gradient(270deg, #7A7FA8 0%, #8D92A1 100%)"
-                                            },
-                                            cta: {
-                                                targetUrl: "/docs/guides",
-                                                text: "Start building",
-                                                background: "",
-                                                hue: "linear-gradient(134deg, #7D81AB 0%, #8D92A1 100%)",
-                                            },
-                                        }
                                     ],
                                 }
                             ],
