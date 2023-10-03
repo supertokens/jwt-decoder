@@ -4,7 +4,6 @@ import {
     FeaturePageIcons,
 } from "../../assets/images";
 import universalStyles from "../../styles/feature-pages/universal-styles.module.css";
-import magicLinkStyles from "../../styles/feature-pages/pages/magic-links/main.module.css";
 
 AccountLinkingFeaturePage.title = "Account Linking";
 
@@ -24,7 +23,7 @@ export default function AccountLinkingFeaturePage() {
                         {
                             flex: "row",
                             backgroundConfig: {
-                                background: FeaturePageIcons.MagicLinks.LandingBG,
+                                background: FeaturePageIcons.AccountLinking.LandingBG as any,
                                 className: universalStyles["landing-bg"],
                             },
                             children: [
@@ -53,7 +52,7 @@ export default function AccountLinkingFeaturePage() {
                                         {
                                             type: "image",
                                             flex: "row",
-                                            image: FeaturePageIcons.MagicLinks.Landing as any,
+                                            image: FeaturePageIcons.AccountLinking.Landing as any,
                                             imageClassName: universalStyles["landing-image"],
                                             rootClassNames: [universalStyles["landing-image-container"]],
                                         },
@@ -95,21 +94,21 @@ export default function AccountLinkingFeaturePage() {
                                     bullets: [
                                         {
                                             subtitle: "A user signs up using their social Google account",
-                                            imagePath: FeaturePageIcons.MagicLinks.UserFlow1 as any,
+                                            imagePath: FeaturePageIcons.AccountLinking.UserFlow1 as any,
                                         },
                                         {
                                             subtitle: "The same user accidentally signs up again using their email and creating a password (with the same email ID as the Google account)",
-                                            imagePath: FeaturePageIcons.MagicLinks.UserFlow2 as any,
+                                            imagePath: FeaturePageIcons.AccountLinking.UserFlow2 as any,
                                         },
                                         {
                                             subtitle: "SuperTokens will link these accounts automatically",
-                                            imagePath: FeaturePageIcons.MagicLinks.UserFlow3 as any,
+                                            imagePath: FeaturePageIcons.AccountLinking.UserFlow3 as any,
                                         },
                                     ],
                                     flex: "row",
                                     spacing: 66,
                                     backgroundConfig: {
-                                        background: FeaturePageIcons.MagicLinks.UserFlowBg,
+                                        background: FeaturePageIcons.AccountLinking.UserFlowBg as any,
                                         position: "right",
                                         right: "-10%",
                                         bottom: "-10%",
@@ -124,7 +123,7 @@ export default function AccountLinkingFeaturePage() {
                             flex: "column",
                         },
                         {
-                            prebuiltType: "supertokens-benefits-magic-links",
+                            prebuiltType: "supertokens-benefits-account-linking",
                             children: [],
                         },
                         {

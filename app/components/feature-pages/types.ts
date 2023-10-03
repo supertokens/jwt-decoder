@@ -134,7 +134,8 @@ export type PreBuiltType =
     | "supertokens-benefits-multi-tenancy"
     | "supertokens-benefits-email-password-authentication"
     | "supertokens-benefits-passwordless-login"
-    | "supertokens-benefits-social-login";
+    | "supertokens-benefits-social-login"
+    | "supertokens-benefits-account-linking";
 
 export type FeaturePageSectionType = {
     flex?: SectionFlex;
