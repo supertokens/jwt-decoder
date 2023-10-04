@@ -47,6 +47,8 @@ export const BulletList = (props: Props) => {
                             bottom: backgroundConfig.bottom ?? 0,
                             left: backgroundConfig.position === "left" ? backgroundConfig.left ?? 0 : undefined,
                             right: backgroundConfig.position === "right" ? backgroundConfig.right ?? 0 : undefined,
+                            width: backgroundConfig.width ?? "auto",
+                            height: backgroundConfig.height ?? "auto"
                         }}/>
                 }
 

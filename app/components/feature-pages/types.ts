@@ -87,6 +87,8 @@ export type BulletListChildType = CommonChildProperties & {
         right?: string | number;
         bottom?: string | number;
         left?: string | number;
+        height?: string | number
+        width?: string | number;
     },
 }
 
@@ -134,7 +136,8 @@ export type PreBuiltType =
     | "supertokens-benefits-multi-tenancy"
     | "supertokens-benefits-email-password-authentication"
     | "supertokens-benefits-passwordless-login"
-    | "supertokens-benefits-social-login";
+    | "supertokens-benefits-social-login"
+    | "supertokens-benefits-account-linking";
 
 export type FeaturePageSectionType = {
     flex?: SectionFlex;

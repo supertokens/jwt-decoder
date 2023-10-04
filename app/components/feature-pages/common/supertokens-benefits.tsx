@@ -4,6 +4,7 @@ import {
 } from "../../../assets/images";
 import supertokensBenefitsStyles from "../../../styles/feature-pages/components/bullet-list.module.css";
 import { FeaturePageSectionType, PreBuiltType } from "../types";
+import accountLinkingConfig from "./configs/account-linking-config";
 
 type Props = {
     index: number;
@@ -378,7 +379,6 @@ const socialLoginConfig: FeaturePageSectionType = {
 }
 
 
-
 export const SuperTokensBenefits = (props: Props) => {
     const getConfigForType = () => {
         switch (props.type) {
@@ -392,6 +392,8 @@ export const SuperTokensBenefits = (props: Props) => {
                 return passwordlessLoginConfig;
             case "supertokens-benefits-social-login":
                 return socialLoginConfig;
+            case "supertokens-benefits-account-linking":
+                return accountLinkingConfig
             default:
                 return ssoConfig;
         }
