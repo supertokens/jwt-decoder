@@ -19,7 +19,7 @@ import DashboardDialog from "./dialog/dashboardDialog";
 import MultiTenancyDialog from "./dialog/multitenancyDialog";
 import AccountLinkingDialog from "./dialog/accountLinkingDialog";
 
-const Tooltip = ({ position, text }) => {
+export const Tooltip = ({ position, text }) => {
     return (
         <div className={styles.tooltip}>
             <img src={tooltipIcon.src} alt="" />
