@@ -1,12 +1,12 @@
-import styles from "../../../styles/pricing/feature.module.css";
-import openSourceCheck from "../../../assets/pricing/open-source-check.png";
-import auth from "../../../assets/pricing/auth.png";
-import everything from "../../../assets/pricing/everything.png";
-import support from "../../../assets/pricing/support.png";
+import styles from "../../styles/pricing/feature.module.css";
+import openSourceCheck from "../../assets/pricing/open-source-check.png";
+import auth from "../../assets/pricing/auth.png";
+import everything from "../../assets/pricing/everything.png";
+import support from "../../assets/pricing/support.png";
 
-import { Expandable } from "../pricingTable";
-import { navigateOnButtonClick } from "../../common/utils";
-import { CoreFeatureToggle } from "../toggler";
+import { Expandable } from "./pricingTable";
+import { navigateOnButtonClick } from "../common/utils";
+import { CoreFeatureToggle } from "./toggle";
 
 
 const coreFeatures = [

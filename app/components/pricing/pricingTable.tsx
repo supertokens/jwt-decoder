@@ -469,7 +469,7 @@ export const Expandable = ({ row, expandedByDefault = false }: { row: any; expan
 
 
 
-export const TBody = () => {
+const TBody = () => {
     const [isDashboardDialogOpen,setIsDashboardDialogOpen] = useState(false)
     const [isMultiTenancyDialogOpen,setisMultiTenancyDialogOpen] = useState(false)
     const [isAccountLinkingDialogOpen,setIsAccountLinkingDialogOpen] = useState(false)

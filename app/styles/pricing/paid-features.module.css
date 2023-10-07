@@ -1,0 +1,25 @@
+.paid__features__container {
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    margin: 94px 12.438rem 0;
+}
+
+.paid__features__container > div > h1 {
+    color: #fff;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-bottom: 28px;
+}
+
+.paid__features__container > div > p {
+    color: #f93;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px;
+}
