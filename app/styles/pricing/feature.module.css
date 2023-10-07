@@ -13,9 +13,7 @@
 }
 
 .table {
-    margin: 12.438rem 12.438rem 0rem 12.438rem;
-
-    display: block;
+    margin: 94px 12.438rem 0rem 12.438rem;
 
     color: #f8f7f7;
 
@@ -32,8 +30,6 @@
     font-family: "Inter";
     font-weight: 400;
     font-size: 16px;
-
-    width: calc(40.625vw - 12.438rem * 2);
 }
 
 .table td > img {
@@ -70,18 +66,15 @@
 
 .left_align {
     text-align: left !important;
-    width: calc(29.68vw - 12.438rem * 2);
+    width: 60%;
 }
 
 .bordered {
     display: block;
 
-    padding: 0.813rem;
+    padding: 14px;
     width: 100%;
 
-    background: transparent;
-
-    border: 1px solid #f8f7f7;
     border-radius: 6px;
 
     font-family: "Inter";
@@ -89,23 +82,14 @@
     font-size: 16px;
     line-height: 19px;
 
-    color: #fff;
+    color: #000;
+    background: #fff;
 
     cursor: pointer;
 
-    margin-top: 32px;
+    margin-top: 20px;
     margin-bottom: 40px;
-    transition: all 150ms ease-in-out;
-    transition-property: background-color color;
-    -moz-transition: all 150ms ease-in-out;
-    -moz-transition-property: background-color color;
-    -webkit-transition: all 150ms ease-in-out;
-    -webkit-transition-property: background-color color;
-}
-
-.bordered:hover {
-    background: #f8f7f7;
-    color: #000;
+    border: none;
 }
 
 .filled-orange {
@@ -264,6 +248,23 @@
     font-family: "Inter";
     font-weight: 700;
     font-size: 24px;
+}
+
+.table > h1 {
+    color: #f8f7f7;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.get_started {
+    border-bottom: none !important;
+}
+
+.get_started > td {
+    border: none !important;
+    padding: 0 !important;
 }
 
 /* ToolTip styles */
@@ -666,5 +667,5 @@
     grid-auto-flow: dense;
     direction: rtl;
 
-    margin: 0rem 12.438rem
+    margin: 0rem 12.438rem;
 }

@@ -7,7 +7,7 @@ import cloud_gray from "../../assets/pricing/cloud-gray.svg";
 import { useState } from "react";
 import { Tooltip } from "./pricingTable";
 
-export function Toggler() {
+export function CoreFeatureToggle() {
     const [activeTab, setActiveTab] = useState<"cloud" | "self-host">("cloud");
 
     function getImage() {
@@ -33,10 +33,20 @@ export function Toggler() {
         <div className={styles.toggler__container__wrapper}>
             <div className={styles.toggler__container}>
                 <div
-                    className={`${styles.toggler__item__wrapper} ${activeTab === "self-host" ? styles.move__right : ""}`}
+                    className={`${styles.toggler__item__wrapper} ${
+                        activeTab === "self-host" ? styles.move__right : ""
+                    }`}
                 ></div>
+                <Tooltip
+                    text="Measured based on number of sessions refreshed and number of unique logins."
+                    position="bottom"
+                    className={styles.tooltip}
+                    imageClass={activeTab !== "cloud" ? styles.opacity_60 : ""}
+                />
                 <div
-                    className={`${styles.toggle__item__container} ${styles.left__corners} ${activeTab !== "cloud" ? styles.opacity_60 : ""}`}
+                    className={`${styles.toggle__item__container} ${styles.left__corners} ${
+                        activeTab !== "cloud" ? styles.opacity_60 : ""
+                    }`}
                     onClick={() => setActiveTab("cloud")}
                 >
                     <div className={`${styles.toggler__item__gray} ${styles.left__top__corners}`}>
@@ -46,15 +56,7 @@ export function Toggler() {
                         </div>
                     </div>
                     <div className={styles.toggler__item__dark}>
-                        <span>
-                            $0.02 per MAU{" "}
-                            <span>
-                                <Tooltip
-                                    text="Measured based on number of sessions refreshed and number of unique logins."
-                                    position="bottom"
-                                />
-                            </span>
-                        </span>
+                        <span>$0.02 per MAU </span>
                         <span className={styles.text__orange}>(Free under 5K MAU)</span>
                     </div>
                 </div>

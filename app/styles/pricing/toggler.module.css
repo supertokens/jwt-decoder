@@ -46,7 +46,6 @@
     left: 3px;
 }
 
-
 .toggler__item__wrapper::after {
     content: "";
     position: absolute;
@@ -61,7 +60,6 @@
     left: 3px;
     width: 355px;
     height: calc(100% - 2px);
-
 }
 
 .toggle__item__container {
@@ -86,11 +84,11 @@
     border-radius: 0px 14px 14px 0px;
 }
 
-.left__top__corners{
+.left__top__corners {
     border-radius: 14px 0px 0px 0px;
 }
 
-.right__top__corners{
+.right__top__corners {
     border-radius: 0px 14px 0px 0px;
 }
 
@@ -124,7 +122,7 @@
     background: #000;
 
     display: flex;
-    gap: 10px;
+    gap: 32px;
     justify-content: center;
     align-items: center;
 
@@ -156,4 +154,11 @@
 
 .margin_3 {
     margin: 3px 3px 3px 0;
+}
+
+.tooltip {
+    position: absolute !important;
+    z-index: 5;
+    bottom: 18px;
+    right: 75%;
 }

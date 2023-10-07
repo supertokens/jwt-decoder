@@ -12,17 +12,16 @@ import linkPng from '../../assets/pricing/link.png'
 
 
 import { useState } from "react";
-import { navigateOnButtonClick } from "../common/utils";
 import React from "react";
 import PricingDialogContainer from "./dialog/pricingDialogContainer";
 import DashboardDialog from "./dialog/dashboardDialog";
 import MultiTenancyDialog from "./dialog/multitenancyDialog";
 import AccountLinkingDialog from "./dialog/accountLinkingDialog";
 
-export const Tooltip = ({ position, text }) => {
+export const Tooltip = ({ position, text , className = "", imageClass = "" }) => {
     return (
-        <div className={styles.tooltip}>
-            <img src={tooltipIcon.src} alt="" />
+        <div className={`${className} ${styles.tooltip} `}>
+            <img className={imageClass} src={tooltipIcon.src} alt="question-mark-icon" />
             <div className={styles[position]}>
                 <p>{text}</p>
             </div>
@@ -87,6 +86,7 @@ const Thead = () => {
         </thead>
     );
 };
+
 
 const rows = [
     {
@@ -432,7 +432,7 @@ const insertLink = (mainText:string,links:Array<{text:string,href:string}>)=>{
     return returnableJSX;
 }
 
-const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDefault?: boolean }) => {
+export const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDefault?: boolean }) => {
     const [expand, setExpand] = useState(expandedByDefault);
     return (
         <div className={styles.expandable} onClick={() => setExpand(!expand)}>
@@ -467,24 +467,12 @@ const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDe
     );
 };
 
-const TBody = () => {
+
+
+export const TBody = () => {
     const [isDashboardDialogOpen,setIsDashboardDialogOpen] = useState(false)
     const [isMultiTenancyDialogOpen,setisMultiTenancyDialogOpen] = useState(false)
     const [isAccountLinkingDialogOpen,setIsAccountLinkingDialogOpen] = useState(false)
-
-    function openDialog(dialogType:string) {
-        if(dialogType === "multi-tenancy") {
-            setisMultiTenancyDialogOpen(true)
-        }
-
-        if(dialogType === "dashboard") {
-            setIsDashboardDialogOpen(true)
-        }
-
-        if(dialogType === "account-linking"){
-            setIsAccountLinkingDialogOpen(true)
-        }
-    }
     return (
         <tbody>
             {rows.map((el, index) => {
@@ -497,7 +485,6 @@ const TBody = () => {
                                 {/* <small>{el.data.number}</small> */}
                             </td>
                             <td />
-                            <td />
                         </tr>
                     );
                 } else if (el.type === "feature") {
@@ -507,19 +494,16 @@ const TBody = () => {
                                 <Expandable row={el} expandedByDefault={el.expandedByDefault} />
                             </td>
                             <td>
-                                {typeof el.openSource === "boolean" && el.openSource && (
-                                    <img src={openSourceCheck.src} alt="" />
-                                )}
-                                {typeof el.openSource === "string" && <span>{el.openSource}</span>}
+                                <img src={openSourceCheck.src} alt="" />
                             </td>
-                            <td>
+                            {/* <td>
                                 {typeof el.scale === "boolean" && el.scale && <img src={scaleCheck.src} alt="" />}
                                 {typeof el.scale === 'object' && el.scale && 
                                 (el.scale.text === "See pricing"?
                                     <button onClick={()=> openDialog(el.scale.dialogType)} className={styles.seePricing} ><span>{el.scale.text}</span></button>:
                                 null)}
                                 {typeof el.scale === "string" && el.scale && <span className={styles.scale}>{el.scale}</span>}
-                            </td>
+                            </td> */}
                         </tr>
                     );
                 }
@@ -540,34 +524,6 @@ const TBody = () => {
     );
 };
 
-
-const navigateToGuides = (e: React.MouseEvent<HTMLButtonElement>) => {
-    navigateOnButtonClick("/docs/guides", e);
-};
-
-const TFoot = () => {
-    return (
-        // <tfoot>
-        //     <tr>
-        //         <td></td>
-        //         <td>
-                    
-        //         </td>
-        //         {/* <td>
-        //             <h1>Pay when you scale</h1>
-        //             <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
-        //                 Contact Us
-        //             </button>
-        //         </td> */}
-        //     </tr>
-        // </tfoot>
-        <div className={styles.tableFooter}>
-            <button onClick={navigateToGuides} className={styles.bordered}>
-                Get Started
-            </button>
-        </div>
-    );
-};
 
 const MobileTHead = () => {
     return (
@@ -688,46 +644,18 @@ const MobileTBody = () => {
     );
 };
 
-// const MobileTFoot = () => {
-//     return (
-//         <table className={styles.mobileTFoot}>
-//             <tfoot>
-//                 <tr>
-//                     <td className={styles["open-source-footer"]}>
-//                         <div>
-//                             <h1>Open source</h1>
-//                             <button onClick={navigateToGuides} className={styles.bordered}>
-//                                 Get Started
-//                             </button>
-//                         </div>
-//                     </td>
-//                     <td className={styles["paid-footer"]}>
-//                         <div>
-//                             <h1>Pay when you scale</h1>
-//                             <button onClick={navigateToConsultancy} className={styles["filled-orange"]}>
-//                                 Contact Us
-//                             </button>
-//                         </div>
-//                     </td>
-//                 </tr>
-//             </tfoot>
-//         </table>
-//     );
-// };
-
 const PricingTable = () => {
     return (
         <div className={styles["table-wrapper"]}>
             <table className={styles.table}>
-                <Thead />
-                <TBody />
+            <h1>Core Features</h1>
+                <TBody/>
             </table>
             <div className={styles.mobileTable}>
                 <MobileTHead />
                 <h3>Features</h3>
                 <MobileTBody />
             </div>
-            <TFoot />
         </div>
     );
 };
