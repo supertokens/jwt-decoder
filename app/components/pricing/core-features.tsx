@@ -8,7 +8,6 @@ import { Expandable } from "./pricingTable";
 import { navigateOnButtonClick } from "../common/utils";
 import { CoreFeatureToggle } from "./toggle";
 
-
 const coreFeatures = [
     {
         type: "section",
@@ -283,6 +282,14 @@ export const CoreFeaturesTableBodyMobile = () => {
                     );
                 }
             })}
+            <tr className={styles.get_started}>
+                <td className={styles.left_align}></td>
+                <td>
+                    <button onClick={navigateToGuides} className={styles.bordered}>
+                        Get Started
+                    </button>
+                </td>
+            </tr>
         </tbody>
     );
 };

@@ -44,12 +44,12 @@ export function CoreFeatureToggle() {
                     imageClass={activeTab !== "cloud" ? styles.opacity_60 : ""}
                 />
                 <div
-                    className={`${styles.toggle__item__container} ${styles.left__corners} ${
+                    className={`${styles.toggle__item__container} ${styles.left__corners__14} ${
                         activeTab !== "cloud" ? styles.opacity_60 : ""
                     }`}
                     onClick={() => setActiveTab("cloud")}
                 >
-                    <div className={`${styles.toggler__item__gray} ${styles.left__top__corners}`}>
+                    <div className={`${styles.toggler__item__gray} ${styles.left__top__corners__14}`}>
                         <img src={getImage().cloud} alt="icon" />
                         <div>
                             Cloud <span>(We host)</span>
@@ -61,12 +61,12 @@ export function CoreFeatureToggle() {
                     </div>
                 </div>
                 <div
-                    className={`${styles.toggle__item__container} ${styles.right__corners} ${
+                    className={`${styles.toggle__item__container} ${styles.right__corners__14} ${
                         activeTab !== "self-host" ? styles.opacity_60 : ""
                     }`}
                     onClick={() => setActiveTab("self-host")}
                 >
-                    <div className={`${styles.toggler__item__gray} ${styles.right__top__corners}`}>
+                    <div className={`${styles.toggler__item__gray} ${styles.right__top__corners__14}`}>
                         <img src={getImage().self_host} alt="icon" />
                         <div>
                             Self-hosted <span>(You Host)</span>
@@ -81,22 +81,26 @@ export function CoreFeatureToggle() {
     );
 }
 
+export type ServiceType = "cloud" | "self-host";
 
-export function PaidFeaturesToggle(){
-    const [activeTab, setActiveTab] = useState<"cloud" | "self-host">("cloud");
+type PaidFeatureToggleProps = {
+    setServiceType: (type: ServiceType) => void;
+    serviceType: ServiceType;
+};
 
+export function PaidFeaturesToggle({ serviceType, setServiceType }: PaidFeatureToggleProps) {
     function getImage() {
         let self_host = selfhost_gray.src;
         let cloud = cloud_white.src;
 
-        if (activeTab === "cloud") {
+        if (serviceType === "cloud") {
             return {
                 self_host,
                 cloud
             };
         }
 
-        if (activeTab === "self-host") {
+        if (serviceType === "self-host") {
             return {
                 cloud: cloud_gray.src,
                 self_host: selfhost_white.src
@@ -105,20 +109,20 @@ export function PaidFeaturesToggle(){
     }
 
     return (
-        <div className={styles.toggler__container__wrapper}>
-            <div className={styles.toggler__container}>
+        <div className={`${styles.toggler__container__wrapper} ${styles.border__radius__8}`}>
+            <div className={`${styles.toggler__container} ${styles.border__radius__8}`}>
                 <div
-                    className={`${styles.toggler__item__wrapper} ${
-                        activeTab === "self-host" ? styles.move__right : ""
-                    }`}
+                    className={`${styles.toggler__item__wrapper__small} ${styles.border__radius__8} ${
+                        styles.toggler__item__wrapper
+                    } ${serviceType === "self-host" ? styles.move__right : ""}`}
                 ></div>
                 <div
-                    className={`${styles.toggle__item__container} ${styles.left__corners} ${
-                        activeTab !== "cloud" ? styles.opacity_60 : ""
-                    }`}
-                    onClick={() => setActiveTab("cloud")}
+                    className={`${styles.toggle__item__container__small} ${styles.border__radius__8} ${
+                        styles.toggle__item__container
+                    } ${styles.left__corners__8} ${serviceType !== "cloud" ? styles.opacity_60 : ""}`}
+                    onClick={() => setServiceType("cloud")}
                 >
-                    <div className={`${styles.toggler__item__dark} ${styles.left__top__corners}`}>
+                    <div className={`${styles.toggler__item__dark} ${styles.gap__8} ${styles.left__top__corners__8}`}>
                         <img src={getImage().cloud} alt="icon" />
                         <div>
                             Cloud <span>(We host)</span>
@@ -126,12 +130,12 @@ export function PaidFeaturesToggle(){
                     </div>
                 </div>
                 <div
-                    className={`${styles.toggle__item__container} ${styles.right__corners} ${
-                        activeTab !== "self-host" ? styles.opacity_60 : ""
-                    }`}
-                    onClick={() => setActiveTab("self-host")}
+                    className={`${styles.toggle__item__container__small} ${styles.border__radius__8} ${
+                        styles.toggle__item__container
+                    } ${styles.right__corners__8} ${serviceType !== "self-host" ? styles.opacity_60 : ""}`}
+                    onClick={() => setServiceType("self-host")}
                 >
-                    <div className={`${styles.toggler__item__dark} ${styles.right__top__corners}`}>
+                    <div className={`${styles.toggler__item__dark} ${styles.gap__8} ${styles.right__top__corners__8}`}>
                         <img src={getImage().self_host} alt="icon" />
                         <div>
                             Self-hosted <span>(You Host)</span>

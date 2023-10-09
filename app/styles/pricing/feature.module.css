@@ -175,6 +175,8 @@
     font-weight: 400;
     font-size: 13px;
 
+    margin-left: 36px;
+
     color: #ff9933;
 }
 
@@ -199,8 +201,9 @@
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
-    color: #ddd;
+    color: #aaa;
 }
 
 .expandable > .header img {
@@ -632,7 +635,7 @@
 }
 
 .scale {
-    color: #f93;
+    color: #fff;
     text-align: center;
     font-size: 16px;
     font-weight: 400;

@@ -29,65 +29,6 @@ export const Tooltip = ({ position, text , className = "", imageClass = "" }) =>
     );
 };
 
-const Thead = () => {
-    return (
-        <thead>
-            {/*<tr>*/}
-            {/*    <td></td>*/}
-            {/*    <td>Swipe</td>*/}
-            {/*</tr>*/}
-            <tr className={styles["main-header"]}>
-                <th className={styles.left_align}>Features</th>
-                <th>Open Source</th>
-                <th>Scale</th>
-            </tr>
-            <tr className={styles.section}>
-                <td className={styles.left_align}>
-                    <span className={styles["section-text"]}>MAU Pricing</span>
-                </td>
-                <td />
-                <td />
-            </tr>
-            <tr className={styles.spacer}>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            {/* <div className={s}/> */}
-            <tr className={styles.highlight}>
-                <td className={styles.left_align}>
-                    Self host
-                    <img src={selfHOst.src} alt="self-hosted" />
-                </td>
-                <td>Free</td>
-                <td>Free</td>
-            </tr>
-            <tr className={styles.highlight}>
-                <td className={styles.left_align}>
-                    Managed Service
-                    <img src={managed.src} alt="manged" />
-                </td>
-                <td>
-                    <span>$0.02 per MAU</span>
-                    <br />
-                    <span className={styles.subtext}>Free under 5K MAU</span>
-                </td>
-                <td> 
-                    <span>$0.02 per MAU</span>
-                    <br />
-                    <span className={styles.subtext}>Free under 5K MAU</span>
-                </td>
-            </tr>
-            <tr className={styles.spacer}>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </thead>
-    );
-};
-
-
 const rows = [
     {
         type: "section",
@@ -441,9 +382,9 @@ export const Expandable = ({ row, expandedByDefault = false }: { row: any; expan
             >
                 <span>
                     {row.data.links?.length ? insertLink(row.data.mainText,row.data.links):row.data.mainText } {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom" />}
+                    {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>}
                 </span>
                 <div>
-                    {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>}
                     {row.expandable && <img className={`${styles.expandbleIcon} ${expand ? styles.opened :""}`}   src={dropIcon.src} />}
                 </div>
             </div>
