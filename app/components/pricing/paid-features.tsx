@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { Expandable, Tooltip } from "./pricingTable";
-import { PaidFeaturesToggle, ServiceType } from "./toggle";
+import { Expandable } from "./pricingTable";
+import { PaidFeaturesToggle, ServiceType } from "./paid-features-toggle";
 import MultiTenancyDialog from "./dialog/multitenancyDialog";
 import PricingDialogContainer from "./dialog/pricingDialogContainer";
 
@@ -206,7 +206,7 @@ function PricingTooltip({ configKey }: PricingTooltipProps) {
     return (
         <div className={`${paidfeaturesStyles.pricing__tooltip} `}>
             <img src={alertCircle.src} alt="alert-circle-icon" />
-           <div className={paidfeaturesStyles.pricing__tooltip__content}>
+            <div className={paidfeaturesStyles.pricing__tooltip__content}>
                 <div className={paidfeaturesStyles.pricing__tooltip__content__container}>
                     <span>Pricing Example</span>
                     <ul>
@@ -312,54 +312,47 @@ export const PaidFeaturesTableMobileBody = ({ type }: PaidFeatureTableBodyProps)
     const [isMultiTenancyDialogOpen, setisMultiTenancyDialogOpen] = useState(false);
 
     return (
-        <tbody>
+        <div>
             {paidFeaturesConfig.map((el, index) => {
                 if (el.type === "section") {
                     return (
-                        <tr key={index} className={styles.section}>
-                            <td className={styles.left_align}>
-                                <span className={styles["section-text"]}>{el.data.mainText}</span>
-                            </td>
-                            <td />
-                        </tr>
+                        <div key={index} className={styles.mobileSection}>
+                            <span className={styles["section-text"]}>{el.data.mainText}</span>
+                        </div>
                     );
                 } else if (el.type === "feature") {
                     return (
-                        <tr key={index} className={styles.feature}>
-                            <td className={styles.left_align}>
-                                <Expandable row={el} expandedByDefault={!el.expandable} />
-                            </td>
-                            <td>
-                                {typeof el.scale === "object" &&
-                                    el.scale &&
-                                    (el.scale.text === "See pricing" ? (
+                        <div key={index} className={styles.mobileFeature}>
+                            <Expandable row={el} expandedByDefault={!el.expandable} />
+                            {typeof el.scale === "object" &&
+                                el.scale &&
+                                (el.scale.text === "See pricing" ? (
+                                    <div className={styles.scaleMobile}>
                                         <button
-                                            className={styles.seePricing}
-                                            onClick={() => setisMultiTenancyDialogOpen(true)}
-                                        >
-                                            <span>{el.scale.text}</span>
-                                        </button>
-                                    ) : null)}
-                                {typeof el.scale === "string" && el.scale && (
-                                    <>
-                                        <span className={styles.scale}>{el.scale}</span>
-                                        {el.tooltip ? (
-                                            <Tooltip position={"bottom"} text={"testing the tooltip"} />
-                                        ) : null}
-                                    </>
-                                )}
-                            </td>
-                        </tr>
+                                        className={styles.seePricing}
+                                        onClick={() => setisMultiTenancyDialogOpen(true)}
+                                    >
+                                        <span>{el.scale.text}</span>
+                                    </button>
+                                    </div>
+                                ) : null)}
+                            {typeof el.scale === "string" && el.scale && (
+                                <span className={styles.scaleMobile}>
+                                    {el.scale}
+                                    {el.tooltip ? <PricingTooltip configKey={el.tooltip} /> : null}
+                                </span>
+                            )}
+                        </div>
                     );
                 }
             })}
-            <tr className={paidfeaturesStyles.paid__feature__note}>
+            <div className={paidfeaturesStyles.paid__feature__note + " " + paidfeaturesStyles.note_mobile}>
                 <td className={styles.left_align}>Note: Paid Add-ons have a $100 / month minimum billing</td>
-            </tr>
+            </div>
             <PricingDialogContainer show={isMultiTenancyDialogOpen} onClose={() => setisMultiTenancyDialogOpen(false)}>
                 <MultiTenancyDialog />
             </PricingDialogContainer>
-        </tbody>
+        </div>
     );
 };
 
@@ -371,11 +364,9 @@ export default function PaidFeaturesTable() {
             <div className={paidfeaturesStyles.paid__features__container}>
                 <div>
                     <h1>Paid features / Add-on</h1>
-                    <p>(Pay additionally as per feature use)</p>
+                    <span>(Pay additionally as per feature use)</span>
                 </div>
-                <div>
-                    <PaidFeaturesToggle setServiceType={setServiceType} serviceType={serviceType} />
-                </div>
+                <PaidFeaturesToggle setServiceType={setServiceType} serviceType={serviceType} />
             </div>
             <table className={styles.table}>
                 <PaidFeaturesTableBody type={serviceType} />

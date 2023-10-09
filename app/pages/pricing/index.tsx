@@ -10,7 +10,7 @@ export default function PricingPage() {
     return <div style={{ maxWidth: "1440px", margin: "auto" }}>
         <PricingHeader />
         <CoreFeaturesTable/>
-        {/* <PaidFeaturesTable/> */}
+        <PaidFeaturesTable/>
         <Support />
         <Comparision />
         <FAQ />

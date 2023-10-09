@@ -3,8 +3,6 @@ import tooltipIcon from "../../assets/pricing/tooltip-icon.png";
 import dropIcon from "../../assets/pricing/drop-icon.png";
 import openSourceCheck from "../../assets/pricing/open-source-check.png";
 import scaleCheck from "../../assets/pricing/scale-check.png";
-import selfHOst from "../../assets/pricing/self-host.png";
-import managed from "../../assets/pricing/managed.png";
 import auth from "../../assets/pricing/auth.png";
 import everything from "../../assets/pricing/everything.png";
 import support from "../../assets/pricing/support.png";
@@ -381,7 +379,7 @@ export const Expandable = ({ row, expandedByDefault = false }: { row: any; expan
                 className={`${styles.header} ${row.expandable ? styles.cursor : null}`}
             >
                 <span>
-                    {row.data.links?.length ? insertLink(row.data.mainText,row.data.links):row.data.mainText } {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom" />}
+                    <span>{row.data.links?.length ? insertLink(row.data.mainText,row.data.links):row.data.mainText } {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom" />}</span>
                     {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>}
                 </span>
                 <div>

@@ -1,10 +1,11 @@
-import styles from "../../styles/pricing/toggle.module.css";
+import { useState } from "react";
+
+import styles from "../../styles/pricing/core-features-toggle.module.css";
 
 import selfhost_white from "../../assets/pricing/self-host-white.svg";
 import selfhost_gray from "../../assets/pricing/self-host-gray.svg";
 import cloud_white from "../../assets/pricing/cloud-white.svg";
 import cloud_gray from "../../assets/pricing/cloud-gray.svg";
-import { useState } from "react";
 import { Tooltip } from "./pricingTable";
 
 export function CoreFeatureToggle() {
@@ -81,68 +82,4 @@ export function CoreFeatureToggle() {
     );
 }
 
-export type ServiceType = "cloud" | "self-host";
 
-type PaidFeatureToggleProps = {
-    setServiceType: (type: ServiceType) => void;
-    serviceType: ServiceType;
-};
-
-export function PaidFeaturesToggle({ serviceType, setServiceType }: PaidFeatureToggleProps) {
-    function getImage() {
-        let self_host = selfhost_gray.src;
-        let cloud = cloud_white.src;
-
-        if (serviceType === "cloud") {
-            return {
-                self_host,
-                cloud
-            };
-        }
-
-        if (serviceType === "self-host") {
-            return {
-                cloud: cloud_gray.src,
-                self_host: selfhost_white.src
-            };
-        }
-    }
-
-    return (
-        <div className={`${styles.toggler__container__wrapper} ${styles.border__radius__8}`}>
-            <div className={`${styles.toggler__container} ${styles.border__radius__8}`}>
-                <div
-                    className={`${styles.toggler__item__wrapper__small} ${styles.border__radius__8} ${
-                        styles.toggler__item__wrapper
-                    } ${serviceType === "self-host" ? styles.move__right : ""}`}
-                ></div>
-                <div
-                    className={`${styles.toggle__item__container__small} ${styles.border__radius__8} ${
-                        styles.toggle__item__container
-                    } ${styles.left__corners__8} ${serviceType !== "cloud" ? styles.opacity_60 : ""}`}
-                    onClick={() => setServiceType("cloud")}
-                >
-                    <div className={`${styles.toggler__item__dark} ${styles.gap__8} ${styles.left__top__corners__8}`}>
-                        <img src={getImage().cloud} alt="icon" />
-                        <div>
-                            Cloud <span>(We host)</span>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    className={`${styles.toggle__item__container__small} ${styles.border__radius__8} ${
-                        styles.toggle__item__container
-                    } ${styles.right__corners__8} ${serviceType !== "self-host" ? styles.opacity_60 : ""}`}
-                    onClick={() => setServiceType("self-host")}
-                >
-                    <div className={`${styles.toggler__item__dark} ${styles.gap__8} ${styles.right__top__corners__8}`}>
-                        <img src={getImage().self_host} alt="icon" />
-                        <div>
-                            Self-hosted <span>(You Host)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}

@@ -6,7 +6,7 @@ import support from "../../assets/pricing/support.png";
 
 import { Expandable } from "./pricingTable";
 import { navigateOnButtonClick } from "../common/utils";
-import { CoreFeatureToggle } from "./toggle";
+import { CoreFeatureToggle } from "./core-toggle";
 
 const coreFeatures = [
     {
@@ -263,7 +263,7 @@ export const CoreFeaturesTableBodyMobile = () => {
                 if (el.type === "section") {
                     return (
                         <div key={index} className={styles.mobileSection}>
-                           <span className={styles["section-text"]}>{el.data.text}</span>
+                            <span className={styles["section-text"]}>{el.data.text}</span>
                         </div>
                     );
                 } else if (el.type === "feature") {
