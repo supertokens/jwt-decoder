@@ -258,39 +258,33 @@ export const CoreFeaturesTableBody = () => {
 
 export const CoreFeaturesTableBodyMobile = () => {
     return (
-        <tbody>
+        <div>
             {coreFeatures.map((el, index) => {
                 if (el.type === "section") {
                     return (
-                        <tr key={index} className={styles.section}>
-                            <td className={styles.left_align}>
-                                <span className={styles["section-text"]}>{el.data.text}</span>
-                            </td>
-                            <td />
-                        </tr>
+                        <div key={index} className={styles.mobileSection}>
+                           <span className={styles["section-text"]}>{el.data.text}</span>
+                        </div>
                     );
                 } else if (el.type === "feature") {
                     return (
-                        <tr key={index} className={styles.feature}>
-                            <td className={styles.left_align}>
-                                <Expandable row={el} expandedByDefault={el.expandedByDefault} />
-                            </td>
-                            <td>
-                                <img src={openSourceCheck.src} alt="" />
-                            </td>
-                        </tr>
+                        <div key={index} className={styles.mobileFeature}>
+                            <Expandable row={el} expandedByDefault={el.expandedByDefault} />
+                            <div className={styles.check}>
+                                <img src={openSourceCheck.src} alt="check-mark-icon" />
+                            </div>
+                        </div>
                     );
                 }
             })}
-            <tr className={styles.get_started}>
-                <td className={styles.left_align}></td>
-                <td>
+            <div className={styles.get_started}>
+                <div>
                     <button onClick={navigateToGuides} className={styles.bordered}>
                         Get Started
                     </button>
-                </td>
-            </tr>
-        </tbody>
+                </div>
+            </div>
+        </div>
     );
 };
 

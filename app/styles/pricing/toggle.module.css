@@ -20,7 +20,7 @@
     cursor: pointer;
 }
 
-.toggler__item__wrapper__small{
+.toggler__item__wrapper__small {
     width: 260px !important;
 }
 
@@ -33,10 +33,9 @@
     top: 3px;
 }
 
-.toggler__item__wrapper__small::before{
+.toggler__item__wrapper__small::before {
     width: calc(260px + 12px) !important;
 }
-
 
 .toggler__item__wrapper::before {
     content: "";
@@ -53,7 +52,7 @@
     left: 3px;
 }
 
-.toggler__item__wrapper__small::after{
+.toggler__item__wrapper__small::after {
     width: 260px !important;
 }
 
@@ -72,7 +71,7 @@
     height: calc(100% - 2px);
 }
 
-.toggle__item__container__small{
+.toggle__item__container__small {
     width: 260px !important;
 }
 
@@ -122,28 +121,26 @@
     border-radius: 0px 8px 0px 0px;
 }
 
-
-.border__radius__8{
+.border__radius__8 {
     border-radius: 8px !important;
 }
 
-.border__radius__8::before{
+.border__radius__8::before {
     border-radius: 8px !important;
 }
 
-.border__radius__8::after{
+.border__radius__8::after {
     border-radius: 8px !important;
 }
 
-.gap__8{
+.gap__8 {
     gap: 8px !important;
 }
 
 .toggler__item__gray {
     background: rgba(255, 255, 255, 0.1);
 
-    flex-shrink: 0;
-    flex-grow: 1;
+    height: 50%;
     text-align: center;
 
     color: #f8f7f7;
@@ -173,8 +170,7 @@
     justify-content: center;
     align-items: center;
 
-    flex-shrink: 0;
-    flex-grow: 1;
+    height: 50%;
     text-align: center;
 
     color: #ddd;
@@ -206,7 +202,124 @@
 .tooltip {
     position: absolute !important;
     z-index: 5;
-    bottom: 18px;
+    bottom: 20px;
     right: 75%;
 }
 
+@media (max-width: 768px) {
+    .toggler__item__wrapper {
+        max-width: 298px;
+    }
+
+    .toggler__item__wrapper::before {
+        width: calc(100% + 12px);
+    }
+
+    .toggler__item__wrapper::after {
+        width: 100%;
+    }
+
+    .toggle__item__container {
+        width: 298px;
+    }
+
+    .toggler__item__dark > span:first-of-type {
+        font-size: 14px;
+    }
+
+    .toggler__item__dark {
+        gap: 24px;
+    }
+
+    .toggler__item__gray {
+        gap: 8px;
+    }
+
+    .tooltip {
+        right: 76%;
+    }
+}
+
+@media (max-width: 625px) {
+    .toggler__item__wrapper {
+        max-width: 234px;
+    }
+
+    .toggle__item__container {
+        width: 234px;
+    }
+
+    .toggler__item__dark {
+        gap: 2px;
+        flex-direction: column;
+    }
+
+    .toggler__item__gray {
+        font-size: 16px;
+    }
+
+    .tooltip {
+        right: 61%;
+        bottom: 32px;
+    }
+
+    .tooltip > img {
+        height: 12px;
+    }
+
+    .toggler__container__wrapper{
+        margin: 20px;
+    }
+}
+
+@media (max-width: 468px) {
+    .toggler__item__wrapper {
+        max-width: calc(50vw - 20px)
+    }
+
+    .toggle__item__container {
+        width: calc(50vw - 20px)
+    }
+
+    .toggler__item__dark > span:first-of-type {
+        font-size: 12px;
+    }
+
+    .toggler__item__dark {
+        gap: 2px;
+        flex-direction: column;
+    }
+
+    .toggler__item__gray {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .tooltip {
+        right: 60%;
+        bottom: 28px;
+    }
+
+    .tooltip > img {
+        height: 12px;
+    }
+
+    .toggler__item__gray > div > span {
+        font-size: 0;
+    }
+}
+
+
+@media (max-width: 375px) {
+    .tooltip {
+        right: 57%;
+        bottom: 28px;
+    }
+}
+
+@media (max-width: 327px) {
+    .tooltip {
+        right: 54%;
+        bottom: 40px;
+    }
+}
