@@ -4,6 +4,7 @@ import FAQ from "../../components/pricing/faq";
 import Comparision from "../../components/pricing/comparision";
 import CoreFeaturesTable from "../../components/pricing/core-features";
 import PaidFeaturesTable from "../../components/pricing/paid-features";
+import CantFind from "../../components/pricing/cant-find";
 
 PricingPage.title = "Pricing & Features for SuperTokens";
 export default function PricingPage() {
@@ -12,6 +13,7 @@ export default function PricingPage() {
         <CoreFeaturesTable/>
         <PaidFeaturesTable/>
         <Support />
+        <CantFind/>
         <Comparision />
         <FAQ />
     </div>

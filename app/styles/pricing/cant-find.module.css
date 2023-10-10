@@ -1,0 +1,209 @@
+.container {
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+    margin: 12.438rem 12.438rem 0;
+    background: linear-gradient(180deg #a2facf, #64acff);
+}
+
+.first__section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 46px 50px;
+
+    position: relative;
+}
+
+.first__section::before {
+    position: absolute;
+    content: "";
+    border-radius: 500px;
+    background: rgba(0, 86, 50, 0.12);
+    filter: blur(200px);
+
+    height: 100%;
+    width: 100%;
+
+    z-index: -1;
+}
+
+.text__large {
+    color: #f8f7f7;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    max-width: 348px;
+}
+
+.gradient__text {
+    background: linear-gradient(to right bottom, #f8f7f7 8%, #393939 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.line {
+    width: 1px;
+    height: 174px;
+
+    background: linear-gradient(
+        to top,
+        rgba(162, 250, 207, 0) -5.69%,
+        rgba(162, 250, 207, 0.15) 50.53%,
+        rgba(162, 250, 207, 0) 102.61%
+    );
+}
+
+.bullet__points {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.pill__wrapper {
+    background: rgba(0, 0, 0, 1);
+    border-radius: 6px;
+    padding: 8px 16px;
+}
+
+.gradient__text__green__to__blue {
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    background: linear-gradient(90deg, #a2facf 1.48%, #64acff 97.04%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pill {
+    border-radius: 6px;
+    padding: 1px;
+
+    background: linear-gradient(180deg, rgb(162 250 207 / 20%), rgb(100 172 255 / 20%));
+    box-shadow: 0px 10px 16px 0px rgba(0, 0, 0, 0.26);
+
+    width: fit-content;
+}
+
+.bottom__section {
+    border-radius: 0px 0px 12px 12px;
+    border: 1px solid rgba(162, 250, 207, 0.12);
+    background: rgba(162, 250, 207, 0.06);
+    box-shadow: -11px 0px 95px 0px rgba(0, 0, 0, 0.57);
+
+    padding: 34px 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom__section > p {
+    color: #aaa;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    margin: 0;
+    display: inline;
+}
+
+.bottom__section > button {
+    border-radius: 6px;
+    border: 1px solid rgba(162, 250, 207, 0.05);
+    background: linear-gradient(90deg, rgba(162, 250, 207, 0.2) 0%, rgba(100, 172, 255, 0.08) 100%);
+
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    border: none;
+    padding: 14px 115px;
+
+    flex-shrink: 0;
+}
+
+.bottom__section > button > span {
+    background: linear-gradient(90deg, #a2facf 0%, #64acff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 1024px) {
+    .first__section{
+        gap: 30px;
+    }
+
+    .container{
+        margin: 100px 80px;
+    }
+
+    .bottom__section {
+        padding: 24px 26px
+    }
+}
+
+@media (max-width: 800px) {
+    .gradient__text__green__to__blue{
+        font-size: 16px;
+    }
+
+    .text__large{
+        font-size: 36px;
+    }
+
+    .bottom__section > p{
+        font-size: 18px;
+    }
+
+    .first__section {
+        padding: 26px 46px;
+        gap: 24px;
+    }
+
+    .bottom__section > button {
+        padding: 14px 82px
+    }
+
+    .line{
+        width: 2px;
+    }
+}
+
+@media (max-width: 646px) {
+    .container{
+        margin: 100px 20px;
+    }
+    .first__section {
+        flex-direction: column;
+        padding: 26px 32px;
+        align-items: start;
+    }
+
+    .line{
+        display: none;
+    }
+
+    .bottom__section {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .bottom__section > button {
+        width: 100%;
+    }
+}
+@media (max-width: 375px) {
+    .bottom__section > button {
+        padding: 14px 0px
+    }
+}

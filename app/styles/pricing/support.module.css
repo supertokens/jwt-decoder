@@ -6,7 +6,7 @@
 
 .support__section > h2 {
     color: #fff;
-    font-size: 32px;
+    font-size: 48px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -30,7 +30,7 @@
     background: linear-gradient(90deg, rgba(255, 233, 147, 0.2) 0%, rgba(235, 131, 28, 0.2) 100%);
 
     padding: 14px 82px;
-    margin: auto;
+    margin-left: auto;
 
     text-decoration: none;
 }
@@ -38,7 +38,7 @@
 .gradient__btn > span {
     display: block;
     text-align: center;
-    
+
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -101,13 +101,12 @@
 
 .support__pill > div {
     display: inline-block;
-    max-width: 190px;
-    width: fit-content;
-
     background: #000;
 
     border-radius: 6px;
     padding: 2px 12px;
+    width: 190px;
+    text-align: center;
 }
 
 .support__pill > div > span {
@@ -126,24 +125,16 @@
     width: 100%;
 
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 40px 26px;
+    gap: 36px;
 }
 
-.support__card {
-    height: auto;
-    width: 218px;
-}
-
-.line {
-    flex-shrink: 0;
-
-    width: 2px;
-    height: 16px;
-    margin-top: 5px;
-
-    background: linear-gradient(180deg, #ffe791 50%, #ec861f 100%);
+.support__item__container {
+    display: flex;
+    gap: 34px;
+    align-items: center;
 }
 
 .break {
@@ -160,8 +151,6 @@
     align-items: flex-start;
 
     gap: 12px;
-
-    margin-top: 22px;
 }
 
 .content__container > p {
@@ -174,12 +163,6 @@
     margin: 0;
 }
 
-@media (max-width:1260px){
-    .support__card__container{
-        gap: 0px;
-    }
-}
-
 @media (max-width: 1024px) {
     .support__section {
         margin: 8rem 8rem 0;
@@ -188,25 +171,22 @@
     .support__container {
         padding: 32px 64px;
     }
-
-    .support__card {
-        width: 45%;
-    }
-
-    .support__card__container{
-        gap: 40px 26px;
-    }
 }
 
 @media (max-width: 768px) {
     .support__container {
         padding: 32px 24px;
     }
-}
 
-@media (max-width: 640px) {
-    .support__card {
+    .support__item__container {
+        gap: 14px;
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .support__pill > div{
         width: 100%;
+        text-align: start;
     }
 }
 
