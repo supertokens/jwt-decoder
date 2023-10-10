@@ -34,7 +34,7 @@ export function CoreFeatureToggle() {
             <div className={styles.toggler__container}>
                 <div
                     className={`${styles.toggle__item__container} ${styles.left__corners__14} ${
-                        activeTab !== "cloud" ? styles.opacity_60 : styles.toggler__item__active
+                        activeTab === "cloud" ? styles.toggler__item__active : ""
                     }`}
                     onClick={() => setActiveTab("cloud")}
                 >
@@ -58,7 +58,7 @@ export function CoreFeatureToggle() {
                 </div>
                 <div
                     className={`${styles.toggle__item__container} ${styles.right__corners__14} ${
-                        activeTab !== "self-host" ? styles.opacity_60 : styles.toggler__item__active
+                        activeTab === "self-host" ? styles.toggler__item__active : ""
                     }`}
                     onClick={() => setActiveTab("self-host")}
                 >

@@ -42,7 +42,7 @@ export const Expandable = ({ row, expandedByDefault = false }: { row: any; expan
             >
                 <span>
                     <span>{row.data.links?.length ? insertLink(row.data.mainText,row.data.links):row.data.mainText } {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom" />}</span>
-                    {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>}
+                    {/* {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>} */}
                 </span>
                 <div>
                     {row.expandable && <img className={`${styles.expandbleIcon} ${expand ? styles.opened :""}`}   src={dropIcon.src} />}

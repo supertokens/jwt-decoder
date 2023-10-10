@@ -165,19 +165,9 @@
     color: rgb(128, 128, 128) !important;
 }
 
-.expandable > .header .coming-soon-chip {
-    padding: 5px;
-
-    background: #341a00;
-    border-radius: 4px;
-
-    font-family: "Inter";
+.coming-soon {
+    font-size: 15px;
     font-weight: 400;
-    font-size: 13px;
-
-    margin-left: 36px;
-
-    color: #ff9933;
 }
 
 .expandable > .header {
@@ -328,6 +318,12 @@
     line-height: 15px;
     text-align: center;
     color: #ff9933;
+}
+
+.subtext__gray{
+    font-size: 12px;
+    margin: 4px;
+    color: #aaa;
 }
 
 .expandable > .header > span > span {

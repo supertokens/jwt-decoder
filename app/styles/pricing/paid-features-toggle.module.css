@@ -15,7 +15,7 @@
 }
 
 .toggler__item__active {
-    border: 1px solid #f93;
+    border: 2px solid #f93;
     border-radius: 6px;
 
     height: 100%;
