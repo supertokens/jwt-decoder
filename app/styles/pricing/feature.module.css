@@ -168,6 +168,10 @@
 .coming-soon {
     font-size: 15px;
     font-weight: 400;
+    color: #fff;
+    padding: 14px;
+    text-align: center;
+
 }
 
 .expandable > .header {
