@@ -4,7 +4,7 @@ import auth from "../../assets/pricing/auth.png";
 import everything from "../../assets/pricing/everything.png";
 import support from "../../assets/pricing/support.png";
 
-import { Expandable } from "./pricingTable";
+import { Expandable } from "./pricingTableUtils";
 import { navigateOnButtonClick } from "../common/utils";
 import { CoreFeatureToggle } from "./core-toggle";
 
@@ -298,6 +298,7 @@ export default function CoreFeaturesTable() {
                     <CoreFeaturesTableBody />
                 </table>
                 <div className={styles.mobileTable}>
+                    <h1>Core Features</h1>
                     <CoreFeaturesTableBodyMobile />
                 </div>
             </div>

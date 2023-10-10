@@ -6,7 +6,7 @@ import selfhost_white from "../../assets/pricing/self-host-white.svg";
 import selfhost_gray from "../../assets/pricing/self-host-gray.svg";
 import cloud_white from "../../assets/pricing/cloud-white.svg";
 import cloud_gray from "../../assets/pricing/cloud-gray.svg";
-import { Tooltip } from "./pricingTable";
+import { Tooltip } from "./pricingTableUtils";
 
 export function CoreFeatureToggle() {
     const [activeTab, setActiveTab] = useState<"cloud" | "self-host">("cloud");

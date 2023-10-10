@@ -178,6 +178,10 @@
         padding: 32px 24px;
     }
 
+    .support__section > h2 {
+        font-size: 48px;
+    }
+
     .support__item__container {
         gap: 14px;
         align-items: start;
@@ -188,11 +192,19 @@
         width: 100%;
         text-align: start;
     }
+
+    .gradient__btn{
+        margin: auto;
+    }
 }
 
 @media (max-width: 480px) {
     .support__section {
         margin: 8rem 2rem 0;
+    }
+
+    .support__section > h2 {
+        font-size: 40px;
     }
 }
 

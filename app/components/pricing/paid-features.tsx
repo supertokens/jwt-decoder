@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Expandable } from "./pricingTable";
+import { Expandable } from "./pricingTableUtils";
 import { PaidFeaturesToggle, ServiceType } from "./paid-features-toggle";
 import MultiTenancyDialog from "./dialog/multitenancyDialog";
 import PricingDialogContainer from "./dialog/pricingDialogContainer";
@@ -287,7 +287,13 @@ export function PaidFeaturesTableBody({ type }: PaidFeatureTableBodyProps) {
                                     ) : null)}
                                 {typeof el.scale === "string" && el.scale && (
                                     <>
-                                        <span className={styles.scale}>{el.scale}</span>
+                                        <span
+                                            className={`${styles.scale} ${
+                                                el.scale === "Contact us!" ? styles.font__400 : ""
+                                            }`}
+                                        >
+                                            {el.scale}
+                                        </span>
                                         {el.tooltip ? <PricingTooltip configKey={el.tooltip} /> : null}
                                     </>
                                 )}
@@ -329,15 +335,19 @@ export const PaidFeaturesTableMobileBody = ({ type }: PaidFeatureTableBodyProps)
                                 (el.scale.text === "See pricing" ? (
                                     <div className={styles.scaleMobile}>
                                         <button
-                                        className={styles.seePricing}
-                                        onClick={() => setisMultiTenancyDialogOpen(true)}
-                                    >
-                                        <span>{el.scale.text}</span>
-                                    </button>
+                                            className={styles.seePricing}
+                                            onClick={() => setisMultiTenancyDialogOpen(true)}
+                                        >
+                                            <span>{el.scale.text}</span>
+                                        </button>
                                     </div>
                                 ) : null)}
                             {typeof el.scale === "string" && el.scale && (
-                                <span className={styles.scaleMobile}>
+                                <span
+                                    className={`${styles.scaleMobile} ${
+                                        el.scale === "Contact us!" ? styles.font__400 : ""
+                                    }`}
+                                >
                                     {el.scale}
                                     {el.tooltip ? <PricingTooltip configKey={el.tooltip} /> : null}
                                 </span>

@@ -330,6 +330,10 @@
     color: #ff9933;
 }
 
+.expandable > .header > span > span {
+    display: flex;
+}
+
 @media screen and (max-width: 1024px) {
     .table {
         display: none;
@@ -341,10 +345,14 @@
         width: calc(100vw - 8.438rem * 2);
     }
 
-    .mobileTable > h3 {
+    .mobileTable > h1 {
         color: #f8f7f7;
-        text-align: center;
-        margin-top: 0;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+
+        text-align: start;
     }
 
     .mobileSection {
@@ -399,8 +407,12 @@
     .expandable > .header > span {
         flex-direction: column;
         text-align: center;
+        gap: 4px;
     }
 
+    .expandable > .header img {
+        margin-left: 0px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -464,6 +476,10 @@
         width: calc(100vw - 20px * 2);
     }
 
+    .mobileTable > h1 {
+        font-size: 40px;
+    }
+
     .mobileTHead {
         width: 100%;
         padding-left: 20px;
@@ -479,6 +495,10 @@
     .tableFooter {
         margin: 0 18px !important;
     }
+}
+
+.font__400{
+    font-weight: 400 !important;
 }
 
 .externalLink {
@@ -555,16 +575,16 @@
     color: #fff;
     text-align: center;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: normal;
 }
 
 .scaleMobile {
-    padding: 12px;
+    padding: 14px;
 
     color: #fff;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: normal;
 
     display: flex;

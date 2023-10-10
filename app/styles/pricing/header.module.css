@@ -16,7 +16,7 @@
 
     position: relative;
 
-    padding-bottom: 154px;
+    padding-bottom: 184px;
 }
 
 .text > h1 {
@@ -129,12 +129,12 @@
 
 .underline::before{
     content: "";
-    height: 68px;
+    height: 24px;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(45deg, rgba(255, 153, 51, 0.2), rgba(255, 153, 51, 0.15));
+    background: linear-gradient(45deg,rgba(255,153,51,.2),rgba(255,153,51,.15));
     filter: blur(75px);
 }
 

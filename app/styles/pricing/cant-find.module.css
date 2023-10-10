@@ -115,7 +115,7 @@
     display: inline;
 }
 
-.bottom__section > button {
+.bottom__section > a {
     border-radius: 6px;
     border: 1px solid rgba(162, 250, 207, 0.05);
     background: linear-gradient(90deg, rgba(162, 250, 207, 0.2) 0%, rgba(100, 172, 255, 0.08) 100%);
@@ -129,13 +129,18 @@
     padding: 14px 115px;
 
     flex-shrink: 0;
+
+    text-decoration: none;
 }
 
-.bottom__section > button > span {
+.bottom__section > a > span {
     background: linear-gradient(90deg, #a2facf 0%, #64acff 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 1024px) {
@@ -170,7 +175,7 @@
         gap: 24px;
     }
 
-    .bottom__section > button {
+    .bottom__section > a {
         padding: 14px 82px
     }
 
@@ -198,12 +203,12 @@
         gap: 18px;
     }
 
-    .bottom__section > button {
+    .bottom__section > a {
         width: 100%;
     }
 }
 @media (max-width: 375px) {
-    .bottom__section > button {
+    .bottom__section > a {
         padding: 14px 0px
     }
 }

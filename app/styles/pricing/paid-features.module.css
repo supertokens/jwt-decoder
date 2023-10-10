@@ -44,7 +44,6 @@
     padding-top: 12px;
 }
 
-
 .pricing__tooltip {
     margin-left: 8px;
     display: inline;
@@ -156,20 +155,28 @@
     }
 }
 
+@media (max-width: 768px) {
+    .paid__features__container {
+        margin: 100px 84px 0px 84px;
+    }
 
-@media (max-width: 700px) {
-    .paid__features__container{
-        margin: 8.438rem 8.438rem 0;
+    .pricing__tooltip__content__container > span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 614px) {
+    .pricing__tooltip__content__container > span {
+        font-size: 12px;
     }
 }
 
 @media (max-width: 480px) {
-    .paid__features__container{
-        margin: 20px
+    .paid__features__container {
+        margin: 20px;
     }
 
     .paid__features__container > div > h1 {
         font-size: 40px;
     }
-    
 }
