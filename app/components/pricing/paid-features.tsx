@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Expandable } from "./pricingTableUtils";
-import { PaidFeaturesToggle, ServiceType } from "./paid-features-toggle";
+import { PaidFeaturesToggle } from "./paid-features-toggle";
 import MultiTenancyDialog from "./dialog/multitenancyDialog";
 import PricingDialogContainer from "./dialog/pricingDialogContainer";
 
@@ -9,6 +9,7 @@ import alertCircle from "../../assets/pricing/alert-circle.svg";
 
 import styles from "../../styles/pricing/feature.module.css";
 import paidfeaturesStyles from "../../styles/pricing/paid-features.module.css";
+import { usePricingToggleContext } from "../../context/PricingToggleContext";
 
 const pricingTooltipConfig = {
     "accountlinking-cloud": [
@@ -180,20 +181,20 @@ const paidFeaturesSelfHosted = [
     {
         type: "feature",
         expandable: false,
-        comingSoon: true,
+        comingSoon: false,
         scale: "Contact us!",
         data: {
-            mainText: "Single login across multiple domains",
-            tooltip: "This only applies to domains that are not sub domains"
+            mainText: "Implementation assistance"
         }
     },
     {
         type: "feature",
         expandable: false,
-        comingSoon: false,
+        comingSoon: true,
         scale: "Contact us!",
         data: {
-            mainText: "Implementation assistance"
+            mainText: "Single login across multiple domains",
+            tooltip: "This only applies to domains that are not sub domains"
         }
     }
 ];
@@ -232,27 +233,24 @@ function PricingTooltip({ configKey }: PricingTooltipProps) {
     );
 }
 
-type PaidFeatureTableBodyProps = {
-    type: ServiceType;
-};
-
-function usePaidFeaturesConfig(type: ServiceType) {
+function usePaidFeaturesConfig() {
     const [paidFeatures, setPaidFeatures] = useState(paidFeaturesCloud);
+    const {activeTab} = usePricingToggleContext()
 
     useEffect(() => {
-        if (type === "cloud") {
+        if (activeTab === "cloud") {
             setPaidFeatures(paidFeaturesCloud);
         }
-        if (type === "self-host") {
+        if (activeTab === "self-host") {
             setPaidFeatures(paidFeaturesSelfHosted);
         }
-    }, [type]);
+    }, [activeTab]);
 
     return paidFeatures;
 }
 
-export function PaidFeaturesTableBody({ type }: PaidFeatureTableBodyProps) {
-    const paidFeaturesConfig = usePaidFeaturesConfig(type);
+export function PaidFeaturesTableBody() {
+    const paidFeaturesConfig = usePaidFeaturesConfig();
 
     const [isMultiTenancyDialogOpen, setisMultiTenancyDialogOpen] = useState(false);
 
@@ -312,8 +310,8 @@ export function PaidFeaturesTableBody({ type }: PaidFeatureTableBodyProps) {
     );
 }
 
-export const PaidFeaturesTableMobileBody = ({ type }: PaidFeatureTableBodyProps) => {
-    const paidFeaturesConfig = usePaidFeaturesConfig(type);
+export const PaidFeaturesTableMobileBody = () => {
+    const paidFeaturesConfig = usePaidFeaturesConfig();
 
     const [isMultiTenancyDialogOpen, setisMultiTenancyDialogOpen] = useState(false);
 
@@ -367,7 +365,6 @@ export const PaidFeaturesTableMobileBody = ({ type }: PaidFeatureTableBodyProps)
 };
 
 export default function PaidFeaturesTable() {
-    const [serviceType, setServiceType] = useState<ServiceType>("cloud");
 
     return (
         <div className={styles["table-wrapper"]}>
@@ -376,13 +373,13 @@ export default function PaidFeaturesTable() {
                     <h1>Paid features / Add-on</h1>
                     <span>(Pay additionally as per feature use)</span>
                 </div>
-                <PaidFeaturesToggle setServiceType={setServiceType} serviceType={serviceType} />
+                <PaidFeaturesToggle/>
             </div>
             <table className={styles.table}>
-                <PaidFeaturesTableBody type={serviceType} />
+                <PaidFeaturesTableBody />
             </table>
             <div className={styles.mobileTable}>
-                <PaidFeaturesTableMobileBody type={serviceType} />
+                <PaidFeaturesTableMobileBody />
             </div>
         </div>
     );

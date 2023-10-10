@@ -4,27 +4,22 @@ import selfhost_white from "../../assets/pricing/self-host-white.svg";
 import selfhost_gray from "../../assets/pricing/self-host-gray.svg";
 import cloud_white from "../../assets/pricing/cloud-white.svg";
 import cloud_gray from "../../assets/pricing/cloud-gray.svg";
+import { usePricingToggleContext } from "../../context/PricingToggleContext";
 
-export type ServiceType = "cloud" | "self-host";
-
-type PaidFeatureToggleProps = {
-    setServiceType: (type: ServiceType) => void;
-    serviceType: ServiceType;
-};
-
-export function PaidFeaturesToggle({ serviceType, setServiceType }: PaidFeatureToggleProps) {
+export function PaidFeaturesToggle() {
+    const { activeTab, setActiveTab } = usePricingToggleContext();
     function getImage() {
         let self_host = selfhost_gray.src;
         let cloud = cloud_white.src;
 
-        if (serviceType === "cloud") {
+        if (activeTab === "cloud") {
             return {
                 self_host,
                 cloud
             };
         }
 
-        if (serviceType === "self-host") {
+        if (activeTab === "self-host") {
             return {
                 cloud: cloud_gray.src,
                 self_host: selfhost_white.src
@@ -35,13 +30,10 @@ export function PaidFeaturesToggle({ serviceType, setServiceType }: PaidFeatureT
     return (
         <div className={`${styles.toggler__container}`}>
             <div
-                className={`${styles.toggler__item__wrapper} ${
-                    serviceType === "self-host" ? styles.move__right : ""
+                className={`${styles.toggle__item__container} ${
+                    activeTab !== "cloud" ? styles.opacity_60 : styles.toggler__item__active
                 }`}
-            ></div>
-            <div
-                className={`${styles.toggle__item__container} ${serviceType !== "cloud" ? styles.opacity_60 : ""}`}
-                onClick={() => setServiceType("cloud")}
+                onClick={() => setActiveTab("cloud")}
             >
                 <img src={getImage().cloud} alt="icon" />
                 <div>
@@ -49,8 +41,10 @@ export function PaidFeaturesToggle({ serviceType, setServiceType }: PaidFeatureT
                 </div>
             </div>
             <div
-                className={`${styles.toggle__item__container} ${serviceType !== "self-host" ? styles.opacity_60 : ""}`}
-                onClick={() => setServiceType("self-host")}
+                className={`${styles.toggle__item__container} ${
+                    activeTab !== "self-host" ? styles.opacity_60 : styles.toggler__item__active
+                }`}
+                onClick={() => setActiveTab("self-host")}
             >
                 <img src={getImage().self_host} alt="icon" />
                 <div>
