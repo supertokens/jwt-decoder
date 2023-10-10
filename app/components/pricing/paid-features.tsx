@@ -365,16 +365,20 @@ export const PaidFeaturesTableMobileBody = () => {
                                     </div>
                                 ) : null)}
                             {el.comingSoon ? (
-                                <span className={styles["coming-soon"]}>Coming soon</span>
+                                <div className={styles["coming-soon"]}>Coming soon</div>
                             ) : (
                                 typeof el.scale === "string" &&
                                 el.scale && (
-                                    <span
-                                        className={`${styles.scaleMobile} ${
-                                            el.scale === "Contact us" ? styles.font__400 : ""
-                                        }`}
-                                    >
-                                        {el.scale}
+                                    <span className={`${styles.scaleMobile}`}>
+                                        {el.scale === "Contact us" ? (
+                                            <span className={styles.externalLink}>
+                                                <a href="/consultancy" target="_blank">
+                                                    {el.scale}
+                                                </a>
+                                            </span>
+                                        ) : (
+                                            <span className={`${styles.scale}`}>{el.scale}</span>
+                                        )}
                                         {el.tooltip ? <PricingTooltip configKey={el.tooltip} /> : null}
                                         {el.data.subText ? (
                                             <p className={styles.subtext__gray}>{el.data.subText}</p>
