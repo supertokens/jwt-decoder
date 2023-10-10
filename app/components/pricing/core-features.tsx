@@ -60,7 +60,7 @@ const coreFeatures = [
         expandable: false,
         comingSoon: false,
         data: {
-            mainText: "Passwordless SMS OTP"
+            mainText: "Passwordless SMS / Email OTP"
         }
     },
     {
@@ -143,9 +143,8 @@ const coreFeatures = [
                 "Filter by each organisation",
                 {
                     text: "Included seats",
-                    tooltip: "Open source plan: 3 seats. Scale plan: 10 seats"
+                    tooltip: "First 3 seats are Free."
                 },
-                "Number of Users"
             ]
         }
     },
@@ -194,14 +193,6 @@ const coreFeatures = [
             icon: support,
             text: "Support",
             number: "3"
-        }
-    },
-    {
-        type: "feature",
-        expandable: false,
-        comingSoon: false,
-        data: {
-            mainText: "Uptime guarantees (SLAs)"
         }
     },
     {

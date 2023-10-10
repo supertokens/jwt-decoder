@@ -30,8 +30,14 @@ const paidFeaturesCloud = [
         expandable: true,
         scale: "$0.005 / MAU",
         data: {
-            mainText: "2FA",
-            subList: ["Email", "Phone number", "TOTP (Coming Soon)", "QR code (Coming Soon)", "Biometric (Coming Soon)"]
+            mainText: "Multi-factor Authentication",
+            subList: [
+                "Email OTP",
+                "Phone OTP",
+                "TOTP (Coming Soon)",
+                "QR code (Coming Soon)",
+                "Biometric (Coming Soon)"
+            ]
         }
     },
     {
@@ -50,7 +56,8 @@ const paidFeaturesCloud = [
         scale: "$0.005 / MAU",
         tooltip: "accountlinking-cloud",
         data: {
-            mainText: "Account Linking"
+            mainText: "Account Linking",
+            subText: "Minimum Billing of $100 / month"
         }
     },
     {
@@ -94,7 +101,7 @@ const paidFeaturesCloud = [
         type: "feature",
         expandable: false,
         comingSoon: true,
-        scale: "Contact us!",
+        scale: "Contact us",
         data: {
             mainText: "Single login across multiple domains",
             tooltip: "This only applies to domains that are not sub domains"
@@ -104,7 +111,16 @@ const paidFeaturesCloud = [
         type: "feature",
         expandable: false,
         comingSoon: false,
-        scale: "Contact us!",
+        scale: "Contact us",
+        data: {
+            mainText: "Uptime guarantees (SLAs)"
+        }
+    },
+    {
+        type: "feature",
+        expandable: false,
+        comingSoon: false,
+        scale: "Contact us",
         data: {
             mainText: "Implementation assistance"
         }
@@ -117,7 +133,7 @@ const paidFeaturesSelfHosted = [
         expandable: true,
         scale: "$0.01 / MAU",
         data: {
-            mainText: "2FA",
+            mainText: "Multi-factor Authentication",
             subList: ["Email", "Phone number", "TOTP (Coming Soon)", "QR code (Coming Soon)", "Biometric (Coming Soon)"]
         }
     },
@@ -136,9 +152,9 @@ const paidFeaturesSelfHosted = [
         comingSoon: false,
         scale: "$0.01 / MAU",
         tooltip: "accountlinking-self-hosted",
-
         data: {
-            mainText: "Account Linking"
+            mainText: "Account Linking",
+            subText: "Minimum Billing of $100 / month"
         }
     },
     {
@@ -181,20 +197,20 @@ const paidFeaturesSelfHosted = [
     {
         type: "feature",
         expandable: false,
-        comingSoon: false,
-        scale: "Contact us!",
+        comingSoon: true,
+        scale: "Contact us",
         data: {
-            mainText: "Implementation assistance"
+            mainText: "Single login across multiple domains",
+            tooltip: "This only applies to domains that are not sub domains"
         }
     },
     {
         type: "feature",
         expandable: false,
-        comingSoon: true,
-        scale: "Contact us!",
+        comingSoon: false,
+        scale: "Contact us",
         data: {
-            mainText: "Single login across multiple domains",
-            tooltip: "This only applies to domains that are not sub domains"
+            mainText: "Implementation assistance"
         }
     }
 ];
@@ -235,7 +251,7 @@ function PricingTooltip({ configKey }: PricingTooltipProps) {
 
 function usePaidFeaturesConfig() {
     const [paidFeatures, setPaidFeatures] = useState(paidFeaturesCloud);
-    const {activeTab} = usePricingToggleContext()
+    const { activeTab } = usePricingToggleContext();
 
     useEffect(() => {
         if (activeTab === "cloud") {
@@ -285,14 +301,25 @@ export function PaidFeaturesTableBody() {
                                     ) : null)}
                                 {typeof el.scale === "string" && el.scale && (
                                     <>
-                                        <span
-                                            className={`${styles.scale} ${
-                                                el.scale === "Contact us!" ? styles.font__400 : ""
-                                            }`}
-                                        >
-                                            {el.scale}
-                                        </span>
+                                        {el.comingSoon ? (
+                                            <span className={styles["coming-soon"]}>Coming soon</span>
+                                        ) : (
+                                            <>
+                                                {el.scale === "Contact us" ? (
+                                                    <span className={styles.externalLink}>
+                                                        <a href="/consultancy" target="_blank">
+                                                            {el.scale}
+                                                        </a>
+                                                    </span>
+                                                ) : (
+                                                    <span className={`${styles.scale}`}>{el.scale}</span>
+                                                )}
+                                            </>
+                                        )}
                                         {el.tooltip ? <PricingTooltip configKey={el.tooltip} /> : null}
+                                        {el.data.subText ? (
+                                            <p className={styles.subtext__gray}>{el.data.subText}</p>
+                                        ) : null}
                                     </>
                                 )}
                             </td>
@@ -300,9 +327,6 @@ export function PaidFeaturesTableBody() {
                     );
                 }
             })}
-            <tr className={paidfeaturesStyles.paid__feature__note}>
-                <td className={styles.left_align}>Note: Paid Add-ons have a $100 / month minimum billing</td>
-            </tr>
             <PricingDialogContainer show={isMultiTenancyDialogOpen} onClose={() => setisMultiTenancyDialogOpen(false)}>
                 <MultiTenancyDialog />
             </PricingDialogContainer>
@@ -340,23 +364,28 @@ export const PaidFeaturesTableMobileBody = () => {
                                         </button>
                                     </div>
                                 ) : null)}
-                            {typeof el.scale === "string" && el.scale && (
-                                <span
-                                    className={`${styles.scaleMobile} ${
-                                        el.scale === "Contact us!" ? styles.font__400 : ""
-                                    }`}
-                                >
-                                    {el.scale}
-                                    {el.tooltip ? <PricingTooltip configKey={el.tooltip} /> : null}
-                                </span>
+                            {el.comingSoon ? (
+                                <span className={styles["coming-soon"]}>Coming soon</span>
+                            ) : (
+                                typeof el.scale === "string" &&
+                                el.scale && (
+                                    <span
+                                        className={`${styles.scaleMobile} ${
+                                            el.scale === "Contact us" ? styles.font__400 : ""
+                                        }`}
+                                    >
+                                        {el.scale}
+                                        {el.tooltip ? <PricingTooltip configKey={el.tooltip} /> : null}
+                                        {el.data.subText ? (
+                                            <p className={styles.subtext__gray}>{el.data.subText}</p>
+                                        ) : null}
+                                    </span>
+                                )
                             )}
                         </div>
                     );
                 }
             })}
-            <div className={paidfeaturesStyles.paid__feature__note + " " + paidfeaturesStyles.note_mobile}>
-                <td className={styles.left_align}>Note: Paid Add-ons have a $100 / month minimum billing</td>
-            </div>
             <PricingDialogContainer show={isMultiTenancyDialogOpen} onClose={() => setisMultiTenancyDialogOpen(false)}>
                 <MultiTenancyDialog />
             </PricingDialogContainer>
@@ -365,7 +394,6 @@ export const PaidFeaturesTableMobileBody = () => {
 };
 
 export default function PaidFeaturesTable() {
-
     return (
         <div className={styles["table-wrapper"]}>
             <div className={paidfeaturesStyles.paid__features__container}>
@@ -373,7 +401,7 @@ export default function PaidFeaturesTable() {
                     <h1>Paid features / Add-on</h1>
                     <span>(Pay additionally as per feature use)</span>
                 </div>
-                <PaidFeaturesToggle/>
+                <PaidFeaturesToggle />
             </div>
             <table className={styles.table}>
                 <PaidFeaturesTableBody />
