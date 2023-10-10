@@ -13,9 +13,7 @@
 }
 
 .table {
-    margin: 12.438rem 12.438rem 0rem 12.438rem;
-
-    display: block;
+    margin: 94px 12.438rem 0rem 12.438rem;
 
     color: #f8f7f7;
 
@@ -32,8 +30,6 @@
     font-family: "Inter";
     font-weight: 400;
     font-size: 16px;
-
-    width: calc(40.625vw - 12.438rem * 2);
 }
 
 .table td > img {
@@ -70,18 +66,15 @@
 
 .left_align {
     text-align: left !important;
-    width: calc(29.68vw - 12.438rem * 2);
+    width: 60%;
 }
 
 .bordered {
     display: block;
 
-    padding: 0.813rem;
+    padding: 14px;
     width: 100%;
 
-    background: transparent;
-
-    border: 1px solid #f8f7f7;
     border-radius: 6px;
 
     font-family: "Inter";
@@ -89,23 +82,14 @@
     font-size: 16px;
     line-height: 19px;
 
-    color: #fff;
+    color: #000;
+    background: #fff;
 
     cursor: pointer;
 
-    margin-top: 32px;
+    margin-top: 20px;
     margin-bottom: 40px;
-    transition: all 150ms ease-in-out;
-    transition-property: background-color color;
-    -moz-transition: all 150ms ease-in-out;
-    -moz-transition-property: background-color color;
-    -webkit-transition: all 150ms ease-in-out;
-    -webkit-transition-property: background-color color;
-}
-
-.bordered:hover {
-    background: #f8f7f7;
-    color: #000;
+    border: none;
 }
 
 .filled-orange {
@@ -191,6 +175,8 @@
     font-weight: 400;
     font-size: 13px;
 
+    margin-left: 36px;
+
     color: #ff9933;
 }
 
@@ -211,12 +197,11 @@
     font-weight: 400;
     font-size: 16px;
 
-    margin-right: 30px;
-
     display: flex;
     justify-content: center;
+    align-items: center;
 
-    color: #ddd;
+    color: #aaa;
 }
 
 .expandable > .header img {
@@ -244,7 +229,7 @@
     font-weight: 400;
     font-size: 16px;
 
-    color: #aaa;
+    color: #848484;
 
     margin: 8px 0;
 
@@ -266,6 +251,23 @@
     font-size: 24px;
 }
 
+.table > h1 {
+    color: #f8f7f7;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.get_started {
+    border-bottom: none !important;
+}
+
+.get_started > td {
+    border: none !important;
+    padding: 0 !important;
+}
+
 /* ToolTip styles */
 .tooltip {
     position: relative;
@@ -273,6 +275,7 @@
 
     height: 14px;
     aspect-ratio: 1;
+    z-index: 1;
 }
 
 .tooltip:hover div {
@@ -327,6 +330,10 @@
     color: #ff9933;
 }
 
+.expandable > .header > span > span {
+    display: flex;
+}
+
 @media screen and (max-width: 1024px) {
     .table {
         display: none;
@@ -338,47 +345,14 @@
         width: calc(100vw - 8.438rem * 2);
     }
 
-    .mobileTHead {
-        width: 100%;
-        border-collapse: collapse;
-        border-bottom: 2px solid #2c2c2c;
-        margin-bottom: 5px;
-    }
-
-    .mobileTHead > thead > tr {
-        border-bottom: 3px solid black;
-    }
-
-    .mobileTHead > thead > tr > th {
+    .mobileTable > h1 {
         color: #f8f7f7;
-        padding-bottom: 12px;
-        font-size: 24px;
+        font-size: 48px;
+        font-style: normal;
         font-weight: 700;
+        line-height: normal;
 
-        width: 50%;
-    }
-
-    .mobileTHead > thead > tr > th:not(:last-child) {
-        border-right: 1px solid #5c5c5c;
-    }
-
-    .mobileTHead > thead > tr > td {
-        width: calc(50vw - 8.438rem);
-        padding: 7px;
-
-        font-family: "Inter";
-        font-weight: 400;
-        font-size: 12px;
-
-        color: #f8f7f7;
-
-        text-align: center;
-    }
-
-    .mobileTable > h3 {
-        color: #f8f7f7;
-        text-align: center;
-        margin-top: 0;
+        text-align: start;
     }
 
     .mobileSection {
@@ -389,12 +363,6 @@
 
         font-weight: 600;
         font-size: 16px;
-    }
-
-    .mobileSection > img {
-        width: 15px;
-        height: 15px;
-        margin-right: 10px;
     }
 
     .expandable > .header {
@@ -416,61 +384,34 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        border-bottom: 1px solid #2c2c2c;
     }
 
     .mobileFeature > .check {
         display: flex;
-    }
-
-    .mobileFeature > .check > div {
-        width: calc(50vw - 8.438rem);
-        color: white;
-        text-align: center;
+        justify-content: center;
+        align-items: center;
         padding: 14px;
-        font-size: 14px;
-        border: 1px solid #2c2c2c;
     }
 
-    .mobileFeature > .check > div:nth-child(1) {
-        border-left: none;
-    }
-
-    .mobileFeature > .check > div:nth-child(2) {
-        border-right: none;
-    }
-
-    .mobileFeature > .check > div > img {
-        width: 20px;
+    .mobileFeature > .check > img {
         height: 20px;
+        width: 20px;
     }
 
-    .mobileTFoot > tfoot > tr > td {
-        color: #f8f7f7;
-        width: calc(50vw - 8.438rem);
+    .expandable > .header .coming-soon-chip {
+        margin-left: 0px;
     }
 
-    .mobileTFoot > tfoot > tr > td > div {
-        display: flex;
+    .expandable > .header > span {
         flex-direction: column;
-        justify-content: space-between;
-        height: 200px;
-    }
-
-    .mobileTFoot > tfoot > tr > td > div > h1 {
         text-align: center;
-        font-size: 24px;
-        font-weight: 700;
+        gap: 4px;
     }
 
-    .tableFooter {
-        display: flex !important;
-        margin: 0 8.438rem !important;
-    }
-
-    .highlight {
-        padding: 12px;
-        text-align: center;
-        color: white;
+    .expandable > .header img {
+        margin-left: 0px;
     }
 }
 
@@ -519,14 +460,6 @@
         flex-direction: column;
     }
 
-    .mobileFeature > .check {
-        justify-content: center;
-    }
-
-    .mobileFeature > .check > div {
-        width: 100%;
-    }
-
     .expandable > .header > span {
         margin-right: 0px;
         max-width: 170px;
@@ -541,6 +474,10 @@
         display: block;
         margin: 20px;
         width: calc(100vw - 20px * 2);
+    }
+
+    .mobileTable > h1 {
+        font-size: 40px;
     }
 
     .mobileTHead {
@@ -558,6 +495,10 @@
     .tableFooter {
         margin: 0 18px !important;
     }
+}
+
+.font__400{
+    font-weight: 400 !important;
 }
 
 .externalLink {
@@ -631,11 +572,24 @@
 }
 
 .scale {
-    color: #f93;
+    color: #fff;
     text-align: center;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: normal;
+}
+
+.scaleMobile {
+    padding: 14px;
+
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+
+    display: flex;
+    justify-content: center;
+    gap: 4px;
 }
 
 .seePricing {
@@ -666,5 +620,5 @@
     grid-auto-flow: dense;
     direction: rtl;
 
-    margin: 0rem 12.438rem
+    margin: 0rem 12.438rem;
 }

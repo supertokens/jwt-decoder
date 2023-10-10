@@ -2,12 +2,8 @@ import styles from "../../styles/pricing/support.module.css";
 
 const data = [
     {
-        title: "Multichannel Access",
-        content: "Reach us via Email, Slack, MS Teams, and Video calls."
-    },
-    {
-        title: "Fast-Track Response",
-        content: "Guaranteed response times from 2 hours to 2 days."
+        title: "Implementation and migration assistance",
+        content: "Expert guidance for migration and integrating new features."
     },
     {
         title: "Types of queries",
@@ -15,23 +11,26 @@ const data = [
             "Bug fixes, downtime issues, code reviews, testing, upgrades, customizations and integrating new features."
     },
     {
-        title: "Implementation and migration assistance",
-        content: "Architecture review, proof checking, manual testing and migrating your existing users."
-    }
+        title: "Fast-Track Response",
+        content: "Guaranteed response times from 2 hours to 2 days."
+    },
+    {
+        title: "Multichannel Access",
+        content: "Reach us via Email, Slack, MS Teams, and Video calls."
+    },
 ];
 
 type SupportCardType = typeof data[0];
 
 function SupportCard({ title, content }: SupportCardType) {
     return (
-        <div className={styles.support__card}>
+        <div className={styles.support__item__container}>
             <div className={styles.support__pill}>
                 <div>
                     <span>{title}</span>
                 </div>
             </div>
             <div className={styles.content__container}>
-                <div className={styles.line} />
                 <p>{content}</p>
             </div>
         </div>

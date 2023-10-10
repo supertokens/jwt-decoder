@@ -1,0 +1,182 @@
+.paid__features__container {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    margin: 94px 12.438rem 0;
+}
+
+.paid__features__container > div > h1 {
+    color: #fff;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-bottom: 28px;
+}
+
+.paid__features__container > div > span {
+    color: #f93;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.paid__feature__note {
+    border-bottom: none !important;
+}
+
+.paid__feature__note > td {
+    border: none !important;
+
+    color: #575757;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.note_mobile {
+    border-top: 0.667px solid #2c2c2c;
+    padding-top: 12px;
+}
+
+.pricing__tooltip {
+    margin-left: 8px;
+    display: inline;
+
+    cursor: pointer;
+    position: relative;
+}
+
+.pricing__tooltip:hover .pricing__tooltip__content {
+    display: inline;
+}
+
+.pricing__tooltip__content {
+    display: none;
+    width: 285px;
+    border-radius: 6px;
+
+    position: absolute;
+    right: -30px;
+    top: 28px;
+
+    z-index: 5;
+
+    background: #272727;
+}
+
+.pricing__tooltip__content::before {
+    content: "";
+    display: block;
+    height: 3rem;
+    width: 1.5rem;
+    position: absolute;
+    background-color: #121212;
+    -webkit-clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    -moz-clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    rotate: 90deg;
+    top: -15px;
+    right: 30px;
+
+    z-index: 1;
+}
+
+.pricing__tooltip__content__container {
+    background-color: #121212;
+
+    position: absolute;
+    border-radius: 6px;
+    margin: 1px;
+    width: calc(100% - 2px);
+
+    padding: 12px 12px 0 12px;
+    border: 1px solid #272727;
+}
+
+.pricing__tooltip__content__container > span {
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
+
+    color: #f93;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 2px 4px;
+
+    position: absolute;
+    top: 16px;
+    left: 14px;
+}
+
+.pricing__tooltip__content__container > ul {
+    margin-top: 46px;
+    padding-left: 26px;
+}
+
+.pricing__tooltip__content__container > ul > li > span {
+    color: #777;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.pricing__tooltip__content__container > ul > li {
+    color: #afafaf;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+
+    text-align: initial;
+}
+
+.pricing__tooltip__content__container > ul > li:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+@media (max-width: 1120px) {
+    .paid__features__container {
+        flex-direction: column;
+        align-items: start;
+        gap: 72px;
+    }
+
+    .paid__features__container:last-child {
+        margin: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .paid__features__container {
+        margin: 100px 84px 0px 84px;
+    }
+
+    .pricing__tooltip__content__container > span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 614px) {
+    .pricing__tooltip__content__container > span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .paid__features__container {
+        margin: 20px;
+    }
+
+    .paid__features__container > div > h1 {
+        font-size: 40px;
+    }
+}

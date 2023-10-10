@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap");
 
 .header {
     display: grid;
@@ -13,6 +13,10 @@
     align-items: center;
     background-size: 40vw;
     background-repeat: no-repeat;
+
+    position: relative;
+
+    padding-bottom: 184px;
 }
 
 .text > h1 {
@@ -34,33 +38,30 @@
     line-height: 36px;
     /* or 150% */
 
-
-    color: #AAAAAA;
+    color: #aaaaaa;
 }
 
 .brace {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-weight: 100;
     font-size: 97px;
     /* identical to box height */
 
-
-    color: #FF9933;
+    color: #ff9933;
 }
 
 .handwriting {
-    font-family: 'Covered By Your Grace';
+    font-family: "Covered By Your Grace";
     font-weight: 400;
     font-size: 32px;
     line-height: 43px;
 
-    color: #FF9933;
+    color: #ff9933;
 }
 
 .linebreak {
     content: "<br/>";
 }
-
 
 @media screen and (max-width: 768px) {
     .text > h1 {
@@ -111,3 +112,29 @@
         content: "";
     }
 }
+
+.underline {
+    height: 1px;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 153, 51, 0) 0%,
+        rgba(255, 153, 51, 0.2) 45%,
+        rgba(255, 153, 51, 0) 100%
+    );
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.underline::before{
+    content: "";
+    height: 24px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(45deg,rgba(255,153,51,.2),rgba(255,153,51,.15));
+    filter: blur(75px);
+}
+
