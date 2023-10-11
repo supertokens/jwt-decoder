@@ -377,9 +377,12 @@ export const PaidFeaturesTableMobileBody = () => {
                                                 </a>
                                             </span>
                                         ) : (
-                                            <span className={`${styles.scale}`}>{el.scale}</span>
+                                            <span className={`${styles.scale}`}>
+                                                {el.scale}
+                                                {el.tooltip ? <PricingTooltip configKey={el.tooltip} /> : null}
+                                            </span>
                                         )}
-                                        {el.tooltip ? <PricingTooltip configKey={el.tooltip} /> : null}
+
                                         {el.data.subText ? (
                                             <p className={styles.subtext__gray}>{el.data.subText}</p>
                                         ) : null}

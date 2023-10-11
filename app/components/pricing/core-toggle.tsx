@@ -50,7 +50,6 @@ export function CoreFeatureToggle() {
                             <Tooltip
                                 text="Measured based on number of sessions refreshed and number of unique logins."
                                 position="bottom"
-                                imageClass={activeTab !== "cloud" ? styles.opacity_60 : ""}
                             />
                         </span>
                         <span className={styles.text__orange}>(Free under 5K MAU)</span>

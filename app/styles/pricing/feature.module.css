@@ -328,6 +328,7 @@
     font-size: 12px;
     margin: 4px;
     color: #aaa;
+    font-weight: 400;
 }
 
 .expandable > .header > span > span {
@@ -401,7 +402,7 @@
     }
 
     .expandable > .header .coming-soon-chip {
-        margin-left: 0px;
+        margin-left: 4px;
     }
 
     .expandable > .header > span {
@@ -411,7 +412,7 @@
     }
 
     .expandable > .header img {
-        margin-left: 0px;
+        margin-left: 4px;
     }
 }
 
@@ -588,8 +589,11 @@
     line-height: normal;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 4px;
+
+    align-items: center;
 }
 
 .seePricing {
