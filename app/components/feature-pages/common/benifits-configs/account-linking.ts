@@ -1,6 +1,6 @@
 import { FeaturePageIcons } from "../../../../assets/images";
 import { FeaturePageSectionType } from "../../types";
-import supertokensBenefitsStyles from "../../../../styles/feature-pages/components/bullet-list.module.css";
+import supertokensBenefitsStyles from '../../../../styles/feature-pages/components/bullet-list.module.css'
 
 
 const accountLinkingConfig: FeaturePageSectionType = {
