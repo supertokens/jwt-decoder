@@ -403,10 +403,11 @@ const rows = [
             color: "green"
         }
     },{
-        feat: "Being an OAuth 2.0 provider",
+        feat: "Unified login",
         st: {
-            text: "No",
-            color: "red",
+            text: "Partial",
+            color: "warning",
+            info: "Only across sub domains"
         },
         auth0: {
             text: "Yes",
@@ -426,6 +427,7 @@ const rows = [
         }
     },{
         feat: "External Database",
+        text:"Connect your database to our managed service",
         st: {
             text: "No",
             color: "red",
@@ -467,29 +469,6 @@ const rows = [
         fire: {
             text: "Not Known",
             color: "warning"
-        }
-    },{
-        feat: "Single sign on",
-        st: {
-            text: "Partial",
-            color: "warning",
-            info: "Only across sub domains"
-        },
-        auth0: {
-            text: "Yes",
-            color: "green",
-        },
-        aws: {
-            text: "Yes",
-            color: "green"
-        },
-        key: {
-            text: "Yes",
-            color: "green"
-        },
-        fire: {
-            text: "Yes",
-            color: "green"
         }
     },{
         feat: "2FA",
