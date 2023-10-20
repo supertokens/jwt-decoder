@@ -82,14 +82,20 @@
     font-size: 16px;
     line-height: 19px;
 
-    color: #000;
-    background: #fff;
+    color: #fff;
+    background: #000;
 
+    border: 1px solid #F8F7F7;
+    
     cursor: pointer;
 
     margin-top: 20px;
     margin-bottom: 40px;
-    border: none;
+}
+.bordered:hover{
+    transition: 0.3s;
+    background: #fff;
+    color: #000;
 }
 
 .filled-orange {
@@ -502,13 +508,34 @@
     font-weight: 400 !important;
 }
 
+.link > a {
+    color: #f93;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    text-decoration: none;
+    text-underline-offset: 4px;
+}
+
+.link > a:hover{
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+
 .externalLink {
     display: inline-flex;
     align-items: center;
 }
 
 .externalLink > a {
-    color: #f93;
+    display: flex;
+    align-items:  center;
+
+    color: inherit;
+
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -518,12 +545,13 @@
 }
 
 .externalLink > a:hover {
+    color: #f93;
+
     text-decoration: underline;
     text-underline-offset: 4px;
-    transition-delay: 1s;
 }
 
-.externalLink > img {
+.externalLink > a > img {
     height: 14px !important;
     width: 14px !important;
     margin-left: 8px;

@@ -31,7 +31,7 @@ export function PaidFeaturesToggle() {
         <div className={`${styles.toggler__container}`}>
             <div
                 className={`${styles.toggle__item__container} ${
-                    activeTab === "cloud" ? styles.toggler__item__active : ""
+                    activeTab === "cloud" ? styles.toggler__item__active : styles.opacity_60
                 }`}
                 onClick={() => setActiveTab("cloud")}
             >
@@ -42,7 +42,7 @@ export function PaidFeaturesToggle() {
             </div>
             <div
                 className={`${styles.toggle__item__container} ${
-                    activeTab === "self-host" ? styles.toggler__item__active : ""
+                    activeTab === "self-host" ? styles.toggler__item__active : styles.opacity_60
                 }`}
                 onClick={() => setActiveTab("self-host")}
             >

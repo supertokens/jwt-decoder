@@ -27,7 +27,13 @@ const insertLink = (mainText:string,links:Array<{text:string,href:string}>)=>{
     let returnableJSX:JSX.Element;
     links.map(link=>{
         const spiltedStr = mainText.split(link.text);
-        returnableJSX = <span>{spiltedStr[0]} <span className={styles.externalLink}><a onClick={stopAnchorPropagation} target="_blank" href={link.href}>{link.text}</a> <img src={linkPng.src} alt="link"/></span>  {spiltedStr[1]}</span>
+        returnableJSX = <span>{spiltedStr[0]} 
+        <span className={styles.externalLink}>
+            <a onClick={stopAnchorPropagation} target="_blank" href={link.href}>{link.text}
+            <img src={linkPng.src} alt="link"/>
+            </a>
+             </span>{spiltedStr[1]}
+        </span>
     })
 
     return returnableJSX;

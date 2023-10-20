@@ -31,6 +31,7 @@ const paidFeaturesCloud = [
         scale: "$0.005 / MAU",
         data: {
             mainText: "Multi-factor Authentication",
+            subText: "Minimum Billing of $100 / month",
             subList: [
                 "Email OTP",
                 "Phone OTP",
@@ -134,6 +135,7 @@ const paidFeaturesSelfHosted = [
         scale: "$0.01 / MAU",
         data: {
             mainText: "Multi-factor Authentication",
+            subText: "Minimum Billing of $100 / month",
             subList: ["Email", "Phone number", "TOTP (Coming Soon)", "QR code (Coming Soon)", "Biometric (Coming Soon)"]
         }
     },
@@ -306,7 +308,7 @@ export function PaidFeaturesTableBody() {
                                         ) : (
                                             <>
                                                 {el.scale === "Contact us" ? (
-                                                    <span className={styles.externalLink}>
+                                                    <span className={styles.link}>
                                                         <a href="/consultancy" target="_blank">
                                                             {el.scale}
                                                         </a>
@@ -371,7 +373,7 @@ export const PaidFeaturesTableMobileBody = () => {
                                 el.scale && (
                                     <span className={`${styles.scaleMobile}`}>
                                         {el.scale === "Contact us" ? (
-                                            <span className={styles.externalLink}>
+                                            <span className={styles.link}>
                                                 <a href="/consultancy" target="_blank">
                                                     {el.scale}
                                                 </a>
