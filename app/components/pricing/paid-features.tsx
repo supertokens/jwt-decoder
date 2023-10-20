@@ -104,7 +104,7 @@ const paidFeaturesCloud = [
         comingSoon: true,
         scale: "Contact us",
         data: {
-            mainText: "Single login across multiple domains",
+            mainText: "Unified login across multiple domains",
             tooltip: "This only applies to domains that are not sub domains"
         }
     },
@@ -202,7 +202,7 @@ const paidFeaturesSelfHosted = [
         comingSoon: true,
         scale: "Contact us",
         data: {
-            mainText: "Single login across multiple domains",
+            mainText: "Unified login across multiple domains",
             tooltip: "This only applies to domains that are not sub domains"
         }
     },
