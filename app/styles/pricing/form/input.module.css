@@ -1,0 +1,23 @@
+.pricing__input {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.44);
+
+    width: 100px;
+    height: 38px;
+
+    color: #808080;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px; /* 108.333% */
+
+    padding: 0px 10px;
+}
+
+.pricing__input:focus-visible {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.44);
+    outline: none;
+}

@@ -6,6 +6,7 @@ import CoreFeaturesTable from "../../components/pricing/core-features";
 import PaidFeaturesTable from "../../components/pricing/paid-features";
 import CantFind from "../../components/pricing/cant-find";
 import PricingToggleProvider from "../../context/PricingToggleContext";
+import Calculator from "../../components/pricing/calculator";
 
 PricingPage.title = "Pricing & Features for SuperTokens";
 export default function PricingPage() {
@@ -15,6 +16,7 @@ export default function PricingPage() {
             <PricingToggleProvider>
                 <CoreFeaturesTable />
                 <PaidFeaturesTable />
+                <Calculator/>
             </PricingToggleProvider>
             <Support />
             <CantFind />
