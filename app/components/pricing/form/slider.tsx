@@ -43,9 +43,9 @@ export default function Slider({ mau, onMAUChange }: SliderProps) {
             </div>
             <div className={styles.right__container}>
                 {activeTab === "cloud" ? (
-                    <>
+                    <span>
                         Price /MAU: <span>$0.02</span>
-                    </>
+                    </span>
                 ) : (
                     "Free with no limit!"
                 )}

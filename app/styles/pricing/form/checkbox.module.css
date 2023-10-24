@@ -8,6 +8,8 @@
     border: 1px solid #8a8a8a;
     cursor: pointer;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    flex-shrink: 0;
 }
 
 .checkbox:hover{

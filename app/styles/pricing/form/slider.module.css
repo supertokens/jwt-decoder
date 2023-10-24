@@ -56,7 +56,7 @@
     line-height: 26px; /* 185.714% */
 }
 
-.right__container > span {
+.right__container > span > span {
     font-weight: 600;
 }
 
@@ -99,10 +99,19 @@
     border-radius: 10px;
 }
 
-.SliderThumb:hover {
-    background-color: var(--violet-3);
-}
-.SliderThumb:focus {
-    outline: none;
-    box-shadow: 0 0 0 5px var(--black-a8);
+
+@media (max-width: 1024px) {
+    .slider__container{
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .input__container{
+        width: 100%;
+    }
+
+    .right__container{
+        margin-left: auto;
+    }
+
 }
