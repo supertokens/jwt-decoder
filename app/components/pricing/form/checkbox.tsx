@@ -1,6 +1,8 @@
+import styles from "../../../styles/pricing/form/checkbox.module.css";
 
-type CheckBoxProps = JSX.IntrinsicElements["input"]
+type CheckBoxProps = Omit<JSX.IntrinsicElements["input"], "type">;
 
 export default function CheckBox(props: CheckBoxProps) {
-    return <input type="checkbox" {...props} />;
+    const { className, ...rest } = props;
+    return <input className={`${styles.checkbox} ${className}`} type="checkbox" {...rest} />;
 }

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { CalculatorToggle } from "./calculator-toggle";
 import CheckBox from "./form/checkbox";
@@ -17,10 +17,6 @@ export default function Calculator() {
     const [isMultitenancyChecked, setIsMultitenancyChecked] = useState(false);
 
     const [dashboardUserCount, setDashboardUserCount] = useState(0);
-    const [enterpriseTenanatsCount, setEnterpriceTenantCount] = useState(0);
-    const [tenants0_3Count, setTenants0_3Count] = useState(0);
-    const [tenants3_10Count, setTenants3_10Count] = useState(0);
-    const [tenantsWith10PlusCount, setTenantsWith10PlusCount] = useState(0);
 
     const [generalMAUAmount, setGeneralMAUAmount] = useState(0);
     const [accountLinkingAmount, setAccountLinkingAmount] = useState(0);
@@ -41,9 +37,60 @@ export default function Calculator() {
         }
     }, []);
 
+    const [
+        calculateZeroToThreeUsers,
+        calculateThreeToTenUsers,
+        calculateTenPlusUsers,
+        calculateEnterpriseSSO
+    ] = useMemo(() => {
+        function calculateZeroToThreeUsers(value: string) {
+            const usersCount = Number(value);
+            if (typeof usersCount === "number" && isNaN(usersCount) === false && usersCount > 25) {
+                const price = (usersCount - 25) * 2;
+                setTenants0_3Amount(price);
+            }
+        }
+
+        function calculateThreeToTenUsers(value: string) {
+            const usersCount = Number(value);
+            if (typeof usersCount === "number" && isNaN(usersCount) === false) {
+                setTenants3_10Amount(usersCount * 5);
+            }
+        }
+
+        function calculateTenPlusUsers(value: string) {
+            const usersCount = Number(value);
+            if (typeof usersCount === "number" && isNaN(usersCount) === false) {
+                setTenantsWith10PlusAmount(usersCount * 10);
+            }
+        }
+
+        function calculateEnterpriseSSO(value: string) {
+            const usersCount = Number(value);
+            if (typeof usersCount === "number" && isNaN(usersCount) === false) {
+                setEnterpriceTenantAmount(usersCount * 50);
+            }
+        }
+        return [calculateZeroToThreeUsers, calculateThreeToTenUsers, calculateTenPlusUsers, calculateEnterpriseSSO];
+    }, []);
+
     function changeMAU(monthlyActiveUsers: number) {
         setMAU(monthlyActiveUsers);
         calculateGeneralMau(monthlyActiveUsers);
+    }
+
+    function getTotalPriceCell() {
+        const totalPrice = Math.ceil(
+            generalMAUAmount +
+                dashboardAmount +
+                accountLinkingAmount +
+                mfaAmount +
+                enterpriseTenanatsAmount +
+                tenants0_3Amount +
+                tenants3_10Amount +
+                tenantsWith10PlusAmount
+        );
+        return totalPrice;
     }
 
     useEffect(() => {
@@ -61,42 +108,48 @@ export default function Calculator() {
 
         if (activeTab === "cloud") {
             if (mau >= 5000) {
+                const amount = Math.ceil(mau * 0.005);
+
                 if (isMFAChecked && isAccountLinkingChecked) {
-                    setMFAAmount(mau * 0.005);
-                    setAccountLinkingAmount(mau * 0.005);
+                    setMFAAmount(amount);
+                    setAccountLinkingAmount(amount);
                 } else if (isMFAChecked) {
-                    setMFAAmount(mau * 0.005);
+                    setMFAAmount(amount);
                 } else if (isAccountLinkingChecked) {
-                    setAccountLinkingAmount(mau * 0.005);
+                    setAccountLinkingAmount(amount);
                 }
             } else {
+                const basePrice = 100;
+
                 if (isMFAChecked && isAccountLinkingChecked) {
-                    setAccountLinkingAmount(100);
+                    setAccountLinkingAmount(basePrice);
                 } else if (isMFAChecked) {
-                    setMFAAmount(100);
+                    setMFAAmount(basePrice);
                 } else if (isAccountLinkingChecked) {
-                    setAccountLinkingAmount(100);
+                    setAccountLinkingAmount(basePrice);
                 }
             }
         }
 
         if (activeTab === "self-host") {
             if (mau >= 10000) {
+                const price = Math.ceil(mau * 0.01);
                 if (isMFAChecked && isAccountLinkingChecked) {
-                    setMFAAmount(mau * 0.01);
-                    setAccountLinkingAmount(mau * 0.01);
+                    setMFAAmount(price);
+                    setAccountLinkingAmount(price);
                 } else if (isMFAChecked) {
-                    setMFAAmount(mau * 0.01);
+                    setMFAAmount(price);
                 } else if (isAccountLinkingChecked) {
-                    setAccountLinkingAmount(mau * 0.01);
+                    setAccountLinkingAmount(price);
                 }
             } else {
+                const basePrice = 100;
                 if (isMFAChecked && isAccountLinkingChecked) {
-                    setAccountLinkingAmount(100);
+                    setAccountLinkingAmount(basePrice);
                 } else if (isMFAChecked) {
-                    setMFAAmount(100);
+                    setMFAAmount(basePrice);
                 } else if (isAccountLinkingChecked) {
-                    setAccountLinkingAmount(100);
+                    setAccountLinkingAmount(basePrice);
                 }
             }
         }
@@ -199,7 +252,7 @@ export default function Calculator() {
                 <div className={styles.divider} />
                 <div className={styles.calculator__row}>
                     <div className={styles.calculator__left__col}>
-                        <CheckBox onChange={(e)=> setIsMultitenancyChecked(e.currentTarget.checked)} />
+                        <CheckBox onChange={e => setIsMultitenancyChecked(e.currentTarget.checked)} />
                         <span>Multitenancy</span>
                     </div>
                     <div className={styles.calculator__right__col}>--</div>
@@ -210,63 +263,68 @@ export default function Calculator() {
                             <div className={`${styles.left__col__sub__row}`}>
                                 <span>Tenant with 0-3 users:</span>
                                 <Input
-                                    value={tenants0_3Count}
-                                    onChange={e => setTenants0_3Count(Number(e.currentTarget.value))}
+                                    defaultValue={0}
+                                    onChange={e => calculateZeroToThreeUsers(e.currentTarget.value)}
                                 />
                                 <span>$2 /tenant / month | free for 25 tenants</span>
                             </div>
                             <div className={`${styles.right__col__sub__row}`}>
-                                <h4>${dashboardAmount}</h4>
+                                <h4>${tenants0_3Amount}</h4>
                             </div>
                         </div>
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row}`}>
                                 <span>Tenant with 3-10 users:</span>
                                 <Input
-                                    value={tenants3_10Count}
-                                    onChange={e => setTenants3_10Count(Number(e.currentTarget.value))}
+                                    defaultValue={0}
+                                    onChange={e => calculateThreeToTenUsers(e.currentTarget.value)}
                                 />
                                 <span>$5 /tenant / month</span>
                             </div>
                             <div className={`${styles.right__col__sub__row}`}>
-                                <h4>${dashboardAmount}</h4>
+                                <h4>${tenants3_10Amount}</h4>
                             </div>
                         </div>
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row}`}>
                                 <span>Tenant with 10+ users:</span>
-                                <Input
-                                    value={tenantsWith10PlusCount}
-                                    onChange={e => setTenantsWith10PlusCount(Number(e.currentTarget.value))}
-                                />
+                                <Input defaultValue={0} onChange={e => calculateTenPlusUsers(e.currentTarget.value)} />
                                 <span>$10 /tenant / month</span>
                             </div>
                             <div className={`${styles.right__col__sub__row}`}>
-                                <h4>${dashboardAmount}</h4>
+                                <h4>${tenantsWith10PlusAmount}</h4>
                             </div>
                         </div>
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row}`}>
                                 <span>Tenant with Enterprise SSO:</span>
-                                <Input
-                                    value={enterpriseTenanatsCount}
-                                    onChange={e => setEnterpriceTenantCount(Number(e.currentTarget.value))}
-                                />
+                                <Input defaultValue={0} onChange={e => calculateEnterpriseSSO(e.currentTarget.value)} />
                                 <span>$50 /tenant / month</span>
                             </div>
                             <div className={`${styles.right__col__sub__row}`}>
-                                <h4>${dashboardAmount}</h4>
+                                <h4>${enterpriseTenanatsAmount}</h4>
                             </div>
                         </div>
                     </>
                 ) : null}
                 <div className={styles.calculator__row}>
-                    <div className={styles.calculator__left__col}/>
+                    <div className={styles.calculator__left__col} />
                     <div className={styles.calculator__right__col}>
-                        <div className={styles.total__price__container}>
-                            <h2>${Math.ceil(generalMAUAmount + dashboardAmount + accountLinkingAmount + mfaAmount)}</h2>
-                            <span>Estimated Monthly Billing</span>
-                        </div>
+                        {getTotalPriceCell() > 500 ? (
+                            <div className={styles.contact_us_container}>
+                                <a href="/consultacy" className={styles.contact_us_btn}>
+                                    Contact Us!
+                                </a>
+                                <span>
+                                    for <span>Bulk Discount</span>!
+                                </span>
+                            </div>
+                        ) : (
+                            <div className={styles.total__price__container}>
+                                <h2>${getTotalPriceCell()}</h2>
+                                <span>Estimated Monthly Billing</span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
