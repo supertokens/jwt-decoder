@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { CalculatorToggle } from "./calculator-toggle";
 import CheckBox from "./form/checkbox";
@@ -6,8 +6,7 @@ import Input from "./form/input";
 import Slider from "./form/slider";
 
 import styles from "../../styles/pricing/calculator.module.css";
-
-const calculatorConfig = [];
+import { usePricingToggleContext } from "../../context/PricingToggleContext";
 
 export default function Calculator() {
     const [mau, setMAU] = useState(0);
@@ -19,36 +18,87 @@ export default function Calculator() {
     const [isMultitenancyChecked, setIsMultitenancyChecked] = useState(false);
 
     const [generalMAUAmount, setGeneralMAUAmount] = useState(0);
-
-    const [accountLinkingAndMFAAmount, setIsAccountLinkingAndMFAAmount] = useState(0);
-
+    const [accountLinkingAmount, setAccountLinkingAmount] = useState(0);
+    const [mfaAmount, setMFAAmount] = useState(0);
     const [dashboardAmount, setDashboardAmount] = useState(0);
     const [tenants3_0, setTenants3_0] = useState(0);
     const [tenants3_10, setTenants3_10] = useState(0);
     const [tenanntsWith10PlusUsersAmount, setTenanntsWith10PlusUsersAmount] = useState(0);
 
-    function changeMAU(activeUsers: number) {
-        setMAU(activeUsers);
-        if (activeUsers >= 5000) {
-            setGeneralMAUAmount(Math.ceil(activeUsers * 0.01));
+    const { activeTab } = usePricingToggleContext();
+
+    const calculateGeneralMau = useCallback((monthlyActiveUsers: number) => {
+        if (monthlyActiveUsers >= 5000 && activeTab === "cloud") {
+            setGeneralMAUAmount(Math.ceil(monthlyActiveUsers * 0.02));
         } else {
             setGeneralMAUAmount(0);
         }
+    }, []);
+
+    function changeMAU(monthlyActiveUsers: number) {
+        setMAU(monthlyActiveUsers);
+        calculateGeneralMau(monthlyActiveUsers);
     }
 
     useEffect(() => {
-        if (isAccountLinkingChecked || isMFAChecked) {
-            if (mau >= 5000) {
-                setIsAccountLinkingAndMFAAmount(mau * 0.005);
-            } else {
-                setIsAccountLinkingAndMFAAmount(100);
-            }
-        }
-    }, [isMFAChecked, isAccountLinkingChecked, mau]);
+        calculateGeneralMau(mau);
+    }, [activeTab]);
 
     useEffect(() => {
-        if (isDashboardUserChecked) {
-            setDashboardAmount(dashboardUserCount * 20);
+        if (isAccountLinkingChecked === false) {
+            setAccountLinkingAmount(0);
+        }
+
+        if (isMFAChecked === false) {
+            setMFAAmount(0);
+        }
+
+        if (activeTab === "cloud") {
+            if (mau >= 5000) {
+                if (isMFAChecked && isAccountLinkingChecked) {
+                    setMFAAmount(mau * 0.005);
+                    setAccountLinkingAmount(mau * 0.005);
+                } else if (isMFAChecked) {
+                    setMFAAmount(mau * 0.005);
+                } else if (isAccountLinkingChecked) {
+                    setAccountLinkingAmount(mau * 0.005);
+                }
+            } else {
+                if (isMFAChecked && isAccountLinkingChecked) {
+                    setAccountLinkingAmount(100);
+                } else if (isMFAChecked) {
+                    setMFAAmount(100);
+                } else if (isAccountLinkingChecked) {
+                    setAccountLinkingAmount(100);
+                }
+            }
+        }
+
+        if (activeTab === "self-host") {
+            if (mau >= 10000) {
+                if (isMFAChecked && isAccountLinkingChecked) {
+                    setMFAAmount(mau * 0.01);
+                    setAccountLinkingAmount(mau * 0.005);
+                } else if (isMFAChecked) {
+                    setMFAAmount(mau * 0.01);
+                } else if (isAccountLinkingChecked) {
+                    setAccountLinkingAmount(mau * 0.01);
+                }
+            } else {
+                if (isMFAChecked && isAccountLinkingChecked) {
+                    setAccountLinkingAmount(100);
+                } else if (isMFAChecked) {
+                    setMFAAmount(100);
+                } else if (isAccountLinkingChecked) {
+                    setAccountLinkingAmount(100);
+                }
+            }
+        }
+    }, [isMFAChecked, isAccountLinkingChecked, mau, activeTab]);
+
+    useEffect(() => {
+        if (isDashboardUserChecked && dashboardUserCount > 3) {
+            setDashboardAmount((dashboardUserCount - 3) * 20);
         } else {
             setDashboardAmount(0);
         }
@@ -66,11 +116,14 @@ export default function Calculator() {
                         <Slider mau={mau} onMAUChange={changeMAU} />
                     </div>
                     <div className={styles.calculator__right__col}>
-                        <h4>${generalMAUAmount}</h4>
-                        <span>Free under 5K MAUs</span>
+                        {activeTab === "cloud" ? (
+                            <>
+                                <h4 className={styles.margin_top_8}>${generalMAUAmount}</h4>
+                                <span>Free under 5K MAUs</span>
+                            </>
+                        ) : null}
                     </div>
                 </div>
-                <div className={styles.divider} />
                 <div className={styles.calculator__row}>
                     <div className={styles.calculator__left__col}>
                         <CheckBox
@@ -79,10 +132,10 @@ export default function Calculator() {
                             }}
                         />
                         <span>MultiFactor Authentication</span>
-                        <span>Price / MAU: $0.005</span>
+                        <span>Price / MAU: {activeTab === "cloud" ? "$0.005" : "$0.01"}</span>
                     </div>
                     <div className={styles.calculator__right__col}>
-                        <h4>*</h4>
+                        <h4>${mfaAmount}</h4>
                     </div>
                 </div>
                 <div className={styles.divider} />
@@ -93,11 +146,11 @@ export default function Calculator() {
                                 setIsAccountLinkingChecked(e.currentTarget.checked);
                             }}
                         />
-                        <span>No. of Account linking MAUs:</span>
-                        <span>Price / MAU: $0.005</span>
+                        <span>Account Linking</span>
+                        <span>Price / MAU: {activeTab === "cloud" ? "$0.005" : "$0.01"}</span>
                     </div>
                     <div className={styles.calculator__right__col}>
-                        <h4>{accountLinkingAndMFAAmount}</h4>
+                        <h4>${accountLinkingAmount}</h4>
                     </div>
                 </div>
                 <div className={styles.divider} />
@@ -110,13 +163,14 @@ export default function Calculator() {
                         />
                         <span>No. of Dashboard Users:</span>
                         <Input
+                            disabled={isDashboardUserChecked === false}
                             value={dashboardUserCount}
                             onChange={e => setDashboardUserCount(Number(e.currentTarget.value))}
                         />
                         <span>Price / User: $20</span>
                     </div>
                     <div className={styles.calculator__right__col}>
-                        <h4>{dashboardAmount}</h4>
+                        <h4>${dashboardAmount}</h4>
                     </div>
                 </div>
                 <div className={styles.divider} />
@@ -129,34 +183,23 @@ export default function Calculator() {
                 </div>
                 <div className={styles.divider} />
                 <div className={styles.calculator__row}>
-                      {/* {isMultitenancyChecked ? ( */}
-                      <div className={styles.calculator__left__col}>
-                            <div>
-                                <span>Tenant with 0-3 users:</span>
-                                <Input
-                                    value={tenants3_10}
-                                    onChange={e => setTenants3_0(Number(e.currentTarget.value))}
-                                />
-                                <span>$2 /tenant / month | free for 25 tenants</span>
-                            </div>
-                            <div>
-                                <span>Tenant with 0-3 users:</span>
-                                <Input
-                                    value={tenants3_10}
-                                    onChange={e => setTenants3_10(Number(e.currentTarget.value))}
-                                />
-                                <span>$2 /tenant / month | free for 25 tenants</span>
-                            </div>
-                            <div>
-                                <span>Tenant with 0-3 users:</span>
-                                <Input
-                                    value={tenants3_10}
-                                    onChange={e => setTenants3_10(Number(e.currentTarget.value))}
-                                />
-                                <span>$2 /tenant / month | free for 25 tenants</span>
-                            </div>
+                    <div className={styles.calculator__left__col}>
+                        <div>
+                            <span>Tenant with 0-3 users:</span>
+                            <Input value={tenants3_10} onChange={e => setTenants3_0(Number(e.currentTarget.value))} />
+                            <span>$2 /tenant / month | free for 25 tenants</span>
                         </div>
-                    {/* ) : null} */}
+                        <div>
+                            <span>Tenant with 0-3 users:</span>
+                            <Input value={tenants3_10} onChange={e => setTenants3_10(Number(e.currentTarget.value))} />
+                            <span>$2 /tenant / month | free for 25 tenants</span>
+                        </div>
+                        <div>
+                            <span>Tenant with 0-3 users:</span>
+                            <Input value={tenants3_10} onChange={e => setTenants3_10(Number(e.currentTarget.value))} />
+                            <span>$2 /tenant / month | free for 25 tenants</span>
+                        </div>
+                    </div>
                 </div>
                 <div className={styles.calculator__row}>
                     <div className={styles.calculator__left__col}>
@@ -164,11 +207,13 @@ export default function Calculator() {
                     </div>
                     <div className={styles.calculator__right__col}>
                         <h4>
+                            $
                             {Math.ceil(
                                 generalMAUAmount +
                                     dashboardAmount +
                                     tenanntsWith10PlusUsersAmount +
-                                    accountLinkingAndMFAAmount
+                                    accountLinkingAmount +
+                                    mfaAmount
                             )}
                         </h4>
                     </div>

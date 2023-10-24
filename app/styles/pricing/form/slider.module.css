@@ -1,8 +1,8 @@
 .slider__container {
     padding: 20px 32px;
+    margin: 14px;
 
     width: 684px;
-    margin-left: 14px;
 
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.18);

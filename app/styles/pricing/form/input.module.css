@@ -21,3 +21,8 @@
     background: rgba(0, 0, 0, 0.44);
     outline: none;
 }
+
+.pricing__input:disabled{
+    cursor: not-allowed;
+    color: #2a2a2a;
+}
