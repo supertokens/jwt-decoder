@@ -6,7 +6,7 @@ export default function CantFind() {
             <div className={styles.first__section}>
                 <div>
                     <h1 className={styles.text__large}>
-                        Cant find what you are <span className={styles.gradient__text}>looking for?</span>
+                        Can't find what you are <span className={styles.gradient__text}>looking for?</span>
                     </h1>
                 </div>
                 <div className={styles.line} />
