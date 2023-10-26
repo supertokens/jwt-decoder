@@ -2,7 +2,6 @@ import * as SliderPrimitive from "@radix-ui/react-slider";
 
 import styles from "../../../styles/pricing/form/slider.module.css";
 import Input from "./input";
-import { useState } from "react";
 import { usePricingToggleContext } from "../../../context/PricingToggleContext";
 
 type SliderProps = {
@@ -22,7 +21,8 @@ export default function Slider({ mau, onMAUChange }: SliderProps) {
                         type="text"
                         value={mau}
                         onChange={e => onMAUChange(Number(e.currentTarget.value))}
-                        max={10000}
+                        maxLength={5}
+                        max={25000}
                         min={0}
                     />
                 </div>
@@ -32,7 +32,7 @@ export default function Slider({ mau, onMAUChange }: SliderProps) {
                         onMAUChange(value[0]);
                     }}
                     value={[mau]}
-                    max={10000}
+                    max={25000}
                     step={1}
                 >
                     <SliderPrimitive.Track className={styles.slider__track}>

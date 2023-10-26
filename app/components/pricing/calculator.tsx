@@ -196,11 +196,12 @@ export default function Calculator() {
                             }}
                         />
                         <span className={styles.feature__container}>
-                            MultiFactor Authentication{" "}
+                            Multi-factor Authentication{" "}
                             <span>
                                 Price / MAU: <span>{activeTab === "cloud" ? "$0.005" : "$0.01"}</span>
                             </span>
                         </span>
+                        <span></span>
                         <span>
                             Price / MAU: <span>{activeTab === "cloud" ? "$0.005" : "$0.01"}</span>
                         </span>
@@ -226,6 +227,7 @@ export default function Calculator() {
                                 Price / MAU: <span>{activeTab === "cloud" ? "$0.005" : "$0.01"}</span>
                             </span>
                         </span>
+                        <span></span>
                         <span>
                             Price / MAU: <span>{activeTab === "cloud" ? "$0.005" : "$0.01"}</span>
                         </span>
@@ -246,7 +248,7 @@ export default function Calculator() {
                             }}
                         />
                         <span className={styles.feature__container}>
-                            No. of Dashboard Users:
+                            No. of Dashboard Users
                             <span>
                                 Price / User: <span>$20</span>
                             </span>
@@ -277,6 +279,11 @@ export default function Calculator() {
                 </div>
                 {isMultitenancyChecked ? (
                     <>
+                        <div className={styles.multitenancy__sub_section}>
+                            <span className={styles.multitenancy__pricing__title}>
+                            Tenant with <span className={styles.gray__bold}>Email password, Social, Passwordless login</span>
+                            </span>
+                        </div>
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row}`}>
                                 <span className={styles.multitenancy__pricing__container}>
@@ -324,7 +331,7 @@ export default function Calculator() {
                             </div>
                         </div>
                         <div className={styles.calculator__row}>
-                            <div className={`${styles.left__col__sub__row}`}>
+                            <div className={`${styles.left__col__sub__row} ${styles.border__bottom} ${styles.border__rounded}`}>
                                 <span className={styles.multitenancy__pricing__container}>
                                     Tenant with 10+ users:
                                     <span>
@@ -338,14 +345,14 @@ export default function Calculator() {
                                     <span className={styles.bold}>$10</span> /tenant / month
                                 </span>
                             </div>
-                            <div className={`${styles.right__col__sub__row}`}>
+                            <div className={`${styles.right__col__sub__row} ${styles.border__bottom}`}>
                                 <h4>${tenantsWith10PlusAmount}</h4>
                             </div>
                         </div>
                         <div className={styles.calculator__row}>
-                            <div className={`${styles.left__col__sub__row}`}>
+                            <div className={`${styles.left__col__sub__row} ${styles.multitenanct__header__style}`}>
                                 <span className={styles.multitenancy__pricing__container}>
-                                    Tenant with Enterprise SSO:
+                                    Tenant with <div className={styles.gray__bold}>Enterprise SSO:</div>
                                     <span>
                                         <span>
                                             <span className={styles.bold}>$50</span> /tenant / month
@@ -357,7 +364,7 @@ export default function Calculator() {
                                     <span className={styles.bold}>$50</span> /tenant / month
                                 </span>
                             </div>
-                            <div className={`${styles.right__col__sub__row}`}>
+                            <div className={`${styles.right__col__sub__row} ${styles.padding_y_12}`}>
                                 <h4>${enterpriseTenanatsAmount}</h4>
                             </div>
                         </div>
@@ -366,7 +373,7 @@ export default function Calculator() {
                 <div className={styles.calculator__row}>
                     <div className={styles.calculator__left__col} />
                     <div className={styles.calculator__right__col}>
-                        {getTotalPriceCell() > 500 ? (
+                        {getTotalPriceCell() >= 500 ? (
                             <div className={styles.contact_us_container}>
                                 <a href="/consultacy" className={styles.contact_us_btn}>
                                     Contact Us!
