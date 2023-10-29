@@ -197,7 +197,7 @@ export default function Calculator() {
                         />
                         <span className={styles.feature__container}>
                             Multi-factor Authentication{" "}
-                            <span>
+                            <span className={styles.hidden__lg}>
                                 Price / MAU: <span>{activeTab === "cloud" ? "$0.005" : "$0.01"}</span>
                             </span>
                         </span>
@@ -223,7 +223,7 @@ export default function Calculator() {
                         />
                         <span className={styles.feature__container}>
                             Account Linking
-                            <span>
+                            <span className={styles.hidden__lg}>
                                 Price / MAU: <span>{activeTab === "cloud" ? "$0.005" : "$0.01"}</span>
                             </span>
                         </span>
@@ -274,25 +274,30 @@ export default function Calculator() {
                     <div className={styles.calculator__left__col}>
                         <CheckBox onChange={e => setIsMultitenancyChecked(e.currentTarget.checked)} />
                         <span>Multitenancy</span>
+                        {isMultitenancyChecked ? (
+                            <span className={styles.tenant__with__title}>Tenants with</span>
+                        ) : null}
                     </div>
                     <div className={styles.calculator__right__col}>--</div>
                 </div>
                 {isMultitenancyChecked ? (
                     <>
-                        <div className={styles.multitenancy__sub_section}>
-                            <span className={styles.multitenancy__pricing__title}>
-                            Tenant with <span className={styles.gray__bold}>Email password, Social, Passwordless login</span>
+                        <div className={styles.calculator__row}>
+                            <span
+                                className={`${styles.multitenancy__pricing__title} ${styles.multitenancy__sub_section} ${styles.email__password__container}`}
+                            >
+                                <span className={styles.tenant__with__subtext}>Tenant with</span>{" "}
+                                <span className={styles.gray__bold}>Email password, Social, Passwordless login</span>
                             </span>
+                            <div className={`${styles.right__col__sub__row}`} />
                         </div>
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row}`}>
                                 <span className={styles.multitenancy__pricing__container}>
-                                    Tenant with 0-3 users:
-                                    <span>
-                                        <span>
-                                            <span className={styles.bold}>$2</span> /tenant / month | free for 25
-                                            tenants
-                                        </span>
+                                    <span className={styles.tenant__with__subtext}>Tenant with</span> 0-3 users:
+                                    <span className={styles.hidden__lg}>
+                                        <span className={styles.bold}>$2</span>
+                                        <span> /tenant / month </span>
                                     </span>
                                 </span>
 
@@ -301,21 +306,21 @@ export default function Calculator() {
                                     onChange={e => calculateZeroToThreeUsers(e.currentTarget.value)}
                                 />
                                 <span>
-                                    <span className={styles.bold}>$2</span> /tenant / month | free for 25 tenants
+                                    <span className={styles.bold}>$2</span>{" "}
+                                    <span>/tenant / month</span>
                                 </span>
                             </div>
                             <div className={`${styles.right__col__sub__row}`}>
                                 <h4>${tenants0_3Amount}</h4>
+                                <span>free for 25 tenants</span>
                             </div>
                         </div>
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row}`}>
                                 <span className={styles.multitenancy__pricing__container}>
-                                    Tenant with 3-10 users:
-                                    <span>
-                                        <span>
-                                            <span className={styles.bold}>$5</span> /tenant / month
-                                        </span>
+                                    <span className={styles.tenant__with__subtext}>Tenant with</span> 3-10 users:
+                                    <span className={styles.hidden__lg}>
+                                        <span className={styles.bold}>$5</span> <span>/tenant / month</span>
                                     </span>
                                 </span>
                                 <Input
@@ -323,7 +328,7 @@ export default function Calculator() {
                                     onChange={e => calculateThreeToTenUsers(e.currentTarget.value)}
                                 />
                                 <span>
-                                    <span className={styles.bold}>$5</span> /tenant / month
+                                    <span className={styles.bold}>$5</span> <span>/tenant / month</span>
                                 </span>
                             </div>
                             <div className={`${styles.right__col__sub__row}`}>
@@ -331,13 +336,13 @@ export default function Calculator() {
                             </div>
                         </div>
                         <div className={styles.calculator__row}>
-                            <div className={`${styles.left__col__sub__row} ${styles.border__bottom} ${styles.border__rounded}`}>
+                            <div
+                                className={`${styles.left__col__sub__row} ${styles.border__bottom} ${styles.border__rounded}`}
+                            >
                                 <span className={styles.multitenancy__pricing__container}>
-                                    Tenant with 10+ users:
-                                    <span>
-                                        <span>
-                                            <span className={styles.bold}>$10</span> /tenant / month
-                                        </span>
+                                    <span className={styles.tenant__with__subtext}>Tenant with</span> 10+ users:
+                                    <span className={styles.hidden__lg}>
+                                        <span className={styles.bold}>$10</span> <span>/tenant / month</span>
                                     </span>
                                 </span>
                                 <Input defaultValue={0} onChange={e => calculateTenPlusUsers(e.currentTarget.value)} />
@@ -352,11 +357,11 @@ export default function Calculator() {
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row} ${styles.multitenanct__header__style}`}>
                                 <span className={styles.multitenancy__pricing__container}>
-                                    Tenant with <div className={styles.gray__bold}>Enterprise SSO:</div>
-                                    <span>
-                                        <span>
-                                            <span className={styles.bold}>$50</span> /tenant / month
-                                        </span>
+                                    <span className={styles.tenant__with__subtext}>Tenant with</span>{" "}
+                                    <div className={styles.gray__bold}>Enterprise SSO</div>
+                                    <span className={styles.hidden__lg}>
+                                        <span className={styles.bold}>$50</span>
+                                        <span> /tenant / month</span>
                                     </span>
                                 </span>
                                 <Input defaultValue={0} onChange={e => calculateEnterpriseSSO(e.currentTarget.value)} />
