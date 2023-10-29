@@ -1,281 +1,132 @@
-.toggler__container {
-    border-radius: 13px;
-    background: rgba(255, 255, 255, 0.05);
+.core__toggler__container {
+    background: #000;
 
-    display: flex;
-    gap: 0;
-    font-family: Inter;
-    font-style: normal;
-    line-height: normal;
-
-    margin: auto;
-    position: relative;
-}
-
-.toggler__container__wrapper {
-    position: relative;
-    width: fit-content;
-    border-radius: 14px;
-    border: 1px solid #2c2c2c;
-    background: linear-gradient(180deg, #000 0%, #000 100%);
-
-    margin: auto;
-    cursor: pointer;
-
-    margin-top: 84px;
-}
-
-.toggler__item__active{
-    border: 2px solid #f93;
-    border-radius: 12px !important;
-    height: 100%;
-
-    position: relative;
-}
-
-.toggle__item__container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 
-    background: #000;
+    max-width: 548px;
+    margin: auto;
 
-    width: 355px;
-    height: auto;
-    flex-shrink: 0;
+    margin-top: 56px auto;
 }
 
-.left__corners__14 {
-    border-radius: 14px 0px 0px 14px;
+.core__toggler__wrapper {
+    display: flex;
+    border: 1px solid #2c2c2c;
+    padding: 2px;
+    border-radius: 14px;
+
+    width: 410px;
+    height: 65px;
+    margin: auto;
+
+    cursor: pointer;
 }
 
-.right__corners__14 {
-    border-radius: 0px 14px 14px 0px;
-}
-
-.left__top__corners__14 {
-    border-radius: 14px 0px 0px 0px;
-}
-
-.right__top__corners__14 {
-    border-radius: 0px 14px 0px 0px;
-}
-
-.left__corners__8 {
-    border-radius: 8px 0px 0px 8px;
-}
-
-.right__corners__8 {
-    border-radius: 0px 8px 8px 0px;
-}
-
-.left__top__corners__8 {
-    border-radius: 8px 0px 0px 0px;
-}
-
-.right__top__corners__8 {
-    border-radius: 0px 8px 0px 0px;
-}
-
-.border__radius__8 {
-    border-radius: 8px !important;
-}
-
-.border__radius__8::before {
-    border-radius: 8px !important;
-}
-
-.border__radius__8::after {
-    border-radius: 8px !important;
-}
-
-.gap__8 {
-    gap: 8px !important;
-}
-
-.padding__13 {
-    padding: 13px;
-}
-.padding__none {
-    padding: 0 !important;
-}
-
-.toggler__item__gray {
-    background: rgba(255, 255, 255, 0.1);
-
-    height: 50%;
-    text-align: center;
-
-    color: #f8f7f7;
-    font-size: 20px;
+.core__toggler__wrapper > div {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 23px;
+    font-style: normal;
     font-weight: 600;
+    line-height: normal;
 
-    padding: 20px 0px 14px;
-    width: 100%;
-
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 14px;
+
+    padding: 18px 32px;
 }
 
-.toggler__item__gray > div > span {
-    color: #aaa;
-    font-weight: 400;
-}
-
-.toggler__item__dark {
+.core__toggler__wrapper > div.active {
+    position: relative;
     border-radius: 12px;
-    background: #000;
+    border: 1px solid #ff7c33;
+    background: linear-gradient(132deg, #0a0a0a 4.08%, #1e1e1e 95.3%);
 
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
+    box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
+    -webkit-box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
+    -moz-box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
 
-    height: 50%;
-    text-align: center;
-
-    color: #ddd;
-    font-size: 16px;
-    font-weight: 400;
-
-    padding: 14px;
-}
-
-.text__orange {
     color: #f93;
-    font-size: 12px;
+}
+
+.explanation__container {
+    display: flex;
+    color: white;
+    gap: 26px;
+}
+
+.explanation__container > div {
+    display: flex;
+
+    flex-direction: column;
+    gap: 2px;
+    width: 50%;
+
+    padding: 16px 20px;
+}
+
+.explanation__container > div > span:first-child {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
     font-weight: 400;
-    line-height: 15px;
+
+    line-height: normal;
 }
 
-.move__right {
-    right: 8px;
+.explanation__container > div > span:last-child {
+    color: #aaa;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px; /* 125% */
 }
 
-.opacity_60 {
+.explanation__container > .cloud {
+    border-radius: 14px;
+    background: linear-gradient(271deg, rgba(44, 44, 44, 0.3) 0.52%, rgba(44, 44, 44, 0) 99.53%);
+
+    align-items: flex-end;
+    text-align: end;
+}
+
+.explanation__container > .self__host {
+    border-radius: 14px;
+    background: linear-gradient(90deg, rgba(44, 44, 44, 0.3) 0%, rgba(44, 44, 44, 0) 100%);
+
+    align-items: flex-start;
+    text-align: start;
+}
+
+
+.opacity_60{
     opacity: 0.6;
 }
 
-.margin_3 {
-    margin: 3px 3px 3px 0;
-}
-
-.tooltip {
-    position: absolute !important;
-    z-index: 5;
-    bottom: 20px;
-    right: 75%;
-}
-
-@media (max-width: 768px) {
-    .toggler__item__wrapper {
-        max-width: 298px;
+@media (max-width:425px) {
+    .core__toggler__wrapper{
+        width: 354px;
+        height: 50px;
     }
 
-    .toggle__item__container {
-        width: 298px;
-    }
-
-    .toggler__item__dark > span:first-of-type {
-        font-size: 14px;
-    }
-
-    .toggler__item__dark {
-        gap: 10px;
-    }
-
-    .toggler__item__gray {
-        gap: 8px;
-    }
-
-    .tooltip {
-        right: 76%;
-    }
-}
-
-@media (max-width: 625px) {
-    .toggler__item__wrapper {
-        max-width: 234px;
-    }
-
-    .toggle__item__container {
-        width: 234px;
-    }
-
-    .toggler__item__dark {
-        gap: 2px;
-        flex-direction: column;
-    }
-
-    .toggler__item__gray {
-        font-size: 16px;
-    }
-
-    .tooltip {
-        right: 61%;
-        bottom: 32px;
-    }
-
-    .tooltip > img {
-        height: 12px;
-    }
-}
-
-@media (max-width: 468px) {
-    .toggler__item__wrapper {
-        max-width: calc(50vw - 20px);
-    }
-
-    .toggle__item__container {
-        width: calc(50vw - 20px);
-    }
-
-    .toggler__item__dark > span:first-of-type {
-        font-size: 12px;
-    }
-
-    .toggler__item__dark {
-        gap: 2px;
-        flex-direction: column;
-    }
-
-    .toggler__item__gray {
-        font-size: 14px;
-        padding: 6px;
-    }
-
-    .toggler__container__wrapper {
-        margin: 20px;
-        margin-top: 84px
-    }
-
-    .tooltip {
-        right: 60%;
-        bottom: 28px;
-    }
-
-    .tooltip > img {
-        height: 12px;
-    }
-
-    .toggler__item__gray > div > span {
-        font-size: 0;
+    .core__toggler__wrapper > div {
+        font-size: 18px;
     }
 }
 
 @media (max-width: 375px) {
-    .tooltip {
-        right: 57%;
-        bottom: 28px;
+    .core__toggler__wrapper{
+        width: 95%;
     }
-}
 
-@media (max-width: 327px) {
-    .tooltip {
-        right: 54%;
-        bottom: 40px;
+    .core__toggler__wrapper > div {
+        font-size: 18px;
+        padding: 0;
+    }
+
+    .explanation__container {
+       gap: 8px;
     }
 }

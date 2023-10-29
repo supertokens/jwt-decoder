@@ -16,6 +16,11 @@
 
 .toggler__item__active {
     border: 2px solid #f93;
+
+    box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
+    -webkit-box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
+    -moz-box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
+
     border-radius: 6px;
 
     height: 100%;
@@ -62,6 +67,10 @@
 
 .opacity_60 {
     opacity: 0.6;
+}
+
+.opacity_100{
+    opacity: 1 !important;
 }
 
 .margin_3 {
