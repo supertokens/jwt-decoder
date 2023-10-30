@@ -102,7 +102,7 @@ export default function Calculator() {
                 setGeneralMAUAmount(0);
             }
         } else {
-            setGeneralMAUAmount(0)
+            setGeneralMAUAmount(0);
         }
     }, [activeTab, mau]);
 
@@ -262,7 +262,9 @@ export default function Calculator() {
                             disabled={isDashboardUserChecked === false}
                             value={dashboardUserCount}
                             className={styles.adjust__margin}
-                            onChange={e => setDashboardUserCount(resetInputMaxValue(e.currentTarget.value, dashboardUserCount))}
+                            onChange={e =>
+                                setDashboardUserCount(resetInputMaxValue(e.currentTarget.value, dashboardUserCount))
+                            }
                         />
                         <span className={styles.margin_left__18}>
                             Price / User: <span>$20</span>
@@ -311,7 +313,9 @@ export default function Calculator() {
 
                                 <Input
                                     value={tenants0_3Count}
-                                    onChange={e => setTenants0_3Count(resetInputMaxValue(e.currentTarget.value, tenants0_3Count))}
+                                    onChange={e =>
+                                        setTenants0_3Count(resetInputMaxValue(e.currentTarget.value, tenants0_3Count))
+                                    }
                                 />
                                 <span>
                                     <span className={styles.bold}>$2</span> <span>/tenant / month</span>
@@ -332,7 +336,9 @@ export default function Calculator() {
                                 </span>
                                 <Input
                                     value={tenants3_10Count}
-                                    onChange={e => setTenants3_10Count(resetInputMaxValue(e.currentTarget.value, tenants3_10Count))}
+                                    onChange={e =>
+                                        setTenants3_10Count(resetInputMaxValue(e.currentTarget.value, tenants3_10Count))
+                                    }
                                 />
                                 <span>
                                     <span className={styles.bold}>$5</span> <span>/tenant / month</span>
@@ -354,7 +360,11 @@ export default function Calculator() {
                                 </span>
                                 <Input
                                     value={tenantsWith10PlusCount}
-                                    onChange={e => setTenantsWith10PlusCount(resetInputMaxValue(e.currentTarget.value, tenantsWith10PlusCount))}
+                                    onChange={e =>
+                                        setTenantsWith10PlusCount(
+                                            resetInputMaxValue(e.currentTarget.value, tenantsWith10PlusCount)
+                                        )
+                                    }
                                 />
                                 <span>
                                     <span className={styles.bold}>$10</span> /tenant / month
@@ -362,6 +372,12 @@ export default function Calculator() {
                             </div>
                             <div className={`${styles.right__col__sub__row} ${styles.border__bottom}`}>
                                 <h4>${tenantsWith10PlusAmount}</h4>
+                            </div>
+                        </div>
+                        <div className={`${styles.calculator__row} ${styles.spacer__8}`}>
+                            <div className={styles.calculator__left__col}>
+                            </div>
+                            <div className={styles.calculator__right__col + " "+ styles.padding__0}>
                             </div>
                         </div>
                         <div className={styles.calculator__row}>
@@ -377,7 +393,9 @@ export default function Calculator() {
                                 <Input
                                     value={enterpriseTenanatsCount}
                                     onChange={e =>
-                                        setEnterpriseTenanatsCount(resetInputMaxValue(e.currentTarget.value, enterpriseTenanatsCount))
+                                        setEnterpriseTenanatsCount(
+                                            resetInputMaxValue(e.currentTarget.value, enterpriseTenanatsCount)
+                                        )
                                     }
                                 />
                                 <span>

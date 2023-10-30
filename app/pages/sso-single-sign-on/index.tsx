@@ -28,7 +28,7 @@ export default function SSOSigngleSignOnPage() {
                                             type: "title-subtitle-cta",
                                             flex: "column",
                                             title: {
-                                                text: "Trustworthy SSO (Single-Sign On)",
+                                                text: "Open Source SSO (Single-Sign On)",
                                                 highlight: {
                                                     mode: "primary",
                                                     texts: ["SSO"],

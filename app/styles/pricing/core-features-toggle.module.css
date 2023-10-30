@@ -86,7 +86,7 @@
 }
 
 .explanation__container > .cloud {
-    border-radius: 14px;
+    border-radius: 0px 0px 14px 14px;
     background: linear-gradient(271deg, rgba(44, 44, 44, 0.3) 0.52%, rgba(44, 44, 44, 0) 99.53%);
 
     align-items: flex-end;
@@ -94,7 +94,7 @@
 }
 
 .explanation__container > .self__host {
-    border-radius: 14px;
+    border-radius: 0px 0px 14px 14px;
     background: linear-gradient(90deg, rgba(44, 44, 44, 0.3) 0%, rgba(44, 44, 44, 0) 100%);
 
     align-items: flex-start;

@@ -24,7 +24,13 @@ const coreFeatures = [
         comingSoon: false,
         expandedByDefault: false,
         data: {
-            mainText: "Email Password"
+            mainText: "Email Password",
+            links: [
+                {
+                    text: "Email Password",
+                    href: "/features/email-password-authentication"
+                }
+            ]
         }
     },
     {
@@ -34,6 +40,10 @@ const coreFeatures = [
         data: {
             mainText: "Social Login / SSO providers (Google, Github, Facebook, and all custom providers)",
             links: [
+                {
+                    text:"Social Login",
+                    href: "/features/social-login"
+                },
                 {
                     text: "SSO providers",
                     href: "/features/single-sign-on"
@@ -60,7 +70,13 @@ const coreFeatures = [
         expandable: false,
         comingSoon: false,
         data: {
-            mainText: "Passwordless SMS / Email OTP"
+            mainText: "Passwordless SMS / Email OTP",
+            links:[
+                {
+                    text:"Passwordless SMS / Email OTP",
+                    href:"/features/passwordless-login"
+                }
+            ]
         }
     },
     {
@@ -144,7 +160,7 @@ const coreFeatures = [
                 {
                     text: "Included seats",
                     tooltip: "First 3 seats are Free."
-                },
+                }
             ]
         }
     },
