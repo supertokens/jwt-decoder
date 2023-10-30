@@ -19,8 +19,22 @@ export default function Slider({ mau, onMAUChange }: SliderProps) {
                     <h4>Number of MAUs:</h4>
                     <Input
                         type="text"
-                        value={mau}
-                        onChange={e => onMAUChange(Number(e.currentTarget.value))}
+                        value={mau < 25000 ? mau : "25000+"}
+                        onChange={e => {
+                            const mauCount = Number(e.currentTarget.value);
+
+                            if (isNaN(mauCount) === true) {
+                                onMAUChange(0);
+                                return;
+                            }
+
+                            if (mauCount >= 25000) {
+                                onMAUChange(25000);
+                                return;
+                            }
+
+                            onMAUChange(mauCount);
+                        }}
                         maxLength={5}
                         max={25000}
                         min={0}
