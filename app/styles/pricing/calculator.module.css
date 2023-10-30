@@ -540,7 +540,11 @@
 
 @media (max-width: 768px) {
     .left__col__sub__row {
-        width: calc(70% - 52px);
+        width: calc(70% - 20px);
+    }
+
+    .email__password__container {
+        width: calc(70% - 20px) !important;
     }
 
     .calculator__row {
@@ -569,10 +573,10 @@
     }
 
     .multitenancy__sub_section {
-        margin-left: 52px;
+        margin-left: 20px;
     }
     .left__col__sub__row {
-        margin-left: 52px;
+        margin-left: 20px;
     }
 }
 
