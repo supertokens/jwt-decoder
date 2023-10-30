@@ -264,7 +264,7 @@ export default function Calculator() {
                             className={styles.adjust__margin}
                             onChange={e => setDashboardUserCount(resetInputMaxValue(e.currentTarget.value, dashboardUserCount))}
                         />
-                        <span className={styles.margin_left__35}>
+                        <span className={styles.margin_left__18}>
                             Price / User: <span>$20</span>
                         </span>
                     </div>
