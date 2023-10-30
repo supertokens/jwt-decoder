@@ -58,7 +58,13 @@ const paidFeaturesCloud = [
         tooltip: "accountlinking-cloud",
         data: {
             mainText: "Account Linking",
-            subText: "Minimum Billing of $100 / month"
+            subText: "Minimum Billing of $100 / month",
+            links:[
+                {
+                    text:"Account Linking",
+                    href:"/features/account-linking"
+                }
+            ]
         }
     },
     {
@@ -156,7 +162,13 @@ const paidFeaturesSelfHosted = [
         tooltip: "accountlinking-self-hosted",
         data: {
             mainText: "Account Linking",
-            subText: "Minimum Billing of $100 / month"
+            subText: "Minimum Billing of $100 / month",
+            links:[
+                {
+                    text:"Account Linking",
+                    href:"/features/account-linking"
+                }
+            ]
         }
     },
     {

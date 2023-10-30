@@ -19,25 +19,33 @@ export const Tooltip = ({ position, text , className = "", imageClass = "" }) =>
     );
 };
 
-const stopAnchorPropagation = (e:React.MouseEvent<HTMLAnchorElement>)=>{
+const stopEventPropagation = (e:React.MouseEvent<HTMLAnchorElement>)=>{
     e.stopPropagation()
 }
 
-const insertLink = (mainText:string,links:Array<{text:string,href:string}>)=>{
-    let returnableJSX:JSX.Element;
-    links.map(link=>{
-        const spiltedStr = mainText.split(link.text);
-        returnableJSX = <span>{spiltedStr[0]} 
-        <span className={styles.externalLink}>
-            <a onClick={stopAnchorPropagation} target="_blank" href={link.href}>{link.text}
-            <img src={linkPng.src} alt="link"/>
-            </a>
-             </span>{spiltedStr[1]}
-        </span>
-    })
+export function replaceStringsWithLinks(paragraph: string, replacements: {text:string,href:string}[]): JSX.Element {
+    let paragraphCopy = paragraph;
 
-    return returnableJSX;
-}
+    replacements.forEach(replacement => {
+        const { text, href } = replacement;
+        const regex = new RegExp(`\\b${text}\\b`, 'g');
+        paragraphCopy = paragraphCopy.replace(regex, `<a target="_blank" href="${href}">${text} <img src=${linkPng.src} alt="link"/></a>`);
+    });
+
+    const tokens = paragraphCopy.split(/(<a.*?<\/a>|\s+|[,.-]+)/).filter(Boolean);
+
+    const jsxParagraph = tokens.map((token, index) => {
+        if (token.startsWith('<a')) {
+            return <span onClick={stopEventPropagation} className={styles.externalLink} key={index} dangerouslySetInnerHTML={{ __html: token }} />
+                       
+        } else {
+            return <span key={index}>{token}</span>;
+        }
+    });
+
+    return <p>{jsxParagraph}</p>
+  }
+
 
 export const Expandable = ({ row, expandedByDefault = false }: { row: any; expandedByDefault?: boolean }) => {
     const [expand, setExpand] = useState(expandedByDefault);
@@ -47,7 +55,7 @@ export const Expandable = ({ row, expandedByDefault = false }: { row: any; expan
                 className={`${styles.header} ${row.expandable ? styles.cursor : null}`}
             >
                 <span>
-                    <span>{row.data.links?.length ? insertLink(row.data.mainText,row.data.links):row.data.mainText } {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom" />}</span>
+                    <span>{row.data.links?.length ? replaceStringsWithLinks(row.data.mainText,row.data.links):row.data.mainText } {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom" />}</span>
                     {/* {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>} */}
                 </span>
                 <div>
@@ -61,7 +69,7 @@ export const Expandable = ({ row, expandedByDefault = false }: { row: any; expan
                             <li key={index}>
                                 {typeof el === "object" && (
                                     <span>
-                                        {el.links?.length ? insertLink(el.text,el.links):el.text} {el.tooltip ? <Tooltip text={el.tooltip} position="bottom" /> :null}{" "}
+                                        {el.links?.length ? replaceStringsWithLinks(el.text,el.links):el.text} {el.tooltip ? <Tooltip text={el.tooltip} position="bottom" /> :null}{" "}
                                     </span>
                                 )}
                                 {typeof el === "string" && <span>{el}</span>}

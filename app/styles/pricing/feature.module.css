@@ -341,6 +341,10 @@
     display: flex;
 }
 
+.expandable > .header > span > span > p {
+    margin: 0;
+}
+
 @media screen and (max-width: 1024px) {
     .table {
         display: none;
@@ -554,7 +558,7 @@
 .externalLink > a > img {
     height: 14px !important;
     width: 14px !important;
-    margin-left: 8px;
+    margin-left: 8px !important;
 }
 
 .pricingContainer {

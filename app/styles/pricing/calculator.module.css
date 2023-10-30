@@ -59,6 +59,14 @@
     );
 }
 
+.spacer__8{
+    height: 8px;
+}
+
+.padding__0{
+    padding: 0 !important;
+}
+
 .calculator__right__col {
     width: 30%;
 
@@ -119,7 +127,6 @@
 
 .border__bottom {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    margin-bottom: 10px;
 }
 
 .left__col__sub__row > span:nth-child(1) {

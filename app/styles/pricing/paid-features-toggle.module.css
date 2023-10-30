@@ -15,7 +15,7 @@
 }
 
 .toggler__item__active {
-    border: 2px solid #f93;
+    border: 1px solid #f93;
 
     box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
     -webkit-box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
