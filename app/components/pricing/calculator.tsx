@@ -111,21 +111,22 @@ export default function Calculator() {
 
         if (activeTab === "cloud") {
             if (mau >= 5000) {
-                const amount = Math.ceil(mau * 0.005);
+                const price = Math.ceil(mau * 0.005);
 
                 if (isMFAChecked && isAccountLinkingChecked) {
-                    setMFAAmount(amount);
-                    setAccountLinkingAmount(amount);
+                    setMFAAmount(price);
+                    setAccountLinkingAmount(price);
                 } else if (isMFAChecked) {
-                    setMFAAmount(amount);
+                    setMFAAmount(price);
                 } else if (isAccountLinkingChecked) {
-                    setAccountLinkingAmount(amount);
+                    setAccountLinkingAmount(price);
                 }
             } else {
                 const basePrice = 100;
 
                 if (isMFAChecked && isAccountLinkingChecked) {
                     setAccountLinkingAmount(basePrice);
+                    setMFAAmount(basePrice)
                 } else if (isMFAChecked) {
                     setMFAAmount(basePrice);
                 } else if (isAccountLinkingChecked) {
@@ -149,6 +150,7 @@ export default function Calculator() {
                 const basePrice = 100;
                 if (isMFAChecked && isAccountLinkingChecked) {
                     setAccountLinkingAmount(basePrice);
+                    setMFAAmount(basePrice)
                 } else if (isMFAChecked) {
                     setMFAAmount(basePrice);
                 } else if (isAccountLinkingChecked) {

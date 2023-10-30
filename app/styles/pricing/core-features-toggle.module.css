@@ -24,6 +24,7 @@
 }
 
 .core__toggler__wrapper > div {
+    position: relative;
     color: rgba(255, 255, 255, 0.6);
     font-size: 23px;
     font-style: normal;
@@ -44,9 +45,9 @@
     border: 1px solid #ff7c33;
     background: linear-gradient(132deg, #0a0a0a 4.08%, #1e1e1e 95.3%);
 
-    box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
-    -webkit-box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
-    -moz-box-shadow: -8px 3px 81px 65px rgba(255,153,51,0.09);
+    box-shadow: -8px 3px 81px 65px rgba(255, 153, 51, 0.09);
+    -webkit-box-shadow: -8px 3px 81px 65px rgba(255, 153, 51, 0.09);
+    -moz-box-shadow: -8px 3px 81px 65px rgba(255, 153, 51, 0.09);
 
     color: #f93;
 }
@@ -100,13 +101,57 @@
     text-align: start;
 }
 
+.core__toggle__tooltip__container{
+    position: absolute;
+}
 
-.opacity_60{
+.core__toggle__tooltip {
+    background: rgba(18, 18, 18, 1);
+    border: 1px solid rgba(39, 39, 39, 1);
+
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    position: relative;
+    width: fit-content;
+    padding: 8px 10px;
+    border-radius: 6px;
+}
+
+.core__toggle__tooltip > .arrow{
+    border-left: 1px solid rgba(39, 39, 39, 1);
+    border-bottom: 1px solid rgba(39, 39, 39, 1);
+    background: rgba(18, 18, 18, 1);
+
+    height: 10px;
+    width: 10px;
+    left: -6px;
+    border-radius: 2px;
+    position: absolute;
+    top: 10px;
+   
+}
+
+.core__toggle__tooltip > .arrow.right{
+    rotate: 45deg;
+}
+
+.core__toggle__tooltip > .arrow.left{
+    left: auto;
+    right: -6px;
+    rotate: -135deg;
+}
+
+.opacity_60 {
     opacity: 0.6;
 }
 
-@media (max-width:425px) {
-    .core__toggler__wrapper{
+@media (max-width: 425px) {
+    .core__toggler__wrapper {
         width: 354px;
         height: 50px;
     }
@@ -117,7 +162,7 @@
 }
 
 @media (max-width: 375px) {
-    .core__toggler__wrapper{
+    .core__toggler__wrapper {
         width: 95%;
     }
 
@@ -127,6 +172,6 @@
     }
 
     .explanation__container {
-       gap: 8px;
+        gap: 8px;
     }
 }
