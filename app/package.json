@@ -10,6 +10,7 @@
     "@codemirror/lang-css": "^6.0.1",
     "@codemirror/lang-json": "^6.0.1",
     "@next/font": "^13.1.1",
+    "@radix-ui/react-slider": "^1.1.2",
     "@types/styled-components": "^5.1.26",
     "@uiw/codemirror-themes": "^4.19.7",
     "@uiw/react-codemirror": "^4.19.6",

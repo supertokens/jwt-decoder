@@ -1,0 +1,32 @@
+.pricing__input {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.44);
+
+    width: 120px;
+    height: 38px;
+
+    color: #808080;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px; /* 108.333% */
+
+    padding: 0px 10px;
+}
+
+.pricing__input:focus-visible {
+    background: #000;
+    outline: none;
+    border: double 1px transparent;
+    border-radius: 12px;
+    background-image: linear-gradient(#000, #000), linear-gradient(to right, rgba(162, 250, 207, 1), rgba(100, 172, 255, 1));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.pricing__input:disabled {
+    cursor: not-allowed;
+    border: none;
+}
