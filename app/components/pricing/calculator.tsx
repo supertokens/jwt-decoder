@@ -126,7 +126,7 @@ export default function Calculator() {
 
                 if (isMFAChecked && isAccountLinkingChecked) {
                     setAccountLinkingAmount(basePrice);
-                    setMFAAmount(basePrice)
+                    setMFAAmount(0)
                 } else if (isMFAChecked) {
                     setMFAAmount(basePrice);
                 } else if (isAccountLinkingChecked) {
@@ -150,7 +150,7 @@ export default function Calculator() {
                 const basePrice = 100;
                 if (isMFAChecked && isAccountLinkingChecked) {
                     setAccountLinkingAmount(basePrice);
-                    setMFAAmount(basePrice)
+                    setMFAAmount(0)
                 } else if (isMFAChecked) {
                     setMFAAmount(basePrice);
                 } else if (isAccountLinkingChecked) {
@@ -210,9 +210,6 @@ export default function Calculator() {
                     </div>
                     <div className={styles.calculator__right__col}>
                         <h4>${mfaAmount}</h4>
-                        <span>
-                            Minimum <span>$100</span> / month
-                        </span>
                     </div>
                 </div>
                 <div className={styles.divider} />
@@ -236,9 +233,9 @@ export default function Calculator() {
                     </div>
                     <div className={styles.calculator__right__col}>
                         <h4>${accountLinkingAmount}</h4>
-                        <span>
+                        {/* <span>
                             Minimum <span>$100</span> / month
-                        </span>
+                        </span> */}
                     </div>
                 </div>
                 <div className={styles.divider} />
@@ -382,7 +379,7 @@ export default function Calculator() {
                     <div className={styles.calculator__right__col}>
                         {getTotalPriceCell() >= 500 ? (
                             <div className={styles.contact_us_container}>
-                                <a href="/consultacy" className={styles.contact_us_btn}>
+                                <a target="_blank" href="/consultancy" className={styles.contact_us_btn}>
                                     Contact Us!
                                 </a>
                                 <span>
