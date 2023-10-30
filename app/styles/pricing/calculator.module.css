@@ -145,7 +145,7 @@
 }
 
 .left__col__sub__row > :nth-child(2) {
-    width: 100px;
+    width: 120px;
     margin-left: 34px;
 }
 
@@ -184,7 +184,7 @@
 }
 
 .calculator__left__col > :nth-child(4):not(input) {
-    width: 256px;
+    width: 156px;
     color: #aaa;
     font-family: Inter;
     font-size: 14px;
@@ -193,6 +193,7 @@
     line-height: 26px;
 
     margin-left: -20px;
+    flex-shrink: 0;
 }
 
 .tenant__with__title {
@@ -422,6 +423,11 @@
     opacity: 0.6;
 }
 
+.margin_left__35{
+    margin-left: -35px;
+}
+
+
 .bold {
     font-weight: 600 !important;
 }
@@ -435,7 +441,7 @@
     margin-top: 8px !important;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .calculator__section {
         margin: 8.438rem 8.438rem 0;
     }
@@ -493,6 +499,7 @@
 
     .left__col__sub__row {
         margin-left: 78px;
+        justify-content: space-between;
     }
 
     .left__col__sub__row > :nth-child(3) {
@@ -522,6 +529,10 @@
     .toggler__container {
         margin: auto;
     }
+
+    .adjust__margin{
+        margin-right: 22px !important;
+    }
 }
 
 @media (max-width: 628px) {
@@ -540,7 +551,11 @@
 
 @media (max-width: 768px) {
     .left__col__sub__row {
-        width: calc(70% - 52px);
+        width: calc(70% - 20px);
+    }
+
+    .email__password__container {
+        width: calc(70% - 20px) !important;
     }
 
     .calculator__row {
@@ -569,10 +584,10 @@
     }
 
     .multitenancy__sub_section {
-        margin-left: 52px;
+        margin-left: 20px;
     }
     .left__col__sub__row {
-        margin-left: 52px;
+        margin-left: 20px;
     }
 }
 

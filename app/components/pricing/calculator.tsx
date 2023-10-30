@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { CalculatorToggle } from "./calculator-toggle";
 import CheckBox from "./form/checkbox";
@@ -17,6 +17,10 @@ export default function Calculator() {
     const [isMultitenancyChecked, setIsMultitenancyChecked] = useState(false);
 
     const [dashboardUserCount, setDashboardUserCount] = useState(0);
+    const [tenants0_3Count, setTenants0_3Count] = useState(0);
+    const [tenants3_10Count, setTenants3_10Count] = useState(0);
+    const [tenantsWith10PlusCount, setTenantsWith10PlusCount] = useState(0);
+    const [enterpriseTenanatsCount, setEnterpriseTenanatsCount] = useState(0);
 
     const [generalMAUAmount, setGeneralMAUAmount] = useState(0);
     const [accountLinkingAmount, setAccountLinkingAmount] = useState(0);
@@ -26,79 +30,81 @@ export default function Calculator() {
     const [tenants0_3Amount, setTenants0_3Amount] = useState(0);
     const [tenants3_10Amount, setTenants3_10Amount] = useState(0);
     const [tenantsWith10PlusAmount, setTenantsWith10PlusAmount] = useState(0);
+    const [multitenancyTotalAmount, setMultitenancyTotalAmount] = useState(0);
 
     const { activeTab } = usePricingToggleContext();
 
-    const calculateGeneralMau = useCallback(
-        (monthlyActiveUsers: number) => {
-            if (monthlyActiveUsers >= 5000 && activeTab === "cloud") {
-                setGeneralMAUAmount(Math.ceil(monthlyActiveUsers * 0.02));
-            } else {
-                setGeneralMAUAmount(0);
-            }
-        },
-        [activeTab]
-    );
-
-    const [
-        calculateZeroToThreeUsers,
-        calculateThreeToTenUsers,
-        calculateTenPlusUsers,
-        calculateEnterpriseSSO
-    ] = useMemo(() => {
-        function calculateZeroToThreeUsers(value: string) {
-            const usersCount = Number(value);
-            if (typeof usersCount === "number" && isNaN(usersCount) === false && usersCount > 25) {
-                const price = (usersCount - 25) * 2;
-                setTenants0_3Amount(price);
-            }
-        }
-
-        function calculateThreeToTenUsers(value: string) {
-            const usersCount = Number(value);
-            if (typeof usersCount === "number" && isNaN(usersCount) === false) {
-                setTenants3_10Amount(usersCount * 5);
-            }
-        }
-
-        function calculateTenPlusUsers(value: string) {
-            const usersCount = Number(value);
-            if (typeof usersCount === "number" && isNaN(usersCount) === false) {
-                setTenantsWith10PlusAmount(usersCount * 10);
-            }
-        }
-
-        function calculateEnterpriseSSO(value: string) {
-            const usersCount = Number(value);
-            if (typeof usersCount === "number" && isNaN(usersCount) === false) {
-                setEnterpriceTenantAmount(usersCount * 50);
-            }
-        }
-        return [calculateZeroToThreeUsers, calculateThreeToTenUsers, calculateTenPlusUsers, calculateEnterpriseSSO];
-    }, []);
-
-    function changeMAU(monthlyActiveUsers: number) {
-        setMAU(monthlyActiveUsers);
-        calculateGeneralMau(monthlyActiveUsers);
-    }
-
     function getTotalPriceCell() {
         const totalPrice = Math.ceil(
-            generalMAUAmount +
-                dashboardAmount +
-                accountLinkingAmount +
-                mfaAmount +
-                enterpriseTenanatsAmount +
-                tenants0_3Amount +
-                tenants3_10Amount +
-                tenantsWith10PlusAmount
+            generalMAUAmount + dashboardAmount + accountLinkingAmount + mfaAmount + multitenancyTotalAmount
         );
         return totalPrice;
     }
 
+    function resetInputMaxValue(value: string, prevValue: number) {
+        const count = Number(value);
+
+        if (isNaN(count)) {
+            return 0;
+        }
+
+        if (typeof count === "number" && count > 100000) {
+            return prevValue;
+        }
+
+        return count;
+    }
+
     useEffect(() => {
-        calculateGeneralMau(mau);
-    }, [activeTab]);
+        if (typeof tenants0_3Count === "number" && isNaN(tenants0_3Count) === false && tenants0_3Count > 25) {
+            const price = (tenants0_3Count - 25) * 2;
+            setTenants0_3Amount(price);
+        } else {
+            setTenants0_3Amount(0);
+        }
+
+        if (typeof tenants3_10Count === "number" && isNaN(tenants3_10Count) === false) {
+            setTenants3_10Amount(tenants3_10Count * 5);
+        } else {
+            setTenants3_10Amount(0);
+        }
+
+        if (typeof tenantsWith10PlusCount === "number" && isNaN(tenantsWith10PlusCount) === false) {
+            setTenantsWith10PlusAmount(tenantsWith10PlusCount * 10);
+        } else {
+            setTenantsWith10PlusAmount(0);
+        }
+
+        if (typeof enterpriseTenanatsCount === "number" && isNaN(enterpriseTenanatsCount) === false) {
+            setEnterpriceTenantAmount(enterpriseTenanatsCount * 50);
+        } else {
+            setEnterpriceTenantAmount(0);
+        }
+    }, [tenants0_3Count, tenants3_10Count, tenantsWith10PlusCount, enterpriseTenanatsCount]);
+
+    useEffect(() => {
+        if (isMultitenancyChecked) {
+            const total = Math.ceil(
+                enterpriseTenanatsAmount + tenants0_3Amount + tenants3_10Amount + tenantsWith10PlusAmount
+            );
+
+            setMultitenancyTotalAmount(total);
+        } else {
+            setMultitenancyTotalAmount(0);
+        }
+    }, [enterpriseTenanatsAmount, tenants0_3Amount, tenants3_10Amount, tenantsWith10PlusAmount, isMultitenancyChecked]);
+
+    useEffect(() => {
+        if (activeTab === "cloud") {
+            if (mau >= 5000) {
+                setGeneralMAUAmount(Math.ceil(mau * 0.02));
+            } else {
+                setGeneralMAUAmount(0);
+            }
+        } else {
+            setGeneralMAUAmount(0)
+        }
+    }, [activeTab, mau]);
 
     useEffect(() => {
         if (isAccountLinkingChecked === false) {
@@ -126,7 +132,7 @@ export default function Calculator() {
 
                 if (isMFAChecked && isAccountLinkingChecked) {
                     setAccountLinkingAmount(basePrice);
-                    setMFAAmount(0)
+                    setMFAAmount(0);
                 } else if (isMFAChecked) {
                     setMFAAmount(basePrice);
                 } else if (isAccountLinkingChecked) {
@@ -150,7 +156,7 @@ export default function Calculator() {
                 const basePrice = 100;
                 if (isMFAChecked && isAccountLinkingChecked) {
                     setAccountLinkingAmount(basePrice);
-                    setMFAAmount(0)
+                    setMFAAmount(0);
                 } else if (isMFAChecked) {
                     setMFAAmount(basePrice);
                 } else if (isAccountLinkingChecked) {
@@ -177,7 +183,7 @@ export default function Calculator() {
             <div className={styles.calculator__container}>
                 <div className={styles.calculator__row}>
                     <div className={styles.calculator__left__col}>
-                        <Slider mau={mau} onMAUChange={changeMAU} />
+                        <Slider mau={mau} onMAUChange={setMAU} />
                     </div>
                     <div className={styles.calculator__right__col}>
                         {activeTab === "cloud" ? (
@@ -255,9 +261,10 @@ export default function Calculator() {
                         <Input
                             disabled={isDashboardUserChecked === false}
                             value={dashboardUserCount}
-                            onChange={e => setDashboardUserCount(Number(e.currentTarget.value))}
+                            className={styles.adjust__margin}
+                            onChange={e => setDashboardUserCount(resetInputMaxValue(e.currentTarget.value, dashboardUserCount))}
                         />
-                        <span>
+                        <span className={styles.margin_left__35}>
                             Price / User: <span>$20</span>
                         </span>
                     </div>
@@ -277,7 +284,9 @@ export default function Calculator() {
                             <span className={styles.tenant__with__title}>Tenants with</span>
                         ) : null}
                     </div>
-                    <div className={styles.calculator__right__col}>--</div>
+                    <div className={styles.calculator__right__col}>
+                        <h4>${multitenancyTotalAmount}</h4>
+                    </div>
                 </div>
                 {isMultitenancyChecked ? (
                     <>
@@ -301,12 +310,11 @@ export default function Calculator() {
                                 </span>
 
                                 <Input
-                                    defaultValue={0}
-                                    onChange={e => calculateZeroToThreeUsers(e.currentTarget.value)}
+                                    value={tenants0_3Count}
+                                    onChange={e => setTenants0_3Count(resetInputMaxValue(e.currentTarget.value, tenants0_3Count))}
                                 />
                                 <span>
-                                    <span className={styles.bold}>$2</span>{" "}
-                                    <span>/tenant / month</span>
+                                    <span className={styles.bold}>$2</span> <span>/tenant / month</span>
                                 </span>
                             </div>
                             <div className={`${styles.right__col__sub__row}`}>
@@ -323,8 +331,8 @@ export default function Calculator() {
                                     </span>
                                 </span>
                                 <Input
-                                    defaultValue={0}
-                                    onChange={e => calculateThreeToTenUsers(e.currentTarget.value)}
+                                    value={tenants3_10Count}
+                                    onChange={e => setTenants3_10Count(resetInputMaxValue(e.currentTarget.value, tenants3_10Count))}
                                 />
                                 <span>
                                     <span className={styles.bold}>$5</span> <span>/tenant / month</span>
@@ -344,7 +352,10 @@ export default function Calculator() {
                                         <span className={styles.bold}>$10</span> <span>/tenant / month</span>
                                     </span>
                                 </span>
-                                <Input defaultValue={0} onChange={e => calculateTenPlusUsers(e.currentTarget.value)} />
+                                <Input
+                                    value={tenantsWith10PlusCount}
+                                    onChange={e => setTenantsWith10PlusCount(resetInputMaxValue(e.currentTarget.value, tenantsWith10PlusCount))}
+                                />
                                 <span>
                                     <span className={styles.bold}>$10</span> /tenant / month
                                 </span>
@@ -363,7 +374,12 @@ export default function Calculator() {
                                         <span> /tenant / month</span>
                                     </span>
                                 </span>
-                                <Input defaultValue={0} onChange={e => calculateEnterpriseSSO(e.currentTarget.value)} />
+                                <Input
+                                    value={enterpriseTenanatsCount}
+                                    onChange={e =>
+                                        setEnterpriseTenanatsCount(resetInputMaxValue(e.currentTarget.value, enterpriseTenanatsCount))
+                                    }
+                                />
                                 <span>
                                     <span className={styles.bold}>$50</span> /tenant / month
                                 </span>
