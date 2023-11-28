@@ -28,7 +28,7 @@ const paidFeaturesCloud = [
     {
         type: "feature",
         expandable: true,
-        scale: "$0.005 / MAU",
+        scale: "$0.01 / MAU",
         data: {
             mainText: "Multi-factor Authentication",
             subText: "Minimum Billing of $100 / month",
@@ -138,7 +138,7 @@ const paidFeaturesSelfHosted = [
     {
         type: "feature",
         expandable: true,
-        scale: "$0.01 / MAU",
+        scale: "$0.02 / MAU",
         data: {
             mainText: "Multi-factor Authentication",
             subText: "Minimum Billing of $100 / month",

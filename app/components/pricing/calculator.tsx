@@ -117,15 +117,16 @@ export default function Calculator() {
 
         if (activeTab === "cloud") {
             if (mau >= 5000) {
-                const price = Math.ceil(mau * 0.005);
+                const accountLinkingPrice = Math.ceil(mau * 0.005);
+                const mfaPrice = Math.ceil(mau * 0.01)
 
                 if (isMFAChecked && isAccountLinkingChecked) {
-                    setMFAAmount(price);
-                    setAccountLinkingAmount(price);
+                    setMFAAmount(mfaPrice);
+                    setAccountLinkingAmount(accountLinkingPrice);
                 } else if (isMFAChecked) {
-                    setMFAAmount(price);
+                    setMFAAmount(mfaPrice);
                 } else if (isAccountLinkingChecked) {
-                    setAccountLinkingAmount(price);
+                    setAccountLinkingAmount(accountLinkingPrice);
                 }
             } else {
                 const basePrice = 100;
@@ -143,14 +144,16 @@ export default function Calculator() {
 
         if (activeTab === "self-host") {
             if (mau >= 10000) {
-                const price = Math.ceil(mau * 0.01);
+                const accountLinkingPrice = Math.ceil(mau * 0.01);
+                const mfaPrice = Math.ceil(mau * 0.02);
+
                 if (isMFAChecked && isAccountLinkingChecked) {
-                    setMFAAmount(price);
-                    setAccountLinkingAmount(price);
+                    setMFAAmount(mfaPrice);
+                    setAccountLinkingAmount(accountLinkingPrice);
                 } else if (isMFAChecked) {
-                    setMFAAmount(price);
+                    setMFAAmount(mfaPrice);
                 } else if (isAccountLinkingChecked) {
-                    setAccountLinkingAmount(price);
+                    setAccountLinkingAmount(accountLinkingPrice);
                 }
             } else {
                 const basePrice = 100;
@@ -206,12 +209,12 @@ export default function Calculator() {
                         <span className={styles.feature__container}>
                             Multi-factor Authentication{" "}
                             <span className={styles.hidden__lg}>
-                                Price / MAU: <span>{activeTab === "cloud" ? "$0.005" : "$0.01"}</span>
+                                Price / MAU: <span>{activeTab === "cloud" ? "$0.01" : "$0.02"}</span>
                             </span>
                         </span>
                         <span></span>
                         <span>
-                            Price / MAU: <span>{activeTab === "cloud" ? "$0.005" : "$0.01"}</span>
+                            Price / MAU: <span>{activeTab === "cloud" ? "$0.01" : "$0.02"}</span>
                         </span>
                     </div>
                     <div className={styles.calculator__right__col}>
