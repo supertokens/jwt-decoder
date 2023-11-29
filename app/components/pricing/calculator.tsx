@@ -143,7 +143,8 @@ export default function Calculator() {
         }
 
         if (activeTab === "self-host") {
-            if (mau >= 10000) {
+            const mauLimit = isMFAChecked ? 5000 : 10000;
+            if (mau >= mauLimit) {
                 const accountLinkingPrice = Math.ceil(mau * 0.01);
                 const mfaPrice = Math.ceil(mau * 0.02);
 
