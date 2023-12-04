@@ -241,8 +241,8 @@ export default function SSOSigngleSignOnPage() {
                                                     },
                                                 },
                                                 {
-                                                    title: "Open Authorization (OAuth 2.0)",
-                                                    subtitle: "An identity provider (Google) would return an access token which a service provider (the application) can use to request resources such as learning about a user's name.",
+                                                    title: "Open Authorization (OAuth 2.0 + OIDC)",
+                                                    subtitle: "An identity provider (Google) would return an access and an ID token which a service provider (the application) can use to request resources such as learning about a user's name.",
                                                     bulletImage: {
                                                         src: FeaturePageIcons.SSO.OAuth2Icon,
                                                     },
