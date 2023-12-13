@@ -431,7 +431,7 @@ export default function Calculator() {
                                     value={extraAppsCount}
                                     onChange={e =>
                                         setExtraAppsCount(
-                                            resetInputMaxValue(e.currentTarget.value, enterpriseTenanatsCount)
+                                            resetInputMaxValue(e.currentTarget.value, extraAppsCount)
                                         )
                                     }
                                 />
