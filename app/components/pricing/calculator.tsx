@@ -21,6 +21,7 @@ export default function Calculator() {
     const [tenants3_10Count, setTenants3_10Count] = useState(0);
     const [tenantsWith10PlusCount, setTenantsWith10PlusCount] = useState(0);
     const [enterpriseTenanatsCount, setEnterpriseTenanatsCount] = useState(0);
+    const [extraAppsCount, setExtraAppsCount] = useState(0);
 
     const [generalMAUAmount, setGeneralMAUAmount] = useState(0);
     const [accountLinkingAmount, setAccountLinkingAmount] = useState(0);
@@ -31,6 +32,7 @@ export default function Calculator() {
     const [tenants3_10Amount, setTenants3_10Amount] = useState(0);
     const [tenantsWith10PlusAmount, setTenantsWith10PlusAmount] = useState(0);
     const [multitenancyTotalAmount, setMultitenancyTotalAmount] = useState(0);
+    const [extraAppsAmount, setExtraAppsAmount] = useState(0);
 
     const { activeTab } = usePricingToggleContext();
 
@@ -80,19 +82,25 @@ export default function Calculator() {
         } else {
             setEnterpriceTenantAmount(0);
         }
-    }, [tenants0_3Count, tenants3_10Count, tenantsWith10PlusCount, enterpriseTenanatsCount]);
+
+        if (typeof extraAppsCount === "number" && isNaN(extraAppsCount) === false) {
+            setExtraAppsAmount(extraAppsCount * 50);
+        } else {
+            setExtraAppsAmount(0);
+        }
+    }, [tenants0_3Count, tenants3_10Count, tenantsWith10PlusCount, enterpriseTenanatsCount, extraAppsCount]);
 
     useEffect(() => {
         if (isMultitenancyChecked) {
             const total = Math.ceil(
-                enterpriseTenanatsAmount + tenants0_3Amount + tenants3_10Amount + tenantsWith10PlusAmount
+                enterpriseTenanatsAmount + tenants0_3Amount + tenants3_10Amount + tenantsWith10PlusAmount + extraAppsAmount
             );
 
             setMultitenancyTotalAmount(total);
         } else {
             setMultitenancyTotalAmount(0);
         }
-    }, [enterpriseTenanatsAmount, tenants0_3Amount, tenants3_10Amount, tenantsWith10PlusAmount, isMultitenancyChecked]);
+    }, [enterpriseTenanatsAmount, tenants0_3Amount, tenants3_10Amount, tenantsWith10PlusAmount, isMultitenancyChecked, extraAppsAmount]);
 
     useEffect(() => {
         if (activeTab === "cloud") {
@@ -118,7 +126,7 @@ export default function Calculator() {
         if (activeTab === "cloud") {
             if (mau >= 5000) {
                 const accountLinkingPrice = Math.ceil(mau * 0.005);
-                const mfaPrice = Math.ceil(mau * 0.01)
+                const mfaPrice = Math.ceil(mau * 0.01);
 
                 if (isMFAChecked && isAccountLinkingChecked) {
                     setMFAAmount(mfaPrice);
@@ -379,10 +387,8 @@ export default function Calculator() {
                             </div>
                         </div>
                         <div className={`${styles.calculator__row} ${styles.spacer__8}`}>
-                            <div className={styles.calculator__left__col}>
-                            </div>
-                            <div className={styles.calculator__right__col + " "+ styles.padding__0}>
-                            </div>
+                            <div className={styles.calculator__left__col}></div>
+                            <div className={styles.calculator__right__col + " " + styles.padding__0}></div>
                         </div>
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row} ${styles.multitenanct__header__style}`}>
@@ -408,6 +414,33 @@ export default function Calculator() {
                             </div>
                             <div className={`${styles.right__col__sub__row} ${styles.padding_y_12}`}>
                                 <h4>${enterpriseTenanatsAmount}</h4>
+                            </div>
+                        </div>
+                        <div className={styles.calculator__row} style={{ marginTop: "10px" }}>
+                            <div className={`${styles.left__col__sub__row} ${styles.multitenanct__header__style}`}>
+                                <span className={styles.multitenancy__pricing__container}>
+                                    <span className={styles.tenant__with__subtext}>No. of </span>
+                                    <div className={styles.gray__bold}> Apps / Envs</div>
+                                    <span className={styles.tenant__with__subtext}> in one core</span>
+                                    <span className={styles.hidden__lg}>
+                                        <span className={styles.bold}>$50</span>
+                                        <span> /app / month</span>
+                                    </span>
+                                </span>
+                                <Input
+                                    value={extraAppsCount}
+                                    onChange={e =>
+                                        setExtraAppsCount(
+                                            resetInputMaxValue(e.currentTarget.value, extraAppsCount)
+                                        )
+                                    }
+                                />
+                                <span>
+                                    <span className={styles.bold}>$50</span> /app / month
+                                </span>
+                            </div>
+                            <div className={`${styles.right__col__sub__row} ${styles.padding_y_12}`}>
+                                <h4>${extraAppsAmount}</h4>
                             </div>
                         </div>
                     </>
