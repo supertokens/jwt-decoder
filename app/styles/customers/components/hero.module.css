@@ -1,0 +1,130 @@
+.hero_container {
+    position: relative;
+
+    color: #fff;
+    height: 720px;
+    margin: auto;
+    padding: 84px 200px 96px 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background_cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+
+    z-index: -1;
+}
+
+.case_study_banner {
+    position: absolute;
+    top: 84px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    color: #b0b0b0;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    text-transform: capitalize;
+
+    width: 100%;
+    padding: 20px;
+}
+
+.content_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 1200px;
+    margin-top: 154px;
+}
+
+.left_content > h4 {
+    max-width: 679px;
+    color: #fff;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.content_read_time {
+    color: #bdbdbd;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    display: flex;
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+.business_type {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 5px 14px;
+    border-radius: 8px;
+}
+
+.right_content {
+    position: relative;
+
+    border-radius: 22px;
+    padding: 1px;
+    width: 200px;
+    height: auto;
+}
+.shadow {
+    display: flex;
+
+    filter: blur(50px);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.right_content_wrapper {
+    background: #000;
+    padding: 40px 46px;
+    border-radius: 22px;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.right_content_wrapper > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.stat {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}

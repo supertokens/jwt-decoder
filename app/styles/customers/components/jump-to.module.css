@@ -1,0 +1,30 @@
+.jump_to_container {
+    width: 100%;
+    border-top: 1px solid #572efb;
+    border-bottom: 1px solid #572efb;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+
+    background-color: #000;
+    padding: 26px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.jump_to_container > div {
+    display: flex;
+    gap: 58px;
+    justify-content: flex-start;
+}
+
+.jump_to_container > div > div {
+    color: #aaaaaa;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.jump_to_container > div > div:hover {
+    color: #f7f7f8;
+}
