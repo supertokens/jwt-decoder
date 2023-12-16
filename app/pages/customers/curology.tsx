@@ -38,7 +38,29 @@ export default function Curology() {
                     }
                 }}
             />
-            <JumpTo/>
+            <JumpTo
+                config={{
+                    backgroundHue: "rgba(111, 92, 255, 0.14)",
+                    jumpToList: [
+                        {
+                            text: "Overview",
+                            href: "#overview"
+                        },
+                        {
+                            text: "Premise",
+                            href: "#premise"
+                        },
+                        {
+                            text: "Process",
+                            href: "#process"
+                        },
+                        {
+                            text: "Results",
+                            href: "#results"
+                        }
+                    ]
+                }}
+            />
         </section>
     );
 }

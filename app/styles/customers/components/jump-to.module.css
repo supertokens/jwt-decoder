@@ -1,11 +1,8 @@
 .jump_to_container {
     width: 100%;
-    border-top: 1px solid #572efb;
-    border-bottom: 1px solid #572efb;
-    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
 
-    background-color: #000;
-    padding: 26px;
+    border-radius: 1rem;
+    padding: 1px;
 
     display: flex;
     justify-content: center;
@@ -14,7 +11,9 @@
 .jump_to_container > div {
     display: flex;
     gap: 58px;
-    justify-content: flex-start;
+    padding: 26px;
+    background: #000;
+    width: 100%;
 }
 
 .jump_to_container > div > div {
@@ -23,8 +22,22 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+
+    display: flex;
+    justify-content: flex-start;
+    gap: 62px;
+    cursor: pointer;
 }
 
-.jump_to_container > div > div:hover {
+.jump_to_container a {
+    color: #aaaaaa;
+    text-decoration: none !important;
+}
+
+.jump_to_container a:hover {
     color: #f7f7f8;
 }

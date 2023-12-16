@@ -1,11 +1,37 @@
 import styles from "../../styles/customers/components/jump-to.module.css";
 
-export default function JumpTo() {
+type JumpToProps = {
+    config: {
+        backgroundHue: string;
+        jumpToList: {
+            text: string;
+            href: string;
+        }[];
+    };
+};
+
+export default function JumpTo({ config }: JumpToProps) {
+    const { jumpToList, backgroundHue } = config;
+
     return (
-        <div className={styles.jump_to_container}>
+        <div
+            className={styles.jump_to_container}
+            style={{
+                background: `linear-gradient(60deg, #000, ${backgroundHue}, #000)`,
+                boxShadow: `0px 4px 10px 0px ${backgroundHue}`
+            }}
+        >
             <div>
-                <div>Jump to:</div>
-                <div>Overview</div>
+                <div>
+                    <div>Jump to:</div>
+                    {jumpToList.map(item => {
+                        return (
+                            <a href={item.href} key={item.text}>
+                                {item.text}
+                            </a>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );
