@@ -6,6 +6,8 @@
 
     display: flex;
     justify-content: center;
+
+    position: relative;
 }
 
 .jump_to_container > div {
@@ -30,14 +32,24 @@
     display: flex;
     justify-content: flex-start;
     gap: 62px;
-    cursor: pointer;
 }
 
 .jump_to_container a {
     color: #aaaaaa;
+    cursor: pointer;
     text-decoration: none !important;
 }
 
 .jump_to_container a:hover {
     color: #f7f7f8;
+}
+
+
+.radial_view{
+    position: absolute;
+
+    filter: blur(50px);
+    height: 280px;
+    z-index: -1;
+    top: -75px;
 }

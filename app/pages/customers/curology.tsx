@@ -1,11 +1,12 @@
 import { CustomerAssets } from "../../assets/images/customers";
-import CaseStudyHero from "../../components/customers/CaseStudyHero";
-import JumpTo from "../../components/customers/JumpTo";
+import Hero from "../../components/customers/hero";
+import JumpTo from "../../components/customers/jump-to";
+import Overview from "../../components/customers/overview";
 
 export default function Curology() {
     return (
         <section>
-            <CaseStudyHero
+            <Hero
                 config={{
                     backgroundCover: {
                         gradient:
@@ -57,6 +58,32 @@ export default function Curology() {
                         {
                             text: "Results",
                             href: "#results"
+                        }
+                    ]
+                }}
+            />
+            <Overview
+                config={{
+                    gradient: "linear-gradient(rgba(171, 158, 253, .1), rgba(111, 92, 255, .1),#000)",
+                    aboutPoints: [
+                        "Curology is the largest dermatology practice in the US. Founded in 2014, they have helped millions of customers reach their skincare goals. They are expanding the business by ,investing in engineering, fulfillment, labs, and large medical operations.",
+                        "In this case study we sit down with Eric Wong, Software Engineer on the architecture team at Curology to discuss how they evaluated, migrated to, and used SuperTokens."
+                    ],
+                    overviewPoints: [
+                        {
+                            title: "Problem",
+                            content:
+                                "Curology implemented an in-house authentication solution using Laravel’s built-in auth solution with plugins. Although this worked for them initially, they ran into several constraints as they scaled."
+                        },
+                        {
+                            title: "Process",
+                            content:
+                                "After evaluating a dozen different solutions they shortlisted 3. Auth0, SuperTokens, and AWS Cognito. Due to issues with Auth0’s tenant architecture and Cognito’s migration process, they decided to proceed with SuperTokens."
+                        },
+                        {
+                            title: "Results",
+                            content:
+                                "SuperTokens flexibility was key for Curology. Overrides and hooks allowed them to integrate with a large number of third-party services. Achieving something similar with other auth vendors would have been difficult."
                         }
                     ]
                 }}

@@ -3,7 +3,7 @@ import { StaticImageData } from "next/image";
 import { CustomerAssets } from "../../assets/images/customers";
 import styles from "../../styles/customers/components/hero.module.css";
 
-type CaseStudyHeroProps = {
+type HeroProps = {
     config: {
         backgroundCover: {
             gradient: string;
@@ -29,7 +29,7 @@ type CaseStudyHeroProps = {
     };
 };
 
-export default function CaseStudyHero({ config }: CaseStudyHeroProps) {
+export default function Hero({ config }: HeroProps) {
     const { backgroundCover, leftContent, rightContent } = config;
 
     return (

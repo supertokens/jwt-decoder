@@ -17,10 +17,15 @@ export default function JumpTo({ config }: JumpToProps) {
         <div
             className={styles.jump_to_container}
             style={{
-                background: `linear-gradient(60deg, #000, ${backgroundHue}, #000)`,
-                boxShadow: `0px 4px 10px 0px ${backgroundHue}`
+                background: `linear-gradient(60deg, #000, ${backgroundHue}, #000)`
             }}
         >
+            <div
+                className={styles.radial_view}
+                style={{
+                    background: `radial-gradient(${backgroundHue}, #000)`
+                }}
+            />
             <div>
                 <div>
                     <div>Jump to:</div>
