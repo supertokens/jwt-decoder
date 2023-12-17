@@ -1,0 +1,12 @@
+.section_container {
+    max-width: 655px;
+    margin: 45px auto;
+}
+
+.section_container > p {
+    color: #f8f7f7;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}

@@ -2,10 +2,13 @@ import { CustomerAssets } from "../../assets/images/customers";
 import Hero from "../../components/customers/hero";
 import JumpTo from "../../components/customers/jump-to";
 import Overview from "../../components/customers/overview";
+import BlockQuote from "../../components/customers/block-quote";
+import SectionContainer from "../../components/customers/section-container";
+import Title from "../../components/customers/title";
 
 export default function Curology() {
     return (
-        <section>
+        <article>
             <Hero
                 config={{
                     backgroundCover: {
@@ -88,6 +91,32 @@ export default function Curology() {
                     ]
                 }}
             />
-        </section>
+            <SectionContainer>
+                <Title text="The Process" />
+                <p>
+                    As a medical company, Curology handles sensitive patient data that needs to be secured. The vendor
+                    they would choose is required to have SOC2 compliance and architecture that is secure and
+                    battle-tested. Additionally, their chosen vendor needed to be extensible enough to play well with
+                    their third-party services. After evaluating a number of authentication vendors it came down to 3
+                    options AWS Cognito, Auth0, and SuperTokens.
+                </p>
+                <p>
+                    AWS Cognito pricing was the most appealing but had to be ruled out since they did not have a good
+                    way to migrate to and off the platform, especially with Curology’s social login credentials. Auth0’s
+                    tenant architecture posed some limitations for Curlogy. Curology needed all the brands to be
+                    supported in a central database of users, essentially a single user pool ruling out Auth0. The
+                    Curology team wanted to ensure they were being responsible when it came to pricing, but, they wanted
+                    the product they chose to be technically sound with great documentation. Ultimately SuperTokens was
+                    the only solution that was able to pass all their requirements.
+                </p>
+            </SectionContainer>
+            <BlockQuote
+                color="#aa9fff"
+                quote="We ran a project internally where we bet all the different auth providers against each other. We found that each one had a different philosophy on how their integrations worked and how they laid out their services. SuperTokens was by far the one that offered the most flexibility to work in our particular architecture."
+                designation="Principal Software Engineer @ Curology"
+                imageUrl="https://eric.com/image/dude.png"
+                name="Eric Wong"
+            />
+        </article>
     );
 }
