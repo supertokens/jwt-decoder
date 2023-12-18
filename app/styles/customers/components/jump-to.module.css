@@ -25,7 +25,7 @@
     font-weight: 400;
     line-height: normal;
 
-    max-width: 1100px;
+    max-width: 964px;
     width: 100%;
     margin: auto;
 
@@ -44,12 +44,34 @@
     color: #f7f7f8;
 }
 
-
-.radial_view{
+.radial_view {
     position: absolute;
 
     filter: blur(50px);
     height: 280px;
     z-index: -1;
     top: -75px;
+}
+
+@media (max-width: 1200px) {
+    .jump_to_container > div > div {
+        max-width: 680px;
+    }
+}
+
+@media (max-width: 620px) {
+    .jump_to_container > div > div > div:is(:first-child) {
+        display: none;
+    }
+
+    .jump_to_container > div > div {
+        justify-content: space-around;
+        gap: 4px;
+    }
+}
+
+@media (max-width: 420px) {
+    .jump_to_container > div > div {
+        font-size: 12px;
+    }
 }

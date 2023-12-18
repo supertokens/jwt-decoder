@@ -11,6 +11,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: 32px;
+
+    margin: auto;
+    max-width: 654px;
 }
 
 .sideline {
@@ -18,4 +21,10 @@
     width: 4px;
     flex-grow: 1;
     flex-shrink: 0;
+}
+
+@media (max-width: 680px) {
+    .admonition_container {
+        padding: 14px 20px;
+    }
 }

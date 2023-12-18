@@ -2,12 +2,11 @@
     position: relative;
 
     width: 100%;
-    max-width: 1200px;
-    margin: auto;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 58px 0px;
+    margin: 100px auto;
 }
 
 .block_quote_container > p {
@@ -56,11 +55,61 @@
 .quote_start {
     position: absolute;
     left: -250px;
-    top: -50px;
+    top: -60px;
 }
 
 .quote_end {
     position: absolute;
     right: -250px;
-    bottom: 50px;
+    bottom: -60px;
+}
+
+@media (max-width: 1260px) {
+    .block_quote_container > p {
+        max-width: 520px;
+        width: 100%;
+    }
+
+    .quote_start {
+        position: absolute;
+        left: -8%;
+        top: -24%;
+    }
+
+    .quote_end {
+        position: absolute;
+        right: -10%;
+        bottom: -16%;
+    }
+}
+
+@media (max-width: 968px) {
+    .block_quote_container > img {
+        width: 65px;
+        height: 46px;
+    }
+
+    .quote_start {
+        left: 0;
+        top: -14%;
+    }
+
+    .quote_end {
+        right: 0;
+        bottom: -6%;
+    }
+}
+
+@media (max-width: 680px) {
+    .block_quote_container  {
+        padding: 0px 20px;
+    }
+
+    .quote_end {
+        bottom: -22%;
+    }
+
+    .block_quote_container > p {
+        font-size: 20px;
+    }
 }

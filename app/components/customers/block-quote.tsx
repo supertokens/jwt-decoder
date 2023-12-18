@@ -12,7 +12,8 @@ type BlockQuoteProps = {
 
 export default function BlockQuote({ designation, image, name, quote, color }: BlockQuoteProps) {
     return (
-        <div className={styles.block_quote_container} style={{ color }}>
+       <div>
+         <div className={styles.block_quote_container} style={{ color }}>
             <img className={styles.quote_start} {...CustomerAssets.Common.QuoteStart} alt="quote-start" />
             <img className={styles.quote_end} {...CustomerAssets.Common.QuoteEnd} alt="quote-end" />
             <p>“{quote}”</p>
@@ -22,5 +23,6 @@ export default function BlockQuote({ designation, image, name, quote, color }: B
                 <span>{designation}</span>
             </div>
         </div>
+       </div>
     );
 }

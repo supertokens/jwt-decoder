@@ -105,6 +105,7 @@ export default function Curology() {
                     to be decoupled from their own internal systems and to be its own first-class stateless auth
                     solution that their third-party services could access.
                 </p>
+                <img {...CustomerAssets.Curology.MidCover} alt="A man holding a smart phone" />
                 <Title text="The Process" id="process" />
                 <BlockQuote
                     color="#aa9fff"
