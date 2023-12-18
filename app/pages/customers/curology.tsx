@@ -70,6 +70,7 @@ export default function Curology() {
             />
             <Overview
                 config={{
+                    color: "#6f5cff",
                     gradient: "linear-gradient(rgba(171, 158, 253, .1), rgba(111, 92, 255, .1),#000)",
                     aboutPoints: [
                         "Curology is the largest dermatology practice in the US. Founded in 2014, they have helped millions of customers reach their skincare goals. They are expanding the business by ,investing in engineering, fulfillment, labs, and large medical operations.",
@@ -138,7 +139,12 @@ export default function Curology() {
                     name="Eric Wong"
                 />
                 <p>Additionally, the ability to spin up dev environments proved invaluable.</p>
-                <Admonition content="A differentiating factor for us was the ability to have spin-up dev environments with local SuperTokens Cores. We know we said that we only plan on using the managed service but it’s nice to know that we have the ability to host the cores in case we want to do other preview environments or end-to-end testing that might not be appropriate to do through the managed service" />
+                <Admonition
+                    background="#6f5cff"
+                    color="#9082ff"
+                    gradient="linear-gradient(90deg, rgba(111, 92, 255, 0.06) 0%, rgba(111, 92, 255, 0.02) 100%)"
+                    content="A differentiating factor for us was the ability to have spin-up dev environments with local SuperTokens Cores. We know we said that we only plan on using the managed service but it’s nice to know that we have the ability to host the cores in case we want to do other preview environments or end-to-end testing that might not be appropriate to do through the managed service"
+                />
                 <p>
                     Setting up SuperTokens took minimal time for Curology. Using the SuperTokens CLI they were able to
                     get up and running in a couple of days. Most of their time was spent tying in their integrations

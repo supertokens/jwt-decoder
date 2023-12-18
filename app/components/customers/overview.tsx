@@ -4,6 +4,7 @@ import Title from "./title";
 
 type OverviewProps = {
     config: {
+        color: string
         gradient: string;
         aboutPoints: string[];
         overviewPoints: {
@@ -56,20 +57,22 @@ export default function Overview({ config }: OverviewProps) {
                     background: config.gradient
                 }}
             >
-                <Title text="Overview" id="overview" />
-                <div className={styles.overview_items_container}>
-                    {overviewPoints.map(({ content, title }, index) => {
-                        return (
-                            <div className={styles.overview_item} key={title}>
-                                <div>
-                                    <span>{index + 1}</span>
-                                    <span>{title}</span>
+                <div>
+                    <Title text="Overview" id="overview" />
+                    <div className={styles.overview_items_container}>
+                        {overviewPoints.map(({ content, title }, index) => {
+                            return (
+                                <div className={styles.overview_item} key={title}>
+                                    <div>
+                                        <span style={{ color: config.color }}>{index + 1}</span>
+                                        <span>{title}</span>
+                                    </div>
+                                    <div className={styles.line}></div>
+                                    <p>{content}</p>
                                 </div>
-                                <div className={styles.line}></div>
-                                <p>{content}</p>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
             <div

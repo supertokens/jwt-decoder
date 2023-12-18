@@ -64,7 +64,7 @@
 .underline {
     height: 1px;
     padding: 0 !important;
-    background: radial-gradient(hsla(0, 0%, 87%, 0.1) 0, hsla(0, 0%, 87%, 0) 100%);
+    background: radial-gradient(rgba(222, 222, 222, 0.1) 0, rgba(222, 222, 222, 0) 100%);
     max-width: 480px;
     width: 100% !important;
     margin-bottom: 24px;
@@ -72,6 +72,12 @@
 
 .overview_section {
     padding: 92px 18%;
+}
+
+.overview_section > div {
+    max-width: 964px;
+    width: 100%;
+    margin: auto;
 }
 
 .overview_items_container {
@@ -99,7 +105,6 @@
 }
 
 .overview_item > div > span:is(:first-child) {
-    color: #6f5cff;
     text-align: center;
     font-size: 36px;
 }
