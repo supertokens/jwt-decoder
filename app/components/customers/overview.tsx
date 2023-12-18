@@ -56,7 +56,7 @@ export default function Overview({ config }: OverviewProps) {
                     background: config.gradient
                 }}
             >
-                <Title text="Overview" />
+                <Title text="Overview" id="overview" />
                 <div className={styles.overview_items_container}>
                     {overviewPoints.map(({ content, title }, index) => {
                         return (

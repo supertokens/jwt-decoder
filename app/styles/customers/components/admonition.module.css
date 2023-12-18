@@ -1,0 +1,21 @@
+.admonition_container {
+    width: 100%;
+    display: flex;
+
+    border-radius: 0px 10px 10px 0px;
+    background: linear-gradient(90deg, rgba(111, 92, 255, 0.06) 0%, rgba(111, 92, 255, 0.02) 100%);
+
+    gap: 25px;
+    color: #9082ff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.sideline {
+    background: #6f5cff;
+    width: 4px;
+    flex-grow: 1;
+    flex-shrink: 0;
+}

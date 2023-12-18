@@ -1,10 +1,13 @@
 .block_quote_container {
+    position: relative;
+
     width: 100%;
     max-width: 1200px;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 58px 0px;
 }
 
 .block_quote_container > p {
@@ -14,7 +17,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 30px;
-    max-width: 804px;
+    width: 804px;
 }
 
 .profile {
@@ -48,4 +51,16 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.quote_start {
+    position: absolute;
+    left: -250px;
+    top: -50px;
+}
+
+.quote_end {
+    position: absolute;
+    right: -250px;
+    bottom: 50px;
 }
