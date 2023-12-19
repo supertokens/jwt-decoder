@@ -101,7 +101,7 @@
 }
 
 @media (max-width: 680px) {
-    .block_quote_container  {
+    .block_quote_container {
         padding: 0px 20px;
     }
 
@@ -111,5 +111,9 @@
 
     .block_quote_container > p {
         font-size: 20px;
+    }
+
+    .profile {
+        padding-bottom: 6px;
     }
 }

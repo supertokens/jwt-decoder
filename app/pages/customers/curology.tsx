@@ -6,7 +6,7 @@ import BlockQuote from "../../components/customers/block-quote";
 import SectionContainer from "../../components/customers/section-container";
 import Title from "../../components/customers/title";
 import Admonition from "../../components/customers/admonition";
-import IFrame from "../../components/customers/iframe";
+// import IFrame from "../../components/customers/iframe";
 import Footer from "../../components/customers/footer";
 
 export default function Curology() {
@@ -173,13 +173,13 @@ export default function Curology() {
                     image={CustomerAssets.Curology.EricWong}
                     name="Eric Wong"
                 />
-                <IFrame
+                {/* <IFrame
                     src="https://www.youtube.com/embed/N8-UZoDJb7o?rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0"
                     title="SuperTokens Built Intelligence Case Study Supercut"
-                />
+                /> */}
                 <Footer
-                    title="Built Intelligence uses SuperTokens SSO for construction software-powering UK's National Grid and Environmental Agency"
-                    shareUrl="https://supertokens.com/customers/builtintelligence"
+                    title="SuperTokens powers the authentication and user management systems for Curology, the largest dermatology practice in the US with millions of users"
+                    shareUrl="https://supertokens.com/customers/curology"
                 />
             </SectionContainer>
         </article>

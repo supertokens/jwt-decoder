@@ -18,6 +18,8 @@
     opacity: 0.2;
 
     z-index: -1;
+
+    background-size: cover;
 }
 
 .case_study_banner {

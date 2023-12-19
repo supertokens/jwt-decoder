@@ -34,7 +34,12 @@ export default function Hero({ config }: HeroProps) {
 
     return (
         <section className={styles.hero_container}>
-            <img {...CustomerAssets.Curology.Cover} className={styles.background_cover} />
+            <div
+                style={{
+                    backgroundImage: `url('${CustomerAssets.Curology.Cover.src}')`
+                }}
+                className={styles.background_cover}
+            />
             <div
                 className={styles.case_study_banner}
                 style={{
