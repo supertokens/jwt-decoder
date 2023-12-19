@@ -16,3 +16,7 @@
   src: url('../assets/fonts/CoveredByYourGrace/CoveredByYourGrace-Regular.ttf');
   font-style: normal;
 }
+
+html{
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,25 @@
+.footer_container {
+    color: #9b9b9b;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 36px;
+
+    max-width: 654px;
+    width: 100%;
+    margin: 42px auto;
+}
+
+.social_container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+
+@media (max-width: 680px) {
+    .footer_container  {
+        padding: 42px 20px;
+    }
+}
