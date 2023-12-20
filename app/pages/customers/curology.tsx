@@ -9,6 +9,8 @@ import Admonition from "../../components/customers/admonition";
 import IFrame from "../../components/customers/iframe";
 import Footer from "../../components/customers/footer";
 
+Curology.title = "SuperTokens: Curology case study"
+
 export default function Curology() {
     return (
         <article>
