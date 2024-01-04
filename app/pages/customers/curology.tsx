@@ -9,7 +9,7 @@ import Admonition from "../../components/customers/admonition";
 import IFrame from "../../components/customers/iframe";
 import Footer from "../../components/customers/footer";
 
-Curology.title = "SuperTokens: Curology case study"
+Curology.title = "SuperTokens: Curology case study";
 
 export default function Curology() {
     return (
@@ -23,24 +23,24 @@ export default function Curology() {
                     },
                     leftContent: {
                         title:
-                            "SuperTokens powers the authentication and user management systems for Curology, the largest dermatology practice in the US with millions of users",
+                            "SuperTokens powers Curology, the largest dermatology practice in the US with millions of users.",
                         businessType: {
                             text: "B2B",
                             textColor: "linear-gradient(91deg, #ac9efc 3.86%, #6f5cff 121.62%)",
                             borderColor: "#ac9efc"
                         },
-                        publishDate: "March 3rd 2023",
+                        publishDate: "December 12th 2023",
                         readingTime: "10 minute read"
                     },
                     rightContent: {
                         gradient: "linear-gradient(0deg, #6f5cff 2.31%, #aa9ffe 103.52%);",
                         stats: [
                             {
-                                text: "Funding raised",
-                                subText: "$19.2 M"
+                                text: "Employees",
+                                subText: "300+"
                             },
                             {
-                                text: "Customers treated",
+                                text: "Patients treated",
                                 subText: "5M +"
                             }
                         ]
@@ -75,7 +75,7 @@ export default function Curology() {
                     color: "#6f5cff",
                     gradient: "linear-gradient(rgba(171, 158, 253, .1), rgba(111, 92, 255, .1),#000)",
                     aboutPoints: [
-                        "Curology is the largest dermatology practice in the US. Founded in 2014, they have helped millions of customers reach their skincare goals. They are expanding the business by ,investing in engineering, fulfillment, labs, and large medical operations.",
+                        "Curology is the largest dermatology practice in the US. Founded in 2014, they have helped millions of customers reach their skincare goals. They are expanding the business by investing in engineering, fulfillment, labs, and large medical operations.",
                         "In this case study we sit down with Eric Wong, Software Engineer on the architecture team at Curology to discuss how they evaluated, migrated to, and used SuperTokens."
                     ],
                     overviewPoints: [
