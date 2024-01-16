@@ -1,0 +1,35 @@
+.hero_gradient {
+    background: linear-gradient(180deg, #fff 10%, #2b2b2b 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.max_width_400 {
+    max-width: 400px;
+}
+
+.hero_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 970px) {
+    .hero_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 52px;
+    }
+
+    .landing_image_container {
+        margin: auto;
+    }
+
+    .landing_image_container > img {
+        height: 100%;
+        width: 100%;
+    }
+}
