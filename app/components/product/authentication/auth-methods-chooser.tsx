@@ -27,7 +27,7 @@ const authMethods = [
     },
     {
         method: "Multi factor authentication (MFA)",
-        formImage: ProductPageAssets.Auth.MultitenancyForm.src
+        formImage: ProductPageAssets.Auth.MFAForm.src
     }
 ] as const;
 
