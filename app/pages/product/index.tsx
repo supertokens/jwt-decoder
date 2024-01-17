@@ -6,7 +6,8 @@ import Extensibility from "../../components/product/extensibility";
 import ReliabilityAndSecurity from "../../components/product/reliability-and-security";
 import UserManagement from "../../components/product/user-management";
 import Migration from "../../components/product/migration";
-import CloudVsSelfhosted from "../../components/product/cloud-vs-selfhosted";
+// import CloudVsSelfhosted from "../../components/product/cloud-vs-selfhosted";
+import GetStarted from "../../components/product/GetStarted";
 
 export default function ProductPage() {
     return (
@@ -17,7 +18,8 @@ export default function ProductPage() {
             <ReliabilityAndSecurity />
             <UserManagement />
             <Migration />
-            <CloudVsSelfhosted />
+            {/* <CloudVsSelfhosted /> */}
+            <GetStarted />
         </main>
     );
 }
