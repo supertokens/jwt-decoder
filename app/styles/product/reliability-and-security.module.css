@@ -46,7 +46,7 @@
     gap: 48px;
     justify-content: space-between;
     align-items: flex-start;
-    padding-top: 52px;
+    padding: 52px 0px;
 
     overflow-x: scroll;
     max-width: 1200px;
@@ -97,5 +97,15 @@
     }
     .rectangular_card {
         width: 100%;
+    }
+}
+
+@media (max-width: 586px) {
+    .rectangular_card {
+        padding: 20px 10px;
+    }
+
+    .rectangular_card > p{
+        font-size: 16px;
     }
 }
