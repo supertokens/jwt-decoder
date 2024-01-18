@@ -22,7 +22,7 @@ const authMethods = [
         formImage: ProductPageAssets.Auth.SSOForm.src
     },
     {
-        method: "B2B Auth and Multi Tenanc",
+        method: "B2B Auth and Multi Tenancy",
         formImage: ProductPageAssets.Auth.MultitenancyForm.src
     },
     {

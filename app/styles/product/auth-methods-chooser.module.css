@@ -64,6 +64,10 @@
     padding: 6px 3px;
 }
 
+.left_container > ul > li:hover {
+    color: #aaa;
+}
+
 .right_container {
     display: flex;
 
@@ -97,10 +101,10 @@
 }
 
 .timeline_hightlight {
-    height: 100px;
+    height: 104px;
     margin-top: 48px;
     transition: all 0.25s ease-out 0s;
-    background: radial-gradient(rgba(255, 153, 51, 0.8) 0%, rgba(255, 153, 51, 0.4) 20%, transparent 81%);
+    background: linear-gradient(rgba(255, 153, 51, 0) 0%, rgba(255, 153, 51, 0.6) 50%, rgba(255, 153, 51, 0) 80%);
 }
 
 .timeline_item {
@@ -126,7 +130,7 @@
     border-radius: 50%;
 }
 
-@media (max-width: 970px) {
+@media (max-width: 1024px) {
     .auth_methods_chooser_container {
         flex-direction: column-reverse;
         height: auto;
@@ -173,7 +177,7 @@
     }
 
     .timeline_hightlight {
-        margin-top: 34px;
+        margin-top: 40px;
         height: 62px;
     }
     .timeline {

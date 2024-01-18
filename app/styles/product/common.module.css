@@ -6,6 +6,7 @@
 .section_container {
     position: relative;
     padding: 162px 0px;
+    overflow: hidden;
 }
 
 .product_title {
@@ -41,17 +42,20 @@
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(169, 197, 240, 0.2);
+    background: radial-gradient(rgba(169, 197, 240, 0.25) 30%, rgba(169, 197, 240, 0) 70%, #0000 100%);
     filter: blur(75px);
 }
 
 @media (max-width: 1280px) {
     .product_container {
-        padding: 0px 60px;
+        padding: 0px 120px;
+    }
+    .divider {
+        height: 2px;
     }
 }
 
-@media (max-width: 586px) {
+@media (max-width: 700px) {
     .product_container {
         padding: 0px 26px;
     }

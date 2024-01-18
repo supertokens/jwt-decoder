@@ -23,7 +23,7 @@
     font-weight: 700;
     line-height: normal;
 
-    max-width: 512px;
+    max-width: 412px;
     margin-top: 80px;
 }
 
@@ -42,7 +42,6 @@
     backdrop-filter: blur(25px);
 
     max-width: 523px;
-    text-align: center;
     padding: 16px 48px;
 
     color: #777;
