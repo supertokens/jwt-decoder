@@ -62,10 +62,10 @@ export function CoreFeatureToggle() {
                 >
                     <span>
                         $0.02 per MAU{" "}
-                        <Tooltip
-                            text="Measured based on number of sessions refreshed and number of unique logins."
-                            position="bottom"
-                        />
+                        <Tooltip position="bottom">
+                            Number of <i><b>unique</b></i> logged in users that are on your product every month (including new
+                            signups).
+                        </Tooltip>
                     </span>
                     <span>(Free under 5K monthly active users) </span>
                 </div>
