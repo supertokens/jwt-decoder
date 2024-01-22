@@ -8,12 +8,12 @@ import dropIcon from "../../assets/pricing/drop-icon.png";
 import linkPng from '../../assets/pricing/link.png'
 
 
-export const Tooltip = ({ position, text , className = "", imageClass = "" }) => {
+export const Tooltip = ({ position, className = "", imageClass = "", children }) => {
     return (
         <div className={`${className} ${styles.tooltip} `}>
             <img className={imageClass} src={tooltipIcon.src} alt="question-mark-icon" />
             <div className={styles[position]}>
-                <p>{text}</p>
+                <p>{children}</p>
             </div>
         </div>
     );
@@ -55,7 +55,7 @@ export const Expandable = ({ row, expandedByDefault = false }: { row: any; expan
                 className={`${styles.header} ${row.expandable ? styles.cursor : null}`}
             >
                 <span>
-                    <span>{row.data.links?.length ? replaceStringsWithLinks(row.data.mainText,row.data.links):row.data.mainText } {row.data.tooltip && <Tooltip text={row.data.tooltip} position="bottom" />}</span>
+                    <span>{row.data.links?.length ? replaceStringsWithLinks(row.data.mainText,row.data.links):row.data.mainText } {row.data.tooltip && <Tooltip position="bottom" >{row.data.tooltip}</Tooltip>}</span>
                     {/* {row.comingSoon && <span className={styles["coming-soon-chip"]}>Coming soon</span>} */}
                 </span>
                 <div>
@@ -69,7 +69,7 @@ export const Expandable = ({ row, expandedByDefault = false }: { row: any; expan
                             <li key={index}>
                                 {typeof el === "object" && (
                                     <span>
-                                        {el.links?.length ? replaceStringsWithLinks(el.text,el.links):el.text} {el.tooltip ? <Tooltip text={el.tooltip} position="bottom" /> :null}{" "}
+                                        {el.links?.length ? replaceStringsWithLinks(el.text,el.links):el.text} {el.tooltip ? <Tooltip position="bottom" >{el.tooltip}</Tooltip> :null}{" "}
                                     </span>
                                 )}
                                 {typeof el === "string" && <span>{el}</span>}
