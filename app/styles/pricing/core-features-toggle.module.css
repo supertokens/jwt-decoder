@@ -101,7 +101,7 @@
     text-align: start;
 }
 
-.core__toggle__tooltip__container{
+.core__toggle__tooltip__container {
     position: absolute;
 }
 
@@ -122,7 +122,7 @@
     border-radius: 6px;
 }
 
-.core__toggle__tooltip > .arrow{
+.core__toggle__tooltip > .arrow {
     border-left: 1px solid rgba(39, 39, 39, 1);
     border-bottom: 1px solid rgba(39, 39, 39, 1);
     background: rgba(18, 18, 18, 1);
@@ -133,14 +133,13 @@
     border-radius: 2px;
     position: absolute;
     top: 10px;
-   
 }
 
-.core__toggle__tooltip > .arrow.right{
+.core__toggle__tooltip > .arrow.right {
     rotate: 45deg;
 }
 
-.core__toggle__tooltip > .arrow.left{
+.core__toggle__tooltip > .arrow.left {
     left: auto;
     right: -6px;
     rotate: -135deg;
@@ -148,6 +147,12 @@
 
 .opacity_60 {
     opacity: 0.6;
+}
+
+@media (max-width: 1024px) {
+    .core__toggle__tooltip__container {
+        display: none;
+    }
 }
 
 @media (max-width: 425px) {
