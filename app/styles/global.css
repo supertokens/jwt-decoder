@@ -3,18 +3,21 @@
   src: url('../assets/fonts/Menlo/Menlo-Regular.woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Inter";
   src: url('../assets/fonts/Inter/Inter-Variable.ttf');
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "CoveredByYourGrace";
   src: url('../assets/fonts/CoveredByYourGrace/CoveredByYourGrace-Regular.ttf');
   font-style: normal;
+  font-display: swap;
 }
 
 html{

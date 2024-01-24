@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
-import "./header-dropdown.module.css";
+import styles from "./header-dropdown.module.css";
+import headerStyles from "./header.module.css";
+import { useState } from "react";
+import Image from "next/image";
 
 export type HeaderDropDownOptions = {
     value: string;
@@ -12,31 +15,25 @@ export type HeaderDropDownOptions = {
 interface HeaderDropdownPropTypes {
     title: string;
     options: HeaderDropDownOptions[];
-    headeTitleClickHref: string;
     theme: "light" | "dark";
     type?: "mobile";
     className?: string;
-    titleClickHandler?: React.MouseEventHandler<HTMLAnchorElement>;
+    titleClickHandler?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 const HeaderDropdown = (props: HeaderDropdownPropTypes) => {
-    const targetElementRef = React.useRef<HTMLDivElement>(null);
-    const [isMenuVisible, setIsMenuVisible] = React.useState(false);
+    const targetElementRef = useRef<HTMLDivElement>(null);
+    const [isMenuVisible, setIsMenuVisible] = useState(false);
 
-    // add mouseover and mouseleave event listeners to ref element on mount
-    React.useEffect(() => {
+    useEffect(() => {
         if (targetElementRef.current !== undefined && targetElementRef.current !== null) {
-            // add mouseover
             targetElementRef.current.addEventListener("mouseover", handleMenuOpen);
-            // add mouseleave
             targetElementRef.current.addEventListener("mouseleave", handleMenuClose);
         }
 
         return () => {
             if (targetElementRef.current !== undefined && targetElementRef.current !== null) {
-                // remove mouseover
                 targetElementRef.current.removeEventListener("mouseover", handleMenuOpen);
-                // remove mouseleave
                 targetElementRef.current.removeEventListener("mouseleave", handleMenuClose);
             }
         };
@@ -65,35 +62,42 @@ const HeaderDropdown = (props: HeaderDropdownPropTypes) => {
                 href={option.href}
                 className={
                     props.type === "mobile"
-                        ? "header-cta-dropdown-mobile__links__link"
-                        : "header-cta-dropdown__links__link"
+                        ? styles.header_cta_dropdown_mobile__links__link
+                        : styles.header_cta_dropdown__links__link
                 }
                 onClick={option.optionClickEvent}
             >
                 {option.value}
-                {option.iconHref && <img src={option.iconHref} alt={option.value} />}
+                {option.iconHref && <Image height={20} width={20} src={option.iconHref} alt={option.value} />}
             </a>
         );
     });
 
     if (props.type === "mobile") {
         return (
-            <div className={`header-cta-dropdown-mobile ${props.className || ""} ${props.theme}-theme`}>
+            <div
+                className={`${styles.header_cta_dropdown_mobile} ${props.className || ""} ${
+                    styles[`${props.theme}-theme`]
+                }`}
+            >
                 <div
-                    className={`header-cta-dropdown-mobile__target header-cta ${isMenuVisible &&
-                        "active"} ${props.theme === "light" && "header-cta-white"}`}
+                    className={`${styles.header_cta_dropdown_mobile__target} ${
+                        headerStyles.header_cta
+                    } ${isMenuVisible && styles.active}`}
                     onClick={handleMenuToggle}
                 >
                     <span>{props.title}</span>
 
-                    <img
+                    <Image
+                        height={6}
+                        width={8}
                         src={`/static/assets/dark-home/header-dropdown-caret-${props.theme}-background.png`}
                         alt="open dropdown"
                     />
                 </div>
 
                 <div
-                    className={`header-cta-dropdown-mobile__links ${isMenuVisible && "active"}`}
+                    className={`${styles.header_cta_dropdown_mobile__links} ${isMenuVisible && styles.active}`}
                     style={{
                         height: `${44 * props.options.length}px`,
                         maxHeight: isMenuVisible ? `${44 * props.options.length}px` : "0px"
@@ -109,25 +113,26 @@ const HeaderDropdown = (props: HeaderDropdownPropTypes) => {
         <div
             onMouseOver={handleMenuOpen}
             onMouseLeave={handleMenuClose}
-            className={`header-cta-dropdown ${props.className || ""} ${props.theme}-theme`}
+            className={`${styles.header_cta_dropdown} ${props.className || ""} ${styles[`${props.theme}-theme`]}`}
         >
-            <a
-                className={`header-cta-dropdown__target header-cta ${isMenuVisible && "active"} ${props.theme ===
-                    "light" && "header-cta-white"}`}
-                href={props.headeTitleClickHref === "" ? undefined : props.headeTitleClickHref}
+            <div
+                className={`${styles.header_cta_dropdown__target} ${headerStyles.header_cta} ${isMenuVisible &&
+                    styles.active} ${props.theme === "light" && headerStyles.header_cta_white}`}
                 onClick={props.titleClickHandler}
             >
                 <span>{props.title}</span>
-                <img
+                <Image
+                    height={6}
+                    width={8}
                     src={`/static/assets/dark-home/header-dropdown-caret-${props.theme}-background.png`}
                     alt="open dropdown"
                 />
-            </a>
+            </div>
 
-            <div className={`header-cta-dropdown__links ${isMenuVisible && "active"}`}>
+            <div className={`${styles.header_cta_dropdown__links} ${isMenuVisible && styles.active}`}>
                 {dropdownLinks}
 
-                <span className="header-cta-dropdown__links__caret"></span>
+                <span className={styles.header_cta_dropdown__links__caret}></span>
             </div>
         </div>
     );

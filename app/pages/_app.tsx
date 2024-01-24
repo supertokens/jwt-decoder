@@ -7,6 +7,9 @@ import Head from "next/head";
 import ErrorBoundary from "../components/error-boundary/error-boundary.component";
 import Header from "../components/common/navigation/header";
 import Footer from "../components/common/navigation/footer";
+import { useEffect } from "react";
+import initIntercomWidget from "../lib/intercom";
+import Script from "next/script";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   let title = "SuperTokens JWT Decoder";
@@ -15,19 +18,24 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     title = (Component as any).title;
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      initIntercomWidget()
+    }, 2500)
+  }, []);
 
   return (
     <Theme>
-     <Head>
+      <Head>
         <title>{title}</title>
       </Head>
       <GlobalStyle />
       <ErrorBoundary>
-        <Header/>
+        <Header />
         <Component {...pageProps} />
-        <Footer/>
+        <Footer />
       </ErrorBoundary>
-      <script defer src="/static/antcs.js" type="text/javascript"></script>
+      <Script strategy="afterInteractive" src="/static/antcs.js" type="text/javascript"></Script>
     </Theme>
   );
 }

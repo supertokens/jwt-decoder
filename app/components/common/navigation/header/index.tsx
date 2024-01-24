@@ -1,16 +1,12 @@
-// const ReactShadowRoot = require("react-shadow-root").default;
 import { useRef, useState, useEffect } from "react";
-import { useSessionContext } from "supertokens-auth-react/recipe/session";
+// import Supertokens from "supertokens-website";
 
-import { sendButtonAnalytics, getPathAndSelectedPage, getLocationPath } from "../../../../utils";
+import { sendButtonAnalytics, getPathAndSelectedPage } from "../../../../utils";
 
-import { getWidget } from "./githubWidget";
 import HeaderDropdown, { HeaderDropDownOptions } from "./header-dropdown";
 
-import "./header.module.css";
-
-const BLOG_BANNER_STORAGE_KEY = "show-blog-banner";
-const HEADER_RESIZE_BREAKPOINT = "1024px";
+import styles from "./header.module.css";
+import Image from "next/image";
 
 interface Props {
     renderWhite?: boolean;
@@ -26,65 +22,47 @@ function getUserInformation() {
 export default function Header(props: Props) {
     const [showHamburger, setShowHamburger] = useState(false);
     const [userName, setUserName] = useState<string | undefined>(undefined);
-    const [star, setStar] = useState<number | undefined>(undefined);
-    const [showBanner, setShowBanner] = useState(false);
+    const [githubStarsCount, setGithubStarsCount] = useState<number | undefined>(undefined);
     const [currentScrollTop, setCurrentScrollTop] = useState(0);
     const [hasMounted, setHasMounted] = useState(false);
 
     const headerRef = useRef<HTMLDivElement>(null);
     const mediaQueryRef = useRef<MediaQueryList>(null);
 
-    const context = useSessionContext();
-
     const getGithubWidget = () => {
-        if (star === undefined) {
-            return (
-                <a
-                    className={props.renderWhite ? "header-cta header-cta-white" : "header-cta"}
-                    target="_blank"
-                    rel="noopener"
-                    href="https://github.com/supertokens/supertokens-core"
-                    onClick={() =>
-                        sendButtonAnalytics("button_header_githubstar", "v5", {
-                            page_selected: getPathAndSelectedPage().pageSelected
-                        })
-                    }
-                >
-                    <img
-                        width="118px"
-                        src="/static/webflow/pricing/images/blankboxgithubstar3x.png"
-                        alt="GitHub Stars"
-                    />
-                </a>
-            );
-        }
         return (
-            <span
-                className="header-cta"
+            <a
+                className={`${styles.header_cta} ${props.renderWhite ? styles.header_cta_white : ""}`}
+                target="_blank"
+                rel="noopener"
+                style={{
+                    position: "relative"
+                }}
+                href="https://github.com/supertokens/supertokens-core"
                 onClick={() =>
                     sendButtonAnalytics("button_header_githubstar", "v5", {
                         page_selected: getPathAndSelectedPage().pageSelected
                     })
                 }
-                style={{
-                    width: "118px",
-                    paddingLeft: 0,
-                    marginRight: 16,
-                    marginLeft: 16
-                }}
             >
-                {/* <ReactShadowRoot>
-                    <span
-                        style={{
-                            backgroundImage: "url('/static/webflow/pricing/images/blankboxgithubstar3x.png')",
-                            backgroundRepeat: "no-repeat"
-                        }}
-                        dangerouslySetInnerHTML={{
-                            __html: getWidget(star)
-                        }}
-                    ></span>
-                </ReactShadowRoot> */}
-            </span>
+                <Image
+                    height={26}
+                    width={118}
+                    src="/static/webflow/pricing/images/blankboxgithubstar3x.png"
+                    alt="GitHub Stars"
+                />
+                {githubStarsCount !== undefined ? (
+                    <>
+                        <div aria-hidden="true" className={styles.github_star_logo}>
+                            <Image height={16} width={16} src="/static/assets/navbar/github.png" alt="github icon" />
+                            <span style={{ color: "#000" }}>Star</span>
+                        </div>
+                        <span aria-label={`${githubStarsCount} github stars`} className={styles.github_star_count}>
+                            {githubStarsCount}
+                        </span>
+                    </>
+                ) : null}
+            </a>
         );
     };
 
@@ -92,7 +70,7 @@ export default function Header(props: Props) {
         return fetch("https://api.github.com/repos/supertokens/supertokens-core")
             .then(res => res.json())
             .then(json => {
-                setStar(json.stargazers_count);
+                setGithubStarsCount(json.stargazers_count);
             })
             .catch(_ => {});
     };
@@ -127,15 +105,6 @@ export default function Header(props: Props) {
         }
     };
 
-    const fetchUserName = async () => {
-        try {
-            const { name } = await getUserInformation();
-            setUserName(name);
-        } catch (e) {
-            // Handle errors appropriately
-        }
-    };
-
     const handleHomeLogoClick = () => {
         const { path, pageSelected } = getPathAndSelectedPage();
         if (path !== "home" && pageSelected !== undefined) {
@@ -156,13 +125,6 @@ export default function Header(props: Props) {
             sendButtonAnalytics("button_header_pricing", "v5", { page_selected: pageSelected });
         }
     };
-
-    function handleContributeClick() {
-        const { path, pageSelected } = getPathAndSelectedPage();
-        if (path !== "contribute" && pageSelected !== undefined) {
-            sendButtonAnalytics("button_header_contribute", "v5", { page_selected: pageSelected });
-        }
-    }
 
     function handleRoadmapClick() {
         const { path, pageSelected } = getPathAndSelectedPage();
@@ -205,23 +167,6 @@ export default function Header(props: Props) {
         sendButtonAnalytics("button_header_resources", "v5", { pageSelected });
     }
 
-    function handleBannerCtaClick() {
-        sendButtonAnalytics("button_blog_banner_cta", "v5", {
-            option_clicked: "star-us-on-github"
-        });
-    }
-
-    const closeBanner = (e: React.MouseEvent<HTMLButtonElement>) => {
-        window.localStorage.setItem(BLOG_BANNER_STORAGE_KEY, "false");
-        setShowBanner(false);
-        const blogMeta = window.location.pathname.split("/blog/")[1];
-        sendButtonAnalytics("button_blog_banner_closed", "v5", {
-            option_clicked: blogMeta
-        });
-    };
-    const doesSessionExist = context.loading === false && context.doesSessionExist;
-    const bannerMessage = "If you like SuperTokens, ";
-
     const resourcesDropDownLinks: HeaderDropDownOptions[] = [
         {
             value: "Product Roadmap",
@@ -246,68 +191,65 @@ export default function Header(props: Props) {
     ];
 
     useEffect(() => {
-        const handleComponentDidMount = () => {
-            const doesSessionExist = context.loading === false && context.doesSessionExist;
-            if (doesSessionExist && userName === undefined) {
-                fetchUserName();
-            }
-            fetchGithubStars();
+        mediaQueryRef.current = window.matchMedia(`(min-width: 1024px)`);
+        mediaQueryRef.current.addListener(handleMediaQueryChange);
 
-            mediaQueryRef.current = window.matchMedia(`(min-width: ${HEADER_RESIZE_BREAKPOINT})`);
-            mediaQueryRef.current.addListener(handleMediaQueryChange);
-
-            // Check banner conditions
-            const showBannerStorage = window.localStorage.getItem(BLOG_BANNER_STORAGE_KEY);
-            const isBlog404Page = document.getElementById("non-whitelisted-page") === null;
-            if (
-                showBannerStorage === null &&
-                (getLocationPath() === "/blog" || getLocationPath().startsWith("/blog/")) &&
-                isBlog404Page
-            ) {
-                setShowBanner(true);
-            }
-
-            window.addEventListener("scroll", handleScroll);
-            setTimeout(() => {
-                setHasMounted(true);
-            }, 200);
-        };
-
-        handleComponentDidMount();
+        window.addEventListener("scroll", handleScroll);
+        setTimeout(() => {
+            setHasMounted(true);
+        }, 200);
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
             mediaQueryRef.current.removeListener(handleMediaQueryChange);
         };
-    }, [context, userName, fetchUserName, fetchGithubStars, getLocationPath]);
+    }, []);
+
+    useEffect(() => {
+        const fetchUserName = async () => {
+            try {
+                const { name } = await getUserInformation();
+                setUserName(name);
+            } catch (_) {
+                // ignore
+            }
+        };
+        if (userName === undefined) {
+            fetchUserName();
+        }
+        // fetchGithubStars();
+    }, []);
 
     return (
-        <div id="header-container">
-            <div id="sticky-container" ref={headerRef}>
-                <div className="header">
+        <header className={styles.header_container}>
+            <div className={styles.sticky_container} ref={headerRef}>
+                <nav className={styles.header}>
                     <a href="/" onClick={handleHomeLogoClick}>
-                        <img
+                        <Image
+                            height={30}
+                            width={200}
+                            priority
                             src={
                                 props.renderWhite
                                     ? "/static/assets/logo/logo@3x.png"
                                     : "/static/assets/dark-home/logo.png"
                             }
-                            className="header-logo"
+                            className={styles.header_logo}
                             alt="SuperTokens homepage"
                         />
                     </a>
 
-                    <div className="header-cta-end">
-                        <div className="header-actions">
+                    <div className={styles.header_cta_end}>
+                        <div className={styles.header_actions}>
                             <a
-                                className={props.renderWhite ? "header-cta header-cta-white" : "header-cta"}
+                                className={`${styles.header_cta} ${props.renderWhite ? styles.header_cta_white : ""}`}
                                 href="/pricing"
                                 onClick={handlePricingClick}
                             >
                                 Pricing
                             </a>
                             <a
-                                className={props.renderWhite ? "header-cta header-cta-white" : "header-cta"}
+                                className={`${styles.header_cta} ${props.renderWhite ? styles.header_cta_white : ""}`}
                                 href="/docs/guides"
                                 onClick={handleDocsGuidesClick}
                             >
@@ -315,10 +257,9 @@ export default function Header(props: Props) {
                             </a>
 
                             <a
-                                className={
-                                    "underline-highlighted " +
-                                    (props.renderWhite ? "header-cta header-cta-white" : "header-cta")
-                                }
+                                className={`${styles.header_cta} ${styles.underline_highlighted} ${
+                                    props.renderWhite ? styles.header_cta_white : ""
+                                }`}
                                 href="/consultancy"
                                 onClick={handleConsultancyClick}
                             >
@@ -330,41 +271,30 @@ export default function Header(props: Props) {
                                 options={resourcesDropDownLinks}
                                 theme={props.renderWhite ? "light" : "dark"}
                                 titleClickHandler={handleResourcesClick}
-                                headeTitleClickHref=""
                             />
                         </div>
 
                         {getGithubWidget()}
-                        {doesSessionExist ? (
-                            <a
-                                className={`home-page-button ${props.renderWhite ? "light" : ""}`}
-                                href="/dashboard-saas"
-                                onClick={() => sendButtonAnalytics("button_home_header_dashboard", "v5")}
-                                style={
-                                    props.renderWhite
-                                        ? {
-                                              borderColor: "#dddddd"
-                                          }
-                                        : undefined
-                                }
-                            >
-                                {userName || "Sign Up"}
-                            </a>
-                        ) : (
-                            <a
-                                className={`home-page-button ${props.renderWhite ? "light" : ""}`}
-                                href="/auth"
-                                onClick={() => sendButtonAnalytics("button_home_header_signup", "v5")}
-                            >
-                                Sign Up
-                            </a>
-                        )}
+                        <a
+                            className={`${styles.home_page_button} ${props.renderWhite ? styles.light : ""}`}
+                            href="/dashboard-saas"
+                            onClick={() => sendButtonAnalytics("button_home_header_dashboard", "v5")}
+                            style={
+                                props.renderWhite
+                                    ? {
+                                          borderColor: "#dddddd"
+                                      }
+                                    : undefined
+                            }
+                        >
+                            {userName ? userName : "Sign Up"}
+                        </a>
                     </div>
-                </div>
-                <div className="header-drawer">
+                </nav>
+                <nav className={styles.header_drawer}>
                     <div
-                        className={`hamburger-button ${showHamburger ? "hamburger-button-close" : ""}`}
-                        onClick={toggleHamburger.bind(this)}
+                        className={`${styles.hamburger_button} ${showHamburger ? styles.hamburger_button_close : ""}`}
+                        onClick={toggleHamburger}
                         style={
                             props.renderWhite
                                 ? {
@@ -374,7 +304,7 @@ export default function Header(props: Props) {
                         }
                     >
                         <span
-                            className="line"
+                            className={styles.line}
                             style={
                                 props.renderWhite
                                     ? {
@@ -384,7 +314,7 @@ export default function Header(props: Props) {
                             }
                         />
                         <span
-                            className="line"
+                            className={styles.line}
                             style={
                                 props.renderWhite
                                     ? {
@@ -394,7 +324,7 @@ export default function Header(props: Props) {
                             }
                         />
                         <span
-                            className="line"
+                            className={styles.line}
                             style={
                                 props.renderWhite
                                     ? {
@@ -405,19 +335,22 @@ export default function Header(props: Props) {
                         />
                     </div>
                     <a href="/" onClick={handleHomeLogoClick}>
-                        <img
+                        <Image
+                            priority
+                            height={30}
+                            width={200}
                             src={
                                 props.renderWhite
                                     ? "/static/assets/logo/logo@3x.png"
                                     : "/static/assets/dark-home/logo.png"
                             }
-                            className="header-logo"
+                            className={styles.header_logo}
                             alt="SuperTokens homepage"
                         />
                     </a>
-                </div>
+                </nav>
                 <div
-                    className={`hamburger-menu ${showHamburger ? "hamburger-menu-open" : ""}`}
+                    className={`${styles.hamburger_menu} ${showHamburger ? styles.hamburger_menu_open : ""}`}
                     style={
                         props.renderWhite
                             ? {
@@ -459,7 +392,6 @@ export default function Header(props: Props) {
                         options={resourcesDropDownLinks}
                         theme={props.renderWhite ? "light" : "dark"}
                         type="mobile"
-                        headeTitleClickHref=""
                     />
                     <a href="/consultancy">
                         <h4
@@ -489,41 +421,15 @@ export default function Header(props: Props) {
                             GitHub
                         </h4>
                     </a>
-                    {doesSessionExist ? (
-                        <a
-                            className={`signup-button ${props.renderWhite ? "light" : ""}`}
-                            href="/dashboard-saas"
-                            onClick={() => sendButtonAnalytics("button_home_header_signup", "v4")}
-                        >
-                            {userName || "Sign Up"}
-                        </a>
-                    ) : (
-                        <a
-                            className={`signup-button ${props.renderWhite ? "light" : ""}`}
-                            href="/auth"
-                            onClick={() => sendButtonAnalytics("button_home_header_signup", "v4")}
-                        >
-                            Sign Up
-                        </a>
-                    )}
+                    <a
+                        className={`${styles.signup_button} ${props.renderWhite ? styles.light : ""}`}
+                        href="/dashboard-saas"
+                        onClick={() => sendButtonAnalytics("button_home_header_signup", "v4")}
+                    >
+                        {userName ? userName : "Sign Up"}
+                    </a>
                 </div>
             </div>
-
-            <div className={`opacity-toggle ${showHamburger ? "opacity-toggle-true" : ""}`} />
-            {showBanner && (
-                <div className="st-banner-container">
-                    <div className="st-banner">
-                        {bannerMessage}
-                        <a onClick={handleBannerCtaClick} href="https://github.com/supertokens/supertokens-core">
-                            please star us on GitHub
-                        </a>
-                        ⭐️
-                    </div>
-                    <button className="st-banner-container__close-button" onClick={closeBanner}>
-                        <img src="/static/assets/dark-home/blog-banner-cross.svg" alt="close banner" />
-                    </button>
-                </div>
-            )}
-        </div>
+        </header>
     );
 }
