@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from "react";
-// import Supertokens from "supertokens-website";
 
 import { sendButtonAnalytics, getPathAndSelectedPage } from "../../../../utils";
 
