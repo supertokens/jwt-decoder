@@ -65,10 +65,65 @@
     line-height: 24px;
     text-transform: uppercase;
 
-    border-radius: 60px;
+    border-radius: 6px;
     border: 1px solid #7433ff;
     background: rgba(255, 255, 255, 0.6);
     width: 290px;
     height: 32px;
-    padding: 5px 10px;
+    padding: 8px 10px;
+}
+
+@media (max-width: 1400px) {
+    .title {
+        font-size: 48px;
+        line-height: 60px;
+    }
+
+    .gray_sub_text {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 40px;
+        line-height: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .text_container {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 0;
+    }
+
+    .title {
+        max-width: 400px;
+    }
+
+    .curly_brace {
+        display: none;
+    }
+
+    .funky_sub_text {
+        padding: 0;
+    }
+}
+
+@media (max-width: 468px) {
+    .title {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .funky_sub_text {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .gray_sub_text {
+        font-size: 18px;
+        line-height: 24px;
+    }
 }

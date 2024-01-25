@@ -23,6 +23,7 @@
     gap: 52px 96px;
     flex-wrap: wrap;
     margin-bottom: 80px;
+    padding: 0 20px;
 }
 
 .customer_card_container {
@@ -92,6 +93,7 @@
 @media (max-width: 485px) {
     .customer_logos_container {
         gap: 40px 30px;
+        padding: 0 4px;
     }
 
     .customers_container {

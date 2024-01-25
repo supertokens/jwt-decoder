@@ -6,3 +6,23 @@
 .section {
     position: relative;
 }
+
+@media (max-width: 1200px) {
+    .container {
+        max-width: 920px;
+        padding: 0px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 520px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 468px) {
+    .container {
+        max-width: 320px;
+    }
+}
