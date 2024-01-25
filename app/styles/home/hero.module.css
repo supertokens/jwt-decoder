@@ -7,7 +7,7 @@
 
 .banner {
     background: radial-gradient(circle, rgba(30, 194, 255, 0.2), rgba(26, 169, 222, 0.17) 78%, rgba(0, 0, 0, 0) 93%);
-    margin-top: 12px;
+    margin-top: 32px;
 }
 
 .banner p {
@@ -26,11 +26,6 @@
 
 .banner a {
     color: #33c8ff;
-    text-align: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 0px;
     text-decoration: none;
 }
 
@@ -188,7 +183,8 @@
 }
 
 .cmd_container {
-    margin: 12px 0;
+    margin-top: 12px;
+    margin-bottom: 180px;
     color: #a4a4a4;
 
     font-size: 14px;
@@ -266,5 +262,39 @@
 
     .hidden_lg {
         display: block;
+    }
+
+    .title {
+        font-size: 62px;
+        line-height: 72px;
+    }
+
+    .title span {
+        display: block;
+    }
+}
+
+@media (max-width: 568px) {
+    .title {
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+    .subtitle {
+        display: none;
+    }
+
+    .banner p {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .create_app_container span {
+        font-size: 14px;
+    }
+
+    .create_app_container {
+        padding: 0 12px;
+        gap: 8px;
     }
 }

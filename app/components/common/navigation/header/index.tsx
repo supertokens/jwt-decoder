@@ -14,7 +14,7 @@ interface Props {
 
 function getUserInformation() {
     return {
-        name: "John Doe"
+        name: "Chakravarthi Medicharla"
     };
 }
 

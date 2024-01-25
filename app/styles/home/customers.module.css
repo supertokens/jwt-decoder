@@ -1,0 +1,99 @@
+.customers_container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    max-width: 1400px;
+    margin: auto;
+}
+
+.customers_container p {
+    color: #999;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.customer_logos_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 52px 96px;
+    flex-wrap: wrap;
+}
+
+.customer_card_container {
+    position: relative;
+}
+
+.customer_card {
+    position: absolute;
+    inset: 0;
+    margin: -50px;
+    z-index: 10;
+    height: fit-content;
+    width: fit-content;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    text-decoration: none;
+    border-radius: 12px;
+    padding: 32px;
+    background: #000;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.customer_card_container:is(:hover) .customer_card {
+    display: flex;
+}
+
+.customer_card div {
+    width: max-content;
+}
+
+.customer_card .green_pill {
+    background-image: linear-gradient(rgba(0, 140, 73, 0.5), rgba(0, 140, 73, 0.5));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 6px 10px;
+}
+
+.customer_card .orange_pill {
+    background: radial-gradient(circle, rgba(255, 165, 74, 0.5), rgba(255, 128, 0, 0.5));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.customer_card .gray_pill {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(175, 175, 175, 0.5));
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+@media (max-width: 1020px) {
+    .customer_card {
+        display: none;
+    }
+}
+
+@media (max-width: 485px) {
+    .customer_logos_container {
+        gap: 40px 30px;
+    }
+
+    .customers_container {
+        gap: 28px;
+    }
+}
