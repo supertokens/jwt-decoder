@@ -1,0 +1,74 @@
+.text_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+
+.prebuilt_ui_section {
+    background: #fff;
+    padding: 100px 0;
+}
+
+.title {
+    color: #000;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    margin: 0;
+    max-width: 600px;
+}
+
+.funky_sub_text {
+    color: #7433ff;
+    font-family: CoveredByYourGrace;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    max-width: 350px;
+    padding-left: 12px;
+}
+
+.curly_brace {
+    color: #7433ff;
+    -webkit-text-stroke-width: 0.5;
+    -webkit-text-stroke-color: #7433ff;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+    padding-left: 70px;
+}
+
+.gray_sub_text {
+    color: #6e6e73;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px;
+
+    max-width: 746px;
+    text-align: left;
+    margin-top: 36px;
+    margin-bottom: 72px;
+}
+
+.see_our_customer_pill {
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    text-transform: uppercase;
+
+    border-radius: 60px;
+    border: 1px solid #7433ff;
+    background: rgba(255, 255, 255, 0.6);
+    width: 290px;
+    height: 32px;
+    padding: 5px 10px;
+}

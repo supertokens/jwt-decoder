@@ -22,6 +22,7 @@
     align-items: center;
     gap: 52px 96px;
     flex-wrap: wrap;
+    margin-bottom: 80px;
 }
 
 .customer_card_container {
