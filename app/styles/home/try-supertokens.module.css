@@ -1,0 +1,66 @@
+.create_app_container {
+    height: 100%;
+
+    border-radius: 6px;
+    background: #000;
+
+    padding: 0 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.create_app_wrapper {
+    position: relative;
+    border-radius: 6px;
+    padding: 1px;
+
+    max-width: 372px;
+    height: 48px;
+    margin: auto;
+
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to right, #a2facf, #fff);
+}
+
+.create_app_wrapper::before {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 6px;
+    background: linear-gradient(180deg, #a2facf, #fff);
+
+    filter: blur(70px);
+    max-width: 500px;
+    height: 68px;
+
+    inset: 0;
+    top: -12px;
+    z-index: -1;
+}
+
+.create_app_container span {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.create_app_container img {
+    cursor: pointer;
+}
+
+@media (max-width: 568px) {
+    .create_app_container span {
+        font-size: 14px;
+    }
+
+    .create_app_container {
+        padding: 0 12px;
+        gap: 8px;
+    }
+}

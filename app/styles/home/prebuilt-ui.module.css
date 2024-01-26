@@ -73,6 +73,45 @@
     padding: 8px 10px;
 }
 
+.purple_blob {
+    position: absolute;
+    width: 50%;
+    height: 212px;
+    flex-shrink: 0;
+
+    border-radius: 679px;
+    background: rgba(116, 51, 255, 0.7);
+    filter: blur(100px);
+    left: 0;
+    bottom: 120px;
+}
+
+.green_blob {
+    position: absolute;
+    width: 50%;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 679px;
+    background: rgba(32, 236, 163, 0.6);
+    filter: blur(100px);
+    right: 0;
+    bottom: 120px;
+}
+
+.signup_forms_container {
+    position: relative;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    padding: 50px 0px;
+    overflow-y: scroll;
+}
+
+.signup_forms_container > img {
+    cursor: pointer;
+    margin-left: -24px;
+}
+
 @media (max-width: 1400px) {
     .title {
         font-size: 48px;
