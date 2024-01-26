@@ -1,3 +1,36 @@
+.section {
+    padding: 100px 0;
+}
+
+.section h1 {
+    color: #fff;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.section h1 > span {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #a2facf, #64acff);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.section p {
+    color: #a1a1a6;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px;
+    margin-bottom: 76px;
+}
+
+.lottie_container {
+    max-height: 396px;
+    max-width: 750px;
+    margin: 48px 0px;
+}
+
 .create_app_container {
     height: 100%;
 
@@ -19,10 +52,9 @@
 
     max-width: 372px;
     height: 48px;
-    margin: auto;
 
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(to right, #a2facf, #fff);
+    background: linear-gradient(to right, #a2facf, #64acff);
 }
 
 .create_app_wrapper::before {
@@ -31,11 +63,11 @@
     position: absolute;
 
     border-radius: 6px;
-    background: linear-gradient(180deg, #a2facf, #fff);
+    background: linear-gradient(45deg, rgba(162, 250, 207, 0.3), rgba(100, 172, 255, 0.3));
 
-    filter: blur(70px);
+    filter: blur(30px);
     max-width: 500px;
-    height: 68px;
+    height: 74px;
 
     inset: 0;
     top: -12px;
@@ -54,13 +86,83 @@
     cursor: pointer;
 }
 
+.tooltip {
+    background-color: #060606;
+    border: 1px solid #1e1e1e;
+    border-radius: 6px;
+    padding: 5px 14px;
+
+    width: auto;
+    height: 36px;
+    color: #fff;
+    text-align: center;
+
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 14px;
+    position: absolute;
+    top: 6px;
+    left: auto;
+    right: -24%;
+}
+
+.tooltip .arrow {
+    width: 10px;
+    height: 10px;
+    background-color: #060606;
+    border: 0 solid #1e1e1e;
+    border-width: 0 0 1px 1px;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: -6px;
+    transform: rotate(45deg);
+}
+
+@media (max-width: 1440px) {
+    .section h1 {
+        font-size: 48px;
+        line-height: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section h1 {
+        font-size: 40px;
+        line-height: 48px;
+        margin: 0px;
+    }
+}
+
 @media (max-width: 568px) {
     .create_app_container span {
         font-size: 14px;
     }
 
+    .section p {
+        margin-bottom: 40px;
+        font-size: 20px;
+    }
+
     .create_app_container {
         padding: 0 12px;
         gap: 8px;
+    }
+
+    .lottie_container {
+        display: none;
+    }
+}
+
+@media (max-width: 468px) {
+    .section h1 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .section p {
+        font-size: 18px;
     }
 }

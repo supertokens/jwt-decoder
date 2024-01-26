@@ -3,8 +3,10 @@ import commonStyles from "../../styles/home/common.module.css";
 
 import Image from "next/image";
 import { useState } from "react";
+import Lottie from "lottie-react";
 
 import HomePageAssets from "../../assets/images/home";
+import Cligif from '../../assets/json/cli-gif.json'
 
 export default function TrySupertokens() {
     const [showTooltip, setShowTooltip] = useState(false);
@@ -23,10 +25,10 @@ export default function TrySupertokens() {
     }
 
     return (
-        <section className={`${commonStyles.section} ${styles.prebuilt_ui_section}`}>
+        <section className={`${commonStyles.section} ${styles.section}`}>
             <div className={commonStyles.container}>
                 <h1>
-                    <span>Try</span> SuperTokens in under <span>1 Minute</span>
+                    <span>Try</span> SuperTokens in <br /> under <span>1 Minute</span>
                 </h1>
                 <p>One Command To Try It All!</p>
 
@@ -46,6 +48,12 @@ export default function TrySupertokens() {
                             <span>Copied</span>
                             <div className={styles.arrow}></div>
                         </div>
+                    </div>
+                    <div className={styles.lottie_container}>
+                        <Lottie
+                            animationData={Cligif}
+                            alt="create-supertokens-app cli example gif"
+                        />
                     </div>
                 </div>
             </div>

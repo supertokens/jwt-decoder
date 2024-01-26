@@ -6,34 +6,40 @@ import { useState } from "react";
 
 const Forms = [
     {
-        name: "CricInfo",
-        formImage: HomePageAssets.PrebuiltUI.CricInfoForm,
-        hoverImage: HomePageAssets.PrebuiltUI.CricInfoFormHover
-    },
-    {
         name: "Food Ring",
         formImage: HomePageAssets.PrebuiltUI.FoodRingForm,
-        hoverImage: HomePageAssets.PrebuiltUI.FoodRingFormHover
+        hoverImage: HomePageAssets.PrebuiltUI.FoodRingFormHover,
+        link: "https://foodring.ca/auth/register"
     },
     {
         name: "Habrigo",
         formImage: HomePageAssets.PrebuiltUI.HabrigoForm,
-        hoverImage: HomePageAssets.PrebuiltUI.HabrifoFormHover
-    },
-    {
-        name: "Lupax",
-        formImage: HomePageAssets.PrebuiltUI.LupaxForm,
-        hoverImage: HomePageAssets.PrebuiltUI.LupaxFormHover
-    },
-    {
-        name: "Novo Jobs",
-        formImage: HomePageAssets.PrebuiltUI.NovoJobsForm,
-        hoverImage: HomePageAssets.PrebuiltUI.NovoJobsFormHover
+        hoverImage: HomePageAssets.PrebuiltUI.HabrifoFormHover,
+        link: "https://habrigo.com/auth?rid=thirdpartyemailpassword"
     },
     {
         name: "Sheboygam",
         formImage: HomePageAssets.PrebuiltUI.SheboygamForm,
-        hoverImage: HomePageAssets.PrebuiltUI.SheboygamFormHover
+        hoverImage: HomePageAssets.PrebuiltUI.SheboygamFormHover,
+        link: "https://app.sheboygan.works/auth"
+    },
+    {
+        name: "CricInfo",
+        formImage: HomePageAssets.PrebuiltUI.CricInfoForm,
+        hoverImage: HomePageAssets.PrebuiltUI.CricInfoFormHover,
+        link: "https://www.cricks.com.au/"
+    },
+    {
+        name: "Novo Jobs",
+        formImage: HomePageAssets.PrebuiltUI.NovoJobsForm,
+        hoverImage: HomePageAssets.PrebuiltUI.NovoJobsFormHover,
+        link: "https://www.novojob.com/app/auth/signin"
+    },
+    {
+        name: "Lupax",
+        formImage: HomePageAssets.PrebuiltUI.LupaxForm,
+        hoverImage: HomePageAssets.PrebuiltUI.LupaxFormHover,
+        link: "https://www.lupax.app/auth/register"
     }
 ];
 
@@ -69,13 +75,15 @@ function ImageWrapper({ data }: { data: typeof Forms[0] }) {
     const [isHover, setIsHover] = useState(false);
     const imageData = isHover ? data.hoverImage : data.formImage;
     return (
-        <Image
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
-            src={imageData.src}
-            alt={data.name}
-            height={imageData.height / 2}
-            width={imageData.width / 2}
-        />
+        <a href={data.link} target="_blank">
+            <Image
+                onMouseEnter={() => setIsHover(true)}
+                onMouseLeave={() => setIsHover(false)}
+                src={imageData.src}
+                alt={data.name}
+                height={imageData.height / 2}
+                width={imageData.width / 2}
+            />
+        </a>
     );
 }
