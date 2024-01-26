@@ -1,0 +1,128 @@
+.background_cover_image {
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    padding: 100px 0px;
+}
+
+.section {
+    background-color: rgb(255, 255, 255);
+    z-index: -1;
+    height: 950px;
+    width: 100%;
+
+    display: flex;
+}
+
+.section h1 {
+    color: #000;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    line-height: 80px;
+}
+
+.feature_list_container {
+    display: inline-flex;
+    height: 80px;
+    overflow: hidden;
+}
+
+.feature_list_container > div {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.user_roles {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #7433ff, #be33ff 67%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.twofa {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #00c967, #278cff 14%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.sso {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(#ff5d53, #e72d22);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.session_management {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(#efbe00, #eb831c);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.user_management {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #f56772, #067aff 48%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.account_linking {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #006cbe, #2f00a6);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.machine_auth {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #00de73, #00a656 22%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@media (max-width: 1440px) {
+    .section h1 {
+        font-size: 48px;
+        line-height: 60px;
+    }
+
+    .feature_list_container {
+        height: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section h1 {
+        font-size: 40px;
+        line-height: 48px;
+        padding: 50px 0;
+    }
+
+    .feature_list_container {
+        height: 48px;
+    }
+
+    .section {
+        height: auto;
+    }
+}
+
+@media (max-width: 468px) {
+    .section h1 {
+        font-size: 24px;
+        line-height: 40px;
+    }
+
+    .feature_list_container {
+        height: 40px;
+    }
+}
