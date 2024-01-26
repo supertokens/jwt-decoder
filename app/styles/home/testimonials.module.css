@@ -1,0 +1,82 @@
+.section h1 {
+    color: #fff;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.section h1 > span {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(#f1f1f1, gray);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.card {
+    max-width: 400px;
+    height: auto;
+    padding: 16px;
+
+    border-radius: 6px;
+    background: #1a1a1a;
+}
+
+.username {
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.designation {
+    color: #737373;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.text {
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 171.429% */
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+.quote {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+@media (max-width: 1440px) {
+    .section h1 {
+        font-size: 48px;
+        line-height: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section h1 {
+        font-size: 40px;
+        line-height: 48px;
+        margin: 0px;
+    }
+}
+
+@media (max-width: 468px) {
+    .section h1 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+}

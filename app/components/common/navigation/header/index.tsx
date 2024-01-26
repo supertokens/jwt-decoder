@@ -22,10 +22,9 @@ export default function Header(props: Props) {
     const [showHamburger, setShowHamburger] = useState(false);
     const [userName, setUserName] = useState<string | undefined>(undefined);
     const [githubStarsCount, setGithubStarsCount] = useState<number | undefined>(undefined);
-    const [currentScrollTop, setCurrentScrollTop] = useState(0);
-    const [hasMounted, setHasMounted] = useState(false);
 
     const headerRef = useRef<HTMLDivElement>(null);
+    const currentScrollRef = useRef(null);
     const mediaQueryRef = useRef<MediaQueryList>(null);
 
     const getGithubWidget = () => {
@@ -79,17 +78,15 @@ export default function Header(props: Props) {
     };
 
     const handleScroll = () => {
-        if (headerRef.current && hasMounted) {
+        if (headerRef.current && currentScrollRef) {
             const scrollY = window.scrollY;
             const offsetHeight = headerRef.current.offsetHeight;
-
-            if (currentScrollTop < scrollY && scrollY > 2 * offsetHeight) {
-                headerRef.current.classList.add("hidden");
-            } else if (currentScrollTop > scrollY && !(scrollY <= offsetHeight)) {
-                headerRef.current.classList.remove("hidden");
+            if (currentScrollRef.current < scrollY && scrollY > 2 * offsetHeight) {
+                headerRef.current.classList.add(styles.hidden);
+            } else if (currentScrollRef.current > scrollY && !(scrollY <= offsetHeight)) {
+                headerRef.current.classList.remove(styles.hidden);
             }
-
-            setCurrentScrollTop(scrollY);
+            currentScrollRef.current = scrollY;
         }
     };
 
@@ -194,9 +191,6 @@ export default function Header(props: Props) {
         mediaQueryRef.current.addListener(handleMediaQueryChange);
 
         window.addEventListener("scroll", handleScroll);
-        setTimeout(() => {
-            setHasMounted(true);
-        }, 200);
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
