@@ -18,10 +18,6 @@ const authMethods = [
         formImage: ProductPageAssets.Auth.ThirdpartyForm.src
     },
     {
-        method: "Enterprise SSO and SAML",
-        formImage: ProductPageAssets.Auth.SSOForm.src
-    },
-    {
         method: "B2B Auth and Multi Tenancy",
         formImage: ProductPageAssets.Auth.MultitenancyForm.src
     },

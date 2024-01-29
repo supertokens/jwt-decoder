@@ -102,7 +102,7 @@
 
 .timeline_hightlight {
     height: 104px;
-    margin-top: 48px;
+    margin-top: 94px;
     transition: all 0.25s ease-out 0s;
     background: linear-gradient(rgba(255, 153, 51, 0) 0%, rgba(255, 153, 51, 0.6) 50%, rgba(255, 153, 51, 0) 80%);
 }

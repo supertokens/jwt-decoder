@@ -142,7 +142,7 @@
     margin: 0;
 }
 
-.examples_header button {
+.examples_header a {
     border-radius: 8px;
     border: 1px solid rgba(148, 148, 148, 0.75);
 
@@ -157,6 +157,8 @@
     line-height: 24px; /* 133.333% */
 
     padding: 14px 24px;
+
+    text-decoration: none;
 }
 .examples_list_container {
     display: flex;

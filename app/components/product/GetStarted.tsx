@@ -12,11 +12,11 @@ export default function GetStarted() {
                     <h3>Get started!</h3>
                     <p>Quick Start guides for all use cases!</p>
                     <div className={styles.buttons_container}>
-                        <a href={"/"} target="_blank">
+                        <a href="/auth" target="_blank">
                             <div className={styles.hue_circle} />
                             <button>Join Us!</button>
                         </a>
-                        <a href={"/"} target="_blank">
+                        <a href="/docs/guides" target="_blank">
                             <button>See Guides</button>
                         </a>
                     </div>

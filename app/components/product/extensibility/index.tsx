@@ -125,7 +125,12 @@ export default function Extensibility() {
             <div>
                 <div className={styles.examples_header}>
                     <h5>Examples</h5>
-                    <button>See full list of overrides</button>
+                    <a
+                        href="https://supertokens.com/docs/thirdpartyemailpassword/advanced-customizations/overview"
+                        target="_blank"
+                    >
+                        See full list of overrides
+                    </a>
                 </div>
                 <div className={styles.examples_list_container}>
                     {examples.map(example => {

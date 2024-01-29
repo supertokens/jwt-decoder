@@ -11,15 +11,13 @@ const userManagementData = [
         content:
             "View and manage all your users. Reset passwords, send email verification links, revoke sessions, modify user roles, view session metadata and more.",
         imageUrl: ProductPageAssets.UserManagement.Dashboard.src,
-        // TODO: these redirection urls should change.
-        redirectionLink: "/features/dashboard"
+        redirectionLink: "/docs/userdashboard/about"
     },
     {
         title: "Account Linking",
         content:
             "Enable users to associate multiple authentication methods with the same user account. For example, a user can link their password-based account and their Google account to the same user account in the application.",
         imageUrl: ProductPageAssets.UserManagement.AccountLinking.src,
-        // TODO: these redirection urls should change.
         redirectionLink: "/features/account-linking"
     },
     {
@@ -27,8 +25,7 @@ const userManagementData = [
         content:
             "Assign users roles and individual permissions via code or through our UI. this can help you control the access and functionality of your app for different user groups.",
         imageUrl: ProductPageAssets.UserManagement.RBAC.src,
-        // TODO: these redirection urls should change.
-        redirectionLink: "/features/rbac"
+        redirectionLink: "/docs/userroles/introduction"
     }
 ];
 
