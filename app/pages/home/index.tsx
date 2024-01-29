@@ -1,9 +1,12 @@
-import Customers from "../../components/home/customers";
-import EverythingYouNeed from "../../components/home/everything-you-need";
+import dynamic from "next/dynamic";
+
 import Hero from "../../components/home/hero";
-import PrebuiltUI from "../../components/home/prebuilt-ui";
-import Testimonials from "../../components/home/testimonials";
-import TrySupertokens from "../../components/home/try-supertokens";
+
+const Customers = dynamic(() => import("../../components/home/customers"));
+const EverythingYouNeed = dynamic(() => import("../../components/home/everything-you-need"));
+const PrebuiltUI = dynamic(() => import("../../components/home/prebuilt-ui"));
+const Testimonials = dynamic(() => import("../../components/home/testimonials"));
+const TrySupertokens = dynamic(() => import("../../components/home/try-supertokens"));
 
 Home.title = "SuperTokens, Open Source Authentication";
 

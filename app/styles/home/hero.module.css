@@ -297,4 +297,9 @@
         padding: 0 12px;
         gap: 8px;
     }
+
+    .background_cover_image {
+        background: none !important;
+        background-image: none !important;
+    }
 }

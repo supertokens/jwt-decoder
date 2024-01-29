@@ -85,9 +85,9 @@ function TestimonialCard({ designation, imageUrl, name, organizationLogo, text }
 function TestimonialQuoteCard({ color, designation, text }: TestimonialQuoteCardProps) {
     return (
         <div className={styles.card}>
-            <h4 className={styles.quote} style={{ color }}>
+            <p className={styles.quote} style={{ color }}>
                 "{text}"
-            </h4>
+            </p>
             <div className={styles.text}>{designation}</div>
         </div>
     );
