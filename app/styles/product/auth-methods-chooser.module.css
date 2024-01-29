@@ -81,7 +81,6 @@
 
 .right_container > img {
     margin: auto;
-    transition: all 0.25s ease-in 1s;
 }
 
 .timeline {

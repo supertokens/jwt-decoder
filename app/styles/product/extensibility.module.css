@@ -176,6 +176,8 @@
     border-radius: 20px;
     border: 1px solid #2f2e2d;
     background: #131313;
+
+    text-decoration: none;
 }
 
 .example_card img {

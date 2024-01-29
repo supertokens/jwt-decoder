@@ -7,23 +7,23 @@ import { ProductPageAssets } from "../../../assets/images/product";
 const authMethods = [
     {
         method: "Passwordless",
-        formImage: ProductPageAssets.Auth.PasswordlessForm.src
+        formImage: ProductPageAssets.Auth.PasswordlessForm
     },
     {
         method: "Email Password",
-        formImage: ProductPageAssets.Auth.EmailPasswordForm.src
+        formImage: ProductPageAssets.Auth.EmailPasswordForm
     },
     {
         method: "Social Sign in",
-        formImage: ProductPageAssets.Auth.ThirdpartyForm.src
+        formImage: ProductPageAssets.Auth.ThirdpartyForm
     },
     {
         method: "B2B Auth and Multi Tenancy",
-        formImage: ProductPageAssets.Auth.MultitenancyForm.src
+        formImage: ProductPageAssets.Auth.MultitenancyForm
     },
     {
         method: "Multi factor authentication (MFA)",
-        formImage: ProductPageAssets.Auth.MFAForm.src
+        formImage: ProductPageAssets.Auth.MFAForm
     }
 ] as const;
 
@@ -66,7 +66,7 @@ export default function AuthMethodsChooser() {
                 className={styles.right_container}
                 style={{ background: `url(${ProductPageAssets.Auth.FormBg.src})`, backgroundSize: "cover" }}
             >
-                <Image src={selectedAuthMethod.formImage} alt="auth form" width={400} />
+                <Image {...selectedAuthMethod.formImage} alt="auth form" />
             </div>
         </div>
     );

@@ -9,27 +9,32 @@ const examples = [
     {
         id: "Invite flow",
         imageUrl: ProductPageAssets.Extensibility.InviteFlow.src,
-        content: "implement an invite flow."
+        content: "implement an invite flow.",
+        url: "/docs/thirdpartyemailpassword/common-customizations/disable-sign-up/overview"
     },
     {
         id: "Deduplication",
         imageUrl: ProductPageAssets.Extensibility.Deduplication.src,
-        content: "Implement account deduplication."
+        content: "Implement account deduplication.",
+        url: "/docs/thirdpartyemailpassword/common-customizations/deduplication/overview"
     },
     {
         id: "API Callbacks",
         imageUrl: ProductPageAssets.Extensibility.APICallbacks.src,
-        content: "Adding post API callbacks."
+        content: "Adding post API callbacks.",
+        url: "/docs/thirdpartyemailpassword/common-customizations/handling-signinup-success"
     },
     {
         id: "Disabling Signup",
         imageUrl: ProductPageAssets.Extensibility.DisableSignUp.src,
-        content: "Disabling sign up entirely."
+        content: "Disabling sign up entirely.",
+        url: "/docs/thirdpartyemailpassword/advanced-customizations/apis-override/disabling"
     },
     {
         id: "Online/Offline switch",
         imageUrl: ProductPageAssets.Extensibility.OnlineOfflineSwitch.src,
-        content: "Updating the online / offline status of a user post successful session verification."
+        content: "Updating the online / offline status of a user post successful session verification.",
+        url: undefined
     }
 ];
 
@@ -134,13 +139,23 @@ export default function Extensibility() {
                 </div>
                 <div className={styles.examples_list_container}>
                     {examples.map(example => {
+                        if (example.url === undefined) {
+                            return (
+                                <div className={styles.example_card} key={example.id}>
+                                    <Image src={example.imageUrl} alt={example.id} />
+                                    <div>
+                                        <p>{example.content}</p>
+                                    </div>
+                                </div>
+                            );
+                        }
                         return (
-                            <div className={styles.example_card} key={example.id}>
+                            <a href={example.url} target="_blank" className={styles.example_card} key={example.id}>
                                 <Image src={example.imageUrl} alt={example.id} />
                                 <div>
                                     <p>{example.content}</p>
                                 </div>
-                            </div>
+                            </a>
                         );
                     })}
                 </div>

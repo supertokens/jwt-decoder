@@ -18,7 +18,7 @@ export default function ProductHero() {
                     <p className={commonStyles.product_subtitle}>Expansive, modular user management suite</p>
                 </div>
                 <div className={styles.landing_image_container}>
-                    <Image src={ProductPageAssets.Landing.LandingImage} alt="landing image" />
+                    <Image priority src={ProductPageAssets.Landing.LandingImage} alt="landing image" />
                 </div>
             </div>
             <div className={styles.divider}></div>

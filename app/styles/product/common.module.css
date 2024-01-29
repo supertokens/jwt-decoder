@@ -73,6 +73,8 @@
     }
 
     .section_container {
+        background: none;
+        background-image: none;
         padding: 62px 0px;
     }
 }
