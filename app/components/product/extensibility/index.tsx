@@ -43,6 +43,31 @@ export default function Extensibility() {
                 Overrides to make SuperTokens work the way you want. You can override:
             </p>
             <div className={styles.code_examples_container}>
+                <div className={`${styles.prebuilt_ui_container}`}>
+                    <div className={styles.text_container}>
+                        <h3>Prebuilt UI</h3>
+                        <p>
+                            Overrides allow you to customize any part of the prebuilt UI so that you do not have to
+                            implement from scratch.
+                        </p>
+                    </div>
+                    <div className={styles.sing_up_code_container}>
+                        <Image {...ProductPageAssets.Extensibility.DunderMuffineForm} alt="Dunder muffin login form" />
+                        <div className={styles.code_snippet_container}>
+                            <div className={styles.code_snipper_header}>
+                                <div className={styles.dot} />
+                                <div className={styles.dot} />
+                                <div className={styles.dot} />
+                            </div>
+                            <Image
+                                src={ProductPageAssets.Extensibility.CodeSnippet.src}
+                                alt="Prebuilt UI code snippet"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.code_examples_container}>
                 <div className={styles.image_container}>
                     <Image src={ProductPageAssets.Extensibility.BackendAPIs.src} alt="Backend Apis code example." />
                 </div>
