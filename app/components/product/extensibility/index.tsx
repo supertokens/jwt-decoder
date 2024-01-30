@@ -57,7 +57,8 @@ export default function Extensibility() {
                         </p>
                     </div>
                     <div className={styles.sing_up_code_container}>
-                        <Image {...ProductPageAssets.Extensibility.DunderMuffineForm} alt="Dunder muffin login form" />
+                        <Image className={styles.border_image_web} {...ProductPageAssets.Extensibility.BorderWeb} alt="Dunder muffin login form with orange border." />
+                        <Image className={styles.border_image_mobile} {...ProductPageAssets.Extensibility.BorderMobile} alt="Dunder muffin login form with orange border." />
                         <div className={styles.code_snippet_container}>
                             <div className={styles.code_snipper_header}>
                                 <div className={styles.dot} />

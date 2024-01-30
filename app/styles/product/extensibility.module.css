@@ -78,6 +78,23 @@
     justify-content: center;
     align-items: center;
     gap: 18px;
+
+    position: relative;
+}
+
+.border_image_web {
+    position: absolute;
+    height: calc(100% + 8px);
+    width: auto;
+    right: -4px
+}
+
+.border_image_mobile {
+    display: none;
+    position: absolute;
+    height: auto;
+    width: calc(100% + 8px);
+    top: -278px;
 }
 
 .text_container {
@@ -246,11 +263,22 @@
     right: 80px;
 }
 
-@media (max-width: 1282px) {
-    .sing_up_code_container > img {
-        display: none;
+
+@media (max-width: 1280px){
+    .prebuilt_ui_container{
+        flex-direction: column;
+        padding: 100px;
+    }
+
+    .text_container{
+        max-width: 100%;
+    }
+
+    .sing_up_code_container{
+        margin-left: 35%;
     }
 }
+
 
 @media (max-width: 1180px) {
     .content_container {
@@ -259,6 +287,10 @@
 
     .text_container {
         margin-left: 0px;
+    }
+
+    .code_examples_container h3{
+        font-size: 40px;
     }
 }
 
@@ -283,8 +315,8 @@
 
     .prebuilt_ui_container {
         flex-direction: column;
-        gap: 46px;
-        padding: 0;
+        gap: 300px;
+        padding: 0 0 40px 0;
     }
 
     .text_container {
@@ -292,16 +324,20 @@
         padding: 60px 60px 0px 60px;
     }
 
-    .sing_up_code_container {
-        width: 100%;
-    }
-
-    .code_snippet_container {
-        width: 100%;
-    }
-
     .code_snippet_container img {
         width: auto;
+    }
+
+    .border_image_web{
+        display: none;
+    }
+
+    .border_image_mobile{
+        display: inline-block;
+    }
+
+    .sing_up_code_container{
+        margin: auto;
     }
 }
 
@@ -341,11 +377,43 @@
         padding: 40px 18px 0px 18px;
     }
 
-    .prebuilt_ui_container {
-        gap: 20px;
-    }
-
     .code_snippet_container img {
         width: inherit;
+    }
+
+    .prebuilt_ui_container {
+        padding: 0;
+    }
+}
+
+@media (max-width: 460px) {
+ 
+    .border_image_mobile{
+        top: -256px;
+    }
+    .code_snippet_container{
+        width: 360px
+    }
+}
+
+@media (max-width: 432px) {
+ 
+    .border_image_mobile{
+        top: -212px;
+        width: calc(100% + 4px);
+    }
+    .code_snippet_container{
+        width: 300px;
+        border-radius: 15px
+    }
+}
+
+@media (max-width: 342px) {
+ 
+    .border_image_mobile{
+        top: -194px;
+    }
+    .code_snippet_container{
+        width: 276px
     }
 }

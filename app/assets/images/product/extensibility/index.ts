@@ -5,8 +5,9 @@ import DisableSignUp from "./disable-signup.png";
 import FrontendHooks from "./frotend-hooks.png";
 import InviteFlow from "./invite-flow.png";
 import OnlineOfflineSwitch from "./online-offline-switch.png";
-import DunderMuffineForm from "./dunder-mifflin.png";
 import CodeSnippet from "./code-snippet.png";
+import BorderWeb from './border-web.png'
+import BorderMobile from './border-mobile.png'
 
 export const Extensibility = {
     APICallbacks,
@@ -16,6 +17,7 @@ export const Extensibility = {
     FrontendHooks,
     InviteFlow,
     OnlineOfflineSwitch,
-    DunderMuffineForm,
-    CodeSnippet
+    CodeSnippet,
+    BorderWeb,
+    BorderMobile
 };

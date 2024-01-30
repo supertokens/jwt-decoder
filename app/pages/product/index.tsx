@@ -9,6 +9,8 @@ import Migration from "../../components/product/migration";
 // import CloudVsSelfhosted from "../../components/product/cloud-vs-selfhosted";
 import GetStarted from "../../components/product/GetStarted";
 
+ProductPage.title = "SuperTokens - Modular User Management Suite"
+
 export default function ProductPage() {
     return (
         <main className={commonStyles.product_container}>
