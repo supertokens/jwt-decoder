@@ -1,0 +1,82 @@
+.content_container {
+    border-radius: 20px;
+    border: 1px solid #2f2e2d;
+    background: radial-gradient(
+        288.58% 140.38% at 1.97% 0%,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0.06) 46.88%,
+        rgba(255, 255, 255, 0.09) 100%
+    );
+    backdrop-filter: blur(25px);
+
+    padding: 42px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.content_container h3 {
+    color: #828282;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    max-width: 412px;
+    margin-top: 80px;
+}
+
+.list_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.list_card {
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid #3f3f3f;
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(25px);
+
+    max-width: 523px;
+    padding: 16px 48px;
+
+    color: #777;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 175% */
+}
+
+.list_card > img {
+    position: absolute;
+    left: -12px;
+    top: 36%;
+}
+
+@media (max-width: 1100px) {
+    .content_container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 586px) {
+    .content_container h3 {
+        font-size: 32px;
+        line-height: normal;
+        margin-top: 0px;
+    }
+
+    .content_container {
+        padding: 42px 26px;
+    }
+
+    .list_card {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
