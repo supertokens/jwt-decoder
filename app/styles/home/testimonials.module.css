@@ -16,10 +16,18 @@
 .card {
     max-width: 400px;
     height: auto;
-    padding: 16px;
+    padding: 26px;
 
     border-radius: 6px;
     background: #1a1a1a;
+    cursor: pointer;
+    opacity: 0.8;
+
+    text-decoration: none;
+}
+
+.card:hover {
+    opacity: 1;
 }
 
 .username {
@@ -28,6 +36,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 24px;
+    margin: 0;
 }
 
 .designation {
@@ -36,6 +45,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
+    margin: 0;
 }
 
 .text {
@@ -57,6 +67,62 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    text-align: center;
+}
+
+.square {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    margin: 0 3px 0.5em;
+    transition: background-color 100ms, color 100ms;
+}
+
+.square_container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
+    margin: 50px;
+}
+
+.testimonial_container {
+    display: flex;
+    gap: 16px;
+    min-height: 870px;
+}
+
+.testimonial_col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.active {
+    background-color: #fff;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.org_logo {
+    height: 34px;
+    width: auto;
+    margin-bottom: 16px;
+}
+
+.testimonial_col_2 {
+    display: flex;
+}
+
+.testimonial_col_0 {
+    display: flex;
 }
 
 @media (max-width: 1440px) {
@@ -70,7 +136,10 @@
     .section h1 {
         font-size: 40px;
         line-height: 48px;
-        margin: 0px;
+    }
+
+    .testimonial_col_2 {
+        display: none;
     }
 }
 
@@ -78,5 +147,8 @@
     .section h1 {
         font-size: 32px;
         line-height: 40px;
+    }
+    .testimonial_col_0 {
+        display: none;
     }
 }
