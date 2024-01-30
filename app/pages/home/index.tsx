@@ -4,6 +4,7 @@ import EverythingYouNeed from "../../components/home/everything-you-need";
 import PrebuiltUI from "../../components/home/prebuilt-ui";
 import Testimonials from "../../components/home/testimonials";
 import TrySupertokens from "../../components/home/try-supertokens";
+import SuccessStory from "../../components/home/success-story";
 
 Home.title = "SuperTokens, Open Source Authentication";
 
@@ -16,6 +17,7 @@ export default function Home() {
             <EverythingYouNeed />
             <TrySupertokens />
             <Testimonials />
+            <SuccessStory />
         </main>
     );
 }

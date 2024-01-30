@@ -290,20 +290,20 @@ export default function Testimonials() {
 
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setActiveSlideIndex(prevState => {
-    //             if (prevState === Slides.length - 1) {
-    //                 return 0;
-    //             } else {
-    //                 return prevState + 1;
-    //             }
-    //         });
-    //     }, 5000);
-    //     () => {
-    //         clearInterval(interval);
-    //     };
-    // }, []);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveSlideIndex(prevState => {
+                if (prevState === Slides.length - 1) {
+                    return 0;
+                } else {
+                    return prevState + 1;
+                }
+            });
+        }, 5000);
+        () => {
+            clearInterval(interval);
+        };
+    }, []);
 
     function renderTestimonials(index: number) {
         return (
@@ -326,6 +326,7 @@ export default function Testimonials() {
             </div>
         );
     }
+
     return (
         <section className={`${commonStyles.section} ${styles.section}`}>
             <div className={commonStyles.container}>
