@@ -1,5 +1,8 @@
 .section {
     background: #fff;
+
+    position: relative;
+    overflow: hidden;
 }
 
 .section h1 {
@@ -234,17 +237,70 @@
     text-align: center;
 }
 
+.purple_blob {
+    position: absolute;
+    width: 50%;
+    height: 212px;
+    flex-shrink: 0;
+
+    border-radius: 679px;
+    background: rgba(116, 51, 255, 0.5);
+    filter: blur(100px);
+    bottom: -32px;
+    right: 100px;
+}
+
+.green_blob {
+    position: absolute;
+    width: 50%;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 679px;
+    background: rgba(32, 236, 163, 0.6);
+    filter: blur(100px);
+    top: -38px;
+    right: 100px;
+}
+
+.world_map {
+    display: inline-block;
+}
+
 @media (max-width: 1440px) {
     .section h1 {
         font-size: 48px;
         line-height: 60px;
     }
+
+    .container {
+        gap: 0px;
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
+    .world_map {
+        display: none;
+    }
+}
+
+@media (max-width: 840px) {
     .section h1 {
         font-size: 40px;
         line-height: 48px;
+        text-align: left;
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 100px 0;
+    }
+
+    .container div {
+        width: 100%;
+    }
+
+    .purple_blob {
+        bottom: -120px;
     }
 }
 
@@ -252,6 +308,15 @@
     .section h1 {
         font-size: 32px;
         line-height: 40px;
+        margin-bottom: 60px;
+    }
+
+    .container {
+        padding: 70px 0px;
+    }
+
+    .marquee_container div:is(:last-child) {
+        display: none;
     }
 }
 

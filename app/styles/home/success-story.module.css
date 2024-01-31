@@ -180,6 +180,7 @@
     justify-content: center;
     align-items: center;
     gap: 48px;
+    flex-wrap: wrap;
 }
 
 @media (max-width: 1400px) {
@@ -221,6 +222,10 @@
 
     .card {
         max-width: 260px;
+    }
+
+    .companies_section .logo_container {
+        gap: 38px;
     }
 
     .card .wrapper {

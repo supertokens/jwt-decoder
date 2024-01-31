@@ -7,13 +7,15 @@ import Image from "next/image";
 export function Stats() {
     return (
         <section className={`${commonStyles.section} ${styles.section}`}>
+            <div className={styles.green_blob} />
+
             <div className={commonStyles.container}>
                 <div className={styles.container}>
                     <div>
                         <h1>
                             Bigger & <br /> Better
                         </h1>
-                        <Image {...HomePageAssets.Stats.WorldMap} alt="World map" />
+                        <Image className={styles.world_map} {...HomePageAssets.Stats.WorldMap} alt="World map" />
                     </div>
                     <div className={styles.marquee_container}>
                         <div className={`${styles.badge_container} ${styles.marquee}`}>
@@ -33,6 +35,7 @@ export function Stats() {
                     </div>
                 </div>
             </div>
+            <div className={styles.purple_blob} />
         </section>
     );
 }
