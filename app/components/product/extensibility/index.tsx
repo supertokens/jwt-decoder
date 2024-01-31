@@ -9,7 +9,7 @@ const examples = [
     {
         id: "Invite flow",
         imageUrl: ProductPageAssets.Extensibility.InviteFlow.src,
-        content: "implement an invite flow.",
+        content: "Implement an invite flow.",
         url: "/docs/thirdpartyemailpassword/common-customizations/disable-sign-up/overview"
     },
     {
@@ -27,7 +27,7 @@ const examples = [
     {
         id: "Disabling Signup",
         imageUrl: ProductPageAssets.Extensibility.DisableSignUp.src,
-        content: "Disabling sign up entirely.",
+        content: "Fully deactivating the user registration process.",
         url: "/docs/thirdpartyemailpassword/advanced-customizations/apis-override/disabling"
     },
     {
@@ -42,35 +42,28 @@ export default function Extensibility() {
     const [showTooltip, setShowTooltip] = useState(false);
 
     return (
-        <section className={commonStyles.section_container}>
+        <section className={commonStyles.section_container} style={{ overflow: "visible" }}>
             <h1 className={commonStyles.product_title}>Extensibility</h1>
-            <p className={commonStyles.product_subtitle}>
-                Overrides to make SuperTokens work the way you want. You can override:
-            </p>
+            <p className={commonStyles.product_subtitle}>Override SuperTokens to make it work the way you want.</p>
             <div className={styles.code_examples_container}>
                 <div className={`${styles.prebuilt_ui_container}`}>
                     <div className={styles.text_container}>
                         <h3>Prebuilt UI</h3>
                         <p>
-                            Overrides allow you to customize any part of the prebuilt UI so that you do not have to
-                            implement from scratch.
+                            Customize any part of the prebuilt UI so that you do not have to implement custom login
+                            forms from scratch.
                         </p>
                     </div>
-                    <div className={styles.sing_up_code_container}>
-                        <Image className={styles.border_image_web} {...ProductPageAssets.Extensibility.BorderWeb} alt="Dunder muffin login form with orange border." />
-                        <Image className={styles.border_image_mobile} {...ProductPageAssets.Extensibility.BorderMobile} alt="Dunder muffin login form with orange border." />
-                        <div className={styles.code_snippet_container}>
-                            <div className={styles.code_snipper_header}>
-                                <div className={styles.dot} />
-                                <div className={styles.dot} />
-                                <div className={styles.dot} />
-                            </div>
-                            <Image
-                                src={ProductPageAssets.Extensibility.CodeSnippet.src}
-                                alt="Prebuilt UI code snippet"
-                            />
-                        </div>
-                    </div>
+                    <Image
+                        className={styles.dunder_muffin_code_snippet_tab}
+                        {...ProductPageAssets.Extensibility.DunderMuffinTab}
+                        alt="Dunder muffin login form with overrides example code snippet for tablet"
+                    />
+                    <Image
+                        className={styles.dunder_muffin_code_snippet_web}
+                        {...ProductPageAssets.Extensibility.DunderMuffinWeb}
+                        alt="Dunder muffin login form with overrides example code snippet for web"
+                    />
                 </div>
             </div>
             <div className={styles.code_examples_container}>
@@ -79,7 +72,7 @@ export default function Extensibility() {
                 </div>
                 <div className={styles.content_container}>
                     <h3>Backend APIs</h3>
-                    <p>Such as adding pre / post logic to the sign up API.</p>
+                    <p>Add pre or post API logic to any auth route (eg: Sign up API).</p>
                 </div>
             </div>
             <div className={styles.code_examples_container}>
@@ -116,7 +109,7 @@ export default function Extensibility() {
                             </svg>
                             {showTooltip ? (
                                 <div className={styles.tooltip}>
-                                    <p>you can use this to add an invite code to our sign up API call.</p>
+                                    <p>You can use this to add an invite code to our sign up API call.</p>
                                 </div>
                             ) : null}
                         </span>

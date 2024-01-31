@@ -2,12 +2,11 @@ import APICallbacks from "./api-callbacks.png";
 import BackendAPIs from "./backend-apis.png";
 import Deduplication from "./deduplication.png";
 import DisableSignUp from "./disable-signup.png";
-import FrontendHooks from "./frotend-hooks.png";
+import FrontendHooks from "./frontend-hooks.png";
 import InviteFlow from "./invite-flow.png";
 import OnlineOfflineSwitch from "./online-offline-switch.png";
-import CodeSnippet from "./code-snippet.png";
-import BorderWeb from './border-web.png'
-import BorderMobile from './border-mobile.png'
+import DunderMuffinTab from "./dunder-muffin-tab.png";
+import DunderMuffinWeb from "./dunder-muffin-web.png";
 
 export const Extensibility = {
     APICallbacks,
@@ -17,7 +16,6 @@ export const Extensibility = {
     FrontendHooks,
     InviteFlow,
     OnlineOfflineSwitch,
-    CodeSnippet,
-    BorderWeb,
-    BorderMobile
+    DunderMuffinTab,
+    DunderMuffinWeb
 };

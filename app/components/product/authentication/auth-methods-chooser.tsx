@@ -66,7 +66,18 @@ export default function AuthMethodsChooser() {
                 className={styles.right_container}
                 style={{ background: `url(${ProductPageAssets.Auth.FormBg.src})`, backgroundSize: "cover" }}
             >
-                <Image {...selectedAuthMethod.formImage} alt="auth form" />
+                {authMethods.map(authMethod => {
+                    return (
+                        <Image
+                            style={{
+                                display: selectedAuthMethod.method === authMethod.method ? "inline-block" : "none"
+                            }}
+                            key={authMethod.method}
+                            {...selectedAuthMethod.formImage}
+                            alt={`${authMethod.method} form`}
+                        />
+                    );
+                })}
             </div>
         </div>
     );
