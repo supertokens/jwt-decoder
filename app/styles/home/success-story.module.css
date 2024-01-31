@@ -164,6 +164,24 @@
     margin: 60px auto 80px;
 }
 
+.companies_section p {
+    color: #c3c9d5;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 48px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.companies_section .logo_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+}
+
 @media (max-width: 1400px) {
     .title {
         font-size: 48px;

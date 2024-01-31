@@ -3,18 +3,30 @@ import commonStyles from "../../styles/home/common.module.css";
 import Image from "next/image";
 import HomePageAssets from "../../assets/images/home";
 
-const Customers = [
+const Companies = [
     {
-        bannerImage: "",
-        title: "",
-        subtitle: "",
-        redirectLink: ""
+        name: "Google",
+        logo: HomePageAssets.SuccessStory.GoogleLogo
     },
     {
-        bannerImage: "",
-        title: "",
-        subtitle: "",
-        redirectLink: ""
+        name: "Stripe",
+        logo: HomePageAssets.SuccessStory.StripeLogo
+    },
+    {
+        name: "Samsung",
+        logo: HomePageAssets.SuccessStory.SamsungLogo
+    },
+    {
+        name: "Meta",
+        logo: HomePageAssets.SuccessStory.MetaLogo
+    },
+    {
+        name: "Amazon",
+        logo: HomePageAssets.SuccessStory.AmazonLogo
+    },
+    {
+        name: "The new york times",
+        logo: HomePageAssets.SuccessStory.TheNYTimesLogo
     }
 ];
 
@@ -84,9 +96,13 @@ export default function SuccessStory() {
                     </div>
                 </a>
                 <div className={styles.line} />
-                <div>
+                <div className={styles.companies_section}>
                     <p>USED BY ENGINEERS AT TOP COMPANIES</p>
-                    <div></div>
+                    <div className={styles.logo_container}>
+                        {Companies.map(company => {
+                            return <Image key={company.name} {...company.logo} alt={company.name} />;
+                        })}
+                    </div>
                 </div>
                 <div className={styles.line} />
             </div>
