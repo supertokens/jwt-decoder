@@ -41,6 +41,12 @@ const examples = [
 export default function Extensibility() {
     const [showTooltip, setShowTooltip] = useState(false);
 
+    // function handleHomeLogoClick() {
+    //     if (path !== "home" && pageSelected !== undefined) {
+    //         sendButtonAnalytics("button_header_home", "v5", { page_selected: pageSelected });
+    //     }
+    // }
+
     return (
         <section className={commonStyles.section_container}>
             <h1 className={commonStyles.product_title}>Extensibility</h1>

@@ -5,7 +5,7 @@
 }
 
 .image_container img {
-    min-width: 590px;
+    max-width: 590px;
     max-height: 590px;
     height: 100%;
     width: 100%;
@@ -223,6 +223,7 @@
 
     .dunder_muffin_code_snippet_web {
         position: relative;
+        right: 0;
     }
 
     .image_container img {
