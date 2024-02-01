@@ -4,11 +4,11 @@ import styles from "../../../styles/product/migration.module.css";
 import { ProductPageAssets } from "../../../assets/images/product";
 
 const data = [
+    "Import existing password hashes",
+    "Bulk import 10s of millions of users or implement a lazy migration strategy",
     "Import TOTP secrets",
     "Import roles and permissions",
-    "Lazy migration is an option too",
-    "Bulk import millions of users in a few hours.",
-    "Map SuperTokens user IDs to bulk import your existing user IDs, without users needing to reset their password."
+    "Map SuperTokens user IDs to existing user IDs"
 ];
 
 export default function Migration() {

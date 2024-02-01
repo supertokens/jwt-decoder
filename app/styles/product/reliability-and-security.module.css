@@ -105,7 +105,28 @@
         padding: 20px 10px;
     }
 
-    .rectangular_card > p{
+    .rectangular_card > p {
         font-size: 16px;
+    }
+
+    .square_cards_container {
+        gap: 14px;
+        margin-left: 8px;
+    }
+
+    .square_card {
+        max-width: 260px;
+    }
+
+    .square_card > div > h3 {
+        font-size: 28px;
+    }
+
+    .square_card > img {
+        height: auto;
+    }
+
+    .square_card > div > p {
+        font-size: 14px;
     }
 }

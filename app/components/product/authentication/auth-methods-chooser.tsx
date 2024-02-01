@@ -18,11 +18,11 @@ const authMethods = [
         formImage: ProductPageAssets.Auth.ThirdpartyForm
     },
     {
-        method: "B2B Auth and Multi Tenancy",
+        method: "B2B Auth and multi-tenancy",
         formImage: ProductPageAssets.Auth.MultitenancyForm
     },
     {
-        method: "Multi factor authentication (MFA)",
+        method: "Multi-factor authentication (MFA)",
         formImage: ProductPageAssets.Auth.MFAForm
     }
 ] as const;
@@ -66,7 +66,19 @@ export default function AuthMethodsChooser() {
                 className={styles.right_container}
                 style={{ background: `url(${ProductPageAssets.Auth.FormBg.src})`, backgroundSize: "cover" }}
             >
-                <Image {...selectedAuthMethod.formImage} alt="auth form" />
+                {authMethods.map(authMethod => {
+                    return (
+                        <Image
+                            style={{
+                                display: selectedAuthMethod.method === authMethod.method ? "inline-block" : "none"
+                            }}
+                            priority
+                            key={authMethod.method}
+                            {...authMethod.formImage}
+                            alt={`${authMethod.method} form`}
+                        />
+                    );
+                })}
             </div>
         </div>
     );

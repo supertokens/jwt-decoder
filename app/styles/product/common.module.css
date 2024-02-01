@@ -3,6 +3,10 @@
     margin: auto;
 }
 
+.section{
+    width: 100%;
+}
+
 .section_container {
     position: relative;
     padding: 162px 0px;
@@ -52,6 +56,11 @@
     }
     .divider {
         height: 2px;
+    }
+
+    .section{
+        background-image: none !important;
+        background: none !important;
     }
 }
 
