@@ -4,7 +4,7 @@ import HomePageAssets from "../../assets/images/home";
 
 import Image from "next/image";
 
-export function Stats() {
+export default function Stats() {
     return (
         <section className={`${commonStyles.section} ${styles.section}`}>
             <div className={styles.green_blob} />

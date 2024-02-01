@@ -1,0 +1,152 @@
+.section {
+    position: relative;
+    padding: 140px 0px 0px 0px;
+}
+
+.section h1 {
+    color: #fff;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80px;
+    text-align: center;
+}
+
+.subtitle {
+    color: #a1a1a6;
+    text-align: center;
+    margin-bottom: 56px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+.subtitle2 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+
+    text-align: center;
+    margin: 80px 0px 36px 0px;
+}
+
+.section h1 > span {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(#f1f1f1, gray);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.frameworks_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.frameworks_container img {
+    height: 36px;
+    width: auto;
+}
+
+.buttons_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+
+    margin-top: 100px;
+}
+
+.buttons_container a {
+    position: relative;
+}
+
+.buttons_container .get_started {
+    position: relative;
+    background: linear-gradient(135deg, #f93, #f33);
+    border-radius: 6px;
+    padding: 1px;
+}
+
+.buttons_container .get_started:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    filter: blur(16px);
+    background: linear-gradient(135deg, #ff993394, #ff333396);
+
+    height: 100%;
+    width: 100%;
+}
+
+.buttons_container .discord {
+    position: relative;
+
+    background: linear-gradient(to right, #5765f2, #8b96ff);
+    border-radius: 6px;
+    padding: 1px;
+}
+
+.buttons_container .discord:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    filter: blur(16px);
+    background: linear-gradient(90deg, #5765f2a8, #8b96ff8f);
+
+    height: 100%;
+    width: 100%;
+}
+
+.discord img {
+    margin-top: 4px;
+}
+
+.buttons_container a > div {
+    height: 48px;
+    color: #fff;
+    background-color: #000;
+    border-radius: 6px;
+    padding: 13px 18px 14px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-decoration: none;
+}
+
+@media (max-width: 1400px) {
+    .section h1 {
+        font-size: 48px;
+        line-height: 60px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .section h1 {
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+    .subtitle {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 468px) {
+    .section h1 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 320px) {
+    .buttons_container {
+        flex-direction: column;
+    }
+}

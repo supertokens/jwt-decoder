@@ -6,6 +6,7 @@ import { Testimonials } from "./testimonials";
 import { SuccessStory } from "./success-story";
 import { Stats } from "./stats";
 import { Guides } from "./guides";
+import { EverythingYouNeedToKnow } from "./everything-you-need-to-know";
 
 const HomePageAssets = {
     Hero,
@@ -15,7 +16,8 @@ const HomePageAssets = {
     Testimonials,
     SuccessStory,
     Stats,
-    Guides
+    Guides,
+    EverythingYouNeedToKnow
 };
 
 export default HomePageAssets;
