@@ -8,13 +8,12 @@ const rectangularCardsData = [
     {
         imageUrl: ProductPageAssets.ReliablilityAndSecuity.DatabaseIcon.src,
         alt: "database",
-        content: "You can run the core with an in memory db on your local for unit testing + cicd testing."
+        content: "Run end to end tests locally or in a CICD pipeline by using our core with an in memory DB."
     },
     {
         imageUrl: ProductPageAssets.ReliablilityAndSecuity.CodeIcon.src,
         alt: "code",
-        content:
-            "Due to our architecture, its easy to do mocking of the auth APIs on the backend. (can be done via overrides feature)"
+        content: "Easily write unit tests by mocking auth APIs via our backend SDK."
     }
 ];
 

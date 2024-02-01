@@ -3,8 +3,20 @@ import styles from "../../styles/product/getstarted.module.css";
 
 import Image from "next/image";
 import { ProductPageAssets } from "../../assets/images/product";
+import { getAnalytics } from "../../pages";
 
 export default function GetStarted() {
+    function trackJoinUsButtonClick() {
+        getAnalytics().then((stAnalytics: any) => {
+            stAnalytics.sendEvent("button_click_join_us", {}, "v6");
+        });
+    }
+
+    function trackSeeGuidesButtonClick() {
+        getAnalytics().then((stAnalytics: any) => {
+            stAnalytics.sendEvent("button_click_see_guides", {}, "v6");
+        });
+    }
     return (
         <section className={commonStyles.section_container}>
             <div className={styles.content_container}>
@@ -12,12 +24,12 @@ export default function GetStarted() {
                     <h3>Get started!</h3>
                     <p>Quick Start guides for all use cases!</p>
                     <div className={styles.buttons_container}>
-                        <a href="/auth" target="_blank">
-                            <div className={styles.hue_circle} />
-                            <button>Join Us!</button>
+                        <div className={styles.hue_circle} />
+                        <a onClick={trackJoinUsButtonClick} href="/auth" target="_blank">
+                            <button role="link">Join Us!</button>
                         </a>
-                        <a href="/docs/guides" target="_blank">
-                            <button>See Guides</button>
+                        <a onClick={trackSeeGuidesButtonClick} href="/docs/guides" target="_blank">
+                            <button role="link">See Guides</button>
                         </a>
                     </div>
                 </div>

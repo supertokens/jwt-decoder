@@ -4,6 +4,7 @@ import styles from "../../../styles/product/user-management.module.css";
 
 import Image from "next/image";
 import { ProductPageAssets } from "../../../assets/images/product";
+import { getAnalytics } from "../../../pages";
 
 const userManagementData = [
     {
@@ -11,21 +12,36 @@ const userManagementData = [
         content:
             "View and manage all your users. Reset passwords, send email verification links, revoke sessions, modify user roles, view session metadata and more.",
         imageUrl: ProductPageAssets.UserManagement.Dashboard.src,
-        redirectionLink: "/docs/userdashboard/about"
+        redirectionLink: "/docs/userdashboard/about",
+        handleClick: function() {
+            getAnalytics().then((stAnalytics: any) => {
+                stAnalytics.sendEvent("button_click_dashboard_learn_more", {}, "v6");
+            });
+        }
     },
     {
         title: "Account Linking",
         content:
             "Enable users to associate multiple authentication methods with the same user account. For example, a user can link their password-based account and their Google account to the same user account in the application.",
         imageUrl: ProductPageAssets.UserManagement.AccountLinking.src,
-        redirectionLink: "/features/account-linking"
+        redirectionLink: "/features/account-linking",
+        handleClick: function() {
+            getAnalytics().then((stAnalytics: any) => {
+                stAnalytics.sendEvent("button_click_account_linking_learn_more", {}, "v6");
+            });
+        }
     },
     {
         title: "RBAC",
         content:
             "Assign users roles and individual permissions via code or through our UI. this can help you control the access and functionality of your app for different user groups.",
         imageUrl: ProductPageAssets.UserManagement.RBAC.src,
-        redirectionLink: "/docs/userroles/introduction"
+        redirectionLink: "/docs/userroles/introduction",
+        handleClick: function() {
+            getAnalytics().then((stAnalytics: any) => {
+                stAnalytics.sendEvent("button_click_rbac_learn_more", {}, "v6");
+            });
+        }
     }
 ];
 
@@ -55,12 +71,24 @@ export default function UserManagement() {
                 <div>
                     <h3>{selectedOption.title}</h3>
                     <p>{selectedOption.content}</p>
-                    <a href={selectedOption.redirectionLink} target="_blank">
+                    <a onClick={selectedOption.handleClick} href={selectedOption.redirectionLink} target="_blank">
                         <button>Learn more</button>
                     </a>
                 </div>
                 <div>
-                    <Image src={selectedOption.imageUrl} alt={selectedOption.title} />
+                    {userManagementData.map(item => {
+                        return (
+                            <Image
+                                style={{
+                                    display: selectedOption.title === item.title ? "inline-block" : "none"
+                                }}
+                                priority
+                                key={item.title}
+                                src={item.imageUrl}
+                                alt={item.title}
+                            />
+                        );
+                    })}
                 </div>
             </div>
             <div className={commonStyles.divider}></div>
