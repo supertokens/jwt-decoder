@@ -78,7 +78,7 @@ export default function Extensibility() {
                         <h3>Prebuilt UI</h3>
                         <p>
                             Customize any part of the prebuilt UI so that you do not have to implement custom login
-                            forms from scratch.
+                            forms from scratch
                         </p>
                     </div>
                     <Image
