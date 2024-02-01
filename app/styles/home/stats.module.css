@@ -315,9 +315,10 @@
 
     .container {
         padding: 70px 0px;
+        height: 800px;
     }
 
-    .marquee_container div:is(:last-child) {
+    .marquee_container > div:is(:last-child) {
         display: none;
     }
 }

@@ -3,7 +3,7 @@ import styles from "../../styles/product/getstarted.module.css";
 
 import Image from "next/image";
 import { ProductPageAssets } from "../../assets/images/product";
-import { getAnalytics } from "../../pages";
+import { getAnalytics } from "../../utils";
 
 export default function GetStarted() {
     function trackJoinUsButtonClick() {

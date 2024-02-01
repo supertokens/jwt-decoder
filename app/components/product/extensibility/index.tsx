@@ -4,7 +4,7 @@ import commonStyles from "../../../styles/product/common.module.css";
 import styles from "../../../styles/product/extensibility.module.css";
 
 import Image from "next/image";
-import { getAnalytics } from "../../../pages";
+import { getAnalytics } from "../../../utils";
 
 const examples = [
     {
@@ -71,14 +71,14 @@ export default function Extensibility() {
     return (
         <section className={commonStyles.section_container}>
             <h1 className={commonStyles.product_title}>Extensibility</h1>
-            <p className={commonStyles.product_subtitle}>Override SuperTokens to make it work the way you want.</p>
+            <p className={commonStyles.product_subtitle}>Override SuperTokens to make it work the way you want</p>
             <div className={styles.code_examples_container}>
                 <div className={`${styles.prebuilt_ui_container}`}>
                     <div className={styles.text_container}>
                         <h3>Prebuilt UI</h3>
                         <p>
                             Customize any part of the prebuilt UI so that you do not have to implement custom login
-                            forms from scratch
+                            forms from scratch.
                         </p>
                     </div>
                     <Image

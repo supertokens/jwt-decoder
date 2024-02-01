@@ -4,7 +4,7 @@ import styles from "../../../styles/product/user-management.module.css";
 
 import Image from "next/image";
 import { ProductPageAssets } from "../../../assets/images/product";
-import { getAnalytics } from "../../../pages";
+import { getAnalytics } from "../../../utils";
 
 const userManagementData = [
     {
