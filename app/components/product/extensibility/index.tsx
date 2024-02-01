@@ -4,31 +4,52 @@ import commonStyles from "../../../styles/product/common.module.css";
 import styles from "../../../styles/product/extensibility.module.css";
 
 import Image from "next/image";
+import { getAnalytics } from "../../../pages";
 
 const examples = [
     {
         id: "Invite flow",
         imageUrl: ProductPageAssets.Extensibility.InviteFlow.src,
         content: "Implement an invite flow.",
-        url: "/docs/thirdpartyemailpassword/common-customizations/disable-sign-up/overview"
+        url: "/docs/thirdpartyemailpassword/common-customizations/disable-sign-up/overview",
+        handleClick: function() {
+            getAnalytics().then((stAnalytics: any) => {
+                stAnalytics.sendEvent("card_click_implement_invite_flow", {}, "v6");
+            });
+        }
     },
     {
         id: "Deduplication",
         imageUrl: ProductPageAssets.Extensibility.Deduplication.src,
         content: "Implement account deduplication.",
-        url: "/docs/thirdpartyemailpassword/common-customizations/deduplication/overview"
+        url: "/docs/thirdpartyemailpassword/common-customizations/deduplication/overview",
+        handleClick: function() {
+            getAnalytics().then((stAnalytics: any) => {
+                stAnalytics.sendEvent("card_click_implement_acount_deduplication", {}, "v6");
+            });
+        }
     },
     {
         id: "API Callbacks",
         imageUrl: ProductPageAssets.Extensibility.APICallbacks.src,
         content: "Adding post API callbacks.",
-        url: "/docs/thirdpartyemailpassword/common-customizations/handling-signinup-success"
+        url: "/docs/thirdpartyemailpassword/common-customizations/handling-signinup-success",
+        handleClick: function trackListOfOverrideButtonClick() {
+            getAnalytics().then((stAnalytics: any) => {
+                stAnalytics.sendEvent("card_click_post_apo_callback", {}, "v6");
+            });
+        }
     },
     {
         id: "Disabling Signup",
         imageUrl: ProductPageAssets.Extensibility.DisableSignUp.src,
         content: "Fully deactivating the user registration process.",
-        url: "/docs/thirdpartyemailpassword/advanced-customizations/apis-override/disabling"
+        url: "/docs/thirdpartyemailpassword/advanced-customizations/apis-override/disabling",
+        handleClick: function trackListOfOverrideButtonClick() {
+            getAnalytics().then((stAnalytics: any) => {
+                stAnalytics.sendEvent("card_click_deactive_signup", {}, "v6");
+            });
+        }
     },
     {
         id: "Online/Offline switch",
@@ -41,11 +62,11 @@ const examples = [
 export default function Extensibility() {
     const [showTooltip, setShowTooltip] = useState(false);
 
-    // function handleHomeLogoClick() {
-    //     if (path !== "home" && pageSelected !== undefined) {
-    //         sendButtonAnalytics("button_header_home", "v5", { page_selected: pageSelected });
-    //     }
-    // }
+    function trackListOfOverrideButtonClick() {
+        getAnalytics().then((stAnalytics: any) => {
+            stAnalytics.sendEvent("button_see_full_list_of_overrides", {}, "v6");
+        });
+    }
 
     return (
         <section className={commonStyles.section_container}>
@@ -131,6 +152,7 @@ export default function Extensibility() {
                 <div className={styles.examples_header}>
                     <h5>Examples</h5>
                     <a
+                        onClick={trackListOfOverrideButtonClick}
                         href="https://supertokens.com/docs/thirdpartyemailpassword/advanced-customizations/overview"
                         target="_blank"
                     >
@@ -141,7 +163,7 @@ export default function Extensibility() {
                     {examples.map(example => {
                         if (example.url === undefined) {
                             return (
-                                <div className={styles.example_card} key={example.id}>
+                                <div onClick={example?.handleClick} className={styles.example_card} key={example.id}>
                                     <Image src={example.imageUrl} alt={example.id} />
                                     <div>
                                         <p>{example.content}</p>
@@ -150,7 +172,7 @@ export default function Extensibility() {
                             );
                         }
                         return (
-                            <a href={example.url} target="_blank" className={styles.example_card} key={example.id}>
+                            <a onClick={example?.handleClick} href={example.url} target="_blank" className={styles.example_card} key={example.id}>
                                 <Image src={example.imageUrl} alt={example.id} />
                                 <div>
                                     <p>{example.content}</p>
