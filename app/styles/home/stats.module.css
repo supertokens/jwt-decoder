@@ -27,7 +27,7 @@
     align-items: center;
     height: 100%;
     padding: 200px 0px;
-    height: 1000px;
+    height: 1200px;
     justify-content: space-around;
 }
 
@@ -36,6 +36,8 @@
     gap: 16px;
     height: 100%;
     overflow: hidden;
+    -webkit-mask: linear-gradient(-180deg, #0000, #000 10% 80%, #0000);
+    mask: linear-gradient(-180deg, #0000, #000 10% 80%, #0000);
 }
 
 .badge_container {

@@ -6,6 +6,7 @@ import Testimonials from "../../components/home/testimonials";
 import TrySupertokens from "../../components/home/try-supertokens";
 import SuccessStory from "../../components/home/success-story";
 import { Stats } from "../../components/home/stats";
+import Guides from "../../components/home/guides";
 
 Home.title = "SuperTokens, Open Source Authentication";
 
@@ -20,6 +21,7 @@ export default function Home() {
             <Testimonials />
             <SuccessStory />
             <Stats />
+            <Guides />
         </main>
     );
 }

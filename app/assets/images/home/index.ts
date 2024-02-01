@@ -5,6 +5,7 @@ import { PrebuiltUI } from "./prebuilt-ui";
 import { Testimonials } from "./testimonials";
 import { SuccessStory } from "./success-story";
 import { Stats } from "./stats";
+import { Guides } from "./guides";
 
 const HomePageAssets = {
     Hero,
@@ -13,7 +14,8 @@ const HomePageAssets = {
     PrebuiltUI,
     Testimonials,
     SuccessStory,
-    Stats
+    Stats,
+    Guides
 };
 
 export default HomePageAssets;
