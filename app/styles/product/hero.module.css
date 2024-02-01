@@ -9,6 +9,10 @@
     max-width: 400px;
 }
 
+.section {
+    width: 100%;
+}
+
 .hero_container {
     display: flex;
     justify-content: space-between;
@@ -31,5 +35,10 @@
     .landing_image_container > img {
         height: 100%;
         width: 100%;
+    }
+
+    .section {
+        background: none !important;
+        background-image: none !important;
     }
 }

@@ -192,17 +192,10 @@
 
 @media (max-width: 400px) {
     .right_container {
-        padding: 28px 20px;
+        padding: 60px 5px;
     }
 
     .left_container > ul > li {
         font-size: 12px;
-    }
-}
-
-@media (max-width: 368px) {
-    .right_container > img {
-        height: auto;
-        width: inherit;
     }
 }

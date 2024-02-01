@@ -18,11 +18,11 @@ const authMethods = [
         formImage: ProductPageAssets.Auth.ThirdpartyForm
     },
     {
-        method: "B2B Auth and Multi Tenancy",
+        method: "B2B Auth and multi-tenancy",
         formImage: ProductPageAssets.Auth.MultitenancyForm
     },
     {
-        method: "Multi factor authentication (MFA)",
+        method: "Multi-factor authentication (MFA)",
         formImage: ProductPageAssets.Auth.MFAForm
     }
 ] as const;
