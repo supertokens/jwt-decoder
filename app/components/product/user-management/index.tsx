@@ -60,7 +60,19 @@ export default function UserManagement() {
                     </a>
                 </div>
                 <div>
-                    <Image src={selectedOption.imageUrl} alt={selectedOption.title} />
+                    {userManagementData.map(item => {
+                        return (
+                            <Image
+                                style={{
+                                    display: selectedOption.title === item.title ? "inline-block" : "none"
+                                }}
+                                priority
+                                key={item.title}
+                                src={item.imageUrl}
+                                alt={item.title}
+                            />
+                        );
+                    })}
                 </div>
             </div>
             <div className={commonStyles.divider}></div>

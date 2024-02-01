@@ -1,12 +1,12 @@
 import APICallbacks from "./api-callbacks.png";
-import BackendAPIs from "./backend-apis.png";
+import BackendAPIs from "./backend-apis.svg";
 import Deduplication from "./deduplication.png";
 import DisableSignUp from "./disable-signup.png";
-import FrontendHooks from "./frontend-hooks.png";
+import FrontendHooks from "./frontend-hooks.svg";
 import InviteFlow from "./invite-flow.png";
 import OnlineOfflineSwitch from "./online-offline-switch.png";
-import DunderMuffinTab from "./dunder-muffin-tab.png";
-import DunderMuffinWeb from "./dunder-muffin-web.png";
+import DunderMuffinTab from "./dunder-muffin-tab.svg";
+import DunderMuffinWeb from "./dunder-muffin-web.svg";
 
 export const Extensibility = {
     APICallbacks,

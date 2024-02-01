@@ -155,6 +155,11 @@
         margin-top: 12px;
         height: 90px;
     }
+
+    .right_container > img {
+        height: 100%;
+        width: auto;
+    }
 }
 
 @media (max-width: 586px) {
@@ -167,10 +172,6 @@
         padding: 82px 44px;
     }
 
-    .right_container > img {
-        height: 100%;
-        width: auto;
-    }
     .left_container > ul > li {
         font-size: 16px;
     }
@@ -191,14 +192,17 @@
 
 @media (max-width: 400px) {
     .right_container {
-        padding: 52px 20px;
+        padding: 28px 20px;
     }
 
     .left_container > ul > li {
         font-size: 12px;
     }
-    .right_container img {
+}
+
+@media (max-width: 368px) {
+    .right_container > img {
         height: auto;
-        width: 100%;
+        width: inherit;
     }
 }

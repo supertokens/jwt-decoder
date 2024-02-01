@@ -72,8 +72,9 @@ export default function AuthMethodsChooser() {
                             style={{
                                 display: selectedAuthMethod.method === authMethod.method ? "inline-block" : "none"
                             }}
+                            priority
                             key={authMethod.method}
-                            {...selectedAuthMethod.formImage}
+                            {...authMethod.formImage}
                             alt={`${authMethod.method} form`}
                         />
                     );

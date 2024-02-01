@@ -5,7 +5,7 @@
 }
 
 .image_container img {
-    max-width: 590px;
+    min-width: 590px;
     max-height: 590px;
     height: 100%;
     width: 100%;
@@ -58,7 +58,7 @@
     justify-content: space-between;
     align-items: center;
 
-    width: 100%;
+    width: 97%;
     min-height: 456px;
 
     border-radius: 20px;
@@ -213,6 +213,7 @@
 @media (max-width: 1280px) {
     .prebuilt_ui_container {
         flex-direction: column;
+        width: 100%;
         padding: 100px;
     }
 
@@ -222,6 +223,10 @@
 
     .dunder_muffin_code_snippet_web {
         position: relative;
+    }
+
+    .image_container img {
+        max-width: 590px;
     }
 }
 
@@ -330,6 +335,7 @@
     .example_card {
         height: auto;
         max-width: 260px;
+        min-width: inherit;
     }
 
     .example_card img {

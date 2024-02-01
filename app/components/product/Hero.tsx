@@ -7,8 +7,8 @@ import Image from "next/image";
 export default function ProductHero() {
     return (
         <section
-            className={commonStyles.section_container}
-            style={{ background: `url(${ProductPageAssets.Landing.LandingBg.src})`, backgroundSize: "cover" }}
+            className={`${commonStyles.section_container} ${styles.section}`}
+            style={{ background: `url(${ProductPageAssets.Landing.LandingBg.src})`, backgroundSize: "contain",backgroundRepeat:"no-repeat" }}
         >
             <div className={styles.hero_container}>
                 <div>
