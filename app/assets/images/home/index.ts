@@ -7,6 +7,7 @@ import { SuccessStory } from "./success-story";
 import { Stats } from "./stats";
 import { Guides } from "./guides";
 import { EverythingYouNeedToKnow } from "./everything-you-need-to-know";
+import { Misc } from "./misc";
 
 const HomePageAssets = {
     Hero,
@@ -17,7 +18,8 @@ const HomePageAssets = {
     SuccessStory,
     Stats,
     Guides,
-    EverythingYouNeedToKnow
+    EverythingYouNeedToKnow,
+    Misc
 };
 
 export default HomePageAssets;

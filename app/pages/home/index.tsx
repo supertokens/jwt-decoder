@@ -10,6 +10,7 @@ import Stats from "../../components/home/stats";
 import Guides from "../../components/home/guides";
 import EverythingYouNeedToKnow from "../../components/home/everything-you-need-to-know";
 import HiringBanner from "../../components/home/hiring-banner";
+import SideNav from "../../components/home/side-nav";
 
 const TrySupertokens = dynamic(() => import("../../components/home/try-supertokens"), {
     ssr: true
@@ -31,6 +32,7 @@ export default function Home() {
             <Guides />
             <EverythingYouNeedToKnow />
             <HiringBanner />
+            <SideNav />
         </main>
     );
 }
