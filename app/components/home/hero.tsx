@@ -65,7 +65,7 @@ export default function Hero() {
     }, [copyIconRef]);
 
     return (
-        <section className={`${commonStyles.section} ${styles.section}`}>
+        <section id="landing_section" className={`${commonStyles.section} ${styles.section}`}>
             <div
                 className={styles.background_cover_image}
                 style={{

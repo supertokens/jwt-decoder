@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Stats() {
     return (
-        <section className={`${commonStyles.section} ${styles.section}`}>
+        <section id="stats_section" className={`${commonStyles.section} ${styles.section}`}>
             <div className={styles.green_blob} />
 
             <div className={commonStyles.container}>

@@ -45,7 +45,7 @@ const Forms = [
 
 export default function PrebuiltUI() {
     return (
-        <section className={`${commonStyles.section} ${styles.prebuilt_ui_section}`}>
+        <section id="setup_section" className={`${commonStyles.section} ${styles.prebuilt_ui_section}`}>
             <div className={commonStyles.container}>
                 <div className={styles.text_container}>
                     <h2 className={styles.title}>Setup in 5 minutes. With prebuilt UI</h2>

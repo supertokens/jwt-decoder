@@ -42,7 +42,7 @@ export default function EverythingYouNeed() {
     }, []);
 
     return (
-        <section className={`${commonStyles.section} ${styles.section}`}>
+        <section id="feature_toggle_section" className={`${commonStyles.section} ${styles.section}`}>
             <div
                 className={styles.background_cover_image}
                 style={{

@@ -328,7 +328,7 @@ export default function Testimonials() {
     }
 
     return (
-        <section className={`${commonStyles.section} ${styles.section}`}>
+        <section id="testimonials_section" className={`${commonStyles.section} ${styles.section}`}>
             <div className={commonStyles.container}>
                 <h1>
                     <span>Loved</span> by the world's <br /> best teams

@@ -116,7 +116,7 @@ const customers = [
 
 export default function Customers() {
     return (
-        <section className={commonStyles.section}>
+        <section id="trusted_by_logos_section" className={commonStyles.section}>
             <div className={styles.customers_container}>
                 <p>Trusted by startups and enterprises alike</p>
                 <div className={styles.customer_logos_container}>

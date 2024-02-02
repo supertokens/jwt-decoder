@@ -36,6 +36,32 @@ export function sendButtonAnalytics(eventName: string, version = "v5", options?:
     );
 }
 
+export function sendPageViewAnalytics(eventName: string, version = "v5", options?: Object) {
+    getAnalytics().then((stAnalytics: any) =>
+        stAnalytics.sendEvent(
+            eventName,
+            {
+                type: "page_view",
+                ...options
+            },
+            version
+        )
+    );
+}
+
+export function sendScrollAnalytics(eventName: string, version = "v5", options?: Object) {
+    getAnalytics().then((stAnalytics: any) =>
+        stAnalytics.sendEvent(
+            eventName,
+            {
+                type: "scroll",
+                ...options
+            },
+            version
+        )
+    );
+}
+
 export function getPathAndSelectedPage() {
     const currentPageToEventData: { [path: string]: string } = {
         home: "home",

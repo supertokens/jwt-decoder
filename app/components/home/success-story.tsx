@@ -32,7 +32,7 @@ const Companies = [
 
 export default function SuccessStory() {
     return (
-        <section className={`${commonStyles.section} ${styles.section}`}>
+        <section id="success_stories_section" className={`${commonStyles.section} ${styles.section}`}>
             <div className={commonStyles.container}>
                 <h1 className={styles.title}>
                     Become Our <span>Next</span>

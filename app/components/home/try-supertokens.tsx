@@ -40,10 +40,8 @@ export default function TrySupertokens() {
         };
     }, []);
 
-    console.log({ isMobile });
-
     return (
-        <section className={`${commonStyles.section} ${styles.section}`}>
+        <section id="cli_command_section" className={`${commonStyles.section} ${styles.section}`}>
             <div className={commonStyles.container}>
                 <h1>
                     <span>Try</span> SuperTokens in <br /> under <span>1 Minute</span>

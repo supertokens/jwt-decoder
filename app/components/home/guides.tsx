@@ -38,10 +38,10 @@ export default function Guides() {
     return (
         <section className={`${commonStyles.section} ${styles.section}`}>
             <div className={commonStyles.container}>
-                <h1>Guides,</h1>
+                <h1 id="recipe_text-sectio">Guides,</h1>
                 <p>For every use case.</p>
 
-                <div className={styles.login_methods_container}>
+                <div id="recipe_content_section" className={styles.login_methods_container}>
                     {LoginMethods.map(loginMethod => {
                         return (
                             <a href={loginMethod.link} target="_blank" key={loginMethod.name}>

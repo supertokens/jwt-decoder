@@ -11,7 +11,7 @@ export default function HiringBanner() {
     }
 
     return (
-        <div className={styles.banner}>
+        <div id="bottom_ending_section" className={styles.banner}>
             <div className={styles.container}>
                 <Image {...HomePageAssets.EverythingYouNeedToKnow.HeartLogo} alt="Heart Logo" />
                 <p className={styles.para_web}>

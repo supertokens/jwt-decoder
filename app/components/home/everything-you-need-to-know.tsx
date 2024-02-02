@@ -55,7 +55,7 @@ const SupportedFrameworks = [
 
 export default function EverythingYouNeedToKnow() {
     return (
-        <section className={`${commonStyles.section} ${styles.section}`}>
+        <section id="all-about-supertokens-video" className={`${commonStyles.section} ${styles.section}`}>
             <div className={commonStyles.container}>
                 <h1>
                     <span>Everything</span> you need to know about SuperTokens
