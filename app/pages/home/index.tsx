@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 
 import Hero from "../../components/home/hero";
 import Customers from "../../components/home/customers";
@@ -11,7 +12,6 @@ import Guides from "../../components/home/guides";
 import EverythingYouNeedToKnow from "../../components/home/everything-you-need-to-know";
 import HiringBanner from "../../components/home/hiring-banner";
 import SideNav from "../../components/home/side-nav";
-import { useEffect } from "react";
 import { sendScrollAnalytics } from "../../utils";
 
 const TrySupertokens = dynamic(() => import("../../components/home/try-supertokens"), {
@@ -21,7 +21,7 @@ const TrySupertokens = dynamic(() => import("../../components/home/try-supertoke
 Home.title = "SuperTokens, Open Source Authentication";
 
 // Keys of this object corresponds to the ids of each section on home page.
-const IdAnalyticsPayloadMapping = {
+const HomePageSectionViewPayload = {
     landing_section: {
         section_viewed: "Landing Section"
     },
@@ -85,7 +85,7 @@ export default function Home() {
 
                 if (entry.isIntersecting) {
                     isEventAlreadySent[id] = true;
-                    const { eventName, ...eventPayload } = IdAnalyticsPayloadMapping[id];
+                    const { eventName, ...eventPayload } = HomePageSectionViewPayload[id];
 
                     sendScrollAnalytics("page_home_section_viewed", "v6", { type: "section_view", ...eventPayload });
                 }
@@ -94,7 +94,7 @@ export default function Home() {
 
         let observer = new IntersectionObserver(onIntersection, observerOptions);
 
-        Object.keys(IdAnalyticsPayloadMapping).forEach(id => {
+        Object.keys(HomePageSectionViewPayload).forEach(id => {
             const elementToTrack = document.querySelector(`#${id}`);
             if (elementToTrack !== null) {
                 observer.observe(elementToTrack);
