@@ -2,14 +2,15 @@ import styles from "../../styles/home/try-supertokens.module.css";
 import commonStyles from "../../styles/home/common.module.css";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 
 import HomePageAssets from "../../assets/images/home";
-import Cligif from '../../assets/json/cli-gif.json'
+import Cligif from "../../assets/json/cli-gif.json";
 
 export default function TrySupertokens() {
     const [showTooltip, setShowTooltip] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     async function handleCopy() {
         try {
@@ -23,6 +24,23 @@ export default function TrySupertokens() {
             }, 1500);
         }
     }
+
+    useEffect(() => {
+        function handleResize() {
+            if (window.matchMedia(`(max-width: 620px)`).matches) {
+                setIsMobile(true);
+            } else {
+                setIsMobile(false);
+            }
+        }
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    console.log({ isMobile });
 
     return (
         <section className={`${commonStyles.section} ${styles.section}`}>
@@ -49,12 +67,11 @@ export default function TrySupertokens() {
                             <div className={styles.arrow}></div>
                         </div>
                     </div>
-                    <div className={styles.lottie_container}>
-                        <Lottie
-                            animationData={Cligif}
-                            alt="create-supertokens-app cli example gif"
-                        />
-                    </div>
+                    {isMobile === false ? (
+                        <div className={styles.lottie_container}>
+                            <Lottie animationData={Cligif} alt="create-supertokens-app cli example gif" />
+                        </div>
+                    ) : null}
                 </div>
             </div>
         </section>

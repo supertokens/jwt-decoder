@@ -299,7 +299,7 @@ export default function Testimonials() {
                     return prevState + 1;
                 }
             });
-        }, 5000);
+        }, 8000);
         () => {
             clearInterval(interval);
         };
@@ -359,7 +359,7 @@ function TestimonialCard({ designation, imageUrl, name, organizationLogo, text, 
             <div className={styles.profile}>
                 <Image className={styles.avatar} src={imageUrl} alt={name} />
                 <div>
-                    <h6 className={styles.username}>{name}</h6>
+                    <div className={styles.username}>{name}</div>
                     <p className={styles.designation}>{designation}</p>
                 </div>
             </div>

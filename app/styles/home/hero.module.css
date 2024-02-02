@@ -5,6 +5,10 @@
     z-index: -1;
 }
 
+.section {
+    padding-top: 0px;
+}
+
 .banner {
     background: radial-gradient(circle, rgba(30, 194, 255, 0.2), rgba(26, 169, 222, 0.17) 78%, rgba(0, 0, 0, 0) 93%);
     margin-top: 32px;
@@ -63,7 +67,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 94px; /* 116.129% */
-    margin-bottom: 40px;
+    margin: 40px 0px 40px 0px;
 }
 
 .title span {
@@ -253,6 +257,12 @@
 
 .hidden_lg {
     display: none;
+}
+
+@media (max-width: 1280px) {
+    .section {
+        padding-top: 30px;
+    }
 }
 
 @media (max-width: 1020px) {

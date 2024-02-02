@@ -53,9 +53,7 @@
     font-weight: 500;
     border-bottom: 1px solid;
 }
-.footer_container .compliance .img_compliance {
-    width: 76px;
-}
+
 .footer_container .compliance .img_compliance.space_left {
     margin-left: 24px;
 }
@@ -148,10 +146,11 @@
     margin-bottom: 24px;
     width: fit-content;
 }
-.footer_container .footer_bottom .footer_logo_link .footer_logo {
-    width: 180px;
-    min-width: 180px;
+
+.discord_logo {
+    margin-top: 8px;
 }
+
 .footer_container .footer_bottom .reach_us {
     text-align: left;
 }
@@ -160,10 +159,7 @@
     justify-content: center;
     align-items: center;
 }
-.footer_container .footer_bottom .reach_us .social_links .discord_logo {
-    width: 110px;
-    margin-top: 8px;
-}
+
 .footer_container .footer_bottom .reach_us .social_links a {
     margin-right: 20px;
     cursor: pointer;

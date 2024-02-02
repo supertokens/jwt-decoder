@@ -6,16 +6,11 @@ import HeaderDropdown, { HeaderDropDownOptions } from "./header-dropdown";
 
 import styles from "./header.module.css";
 import Image from "next/image";
+import { getUserInformation } from "../../../../api/user/info";
 
 interface Props {
     renderWhite?: boolean;
     removeCloneHeader?: any;
-}
-
-function getUserInformation() {
-    return {
-        name: "Chakravarthi Medicharla"
-    };
 }
 
 export default function Header(props: Props) {
@@ -210,7 +205,7 @@ export default function Header(props: Props) {
         if (userName === undefined) {
             fetchUserName();
         }
-        // fetchGithubStars();
+        fetchGithubStars();
     }, []);
 
     return (

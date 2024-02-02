@@ -33,10 +33,12 @@
     gap: 75px 45px;
 }
 
-.login_methods_container > div {
+.login_methods_container > a {
     display: flex;
     flex-direction: column;
     gap: 45px;
+
+    text-decoration: none;
 }
 
 .login_methods_container img {
@@ -44,7 +46,7 @@
     max-width: 550px;
 }
 
-.login_methods_container h6 {
+.login_methods_container div {
     font-size: 36px;
     font-weight: 700;
     line-height: 44px;
@@ -79,7 +81,7 @@
         width: 100%;
     }
 
-    .login_methods_container h6 {
+    .login_methods_container div {
         font-size: 30px;
         max-width: 350px;
     }
@@ -96,7 +98,7 @@
         margin: 0 0 38px 0;
     }
 
-    .login_methods_container h6 {
+    .login_methods_container div {
         font-size: 30px;
         max-width: 350px;
     }
@@ -120,12 +122,12 @@
         gap: 26px;
     }
 
-    .login_methods_container h6 {
+    .login_methods_container div {
         font-size: 22px;
         max-width: 350px;
     }
 
-    .login_methods_container > div {
+    .login_methods_container > a {
         gap: 12px;
     }
 }

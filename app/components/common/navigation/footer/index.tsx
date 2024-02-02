@@ -1,7 +1,8 @@
 import styles from "./footer.module.css";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { getPathAndSelectedPage, sendButtonAnalytics } from "../../../../utils";
+import { NavigationAssets } from "../../../../assets/images/navigation";
 
 export default function Footer() {
     function handleHomeLogoClick() {
@@ -252,12 +253,7 @@ export default function Footer() {
                         >
                             API Status
                             <span className={styles.footer_uptime_link__pill}>
-                                <Image
-                                    height={10}
-                                    width={10}
-                                    src="/static/assets/footer_api_status_caret_up.png"
-                                    alt="API Status Caret"
-                                />
+                                <Image {...NavigationAssets.Footer.Caret} alt="API Status Caret" />
                                 99.99%
                             </span>
                         </a>
@@ -281,9 +277,7 @@ export default function Footer() {
                     <div>
                         <a href="/" className={styles.footer_logo_link} onClick={handleHomeLogoClick}>
                             <Image
-                                height={28}
-                                width={180}
-                                src="/static/assets/dark-home/logo.png"
+                                {...NavigationAssets.Footer.SupertokensLogo}
                                 className={styles.footer_logo}
                                 alt="SuperTokens homepage"
                             />
@@ -297,11 +291,9 @@ export default function Footer() {
                     <div className={styles.compliance}>
                         <a className={styles.link_container} href="https://security.supertokens.com/" target={"_blank"}>
                             <Image
-                                height={80}
-                                width={80}
                                 className={styles.img_compliance}
+                                {...NavigationAssets.Footer.SOC2}
                                 alt="soc2 compliant certificate"
-                                src="/static/assets/compliance/soc2.png"
                             />
 
                             <span className={styles.link_text}>View Report</span>
@@ -319,18 +311,10 @@ type SocialLinksSectionProps = {
 };
 
 function SocialLinkSection({ className }: SocialLinksSectionProps) {
-    function renderSocialIcons(imageUrl: string, link: string, alt: string) {
-        let className = imageUrl.split(".")[0];
-
+    function renderSocialIcons(className: string, image: StaticImageData, link: string, alt: string) {
         return (
             <a key={link} rel="noopener" href={link} target="_blank">
-                <Image
-                    className={styles[`img_${className}`]}
-                    src={`/static/assets/social-icons/${imageUrl}`}
-                    alt={alt}
-                    height={18}
-                    width={18}
-                />
+                <Image className={styles[`img_${className}`]} alt={alt} {...image} />
             </a>
         );
     }
@@ -345,26 +329,32 @@ function SocialLinkSection({ className }: SocialLinksSectionProps) {
             <div className={styles.social_links}>
                 <a href="/discord" target="_blank" onClick={handleDiscordClick}>
                     <Image
-                        height={30}
-                        width={15}
-                        src="/static/assets/footerDiscord.png"
                         alt="Join SuperTokens on Discord"
+                        {...NavigationAssets.Footer.Discord}
                         className={styles.discord_logo}
                     />
                 </a>
-                {renderSocialIcons("mail.png", "mailto:team@supertokens.com", "Email SuperTokens")}
                 {renderSocialIcons(
-                    "linkedin.png",
+                    "mail",
+                    NavigationAssets.Footer.Mail,
+                    "mailto:team@supertokens.com",
+                    "Email SuperTokens"
+                )}
+                {renderSocialIcons(
+                    "linkedin",
+                    NavigationAssets.Footer.Linkedin,
                     "https://www.linkedin.com/company/supertokens/",
                     "Connect with SuperTokens on LinkedIn"
                 )}
                 {renderSocialIcons(
-                    "twitter.png",
+                    "twitter",
+                    NavigationAssets.Footer.Twitter,
                     "https://twitter.com/supertokensio",
                     "Connect with SuperTokens on Twitter"
                 )}
                 {renderSocialIcons(
-                    "git.png",
+                    "git",
+                    NavigationAssets.Footer.Github,
                     "https://github.com/supertokens/supertokens-core",
                     "SuperTokens on Github"
                 )}

@@ -48,14 +48,15 @@ const SupportedFrameworks = [
     },
     {
         logo: HomePageAssets.EverythingYouNeedToKnow.T4StackLogo,
-        alt: "T4Stack logo"
+        alt: "T4Stack logo",
+        link: "https://t4stack.com/"
     }
 ];
 
 export default function EverythingYouNeedToKnow() {
     return (
         <section className={`${commonStyles.section} ${styles.section}`}>
-            <div className={styles.container}>
+            <div className={commonStyles.container}>
                 <h1>
                     <span>Everything</span> you need to know about SuperTokens
                 </h1>
@@ -64,14 +65,21 @@ export default function EverythingYouNeedToKnow() {
                 <div className={styles.subtitle2}>WORKS WITH 25+ FRAMEWORKS</div>
                 <div className={styles.frameworks_container}>
                     {SupportedFrameworks.map(framework => {
+                        if (framework.link) {
+                            return (
+                                <a href={framework.link} target="_blank">
+                                    <Image {...framework.logo} alt={framework.alt} />
+                                </a>
+                            );
+                        }
                         return <Image {...framework.logo} alt={framework.alt} />;
                     })}
                 </div>
                 <div className={styles.buttons_container}>
-                    <a className={styles.get_started} role="button">
+                    <a href="/docs/guides" className={styles.get_started} role="button">
                         <div>Get Started</div>
                     </a>
-                    <a className={styles.discord} role="button">
+                    <a href="/discord" className={styles.discord} role="button">
                         <div>
                             <Image {...HomePageAssets.EverythingYouNeedToKnow.DiscordLogo} alt="Discord logo" />
                         </div>

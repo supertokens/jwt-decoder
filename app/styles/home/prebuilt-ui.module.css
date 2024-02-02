@@ -107,7 +107,7 @@
     overflow-y: scroll;
 }
 
-.signup_forms_container > img {
+.signup_forms_container img {
     cursor: pointer;
     margin-left: -24px;
 }

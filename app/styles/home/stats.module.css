@@ -297,7 +297,7 @@
         padding: 100px 0;
     }
 
-    .container div {
+    .container > div:is(:first-child) {
         width: 100%;
     }
 

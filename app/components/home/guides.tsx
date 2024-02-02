@@ -7,22 +7,30 @@ const LoginMethods = [
     {
         name: "Email Password Login",
         image: HomePageAssets.Guides.EmailPasswordForm,
-        backgroundColor: "linear-gradient(100.66deg, #D8FABC 2.1%, #0C7D65 78.42%)"
+        alt: "Email password form image",
+        backgroundColor: "linear-gradient(100.66deg, #D8FABC 2.1%, #0C7D65 78.42%)",
+        link: "https://supertokens.com/docs/emailpassword/introduction"
     },
     {
         name: "Social Login + Email Password",
         image: HomePageAssets.Guides.ThirdpartyEmailPassword,
-        backgroundColor: "linear-gradient(95.99deg, #7FF8F1 2%, #64A3EE 98.37%)"
+        alt: "Thirparty and email password login form image",
+        backgroundColor: "linear-gradient(95.99deg, #7FF8F1 2%, #64A3EE 98.37%)",
+        link: "https://supertokens.com/docs/thirdpartyemailpassword/introduction"
     },
     {
         name: "Social Login",
         image: HomePageAssets.Guides.Thirdparty,
-        backgroundColor: "linear-gradient(91.25deg, #E654B8 -2.38%, #7300FF 99.56%)"
+        alt: "Thirparty login form image",
+        backgroundColor: "linear-gradient(91.25deg, #E654B8 -2.38%, #7300FF 99.56%)",
+        link: "https://supertokens.com/docs/thirdparty/introduction"
     },
     {
         name: "Passwordless Login",
         image: HomePageAssets.Guides.Passwordless,
-        backgroundColor: "linear-gradient(99.33deg, #FFAD62 1.76%, #FF6594 67.98%)"
+        alt: "Passwordless login form",
+        backgroundColor: "linear-gradient(99.33deg, #FFAD62 1.76%, #FF6594 67.98%)",
+        link: "https://supertokens.com/docs/passwordless/introduction"
     }
 ];
 
@@ -36,9 +44,13 @@ export default function Guides() {
                 <div className={styles.login_methods_container}>
                     {LoginMethods.map(loginMethod => {
                         return (
-                            <div key={loginMethod.name}>
-                                <Image {...loginMethod.image} alt={loginMethod.name} />
-                                <h6
+                            <a href={loginMethod.link} target="_blank" key={loginMethod.name}>
+                                <Image
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    {...loginMethod.image}
+                                    alt={loginMethod.alt}
+                                />
+                                <div
                                     style={{
                                         background: loginMethod.backgroundColor,
                                         backgroundClip: "text",
@@ -47,8 +59,8 @@ export default function Guides() {
                                     }}
                                 >
                                     {loginMethod.name}
-                                </h6>
-                            </div>
+                                </div>
+                            </a>
                         );
                     })}
                 </div>

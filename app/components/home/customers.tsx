@@ -123,19 +123,9 @@ export default function Customers() {
                     {customers.map(customer => {
                         return (
                             <a href={customer.websiteUrl} target="_blank" className={styles.customer_card_container}>
-                                <Image
-                                    alt={customer.name}
-                                    src={customer.grayLogo.src}
-                                    height={customer.grayLogo.height}
-                                    width={customer.grayLogo.width}
-                                />
+                                <Image {...customer.grayLogo} alt={customer.name} />
                                 <a href={customer.websiteUrl} target="_blank" className={styles.customer_card}>
-                                    <Image
-                                        alt={customer.name}
-                                        src={customer.whiteLogo.src}
-                                        height={customer.whiteLogo.height}
-                                        width={customer.whiteLogo.width}
-                                    />
+                                    <Image {...customer.whiteLogo} alt={customer.name} />
                                     {customer.moneyRaised !== null ? (
                                         <div className={styles.green_pill}>{customer.moneyRaised}</div>
                                     ) : null}
