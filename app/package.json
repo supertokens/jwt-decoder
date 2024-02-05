@@ -2,7 +2,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build:analyze": "ANALYZE=true next build",
     "build": "next build && next export --outdir ./build/",
     "start": "next start",
     "update": "npm i -D && npm run build"
@@ -10,7 +9,6 @@
   "dependencies": {
     "@codemirror/lang-css": "^6.0.1",
     "@codemirror/lang-json": "^6.0.1",
-    "@next/bundle-analyzer": "^14.1.0",
     "@next/font": "^13.1.1",
     "@radix-ui/react-slider": "^1.1.2",
     "@types/styled-components": "^5.1.26",
@@ -23,7 +21,6 @@
     "jwt-decode": "^3.1.2",
     "lottie-react": "^2.4.0",
     "next": "13.1.1",
-    "npm": "^10.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
