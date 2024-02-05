@@ -2,6 +2,7 @@ import styles from "../../styles/home/customers.module.css";
 import commonStyles from "../../styles/home/common.module.css";
 import Image from "next/image";
 import HomePageAssets from "../../assets/images/home";
+import { sendButtonAnalytics, VERSION } from "../../utils";
 
 const customers = [
     {
@@ -122,7 +123,16 @@ export default function Customers() {
                 <div className={styles.customer_logos_container}>
                     {customers.map(customer => {
                         return (
-                            <a href={customer.websiteUrl} target="_blank" className={styles.customer_card_container}>
+                            <a
+                                onClick={() =>
+                                    sendButtonAnalytics("trusted_by_card_click", VERSION, {
+                                        option: customer.name
+                                    })
+                                }
+                                href={customer.websiteUrl}
+                                target="_blank"
+                                className={styles.customer_card_container}
+                            >
                                 <Image {...customer.grayLogo} alt={customer.name} />
                                 <a href={customer.websiteUrl} target="_blank" className={styles.customer_card}>
                                     <Image {...customer.whiteLogo} alt={customer.name} />

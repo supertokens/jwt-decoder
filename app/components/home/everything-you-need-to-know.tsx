@@ -4,6 +4,7 @@ import HomePageAssets from "../../assets/images/home";
 
 import Image from "next/image";
 import IFrame from "../customers/iframe";
+import { VERSION, sendButtonAnalytics } from "../../utils";
 
 const SupportedFrameworks = [
     {
@@ -76,10 +77,28 @@ export default function EverythingYouNeedToKnow() {
                     })}
                 </div>
                 <div className={styles.buttons_container}>
-                    <a href="/docs/guides" className={styles.get_started} role="button">
+                    <a
+                        onClick={() =>
+                            sendButtonAnalytics("button_home_bottomlanding_cta", VERSION, {
+                                option_clicked: "docs cta"
+                            })
+                        }
+                        href="/docs/guides"
+                        className={styles.get_started}
+                        role="button"
+                    >
                         <div>Get Started</div>
                     </a>
-                    <a href="/discord" className={styles.discord} role="button">
+                    <a
+                        onClick={() =>
+                            sendButtonAnalytics("button_home_bottomlanding_cta", VERSION, {
+                                option_clicked: "discord"
+                            })
+                        }
+                        href="/discord"
+                        className={styles.discord}
+                        role="button"
+                    >
                         <div>
                             <Image {...HomePageAssets.EverythingYouNeedToKnow.DiscordLogo} alt="Discord logo" />
                         </div>

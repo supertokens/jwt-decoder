@@ -1,3 +1,5 @@
+export const VERSION = "v5";
+
 export function getAnalytics() {
     return new Promise((res, rej) => {
         let numberOfRetries = 20;

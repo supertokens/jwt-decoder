@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "../../styles/home/hero.module.css";
 import commonStyles from "../../styles/home/common.module.css";
 import { useEffect, useRef, useState } from "react";
+import { sendButtonAnalytics, VERSION } from "../../utils";
 
 export default function Hero() {
     const copyIconRef = useRef(null);
@@ -13,6 +14,9 @@ export default function Hero() {
     async function handleCopy() {
         try {
             await navigator.clipboard.writeText("npx create-supertokens-app@latest");
+            sendButtonAnalytics("copy_command_cli_landing", VERSION, {
+                section_copied: "landing section"
+            });
             setShowTooltip(true);
         } catch (_) {
             //ignore
@@ -77,7 +81,15 @@ export default function Hero() {
             <nav className={styles.banner}>
                 <p>
                     Learn more about our{" "}
-                    <a href="/features/multi-tenancy" target="_blank">
+                    <a
+                        onClick={() =>
+                            sendButtonAnalytics("button_home_banner_cta", VERSION, {
+                                option_clicked: "Multi-tenancy feature link"
+                            })
+                        }
+                        href="/features/multi-tenancy"
+                        target="_blank"
+                    >
                         Multi-tenancy feature
                     </a>{" "}
                     for your B2B app.
@@ -85,6 +97,11 @@ export default function Hero() {
             </nav>
             <div className={commonStyles.container}>
                 <a
+                    onClick={() =>
+                        sendButtonAnalytics("button_home_banner_cta", VERSION, {
+                            option_clicked: "github star"
+                        })
+                    }
                     href="https://github.com/supertokens/supertokens-core"
                     target="_blank"
                     className={styles.github_star_container}

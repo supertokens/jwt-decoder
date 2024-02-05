@@ -2,9 +2,7 @@ import Image from "next/image";
 import HomePageAssets from "../../assets/images/home";
 
 import styles from "../../styles/home/side-nav.module.css";
-import { sendButtonAnalytics } from "../../utils";
-
-const VERSION = "v5";
+import { VERSION, sendButtonAnalytics } from "../../utils";
 
 const Socials = [
     {

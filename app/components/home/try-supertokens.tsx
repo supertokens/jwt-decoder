@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 
 import HomePageAssets from "../../assets/images/home";
 import Cligif from "../../assets/json/cli-gif.json";
+import { sendButtonAnalytics, VERSION } from "../../utils";
 
 export default function TrySupertokens() {
     const [showTooltip, setShowTooltip] = useState(false);
@@ -15,6 +16,9 @@ export default function TrySupertokens() {
     async function handleCopy() {
         try {
             await navigator.clipboard.writeText("npx create-supertokens-app@latest");
+            sendButtonAnalytics("copy_command_cli_landing", VERSION, {
+                section_copied: "cli command section"
+            });
             setShowTooltip(true);
         } catch (_) {
             //ignore

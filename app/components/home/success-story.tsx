@@ -2,6 +2,7 @@ import styles from "../../styles/home/success-story.module.css";
 import commonStyles from "../../styles/home/common.module.css";
 import Image from "next/image";
 import HomePageAssets from "../../assets/images/home";
+import { VERSION, sendButtonAnalytics } from "../../utils";
 
 const Companies = [
     {
@@ -56,7 +57,16 @@ export default function SuccessStory() {
                             </div>
                             <p className={styles.subtitle}>How Curology evaluated, migrated, and used SuperTokens</p>
                         </div>
-                        <a className={styles.case_study_curology_link} href="/customers/curology" target="_blank">
+                        <a
+                            onClick={() =>
+                                sendButtonAnalytics("landing_success_story_cta", VERSION, {
+                                    option: "curology"
+                                })
+                            }
+                            className={styles.case_study_curology_link}
+                            href="/customers/curology"
+                            target="_blank"
+                        >
                             Read case study {"->"}
                         </a>
                     </div>
@@ -82,6 +92,11 @@ export default function SuccessStory() {
                             </p>
                         </div>
                         <a
+                            onClick={() =>
+                                sendButtonAnalytics("landing_success_story_cta", VERSION, {
+                                    option: "built intelligence"
+                                })
+                            }
                             className={styles.case_study_builtinteligence_link}
                             href="/customers/builtintelligence"
                             target="_blank"
@@ -90,7 +105,15 @@ export default function SuccessStory() {
                         </a>
                     </div>
                 </div>
-                <a className={styles.read_more_button} href="/customers">
+                <a
+                    onClick={() =>
+                        sendButtonAnalytics("landing_success_story_cta", VERSION, {
+                            option: "read more case studies"
+                        })
+                    }
+                    className={styles.read_more_button}
+                    href="/customers"
+                >
                     <div>
                         <span>Read more case studies</span> <span className={styles.circle}>{"->"}</span>
                     </div>

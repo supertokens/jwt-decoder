@@ -3,6 +3,7 @@ import commonStyles from "../../styles/home/common.module.css";
 import HomePageAssets from "../../assets/images/home";
 
 import Image from "next/image";
+import { VERSION, sendButtonAnalytics } from "../../utils";
 
 export default function Stats() {
     return (
@@ -76,7 +77,15 @@ function Discord() {
             <Image {...HomePageAssets.Stats.DiscordLogo} alt="discord logo" />
             <div className={styles.title1}>2K+</div>
             <div className={styles.title5}>Discord members</div>
-            <a href="/discord" target="_blank">
+            <a
+                onClick={() =>
+                    sendButtonAnalytics("button_section_stats_cta", VERSION, {
+                        option_clicked: "Join Discord"
+                    })
+                }
+                href="/discord"
+                target="_blank"
+            >
                 Join Us
             </a>
         </div>
@@ -149,7 +158,15 @@ function Github() {
             <Image {...HomePageAssets.Stats.GithubLogo} alt="Github logo" />
             <div className={styles.title2}>11K+</div>
             <div className={styles.title5}>Github stars</div>
-            <a href="https://github.com/supertokens/supertokens-core" target="_blank">
+            <a
+                onClick={() =>
+                    sendButtonAnalytics("button_section_stats_cta", VERSION, {
+                        option_clicked: "Star Us"
+                    })
+                }
+                href="https://github.com/supertokens/supertokens-core"
+                target="_blank"
+            >
                 Star Us
             </a>
         </div>
