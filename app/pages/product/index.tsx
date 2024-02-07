@@ -13,7 +13,7 @@ import { useEffect } from "react";
 
 ProductPage.title = "SuperTokens - Modular User Management Suite";
 
-// Keys of this object corresponds to the ids of each section on home page.
+// Keys of this object corresponds to the ids of each section on product page.
 const ProductPageSectionViewPayload = {
     hero_section: {
         section_viewed: "Product page hero section"
@@ -67,7 +67,7 @@ export default function ProductPage() {
 
                     sendScrollAnalytics("page_product_section_viewed", "v6", {
                         type: "section_view",
-                        eventPayload
+                        ...eventPayload
                     });
                 }
             });
