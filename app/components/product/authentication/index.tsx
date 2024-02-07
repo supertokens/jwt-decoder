@@ -3,7 +3,7 @@ import AuthMethodsChooser from "./auth-methods-chooser";
 
 export default function Authentication() {
     return (
-        <section className={commonStyles.section_container}>
+        <section id="authentication_section" className={commonStyles.section_container}>
             <h1 className={commonStyles.product_title}>Authentication</h1>
             <p className={commonStyles.product_subtitle}>A complete solution for all your Authentication needs</p>
             <AuthMethodsChooser />

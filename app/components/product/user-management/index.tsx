@@ -49,7 +49,7 @@ export default function UserManagement() {
     const [selectedOption, setSelectedOption] = useState(userManagementData[0]);
 
     return (
-        <section className={commonStyles.section_container}>
+        <section id="user_management" className={commonStyles.section_container}>
             <h1 className={commonStyles.product_title}>User Management</h1>
             <nav className={styles.navigation_container}>
                 <ul>

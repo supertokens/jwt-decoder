@@ -18,7 +18,7 @@ export default function GetStarted() {
         });
     }
     return (
-        <section className={commonStyles.section_container}>
+        <section id="get_started" className={commonStyles.section_container}>
             <div className={styles.content_container}>
                 <div>
                     <h3>Get started!</h3>

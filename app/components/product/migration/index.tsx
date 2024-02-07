@@ -13,7 +13,7 @@ const data = [
 
 export default function Migration() {
     return (
-        <section className={commonStyles.section_container}>
+        <section id="migration" className={commonStyles.section_container}>
             <h1 className={commonStyles.product_title}>Migration</h1>
             <div className={styles.content_container}>
                 <h3>Easily migrate large user bases</h3>
