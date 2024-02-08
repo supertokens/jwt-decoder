@@ -40,7 +40,7 @@ const sqaureCardsData = [
 
 export default function ReliabilityAndSecurity() {
     return (
-        <section className={commonStyles.section_container}>
+        <section id="reliability_and_security_section" className={commonStyles.section_container}>
             <h1 className={commonStyles.product_title}>Reliability and Security</h1>
 
             <div className={styles.rectangular_cards_container}>

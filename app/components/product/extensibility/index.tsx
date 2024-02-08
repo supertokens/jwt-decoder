@@ -69,7 +69,7 @@ export default function Extensibility() {
     }
 
     return (
-        <section className={commonStyles.section_container}>
+        <section id="extensibility_section" className={commonStyles.section_container}>
             <h1 className={commonStyles.product_title}>Extensibility</h1>
             <p className={commonStyles.product_subtitle}>Override SuperTokens to make it work the way you want.</p>
             <div className={styles.code_examples_container}>
