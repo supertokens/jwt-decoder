@@ -14,7 +14,7 @@ export default function Calculator() {
     const [isMFAChecked, setIsMFAChecked] = useState(false);
     const [isDashboardUserChecked, setIsDashboardUserChecked] = useState(false);
     const [isAccountLinkingChecked, setIsAccountLinkingChecked] = useState(false);
-    const [isMultitenancyChecked, setIsMultitenancyChecked] = useState(true);
+    const [isMultitenancyChecked, setIsMultitenancyChecked] = useState(false);
 
     const [dashboardUserCount, setDashboardUserCount] = useState(0);
     const [tenants0_4Count, setTenants0_4Count] = useState(0);
@@ -28,7 +28,7 @@ export default function Calculator() {
     const [dashboardAmount, setDashboardAmount] = useState(0);
     const [enterpriseTenanatsAmount, setEnterpriceTenantAmount] = useState(0);
     const [tenants0_4Amount, setTenants0_3Amount] = useState(0);
-    const [tenantsWith5PlusAmount, setTenantsWith10PlusAmount] = useState(0);
+    const [tenantsWith5PlusAmount, setTenantsWith5PlusAmount] = useState(0);
     const [multitenancyTotalAmount, setMultitenancyTotalAmount] = useState(0);
     const [extraAppsAmount, setExtraAppsAmount] = useState(0);
 
@@ -64,9 +64,9 @@ export default function Calculator() {
         }
 
         if (typeof tenantsWith5PlusCount === "number" && isNaN(tenantsWith5PlusCount) === false) {
-            setTenantsWith10PlusAmount(tenantsWith5PlusCount * 5);
+            setTenantsWith5PlusAmount(tenantsWith5PlusCount * 5);
         } else {
-            setTenantsWith10PlusAmount(0);
+            setTenantsWith5PlusAmount(0);
         }
 
         if (typeof enterpriseTenanatsCount === "number" && isNaN(enterpriseTenanatsCount) === false) {
