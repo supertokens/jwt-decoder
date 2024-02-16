@@ -39,7 +39,7 @@
     line-height: normal;
 }
 
-.dialog__heading_2{
+.dialog__heading_2 {
     font-size: 16px;
     color: #f93;
     font-style: normal;
@@ -170,12 +170,10 @@
     line-height: 23px;
 }
 
-.greyish__border{
+.greyish__border {
     border: 1px solid #3c3c3c;
     border-width: 1px 1px 2px 1px;
 }
-
-
 
 @media (max-width: 640px) {
     .pricing__dialog > ul > li {
@@ -189,6 +187,13 @@
 
     .pill__cards {
         padding: 8px 30px 8px 10px;
+    }
+}
+
+@media (max-width: 386px) {
+    .gray__pill {
+        margin: 0;
+        display: block;
     }
 }
 

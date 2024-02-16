@@ -2,14 +2,13 @@ import { useCallback } from "react";
 
 import styles from "../../../styles/pricing/pricingDialog.module.css";
 
-
 const multitenancyPricingConfig = [
     {
         heading: "Email password, Social, Passwordless login",
         pricing: [
             {
                 mainText: {
-                    content: "0-3 users /  tenant",
+                    content: "Less than 5 users /  tenant",
                     color: "gray"
                 },
                 subText: {
@@ -19,22 +18,12 @@ const multitenancyPricingConfig = [
             },
             {
                 mainText: {
-                    content: "3-10 users /  tenant",
+                    content: "5 or more users / tenant",
                     color: "gray"
                 },
                 subText: {
                     content: "$5 / tenant / month",
                     highlight: ["$5"]
-                }
-            },
-            {
-                mainText: {
-                    content: "10+ users / tenant",
-                    color: "gray"
-                },
-                subText: {
-                    content: "$10 / tenant / month",
-                    highlight: ["$10"]
                 }
             }
         ]
