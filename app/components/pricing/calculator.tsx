@@ -18,7 +18,7 @@ export default function Calculator() {
 
     const [dashboardUserCount, setDashboardUserCount] = useState(0);
     const [tenantsLessThan5Count, setTenantsLessThan5Count] = useState(0);
-    const [tenantsWith5PlusCount, setTenantsWith5orPlusCount] = useState(0);
+    const [tenantsWith5orMoreCount, setTenantsWith5orMoreCount] = useState(0);
     const [enterpriseTenanatsCount, setEnterpriseTenanatsCount] = useState(0);
     const [extraAppsCount, setExtraAppsCount] = useState(0);
 
@@ -28,7 +28,7 @@ export default function Calculator() {
     const [dashboardAmount, setDashboardAmount] = useState(0);
     const [enterpriseTenanatsAmount, setEnterpriceTenantAmount] = useState(0);
     const [tenantsLessThan5Amount, setTenantsLessThan5Amount] = useState(0);
-    const [tenantsWith5orPlusAmount, setTenantsWith5orPlusAmount] = useState(0);
+    const [tenantsWith5orMoreAmount, setTenantsWith5orMoreAmount] = useState(0);
     const [multitenancyTotalAmount, setMultitenancyTotalAmount] = useState(0);
     const [extraAppsAmount, setExtraAppsAmount] = useState(0);
 
@@ -67,10 +67,10 @@ export default function Calculator() {
             setTenantsLessThan5Amount(0);
         }
 
-        if (typeof tenantsWith5PlusCount === "number" && isNaN(tenantsWith5PlusCount) === false) {
-            setTenantsWith5orPlusAmount(tenantsWith5PlusCount * 5);
+        if (typeof tenantsWith5orMoreCount === "number" && isNaN(tenantsWith5orMoreCount) === false) {
+            setTenantsWith5orMoreAmount(tenantsWith5orMoreCount * 5);
         } else {
-            setTenantsWith5orPlusAmount(0);
+            setTenantsWith5orMoreAmount(0);
         }
 
         if (typeof enterpriseTenanatsCount === "number" && isNaN(enterpriseTenanatsCount) === false) {
@@ -84,12 +84,12 @@ export default function Calculator() {
         } else {
             setExtraAppsAmount(0);
         }
-    }, [tenantsLessThan5Count, tenantsWith5PlusCount, enterpriseTenanatsCount, extraAppsCount]);
+    }, [tenantsLessThan5Count, tenantsWith5orMoreCount, enterpriseTenanatsCount, extraAppsCount]);
 
     useEffect(() => {
         if (isMultitenancyChecked) {
             const total = Math.ceil(
-                enterpriseTenanatsAmount + tenantsLessThan5Amount + tenantsWith5orPlusAmount + extraAppsAmount
+                enterpriseTenanatsAmount + tenantsLessThan5Amount + tenantsWith5orMoreAmount + extraAppsAmount
             );
 
             setMultitenancyTotalAmount(total);
@@ -99,7 +99,7 @@ export default function Calculator() {
     }, [
         enterpriseTenanatsAmount,
         tenantsLessThan5Amount,
-        tenantsWith5orPlusAmount,
+        tenantsWith5orMoreAmount,
         isMultitenancyChecked,
         extraAppsAmount
     ]);
@@ -354,10 +354,10 @@ export default function Calculator() {
                                     </span>
                                 </span>
                                 <Input
-                                    value={tenantsWith5PlusCount}
+                                    value={tenantsWith5orMoreCount}
                                     onChange={e =>
-                                        setTenantsWith5orPlusCount(
-                                            resetInputMaxValue(e.currentTarget.value, tenantsWith5PlusCount)
+                                        setTenantsWith5orMoreCount(
+                                            resetInputMaxValue(e.currentTarget.value, tenantsWith5orMoreCount)
                                         )
                                     }
                                 />
@@ -366,7 +366,7 @@ export default function Calculator() {
                                 </span>
                             </div>
                             <div className={`${styles.right__col__sub__row} ${styles.border__bottom}`}>
-                                <h4>${tenantsWith5orPlusAmount}</h4>
+                                <h4>${tenantsWith5orMoreAmount}</h4>
                             </div>
                         </div>
                         <div className={`${styles.calculator__row} ${styles.spacer__8}`}>
