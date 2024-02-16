@@ -27,7 +27,7 @@ export default function Calculator() {
     const [mfaAmount, setMFAAmount] = useState(0);
     const [dashboardAmount, setDashboardAmount] = useState(0);
     const [enterpriseTenanatsAmount, setEnterpriceTenantAmount] = useState(0);
-    const [tenants0_4Amount, setTenants0_3Amount] = useState(0);
+    const [tenants0_4Amount, setTenants0_4Amount] = useState(0);
     const [tenantsWith5PlusAmount, setTenantsWith5PlusAmount] = useState(0);
     const [multitenancyTotalAmount, setMultitenancyTotalAmount] = useState(0);
     const [extraAppsAmount, setExtraAppsAmount] = useState(0);
@@ -58,9 +58,9 @@ export default function Calculator() {
     useEffect(() => {
         if (typeof tenants0_4Count === "number" && isNaN(tenants0_4Count) === false && tenants0_4Count > 25) {
             const price = (tenants0_4Count - 25) * 2;
-            setTenants0_3Amount(price);
+            setTenants0_4Amount(price);
         } else {
-            setTenants0_3Amount(0);
+            setTenants0_4Amount(0);
         }
 
         if (typeof tenantsWith5PlusCount === "number" && isNaN(tenantsWith5PlusCount) === false) {
