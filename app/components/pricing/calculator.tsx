@@ -14,12 +14,11 @@ export default function Calculator() {
     const [isMFAChecked, setIsMFAChecked] = useState(false);
     const [isDashboardUserChecked, setIsDashboardUserChecked] = useState(false);
     const [isAccountLinkingChecked, setIsAccountLinkingChecked] = useState(false);
-    const [isMultitenancyChecked, setIsMultitenancyChecked] = useState(false);
+    const [isMultitenancyChecked, setIsMultitenancyChecked] = useState(true);
 
     const [dashboardUserCount, setDashboardUserCount] = useState(0);
-    const [tenants0_3Count, setTenants0_3Count] = useState(0);
-    const [tenants3_10Count, setTenants3_10Count] = useState(0);
-    const [tenantsWith10PlusCount, setTenantsWith10PlusCount] = useState(0);
+    const [tenants0_4Count, setTenants0_4Count] = useState(0);
+    const [tenantsWith5PlusCount, setTenantsWith5PlusCount] = useState(0);
     const [enterpriseTenanatsCount, setEnterpriseTenanatsCount] = useState(0);
     const [extraAppsCount, setExtraAppsCount] = useState(0);
 
@@ -28,9 +27,8 @@ export default function Calculator() {
     const [mfaAmount, setMFAAmount] = useState(0);
     const [dashboardAmount, setDashboardAmount] = useState(0);
     const [enterpriseTenanatsAmount, setEnterpriceTenantAmount] = useState(0);
-    const [tenants0_3Amount, setTenants0_3Amount] = useState(0);
-    const [tenants3_10Amount, setTenants3_10Amount] = useState(0);
-    const [tenantsWith10PlusAmount, setTenantsWith10PlusAmount] = useState(0);
+    const [tenants0_4Amount, setTenants0_3Amount] = useState(0);
+    const [tenantsWith5PlusAmount, setTenantsWith10PlusAmount] = useState(0);
     const [multitenancyTotalAmount, setMultitenancyTotalAmount] = useState(0);
     const [extraAppsAmount, setExtraAppsAmount] = useState(0);
 
@@ -58,21 +56,15 @@ export default function Calculator() {
     }
 
     useEffect(() => {
-        if (typeof tenants0_3Count === "number" && isNaN(tenants0_3Count) === false && tenants0_3Count > 25) {
-            const price = (tenants0_3Count - 25) * 2;
+        if (typeof tenants0_4Count === "number" && isNaN(tenants0_4Count) === false && tenants0_4Count > 25) {
+            const price = (tenants0_4Count - 25) * 2;
             setTenants0_3Amount(price);
         } else {
             setTenants0_3Amount(0);
         }
 
-        if (typeof tenants3_10Count === "number" && isNaN(tenants3_10Count) === false) {
-            setTenants3_10Amount(tenants3_10Count * 5);
-        } else {
-            setTenants3_10Amount(0);
-        }
-
-        if (typeof tenantsWith10PlusCount === "number" && isNaN(tenantsWith10PlusCount) === false) {
-            setTenantsWith10PlusAmount(tenantsWith10PlusCount * 10);
+        if (typeof tenantsWith5PlusCount === "number" && isNaN(tenantsWith5PlusCount) === false) {
+            setTenantsWith10PlusAmount(tenantsWith5PlusCount * 5);
         } else {
             setTenantsWith10PlusAmount(0);
         }
@@ -88,19 +80,19 @@ export default function Calculator() {
         } else {
             setExtraAppsAmount(0);
         }
-    }, [tenants0_3Count, tenants3_10Count, tenantsWith10PlusCount, enterpriseTenanatsCount, extraAppsCount]);
+    }, [tenants0_4Count, tenantsWith5PlusCount, enterpriseTenanatsCount, extraAppsCount]);
 
     useEffect(() => {
         if (isMultitenancyChecked) {
             const total = Math.ceil(
-                enterpriseTenanatsAmount + tenants0_3Amount + tenants3_10Amount + tenantsWith10PlusAmount + extraAppsAmount
+                enterpriseTenanatsAmount + tenants0_4Amount + tenantsWith5PlusAmount + extraAppsAmount
             );
 
             setMultitenancyTotalAmount(total);
         } else {
             setMultitenancyTotalAmount(0);
         }
-    }, [enterpriseTenanatsAmount, tenants0_3Amount, tenants3_10Amount, tenantsWith10PlusAmount, isMultitenancyChecked, extraAppsAmount]);
+    }, [enterpriseTenanatsAmount, tenants0_4Amount, tenantsWith5PlusAmount, isMultitenancyChecked, extraAppsAmount]);
 
     useEffect(() => {
         if (activeTab === "cloud") {
@@ -316,7 +308,7 @@ export default function Calculator() {
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row}`}>
                                 <span className={styles.multitenancy__pricing__container}>
-                                    <span className={styles.tenant__with__subtext}>Tenant with</span> 0-3 users:
+                                    <span className={styles.tenant__with__subtext}>Tenant with</span> 0-4 users:
                                     <span className={styles.hidden__lg}>
                                         <span className={styles.bold}>$2</span>
                                         <span> /tenant / month </span>
@@ -324,9 +316,9 @@ export default function Calculator() {
                                 </span>
 
                                 <Input
-                                    value={tenants0_3Count}
+                                    value={tenants0_4Count}
                                     onChange={e =>
-                                        setTenants0_3Count(resetInputMaxValue(e.currentTarget.value, tenants0_3Count))
+                                        setTenants0_4Count(resetInputMaxValue(e.currentTarget.value, tenants0_4Count))
                                     }
                                 />
                                 <span>
@@ -334,30 +326,8 @@ export default function Calculator() {
                                 </span>
                             </div>
                             <div className={`${styles.right__col__sub__row}`}>
-                                <h4>${tenants0_3Amount}</h4>
+                                <h4>${tenants0_4Amount}</h4>
                                 <span>free for 25 tenants</span>
-                            </div>
-                        </div>
-                        <div className={styles.calculator__row}>
-                            <div className={`${styles.left__col__sub__row}`}>
-                                <span className={styles.multitenancy__pricing__container}>
-                                    <span className={styles.tenant__with__subtext}>Tenant with</span> 3-10 users:
-                                    <span className={styles.hidden__lg}>
-                                        <span className={styles.bold}>$5</span> <span>/tenant / month</span>
-                                    </span>
-                                </span>
-                                <Input
-                                    value={tenants3_10Count}
-                                    onChange={e =>
-                                        setTenants3_10Count(resetInputMaxValue(e.currentTarget.value, tenants3_10Count))
-                                    }
-                                />
-                                <span>
-                                    <span className={styles.bold}>$5</span> <span>/tenant / month</span>
-                                </span>
-                            </div>
-                            <div className={`${styles.right__col__sub__row}`}>
-                                <h4>${tenants3_10Amount}</h4>
                             </div>
                         </div>
                         <div className={styles.calculator__row}>
@@ -365,25 +335,25 @@ export default function Calculator() {
                                 className={`${styles.left__col__sub__row} ${styles.border__bottom} ${styles.border__rounded}`}
                             >
                                 <span className={styles.multitenancy__pricing__container}>
-                                    <span className={styles.tenant__with__subtext}>Tenant with</span> 10+ users:
+                                    <span className={styles.tenant__with__subtext}>Tenant with</span> 5+ users:
                                     <span className={styles.hidden__lg}>
-                                        <span className={styles.bold}>$10</span> <span>/tenant / month</span>
+                                        <span className={styles.bold}>$5</span> <span>/tenant / month</span>
                                     </span>
                                 </span>
                                 <Input
-                                    value={tenantsWith10PlusCount}
+                                    value={tenantsWith5PlusCount}
                                     onChange={e =>
-                                        setTenantsWith10PlusCount(
-                                            resetInputMaxValue(e.currentTarget.value, tenantsWith10PlusCount)
+                                        setTenantsWith5PlusCount(
+                                            resetInputMaxValue(e.currentTarget.value, tenantsWith5PlusCount)
                                         )
                                     }
                                 />
                                 <span>
-                                    <span className={styles.bold}>$10</span> /tenant / month
+                                    <span className={styles.bold}>$5</span> /tenant / month
                                 </span>
                             </div>
                             <div className={`${styles.right__col__sub__row} ${styles.border__bottom}`}>
-                                <h4>${tenantsWith10PlusAmount}</h4>
+                                <h4>${tenantsWith5PlusAmount}</h4>
                             </div>
                         </div>
                         <div className={`${styles.calculator__row} ${styles.spacer__8}`}>
@@ -430,9 +400,7 @@ export default function Calculator() {
                                 <Input
                                     value={extraAppsCount}
                                     onChange={e =>
-                                        setExtraAppsCount(
-                                            resetInputMaxValue(e.currentTarget.value, extraAppsCount)
-                                        )
+                                        setExtraAppsCount(resetInputMaxValue(e.currentTarget.value, extraAppsCount))
                                     }
                                 />
                                 <span>
