@@ -8,7 +8,7 @@ const multitenancyPricingConfig = [
         pricing: [
             {
                 mainText: {
-                    content: "0-4 users /  tenant",
+                    content: "Less than 5 users /  tenant",
                     color: "gray"
                 },
                 subText: {
@@ -18,7 +18,7 @@ const multitenancyPricingConfig = [
             },
             {
                 mainText: {
-                    content: "5+ users / tenant",
+                    content: "5 or more users / tenant",
                     color: "gray"
                 },
                 subText: {

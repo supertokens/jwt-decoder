@@ -17,8 +17,8 @@ export default function Calculator() {
     const [isMultitenancyChecked, setIsMultitenancyChecked] = useState(false);
 
     const [dashboardUserCount, setDashboardUserCount] = useState(0);
-    const [tenants0_4Count, setTenants0_4Count] = useState(0);
-    const [tenantsWith5PlusCount, setTenantsWith5PlusCount] = useState(0);
+    const [tenantsLessThan5Count, setTenantsLessThan5Count] = useState(0);
+    const [tenantsWith5PlusCount, setTenantsWith5orPlusCount] = useState(0);
     const [enterpriseTenanatsCount, setEnterpriseTenanatsCount] = useState(0);
     const [extraAppsCount, setExtraAppsCount] = useState(0);
 
@@ -27,8 +27,8 @@ export default function Calculator() {
     const [mfaAmount, setMFAAmount] = useState(0);
     const [dashboardAmount, setDashboardAmount] = useState(0);
     const [enterpriseTenanatsAmount, setEnterpriceTenantAmount] = useState(0);
-    const [tenants0_4Amount, setTenants0_4Amount] = useState(0);
-    const [tenantsWith5PlusAmount, setTenantsWith5PlusAmount] = useState(0);
+    const [tenantsLessThan5Amount, setTenantsLessThan5Amount] = useState(0);
+    const [tenantsWith5orPlusAmount, setTenantsWith5orPlusAmount] = useState(0);
     const [multitenancyTotalAmount, setMultitenancyTotalAmount] = useState(0);
     const [extraAppsAmount, setExtraAppsAmount] = useState(0);
 
@@ -56,17 +56,21 @@ export default function Calculator() {
     }
 
     useEffect(() => {
-        if (typeof tenants0_4Count === "number" && isNaN(tenants0_4Count) === false && tenants0_4Count > 25) {
-            const price = (tenants0_4Count - 25) * 2;
-            setTenants0_4Amount(price);
+        if (
+            typeof tenantsLessThan5Count === "number" &&
+            isNaN(tenantsLessThan5Count) === false &&
+            tenantsLessThan5Count > 25
+        ) {
+            const price = (tenantsLessThan5Count - 25) * 2;
+            setTenantsLessThan5Amount(price);
         } else {
-            setTenants0_4Amount(0);
+            setTenantsLessThan5Amount(0);
         }
 
         if (typeof tenantsWith5PlusCount === "number" && isNaN(tenantsWith5PlusCount) === false) {
-            setTenantsWith5PlusAmount(tenantsWith5PlusCount * 5);
+            setTenantsWith5orPlusAmount(tenantsWith5PlusCount * 5);
         } else {
-            setTenantsWith5PlusAmount(0);
+            setTenantsWith5orPlusAmount(0);
         }
 
         if (typeof enterpriseTenanatsCount === "number" && isNaN(enterpriseTenanatsCount) === false) {
@@ -80,19 +84,25 @@ export default function Calculator() {
         } else {
             setExtraAppsAmount(0);
         }
-    }, [tenants0_4Count, tenantsWith5PlusCount, enterpriseTenanatsCount, extraAppsCount]);
+    }, [tenantsLessThan5Count, tenantsWith5PlusCount, enterpriseTenanatsCount, extraAppsCount]);
 
     useEffect(() => {
         if (isMultitenancyChecked) {
             const total = Math.ceil(
-                enterpriseTenanatsAmount + tenants0_4Amount + tenantsWith5PlusAmount + extraAppsAmount
+                enterpriseTenanatsAmount + tenantsLessThan5Amount + tenantsWith5orPlusAmount + extraAppsAmount
             );
 
             setMultitenancyTotalAmount(total);
         } else {
             setMultitenancyTotalAmount(0);
         }
-    }, [enterpriseTenanatsAmount, tenants0_4Amount, tenantsWith5PlusAmount, isMultitenancyChecked, extraAppsAmount]);
+    }, [
+        enterpriseTenanatsAmount,
+        tenantsLessThan5Amount,
+        tenantsWith5orPlusAmount,
+        isMultitenancyChecked,
+        extraAppsAmount
+    ]);
 
     useEffect(() => {
         if (activeTab === "cloud") {
@@ -300,7 +310,7 @@ export default function Calculator() {
                             <span
                                 className={`${styles.multitenancy__pricing__title} ${styles.multitenancy__sub_section} ${styles.email__password__container}`}
                             >
-                                <span className={styles.tenant__with__subtext}>Tenant with</span>{" "}
+                                <span className={styles.tenant__with__subtext}>Tenants with</span>{" "}
                                 <span className={styles.gray__bold}>Email password, Social, Passwordless login</span>
                             </span>
                             <div className={`${styles.right__col__sub__row}`} />
@@ -308,7 +318,8 @@ export default function Calculator() {
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row}`}>
                                 <span className={styles.multitenancy__pricing__container}>
-                                    <span className={styles.tenant__with__subtext}>Tenant with</span> 0-4 users:
+                                    <span className={styles.tenant__with__subtext}>Tenants with</span> Less then 5
+                                    users:
                                     <span className={styles.hidden__lg}>
                                         <span className={styles.bold}>$2</span>
                                         <span> /tenant / month </span>
@@ -316,9 +327,11 @@ export default function Calculator() {
                                 </span>
 
                                 <Input
-                                    value={tenants0_4Count}
+                                    value={tenantsLessThan5Count}
                                     onChange={e =>
-                                        setTenants0_4Count(resetInputMaxValue(e.currentTarget.value, tenants0_4Count))
+                                        setTenantsLessThan5Count(
+                                            resetInputMaxValue(e.currentTarget.value, tenantsLessThan5Count)
+                                        )
                                     }
                                 />
                                 <span>
@@ -326,7 +339,7 @@ export default function Calculator() {
                                 </span>
                             </div>
                             <div className={`${styles.right__col__sub__row}`}>
-                                <h4>${tenants0_4Amount}</h4>
+                                <h4>${tenantsLessThan5Amount}</h4>
                                 <span>free for 25 tenants</span>
                             </div>
                         </div>
@@ -335,7 +348,7 @@ export default function Calculator() {
                                 className={`${styles.left__col__sub__row} ${styles.border__bottom} ${styles.border__rounded}`}
                             >
                                 <span className={styles.multitenancy__pricing__container}>
-                                    <span className={styles.tenant__with__subtext}>Tenant with</span> 5+ users:
+                                    <span className={styles.tenant__with__subtext}>Tenants with</span> 5 or more users:
                                     <span className={styles.hidden__lg}>
                                         <span className={styles.bold}>$5</span> <span>/tenant / month</span>
                                     </span>
@@ -343,7 +356,7 @@ export default function Calculator() {
                                 <Input
                                     value={tenantsWith5PlusCount}
                                     onChange={e =>
-                                        setTenantsWith5PlusCount(
+                                        setTenantsWith5orPlusCount(
                                             resetInputMaxValue(e.currentTarget.value, tenantsWith5PlusCount)
                                         )
                                     }
@@ -353,7 +366,7 @@ export default function Calculator() {
                                 </span>
                             </div>
                             <div className={`${styles.right__col__sub__row} ${styles.border__bottom}`}>
-                                <h4>${tenantsWith5PlusAmount}</h4>
+                                <h4>${tenantsWith5orPlusAmount}</h4>
                             </div>
                         </div>
                         <div className={`${styles.calculator__row} ${styles.spacer__8}`}>
@@ -363,7 +376,7 @@ export default function Calculator() {
                         <div className={styles.calculator__row}>
                             <div className={`${styles.left__col__sub__row} ${styles.multitenanct__header__style}`}>
                                 <span className={styles.multitenancy__pricing__container}>
-                                    <span className={styles.tenant__with__subtext}>Tenant with</span>{" "}
+                                    <span className={styles.tenant__with__subtext}>Tenants with</span>{" "}
                                     <div className={styles.gray__bold}>Enterprise SSO</div>
                                     <span className={styles.hidden__lg}>
                                         <span className={styles.bold}>$50</span>
