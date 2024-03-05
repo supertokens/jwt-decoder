@@ -135,7 +135,7 @@ export default function Curology() {
                 </p>
                 <BlockQuote
                     color="#aa9fff"
-                    quote="SuperTokens has a very simple well throughout HTTP API. That was really important to us. We also like that parts of SuperTokens are Open Source"
+                    quote="SuperTokens has a very simple well through out HTTP API. That was really important to us. We also like that parts of SuperTokens are Open Source"
                     designation="Principal Software Engineer @ Curology"
                     image={CustomerAssets.Curology.EricWong}
                     name="Eric Wong"
