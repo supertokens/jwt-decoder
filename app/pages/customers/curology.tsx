@@ -25,7 +25,7 @@ export default function Curology() {
                         title:
                             "SuperTokens powers Curology, the largest dermatology practice in the US with millions of users.",
                         businessType: {
-                            text: "B2B",
+                            text: "Consumer HealthTech",
                             textColor: "linear-gradient(91deg, #ac9efc 3.86%, #6f5cff 121.62%)",
                             borderColor: "#ac9efc"
                         },
