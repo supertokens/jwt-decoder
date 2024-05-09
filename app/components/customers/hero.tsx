@@ -2,12 +2,14 @@ import { StaticImageData } from "next/image";
 
 import { CustomerAssets } from "../../assets/images/customers";
 import styles from "../../styles/customers/components/hero.module.css";
+import { Image } from "../../types";
 
 type HeroProps = {
     config: {
-        backgroundCover: {
+        background: {
             gradient: string;
-            imageData: StaticImageData;
+            logo: Image<StaticImageData>;
+            coverImage: Image;
         };
         leftContent: {
             title: string;
@@ -30,24 +32,24 @@ type HeroProps = {
 };
 
 export default function Hero({ config }: HeroProps) {
-    const { backgroundCover, leftContent, rightContent } = config;
+    const { background, leftContent, rightContent } = config;
 
     return (
         <section className={styles.hero_container}>
             <div
                 style={{
-                    backgroundImage: `url('${CustomerAssets.Curology.Cover.src}')`
+                    backgroundImage: `url('${background.coverImage.src}')`
                 }}
                 className={styles.background_cover}
             />
             <div
                 className={styles.case_study_banner}
                 style={{
-                    background: backgroundCover.gradient
+                    background: background.gradient
                 }}
             >
                 <span>Case Study</span>
-                <img {...backgroundCover.imageData} alt="curology logo" />
+                <img {...background.logo.src} alt={background.logo.alt} />
             </div>
             <div className={styles.content_container}>
                 <div className={styles.left_content}>

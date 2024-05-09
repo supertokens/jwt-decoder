@@ -8,21 +8,26 @@ type BlockQuoteProps = {
     image: StaticImageData;
     name: string;
     designation: string;
+    bgColor: string;
 };
 
-export default function BlockQuote({ designation, image, name, quote, color }: BlockQuoteProps) {
+export default function BlockQuote({ designation, image, name, quote, color, bgColor }: BlockQuoteProps) {
     return (
-       <div>
-         <div className={styles.block_quote_container} style={{ color }}>
-            <img className={styles.quote_start} {...CustomerAssets.Common.QuoteStart} alt="quote-start" />
-            <img className={styles.quote_end} {...CustomerAssets.Common.QuoteEnd} alt="quote-end" />
-            <p>“{quote}”</p>
-            <div className={styles.profile}>
-                <img {...image} alt={name} />
-                <span>{name}</span>
-                <span>{designation}</span>
+        <div
+            style={{
+                background: bgColor
+            }}
+        >
+            <div className={styles.block_quote_container} style={{ color }}>
+                <img className={styles.quote_start} {...CustomerAssets.Common.QuoteStart} alt="quote-start" />
+                <img className={styles.quote_end} {...CustomerAssets.Common.QuoteEnd} alt="quote-end" />
+                <p>“{quote}”</p>
+                <div className={styles.profile}>
+                    <img {...image} alt={name} />
+                    <span>{name}</span>
+                    <span>{designation}</span>
+                </div>
             </div>
         </div>
-       </div>
     );
 }

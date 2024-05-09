@@ -16,10 +16,11 @@ export default function Curology() {
         <article>
             <Hero
                 config={{
-                    backgroundCover: {
+                    background: {
                         gradient:
                             "linear-gradient(90deg, rgba(111, 92, 255, 0.03) 0.06%, rgba(111, 92, 255, 0.14) 50.34%, rgba(111, 92, 255, 0.03) 99.94%);",
-                        imageData: CustomerAssets.Curology.Logo
+                        logo: { src: CustomerAssets.Curology.Logo, alt: "curology_logo" },
+                        coverImage: { src: CustomerAssets.Curology.Cover.src, alt: "curology_bg" }
                     },
                     leftContent: {
                         title:
@@ -116,6 +117,7 @@ export default function Curology() {
                     designation="Principal Software Engineer @ Curology"
                     image={CustomerAssets.Curology.EricWong}
                     name="Eric Wong"
+                    bgColor="linear-gradient(to right, #030303 0%, #080808 30%, #040404 60%, #070707 80%, #020202 90%, #030303 100%)"
                 />
                 <p>
                     As a medical company, Curology handles sensitive patient data that needs to be secured. The vendor
@@ -139,6 +141,7 @@ export default function Curology() {
                     designation="Principal Software Engineer @ Curology"
                     image={CustomerAssets.Curology.EricWong}
                     name="Eric Wong"
+                    bgColor="linear-gradient(to right, #030303 0%, #080808 30%, #040404 60%, #070707 80%, #020202 90%, #030303 100%)"
                 />
                 <p>Additionally, the ability to spin up dev environments proved invaluable.</p>
                 <Admonition
@@ -174,6 +177,7 @@ export default function Curology() {
                     designation="Principal Software Engineer @ Curology"
                     image={CustomerAssets.Curology.EricWong}
                     name="Eric Wong"
+                    bgColor="linear-gradient(to right, #030303 0%, #080808 30%, #040404 60%, #070707 80%, #020202 90%, #030303 100%)"
                 />
                 <IFrame
                     src="https://www.youtube.com/embed/rB9-plTjYeg?rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0"

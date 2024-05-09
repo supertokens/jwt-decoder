@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     margin: 100px auto;
+    padding: 55px 0 43px 0;
 }
 
 .block_quote_container > p {
