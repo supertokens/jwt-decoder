@@ -8,6 +8,8 @@ import Title from "../../components/customers/title";
 import IFrame from "../../components/customers/iframe";
 import Footer from "../../components/customers/footer";
 
+import styles from "../../styles/customers/qloo.module.css";
+
 Qloo.title = "SuperTokens: Qloo case study";
 
 export default function Qloo() {
@@ -15,6 +17,7 @@ export default function Qloo() {
         <article>
             <Hero
                 config={{
+                    containerStyles: styles.hero_container,
                     background: {
                         gradient:
                             "linear-gradient(89.93deg, rgba(15, 175, 148, 0.03) 0.06%, rgba(15, 175, 148, 0.14) 50.34%, rgba(15, 175, 148, 0.03) 99.94%)",
@@ -27,14 +30,14 @@ export default function Qloo() {
                         businessType: {
                             text: "AI-based cultural platform",
                             textColor: "linear-gradient(90.84deg, #10CCAB 3.86%, #10CCAB 121.62%)",
-                            borderColor:
-                                "linear-gradient(90deg, rgba(16, 204, 171, 0.5) 0%, rgba(15, 175, 148, 0.5) 100%)"
+                            borderColor: "#10CCAB"
                         },
                         publishDate: "April 25th 2024",
                         readingTime: "10 minute read"
                     },
                     rightContent: {
                         gradient: "linear-gradient(90deg, #0FAF94 0%, #10CCAB 101.64%)",
+                        gap: "29px",
                         stats: [
                             {
                                 text: "Funding raised",
@@ -120,6 +123,7 @@ export default function Qloo() {
                     designation="Director of backend development @ Qloo"
                     image={CustomerAssets.Qloo.EricHosick}
                     name="Eric Hosick"
+                    maxWidth="804px"
                     bgColor="linear-gradient(to right, #030303 0%, #080808 30%, #040404 60%, #070707 80%, #020202 90%, #030303 100%)"
                 />
                 <img {...CustomerAssets.Qloo.MidCover} alt="QLOO" />
@@ -136,12 +140,14 @@ export default function Qloo() {
                 </p>
                 <BlockQuote
                     color="#10CCAB"
-                    quote={`SuperTokens has everything we need… there is nothing that has left us wanting”
-
-                    “So far you have not told me you can't do that. Because it’s just like grab this function and override it and do your own thing on the spot”`}
+                    quote={[
+                        "SuperTokens has everything we need… there is nothing that has left us wanting",
+                        "So far you have not told me you can't do that. Because it’s just like grab this function and override it and do your own thing on the spot"
+                    ]}
                     designation="Director of backend development @ Qloo"
                     image={CustomerAssets.Qloo.EricHosick}
                     name="Eric Hosick"
+                    maxWidth="978px"
                     bgColor="linear-gradient(to right, #030303 0%, #080808 30%, #040404 60%, #070707 80%, #020202 90%, #030303 100%)"
                 />
 
@@ -159,15 +165,16 @@ export default function Qloo() {
                     designation="Director of backend development @ Qloo"
                     image={CustomerAssets.Qloo.EricHosick}
                     name="Eric Hosick"
+                    maxWidth="806px"
                     bgColor="linear-gradient(to right, #030303 0%, #080808 30%, #040404 60%, #070707 80%, #020202 90%, #030303 100%)"
                 />
                 <IFrame
-                    src="https://www.youtube.com/embed/rB9-plTjYeg?rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0"
+                    src="https://www.youtube.com/embed/RcZAsDdBBQA?si=tjtmgZhxJGpSoWVL&rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0"
                     title="SuperTokens Qloo Case Study"
                 />
                 <p>
                     To watch entire case study discussion video please click{" "}
-                    <a style={{ color: "#6f5cff" }} target="_blank" href="https://youtu.be/nkguZWG37FY">
+                    <a style={{ color: "#6f5cff" }} target="_blank" href="https://youtu.be/RcZAsDdBBQA">
                         here
                     </a>
                     .

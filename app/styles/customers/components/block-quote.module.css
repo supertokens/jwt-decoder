@@ -1,6 +1,4 @@
 .block_quote_container {
-    position: relative;
-
     width: 100%;
     max-width: 800px;
     display: flex;
@@ -55,14 +53,22 @@
 
 .quote_start {
     position: absolute;
-    left: -250px;
-    top: -60px;
+    left: 85px;
+    top: -25px;
 }
 
 .quote_end {
     position: absolute;
-    right: -250px;
-    bottom: -60px;
+    right: 85px;
+    bottom: -25px;
+}
+.quote {
+    margin-top: 0;
+}
+
+.block_quote_container > img {
+    width: 112px;
+    height: 79px;
 }
 
 @media (max-width: 1260px) {
@@ -71,16 +77,13 @@
         width: 100%;
     }
 
-    .quote_start {
-        position: absolute;
-        left: -8%;
-        top: -24%;
-    }
-
     .quote_end {
-        position: absolute;
-        right: -10%;
-        bottom: -16%;
+        bottom: -19px;
+        right: 19px;
+    }
+    .quote_start {
+        top: -19px;
+        left: 19px;
     }
 }
 
@@ -89,25 +92,32 @@
         width: 65px;
         height: 46px;
     }
-
-    .quote_start {
-        left: 0;
-        top: -14%;
+    .block_quote_container {
+        padding: 60px 105px;
     }
 
     .quote_end {
-        right: 0;
-        bottom: -6%;
+        bottom: -19px;
+        right: 19px;
+    }
+    .quote_start {
+        top: -19px;
+        left: 19px;
     }
 }
 
 @media (max-width: 680px) {
     .block_quote_container {
-        padding: 0px 20px;
+        padding: 46px 24px;
     }
 
     .quote_end {
-        bottom: -22%;
+        bottom: -10px;
+        right: 13px;
+    }
+    .quote_start {
+        top: -10px;
+        left: 13px;
     }
 
     .block_quote_container > p {
@@ -116,5 +126,9 @@
 
     .profile {
         padding-bottom: 6px;
+    }
+    .block_quote_container > img {
+        width: 48px;
+        height: 34px;
     }
 }

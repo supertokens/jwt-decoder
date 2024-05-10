@@ -35,6 +35,7 @@ export default function Curology() {
                     },
                     rightContent: {
                         gradient: "linear-gradient(0deg, #6f5cff 2.31%, #aa9ffe 103.52%);",
+                        gap: "60px",
                         stats: [
                             {
                                 text: "Employees",
@@ -117,6 +118,7 @@ export default function Curology() {
                     designation="Principal Software Engineer @ Curology"
                     image={CustomerAssets.Curology.EricWong}
                     name="Eric Wong"
+                    maxWidth="804px"
                     bgColor="linear-gradient(to right, #030303 0%, #080808 30%, #040404 60%, #070707 80%, #020202 90%, #030303 100%)"
                 />
                 <p>
@@ -141,6 +143,7 @@ export default function Curology() {
                     designation="Principal Software Engineer @ Curology"
                     image={CustomerAssets.Curology.EricWong}
                     name="Eric Wong"
+                    maxWidth="804px"
                     bgColor="linear-gradient(to right, #030303 0%, #080808 30%, #040404 60%, #070707 80%, #020202 90%, #030303 100%)"
                 />
                 <p>Additionally, the ability to spin up dev environments proved invaluable.</p>
@@ -177,6 +180,7 @@ export default function Curology() {
                     designation="Principal Software Engineer @ Curology"
                     image={CustomerAssets.Curology.EricWong}
                     name="Eric Wong"
+                    maxWidth="807px"
                     bgColor="linear-gradient(to right, #030303 0%, #080808 30%, #040404 60%, #070707 80%, #020202 90%, #030303 100%)"
                 />
                 <IFrame

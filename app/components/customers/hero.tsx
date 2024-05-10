@@ -1,11 +1,10 @@
 import { StaticImageData } from "next/image";
-
-import { CustomerAssets } from "../../assets/images/customers";
 import styles from "../../styles/customers/components/hero.module.css";
 import { Image } from "../../types";
 
 type HeroProps = {
     config: {
+        containerStyles?: string;
         background: {
             gradient: string;
             logo: Image<StaticImageData>;
@@ -23,6 +22,7 @@ type HeroProps = {
         };
         rightContent: {
             gradient: string;
+            gap: string;
             stats: {
                 text: string;
                 subText: string;
@@ -32,7 +32,7 @@ type HeroProps = {
 };
 
 export default function Hero({ config }: HeroProps) {
-    const { background, leftContent, rightContent } = config;
+    const { background, leftContent, rightContent, containerStyles } = config;
 
     return (
         <section className={styles.hero_container}>
@@ -51,7 +51,7 @@ export default function Hero({ config }: HeroProps) {
                 <span>Case Study</span>
                 <img {...background.logo.src} alt={background.logo.alt} />
             </div>
-            <div className={styles.content_container}>
+            <div className={`${styles.content_container} ${containerStyles}`}>
                 <div className={styles.left_content}>
                     <h4>{leftContent.title}</h4>
                     <div>
@@ -87,11 +87,16 @@ export default function Hero({ config }: HeroProps) {
                             background: rightContent.gradient
                         }}
                     />
-                    <div className={styles.right_content_wrapper}>
+                    <div
+                        className={styles.right_content_wrapper}
+                        style={{
+                            gap: rightContent.gap
+                        }}
+                    >
                         {rightContent.stats.map(stat => {
                             return (
                                 <div>
-                                    <span>{stat.text}</span>
+                                    <span className={styles.stat_description}>{stat.text}</span>
                                     <span
                                         className={styles.stat}
                                         style={{
