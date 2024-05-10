@@ -1,0 +1,9 @@
+.hero_container {
+    align-items: flex-start;
+    width: fit-content;
+    gap: 58px;
+
+    @media (min-width: 1200px) {
+        gap: 85px;
+    }
+}
