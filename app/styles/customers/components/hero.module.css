@@ -163,6 +163,9 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+    .content_read_time {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 480px) {
