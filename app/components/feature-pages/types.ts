@@ -4,7 +4,7 @@ export type CommonChildProperties = {
     flex: SectionFlex;
     alignment?: "center" | "top" | "start";
     rootClassNames?: string[];
-}
+};
 
 type FeaturePageCTA = {
     text: string;
@@ -16,44 +16,48 @@ export type TitleChildType = CommonChildProperties & {
     type: "title-subtitle-cta";
     title?: {
         text: string;
-        highlight: {
-            texts: string[];
-            mode: "primary" | "grey-out";
-        } | {
-            texts: string[];
-            mode: "custom";
-            color: string;
-        }
+        highlight:
+            | {
+                  texts: string[];
+                  mode: "primary" | "grey-out";
+              }
+            | {
+                  texts: string[];
+                  mode: "custom";
+                  color: string;
+              };
     };
     subtitle?: string;
     cta?: FeaturePageCTA;
     supertext?: string;
-}
+};
 
 export type ImageChildType = CommonChildProperties & {
     type: "image";
     image: string;
     imageClassName?: string;
-    layout?: {
-        position: "relative",
-        top?: number | string;
-        left?: number | string;
-        right?: number | string;
-        bottom?: number | string;
-    } | {
-        position: "absolute",
-        top?: number | string;
-        left?: number | string;
-        right?: number | string;
-        bottom?: number | string;
-    };
-}
+    layout?:
+        | {
+              position: "relative";
+              top?: number | string;
+              left?: number | string;
+              right?: number | string;
+              bottom?: number | string;
+          }
+        | {
+              position: "absolute";
+              top?: number | string;
+              left?: number | string;
+              right?: number | string;
+              bottom?: number | string;
+          };
+};
 
 export type PillChildType = CommonChildProperties & {
     type: "pill";
     text: string;
     iconPath?: string;
-}
+};
 
 export type BulletListChildType = CommonChildProperties & {
     type: "bullets-list";
@@ -62,7 +66,7 @@ export type BulletListChildType = CommonChildProperties & {
     addBlur?: boolean;
     imageShadow?: {
         background: string;
-    }
+    };
     buletTextClassName?: string;
     bullets: {
         title?: string;
@@ -72,7 +76,7 @@ export type BulletListChildType = CommonChildProperties & {
         imageClassName?: string;
         bulletImage?: {
             src: string;
-        },
+        };
         subtitle?: string;
         displaySubtitleBullets?: boolean;
         bulletColor?: string;
@@ -87,15 +91,15 @@ export type BulletListChildType = CommonChildProperties & {
         right?: string | number;
         bottom?: string | number;
         left?: string | number;
-        height?: string | number
+        height?: string | number;
         width?: string | number;
-    },
-}
+    };
+};
 
 export type TextChildType = CommonChildProperties & {
     type: "text";
     text: string;
-}
+};
 
 export type TextCTAChildType = CommonChildProperties & {
     type: "text-cta";
@@ -106,38 +110,37 @@ export type TextCTAChildType = CommonChildProperties & {
     };
     indicator?: {
         background: string;
-    }
-}
+    };
+};
 
 export type NestedChildType = CommonChildProperties & {
     type: "nested";
-    spacing?: "center" | "space-between" | "flex-start" | "space-around",
+    spacing?: "center" | "space-between" | "flex-start" | "space-around";
     children: ChildType[];
-}
+};
 
 export type SuperTokensBenefitsSection = {
     type: "section";
-}
+};
 
-export type ChildType = 
-    (
-        | TitleChildType
-        | ImageChildType
-        | PillChildType
-        | BulletListChildType    
-        | TextChildType
-        | NestedChildType
-        | TextCTAChildType
-    )
+export type ChildType =
+    | TitleChildType
+    | ImageChildType
+    | PillChildType
+    | BulletListChildType
+    | TextChildType
+    | NestedChildType
+    | TextCTAChildType;
 
-export type PreBuiltType = 
-    | "supertokens-benefits-magic-links" 
+export type PreBuiltType =
+    | "supertokens-benefits-magic-links"
     | "supertokens-benefits-sso"
     | "supertokens-benefits-multi-tenancy"
     | "supertokens-benefits-email-password-authentication"
     | "supertokens-benefits-passwordless-login"
     | "supertokens-benefits-social-login"
-    | "supertokens-benefits-account-linking";
+    | "supertokens-benefits-account-linking"
+    | "supertokens-benefits-attack-protection";
 
 export type FeaturePageSectionType = {
     flex?: SectionFlex;
@@ -151,8 +154,8 @@ export type FeaturePageSectionType = {
     backgroundConfig?: {
         className: string;
         background: string;
-    },
-}
+    };
+};
 
 export type FeaturePageType = {
     sections: FeaturePageSectionType[];
@@ -160,8 +163,8 @@ export type FeaturePageType = {
     gradient?: {
         colors: string[];
     };
-}
+};
 
 export type CommonComponentProps = {
     index: number;
-}
+};
