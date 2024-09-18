@@ -34,7 +34,7 @@ export default function AttackProtectionFeaturePage() {
                                                 text: "Attack protection suite",
                                                 highlight: {
                                                     texts: ["Attack", "protection"],
-                                                    mode: "primary",
+                                                    mode: "primary"
                                                 }
                                             },
                                             subtitle:
@@ -111,7 +111,7 @@ export default function AttackProtectionFeaturePage() {
                                     bullets: [
                                         {
                                             subtitle:
-                                                "The server requests SuperTokens' Attack protection suite service and gets threats details",
+                                                "The server requests SuperTokens Attack protection suite service and gets threats details",
                                             imagePath: FeaturePageIcons.AttackProtectionSuite.UserFlow2 as any,
                                             imageClassName: attackProtectionStyles["bullet-list-image"],
                                             number: 2
@@ -170,8 +170,8 @@ export default function AttackProtectionFeaturePage() {
                                     children: [
                                         {
                                             type: "bullets-list",
-                                            direction: "vertical",
-                                            flex: "column",
+                                            direction: "horizontal",
+                                            flex: "row",
                                             bullets: [
                                                 {
                                                     title: "Brute Force Attack",
@@ -188,7 +188,20 @@ export default function AttackProtectionFeaturePage() {
                                                     bulletImage: {
                                                         src: FeaturePageIcons.AttackProtectionSuite.PasswordBreach
                                                     }
-                                                },
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    type: "nested",
+                                    flex: "row",
+                                    children: [
+                                        {
+                                            type: "bullets-list",
+                                            direction: "horizontal",
+                                            flex: "row",
+                                            bullets: [
                                                 {
                                                     title: "Bot Detection",
                                                     subtitle:
@@ -199,8 +212,24 @@ export default function AttackProtectionFeaturePage() {
                                                 },
                                                 {
                                                     title: "Others",
-                                                    subtitle:
-                                                        "Anomalies come in different shapes and sizes. We detect lots of others such as: VPN access, TOR access, different devices, impossible travel, etc. You can find out more about it here.",
+                                                    subtitle: (
+                                                        <span>
+                                                            Anomalies come in different shapes and sizes. We detect lots
+                                                            of others such as: VPN access, TOR access, different
+                                                            devices, impossible travel, etc. You can find out more about
+                                                            it{" "}
+                                                            <a
+                                                                href="/docs/attackprotectionsuite/introduction"
+                                                                style={{
+                                                                    color: "#88eebc"
+                                                                }}
+                                                                target="_blank"
+                                                            >
+                                                                here
+                                                            </a>
+                                                            .
+                                                        </span>
+                                                    ),
                                                     bulletImage: {
                                                         src: FeaturePageIcons.AttackProtectionSuite.Others
                                                     }
@@ -226,48 +255,77 @@ export default function AttackProtectionFeaturePage() {
                                     type: "title-subtitle-cta",
                                     flex: "column",
                                     title: {
-                                        text: "Start Today",
+                                        text: "Start Today!",
                                         highlight: {
                                             mode: "custom",
-                                            texts: ["Today"],
-                                            color: "#8D92A1"
+                                            color: "#7c81ab",
+                                            texts: ["Today!"]
                                         }
                                     }
                                 },
                                 {
-                                    type: "nested",
-                                    flex: "row",
-                                    children: [
-                                        {
-                                            type: "title-subtitle-cta",
-
-                                            flex: "column",
-                                            subtitle:
-                                                "Try supertokens to implement passwordless magic links. - we make it easy!",
-                                            cta: {
-                                                targetUrl: "/docs/guides",
-                                                text: "Start Building",
-                                                fillType: "white"
-                                            }
-                                        },
-                                        {
-                                            type: "text-cta",
-                                            flex: "column",
-                                            text: "Looking to implement passwordless magic links on your own?",
-                                            indicator: {
-                                                background: "linear-gradient(270deg, #7A7FA8 0%, #8D92A1 100%)"
-                                            },
-                                            cta: {
-                                                targetUrl: "/blog/a-guide-to-implementing-passwordless-login",
-                                                text: "See our blog",
-                                                background: "",
-                                                hue: "linear-gradient(134deg, #7D81AB 0%, #8D92A1 100%)"
-                                            },
-                                            rootClassNames: [attackProtectionStyles["see-blog-section"]]
-                                        }
-                                    ]
+                                    type: "text",
+                                    flex: "column",
+                                    text: "Use SuperTokens to implement Attack protection - we make it easy!"
+                                },
+                                {
+                                    type: "title-subtitle-cta",
+                                    flex: "column",
+                                    rootClassNames: [universalStyles["no-top-margin"]],
+                                    cta: {
+                                        targetUrl: "/docs/attackprotectionsuite/introduction",
+                                        text: "Lets start!",
+                                        fillType: "white"
+                                    }
                                 }
                             ]
+                            // children: [
+                            //     {
+                            //         type: "title-subtitle-cta",
+                            //         flex: "column",
+                            //         title: {
+                            //             text: "Start Today",
+                            //             highlight: {
+                            //                 mode: "custom",
+                            //                 texts: ["Today"],
+                            //                 color: "#8D92A1"
+                            //             }
+                            //         }
+                            //     },
+                            //     {
+                            //         type: "nested",
+                            //         flex: "row",
+                            //         children: [
+                            //             {
+                            //                 type: "title-subtitle-cta",
+
+                            //                 flex: "column",
+                            //                 subtitle:
+                            //                     "Try supertokens to implement Attack protection suite. - we make it easy!",
+                            //                 cta: {
+                            //                     targetUrl: "/docs/attackprotectionsuite/introduction",
+                            //                     text: "Start Building",
+                            //                     fillType: "white"
+                            //                 }
+                            //             },
+                            //             {
+                            //                 type: "text-cta",
+                            //                 flex: "column",
+                            //                 text: "Looking to know more about our Attack protection suite feature?",
+                            //                 indicator: {
+                            //                     background: "linear-gradient(270deg, #7A7FA8 0%, #8D92A1 100%)"
+                            //                 },
+                            //                 cta: {
+                            //                     targetUrl: "/blog",
+                            //                     text: "See our blog",
+                            //                     background: "",
+                            //                     hue: "linear-gradient(134deg, #7D81AB 0%, #8D92A1 100%)"
+                            //                 },
+                            //                 rootClassNames: [attackProtectionStyles["see-blog-section"]]
+                            //             }
+                            //         ]
+                            //     }
+                            // ]
                         }
                     ]
                 }}

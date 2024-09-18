@@ -127,6 +127,7 @@ export const BulletList = (props: Props) => {
 
                                             {
                                                 bullet.subtitle &&
+                                                typeof bullet.subtitle === "string" ?
                                                 <div 
                                                     className={styles["bullet-item-subtitle"]}
                                                     style={{
@@ -143,6 +144,18 @@ export const BulletList = (props: Props) => {
                                                             );
                                                         })
                                                     }
+                                                </div> :
+                                                <div 
+                                                    className={styles["bullet-item-subtitle"]}
+                                                    style={{
+                                                        marginTop: bullet.title !== undefined ? undefined : 0,
+                                                    }}>
+                                                      <span 
+                                                                    className={styles["subtitle-text-container"]}
+                                                                    key={`bullet-item-${index}`}>
+                                                                        {bullet.displaySubtitleBullets && <span className={styles["bullet"]}>{"\u2B24"}</span>}
+                                                                        {bullet.subtitle}
+                                                                </span>
                                                 </div>
                                             }
                                         </div>

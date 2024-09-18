@@ -1,6 +1,5 @@
 import Landing from "./landing-image.png";
 import LandingBG from "./eclipse-bg.png";
-import UserFlow1 from "./user-flow-1.png";
 import UserFlow2 from "./user-flow-2.png";
 import UserFlow3 from "./user-flow-3.png";
 import UserFlow4 from "./user-flow-4.png";
@@ -16,7 +15,6 @@ import ReducedDevEffort from "./reduced-dev-effort.png";
 export const AttackProtectionSuite = {
     Landing,
     LandingBG,
-    UserFlow1,
     UserFlow2,
     UserFlow3,
     UserFlow4,

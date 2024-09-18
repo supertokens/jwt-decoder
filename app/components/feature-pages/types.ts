@@ -77,7 +77,7 @@ export type BulletListChildType = CommonChildProperties & {
         bulletImage?: {
             src: string;
         };
-        subtitle?: string;
+        subtitle?: string | React.ReactNode;
         displaySubtitleBullets?: boolean;
         bulletColor?: string;
         number?: number;
