@@ -1,0 +1,10 @@
+.see-blog-section {
+    margin-left: 100px !important;
+}
+
+@media screen and (max-width: 1024px) {
+    .see-blog-section {
+        margin-top: 80px !important;
+        margin-left: 0px !important;
+    }
+}

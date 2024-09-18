@@ -10,6 +10,7 @@ import {
     socialLoginConfig,
     ssoConfig
 } from "./benifits-configs";
+import attackProtectionConfig from "./benifits-configs/attack-protection";
 
 type Props = {
     index: number;
@@ -31,6 +32,8 @@ export const SuperTokensBenefits = (props: Props) => {
                 return socialLoginConfig;
             case "supertokens-benefits-account-linking":
                 return accountLinkingConfig;
+            case "supertokens-benefits-attack-protection":
+                return attackProtectionConfig;
             default:
                 return ssoConfig;
         }

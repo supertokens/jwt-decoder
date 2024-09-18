@@ -109,7 +109,8 @@ export const isBenefitsSection = (config: FeaturePageSectionType): boolean => {
         config.prebuiltType === "supertokens-benefits-email-password-authentication" ||
         config.prebuiltType === "supertokens-benefits-passwordless-login" ||
         config.prebuiltType === "supertokens-benefits-social-login" ||
-        config.prebuiltType === "supertokens-benefits-account-linking"
+        config.prebuiltType === "supertokens-benefits-account-linking"||
+        config.prebuiltType === "supertokens-benefits-attack-protection";
 };
 
 export const renderSection = (config: FeaturePageSectionType, index: number, pageConfig: FeaturePageType) => {
