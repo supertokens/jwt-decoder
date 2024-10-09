@@ -69,10 +69,10 @@
     }
 }
 
-
 @media screen and (max-width: 768px) {
     .text > h1 {
         margin-bottom: 20px;
+        margin-top: 50px;
     }
 
     .header {
@@ -95,7 +95,6 @@
         padding: 4.438rem;
     }
 }
-
 
 @media screen and (max-width: 480px) {
     .text > h1 {
