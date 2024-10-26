@@ -2,8 +2,9 @@ import styles from "../../styles/customers/components/section-container.module.c
 
 type SectionContainerProps = {
     children: React.ReactNode;
+    className?: string;
 };
 
-export default function SectionContainer({ children }: SectionContainerProps) {
-    return <section className={styles.section_container}>{children}</section>;
+export default function SectionContainer({ children, className }: SectionContainerProps) {
+    return <section className={`${styles.section_container} ${className}`}>{children}</section>;
 }
