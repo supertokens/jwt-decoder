@@ -1,3 +1,9 @@
+@media (min-width: 1200px) {
+    .right_content_wrapper {
+        padding: 40px 6px;
+    }
+}
+
 .section_container > ul {
     color: #f8f7f7;
     font-size: 16px;
@@ -5,6 +11,17 @@
     font-weight: 400;
     line-height: 32px;
 
+    max-width: 654px;
+    width: 100%;
+    margin: 18px auto;
+}
+
+.section_container > ol {
+    color: #f8f7f7;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
     max-width: 654px;
     width: 100%;
     margin: 18px auto;

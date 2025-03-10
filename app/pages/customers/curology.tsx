@@ -30,7 +30,7 @@ export default function Curology() {
                             textColor: "linear-gradient(91deg, #ac9efc 3.86%, #6f5cff 121.62%)",
                             borderColor: "#ac9efc"
                         },
-                        publishDate: "December 12th 2023",
+                        publishDate: "December 12, 2023",
                         readingTime: "10 minute read"
                     },
                     rightContent: {

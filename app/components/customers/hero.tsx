@@ -27,6 +27,11 @@ type HeroProps = {
                 text: string;
                 subText: string;
             }[];
+            styles?: {
+                wrapper?: string;
+                stat?: string;
+                stat_description?: string;
+            };
         };
     };
 };
@@ -88,7 +93,7 @@ export default function Hero({ config }: HeroProps) {
                         }}
                     />
                     <div
-                        className={styles.right_content_wrapper}
+                        className={`${styles.right_content_wrapper} ${rightContent.styles?.wrapper}`}
                         style={{
                             gap: rightContent.gap
                         }}
@@ -96,9 +101,13 @@ export default function Hero({ config }: HeroProps) {
                         {rightContent.stats.map(stat => {
                             return (
                                 <div>
-                                    <span className={styles.stat_description}>{stat.text}</span>
                                     <span
-                                        className={styles.stat}
+                                        className={`${styles.stat_description} ${rightContent.styles?.stat_description}`}
+                                    >
+                                        {stat.text}
+                                    </span>
+                                    <span
+                                        className={`${styles.stat} ${rightContent.styles?.stat}`}
                                         style={{
                                             background: leftContent.businessType.textColor,
                                             WebkitBackgroundClip: "text",

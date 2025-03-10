@@ -4,7 +4,7 @@ import Title from "./title";
 
 type OverviewProps = {
     config: {
-        color: string
+        color: string;
         gradient: string;
         aboutPoints: string[];
         overviewPoints: {
