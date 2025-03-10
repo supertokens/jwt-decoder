@@ -28,7 +28,7 @@ export default function StackerHq() {
                             textColor: "linear-gradient(91.43deg, #5A5AE5 4.12%, #7782EA 99.78%)",
                             borderColor: "#7782EA"
                         },
-                        publishDate: "September 12th 2024",
+                        publishDate: "September 12, 2024",
                         readingTime: "10 minute read"
                     },
                     rightContent: {

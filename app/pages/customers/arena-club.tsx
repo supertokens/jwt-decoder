@@ -30,7 +30,7 @@ export default function ArenaClub() {
                             textColor: "linear-gradient(90.84deg, #7FC047 3.86%, #7FC047 121.62%)",
                             borderColor: "#68953F80"
                         },
-                        publishDate: "September 12th 2024",
+                        publishDate: "September 12, 2024",
                         readingTime: "10 minute read"
                     },
                     rightContent: {

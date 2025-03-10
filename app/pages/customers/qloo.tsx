@@ -32,7 +32,7 @@ export default function Qloo() {
                             textColor: "linear-gradient(90.84deg, #10CCAB 3.86%, #10CCAB 121.62%)",
                             borderColor: "#10CCAB"
                         },
-                        publishDate: "April 25th 2024",
+                        publishDate: "April 25, 2024",
                         readingTime: "10 minute read"
                     },
                     rightContent: {

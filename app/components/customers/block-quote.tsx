@@ -5,7 +5,7 @@ import { CustomerAssets } from "../../assets/images/customers";
 type BlockQuoteProps = {
     color: string;
     quote: string | string[];
-    image: StaticImageData;
+    image?: StaticImageData;
     name: string;
     designation: string;
     bgColor: string;
@@ -38,7 +38,7 @@ export default function BlockQuote({ designation, image, name, quote, color, bgC
                 <img className={styles.quote_end} {...CustomerAssets.Common.QuoteEnd} alt="quote-end" />
                 {Array.isArray(quote) ? quote.map(q => renderQuote(q, maxWidth)) : renderQuote(quote, maxWidth)}
                 <div className={styles.profile}>
-                    <img {...image} alt={name} />
+                    {image && <img {...image} alt={name} />}
                     <span>{name}</span>
                     <span>{designation}</span>
                 </div>

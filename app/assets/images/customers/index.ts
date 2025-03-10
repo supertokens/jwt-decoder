@@ -2,6 +2,7 @@ import { Curology } from "./curology";
 import { Qloo } from "./qloo";
 import { Stacker } from "./stacker";
 import { Arena } from "./arena";
+import { Cocoon } from "./cocoon";
 import QuoteStart from "./quote-start.png";
 import QuoteEnd from "./quote-end.png";
 import LinkedinIcon from "./linkedin.png";
@@ -12,6 +13,7 @@ export const CustomerAssets = {
     Qloo,
     Stacker,
     Arena,
+    Cocoon,
     Common: {
         QuoteStart,
         QuoteEnd,
