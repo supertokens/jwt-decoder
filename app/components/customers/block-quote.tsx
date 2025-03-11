@@ -1,6 +1,5 @@
 import { StaticImageData } from "next/image";
 import styles from "../../styles/customers/components/block-quote.module.css";
-
 import { CustomerAssets } from "../../assets/images/customers";
 
 type BlockQuoteProps = {
