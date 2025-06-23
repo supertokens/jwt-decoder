@@ -23,6 +23,10 @@ const ExplanationContent = () => {
         <div>
           <p>
             A JWT contains three parts:
+            {/*Each part of the JWT needs to be in an h3 tag, i.e. Header, Payload and signiture and we should give a single line description of the sub fields
+              - Summerizing the contents of https://supertokens.com/blog/what-is-jwt#jwt-claim-convention into this section
+            */}
+            
           </p>
           <ul className="parts-of-jwt">
             <li><span className="part-name header">Header:</span><div className="description">
@@ -64,7 +68,28 @@ const ExplanationContent = () => {
       You can find our complete guide on how JWT works and how you can generate JWTs in this <a rel="nofollow" href="/blog/what-is-jwt" target={"_blank"}>blog.</a>
       </p>
 
+    {/* Need to add another section 
+    
+      ## Common Use Cases for JWT Decoding
+      - *Debugging Authentication Issues*
+        - When users report issues with login or permissions, decoding the JWT reveals critical claims like exp (expiration), iss (issuer), aud (audience), and scope or roles. This inspection helps identify issues like expired tokens, incorrect issuers, or missing permissions—before they lead to broken workflows
+      - *Inspecting Token Claims*
+        - JWTs contain structured claims that reveal user roles or privileges. Developers decode access tokens during runtime to populate UI features (e.g., showing admin-only options) or enforce backend ACLs based on claims such as roles or scope.
+    */}
 
+
+    {/* New Section
+      ## Security Considerations ⚠️
+      
+      ### Signature Verification
+      Never rely on decoded data alone. Always verify the signature to ensure the token wasn't forged or tampered with.
+
+      ### Risks of Decoding Unverified Tokens
+      ⚠️ Decoding without verification can expose you to:
+        - Injection of false claims
+        - Expired or replayed tokens
+        - Forged user roles or escalated privileges    
+    */}
     </ExplanationContainerStyled>
   )
 }
