@@ -399,32 +399,114 @@ export const ExplanationContainerStyled = styled.article`
 
   ul {
     padding: 0;
+    margin: 0;
   }
 
-  ul.parts-of-jwt {
-    & > li {
-      display: flex;
-      margin-bottom: 1.5rem;
-      & > :not(:last-child) {
-        margin-right: 0.5rem;
+  // Updated structure for JWT parts
+  .parts-of-jwt {
+    .part {
+      margin-bottom: 2rem;
+      
+      h3 {
+        color: ${(props) => props.theme.colors.light[900]};
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+        
+        &.header {
+          color: ${(props) => props.theme.colors.red[200]};
+        }
+        
+        &.payload {
+          color: ${(props) => props.theme.colors.purple[200]};
+        }
+        
+        &.signature {
+          color: ${(props) => props.theme.colors.blue[200]};
+        }
       }
-      span.part-name{
-        word-break: normal;
+      
+      p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
       }
-      span.header {
-        color: ${(props) => props.theme.colors.red[200]};
+      
+      ul {
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+        
+        li {
+          margin-bottom: 0.5rem;
+          line-height: 1.5;
+        }
       }
+    }
+  }
 
-      span.payload {
-        color: ${(props) => props.theme.colors.purple[200]};
+  // Claims details section
+  .claims-details {
+    margin-top: 1.5rem;
+    
+    h4 {
+      color: ${(props) => props.theme.colors.light[900]};
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    
+    ul {
+      padding-left: 2rem;
+      
+      li {
+        margin-bottom: 0.8rem;
+        line-height: 1.6;
+        
+        strong {
+          color: ${(props) => props.theme.colors.orange[1000]};
+        }
       }
+    }
+  }
 
-      span.signature {
-        color: ${(props) => props.theme.colors.blue[200]};
+  // Use cases section
+  .use-cases {
+    .use-case {
+      margin-bottom: 2rem;
+      
+      h3 {
+        color: ${(props) => props.theme.colors.light[900]};
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
       }
+      
+      p {
+        line-height: 1.6;
+        margin-bottom: 0;
+      }
+    }
+  }
 
-      .description ul {
-        list-style: disc inside;
+  // Security considerations section
+  .security-considerations {
+    .security-topic {
+      margin-bottom: 2rem;
+      
+      h3 {
+        color: ${(props) => props.theme.colors.light[900]};
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+      }
+      
+      p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      
+      ul {
+        padding-left: 2rem;
+        
+        li {
+          margin-bottom: 0.5rem;
+          line-height: 1.5;
+        }
       }
     }
   }
@@ -437,9 +519,9 @@ export const ExplanationContainerStyled = styled.article`
   }
 
   @media screen and (max-width: 450px) {
-    ul.parts-of-jwt{
-      &>li{
-        flex-direction: column;
+    .parts-of-jwt {
+      .part {
+        margin-bottom: 1.5rem;
       }
     }
 
@@ -452,10 +534,9 @@ export const ExplanationContainerStyled = styled.article`
   }
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    & ul.parts-of-jwt li {
-      & > :not(:last-child) {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
+    .parts-of-jwt {
+      .part {
+        margin-bottom: 1.5rem;
       }
     }
   }
