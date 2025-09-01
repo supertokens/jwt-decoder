@@ -180,15 +180,13 @@ export default function N1co() {
             Though they started with passwordless login via SMS, n1co plans to
             expand into:
           </p>
-          <p>
-            <ul>
-              <li>Social logins and account linking</li>
-              <li>SSO for enterprise merchants</li>
-              <li>
-                Full-featured access control using paid SuperTokens features
-              </li>
-            </ul>
-          </p>
+          <ul>
+            <li>Social logins and account linking</li>
+            <li>SSO for enterprise merchants</li>
+            <li>
+              Full-featured access control using paid SuperTokens features
+            </li>
+          </ul>
         </ol>
 
         <Title text="The Migration Experience" id="migration" />
