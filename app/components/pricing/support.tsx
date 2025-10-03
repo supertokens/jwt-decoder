@@ -49,7 +49,7 @@ export default function AddOnPackage() {
                     })}
                 </div>
                 <div className={styles.break} />
-                <a role="button" href="mailto:team@supertokens.com"  className={styles.gradient__btn}>
+                <a role="button" href="mailto:support@supertokens.com"  className={styles.gradient__btn}>
                     <span>Get in touch</span>
                 </a>
             </div>
