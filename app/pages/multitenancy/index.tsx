@@ -177,7 +177,7 @@ export default function MultiTenancyFeaturePage() {
                                                 background: "linear-gradient(270deg, #7A7FA8 0%, #8D92A1 100%)"
                                             },
                                             cta: {
-                                                targetUrl: "mailto:team@supertokens.com?subject=Interested%20in%20SuperTokens&body=I%20am%20interested%20in%20the%20Multitenancy%20feature",
+                                                targetUrl: "mailto:support@supertokens.com?subject=Interested%20in%20SuperTokens&body=I%20am%20interested%20in%20the%20Multitenancy%20feature",
                                                 text: "Contact us!",
                                                 background: "",
                                                 hue: "linear-gradient(134deg, #7D81AB 0%, #8D92A1 100%)",

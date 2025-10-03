@@ -32,7 +32,7 @@ export default function CantFind() {
             </div>
             <div className={styles.bottom__section}>
                 <p>We&apos;d be happy to adapt our pricing to fit your use case! </p>
-                <a role="button" href="mailto:team@supertokens.com"><span>Get in touch</span></a>
+                <a role="button" href="mailto:support@supertokens.com"><span>Get in touch</span></a>
             </div>
         </section>
     );
