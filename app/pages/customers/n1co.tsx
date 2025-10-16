@@ -5,8 +5,8 @@ import Overview from '../../components/customers/overview';
 import BlockQuote from '../../components/customers/block-quote';
 import SectionContainer from '../../components/customers/section-container';
 import Title from '../../components/customers/title';
-// import IFrame from '../../components/customers/iframe';
-// import Footer from '../../components/customers/footer';
+import IFrame from '../../components/customers/iframe';
+import Footer from '../../components/customers/footer';
 
 import styles from '../../styles/customers/n1co.module.css';
 
@@ -256,10 +256,9 @@ export default function N1co() {
           maxWidth="807px"
           bgColor="inherit"
         />
-        {/* To Do: Add the video in footer */}
 
-        {/* <IFrame
-          src="https://www.youtube.com/embed/nkguZWG37FY?si=-IGEGjREta39kuwS?rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0"
+        <IFrame
+          src="https://www.youtube.com/embed/RS6VpydqgKo?si=nHCezs0KBX8Bfabv?rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0"
           title="SuperTokens n1co Case Study"
         />
 
@@ -268,7 +267,7 @@ export default function N1co() {
           <a
             style={{ color: '#6f5cff' }}
             target="_blank"
-            href="https://www.youtube.com/watch?v=nkguZWG37FY"
+            href="https://www.youtube.com/watch?v=RS6VpydqgKo"
           >
             here
           </a>
@@ -277,7 +276,7 @@ export default function N1co() {
         <Footer
           title="How n1co Transformed their Authentication with SuperTokens: Simplified, Scalable, and Future-Ready"
           shareUrl="https://supertokens.com/customers/n1co"
-        /> */}
+        />
       </SectionContainer>
     </article>
   );
