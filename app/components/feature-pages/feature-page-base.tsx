@@ -116,7 +116,7 @@ export const isBenefitsSection = (config: FeaturePageSectionType): boolean => {
 export const renderSection = (config: FeaturePageSectionType, index: number, pageConfig: FeaturePageType) => {
     if (isBenefitsSection(config)) {
         return (
-            <SuperTokensBenefits type={config.prebuiltType} index={index} key={`supertokens-benefits-section`}/>
+            <SuperTokensBenefits type={config.prebuiltType} index={index} renderSection={renderSection} key={`supertokens-benefits-section`}/>
         );
     }
 

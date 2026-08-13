@@ -2,14 +2,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export --outdir ./build/",
+    "build": "next build && rm -rf build && mv out build",
     "start": "next start",
     "update": "npm i -D && npm run build"
   },
   "dependencies": {
     "@codemirror/lang-css": "^6.0.1",
     "@codemirror/lang-json": "^6.0.1",
-    "@next/font": "^13.1.1",
     "@radix-ui/react-slider": "^1.1.2",
     "@types/styled-components": "^5.1.26",
     "@uiw/codemirror-themes": "^4.19.7",
@@ -19,7 +18,7 @@
     "js-beautify": "^1.14.7",
     "jsonwebtoken": "^9.0.0",
     "jwt-decode": "^3.1.2",
-    "next": "13.1.1",
+    "next": "15.5.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",

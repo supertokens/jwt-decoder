@@ -1,6 +1,4 @@
-import { renderSection } from "../feature-page-base";
-
-import { PreBuiltType } from "../types";
+import { FeaturePageSectionType, FeaturePageType, PreBuiltType } from "../types";
 import {
     accountLinkingConfig,
     emailPasswordAuthConfig,
@@ -15,6 +13,12 @@ import attackProtectionConfig from "./benifits-configs/attack-protection";
 type Props = {
     index: number;
     type: PreBuiltType;
+    /**
+     * Injected by the caller (feature-page-base.tsx) instead of being imported
+     * here, to avoid a circular import between this file and feature-page-base
+     * (which caused "Cannot access ... before initialization" prerender errors).
+     */
+    renderSection: (config: FeaturePageSectionType, index: number, pageConfig: FeaturePageType) => JSX.Element;
 };
 
 export const SuperTokensBenefits = (props: Props) => {
@@ -39,7 +43,7 @@ export const SuperTokensBenefits = (props: Props) => {
         }
     };
 
-    return renderSection(getConfigForType(), props.index, {
+    return props.renderSection(getConfigForType(), props.index, {
         primaryColor: "#FE9252",
         sections: []
     });

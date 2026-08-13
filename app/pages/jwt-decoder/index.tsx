@@ -10,7 +10,7 @@ import { algorithmOptions, Algorithms, defaultSigningKeys, defaultTokens, IAlgor
 import InputEditor, { JWTInputEditor } from "../../components/jwt-decoder/json-input.components"
 import usePreviousValue from "../../hooks/usePreviousValue"
 import { ChevronDownIcon, ClipboardIcon, HelpIcon, InvalidSignatureIcon, ValidSignatureIcon } from "../../assets/images"
-import { AnalyticsUtilities, getAnalytics } from ".."
+import { AnalyticsUtilities, getAnalytics } from "../../helpers/analytics"
 
 interface IPopulateToken {
   newPayload?: string;

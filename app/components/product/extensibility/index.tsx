@@ -4,7 +4,7 @@ import commonStyles from "../../../styles/product/common.module.css";
 import styles from "../../../styles/product/extensibility.module.css";
 
 import Image from "next/image";
-import { getAnalytics } from "../../../pages";
+import { getAnalytics } from "../../../helpers/analytics";
 
 const examples = [
     {
