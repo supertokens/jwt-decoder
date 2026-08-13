@@ -20,11 +20,12 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-            nvm install 16
+            # Next.js 15 requires Node >= 18.18; use the active LTS
+            nvm install 22
 
             echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
             echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-      - run: nvm use 16 && ./buildJwt
+      - run: nvm use 22 && ./buildJwt
       - run: git config --global user.email "$EMAIL"
       - run: git config --global user.name "$NAME"
       - run: cd ../supertokens-backend-website && git add --all && git commit -m"docs changes" && git push && ./releaseDev.sh
